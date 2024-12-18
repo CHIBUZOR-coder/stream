@@ -5,6 +5,10 @@ import "./index.css";
 import App from "./App.jsx";
 import Home from "./pages/Home.jsx";
 import Contact from "./pages/Contact.jsx";
+import NotFound from "./pages/NotFound.jsx";
+import Movies from "./pages/Movies.jsx";
+import About from "./pages/About.jsx";
+import User from "./pages/DashBoard/ADMIN/Users.jsx";
 
 
 const router = createBrowserRouter([
@@ -14,11 +18,27 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/stream/",
-        element: <Home/>,
+        element: <Home />,
       },
       {
         path: "/stream/contact",
         element: <Contact />,
+      },
+      {
+        path: "/stream/movies",
+        element: <Movies />,
+      },
+      {
+        path: "/stream/user",
+        element: <User />,
+      },
+      {
+        path: "/stream/about",
+        element: <About />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },

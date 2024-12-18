@@ -25,10 +25,6 @@ select:focus {
   @apply flex justify-center items-center;
 }
 
-.flex-btn {
-  @apply flex justify-center items-center;
-}
-
 .transi {
   @apply transition-all ease-in-out duration-500;
 }
@@ -37,3 +33,12 @@ select:focus {
   z-index: 1000;
 }
 
+.navs {
+  @apply hover:text-subMain text-[1.2rem];
+}
+
+@media (max-width: 550px) {
+  .footText {
+    font-size: 12px;
+  }
+}

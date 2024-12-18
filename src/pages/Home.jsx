@@ -1,5 +1,22 @@
+import Banner from "../Components/Home/Banner";
+import PopularMovies from "../Components/Home/PopularMovies";
+import Promos from "../Components/Home/Promos";
+import TopRated from "../Components/Home/TopRated";
+import Layout from "../Layout/Layout";
+
 const Home = () => {
-  return <div className="bg-main text-white h-head text-h1 ">home component</div>;
+  return (
+    <div>
+      <Layout>
+        <div className="min-h-screen px-2 ">
+          <Banner />
+          <PopularMovies />
+          <Promos />
+          <TopRated />
+        </div>
+      </Layout>
+    </div>
+  );
 };
 
 export default Home;
