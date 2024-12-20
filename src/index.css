@@ -23,6 +23,22 @@ select:focus {
   @apply flex flex-col md:flex-row justify-center items-center;
 }
 
+.hovers {
+  display: none;
+
+  transform: scale(0.8); /* Shrink the element slightly */
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth transition */
+  pointer-events: none; /* Prevent interaction when hidden */
+}
+
+.hovered:hover .hovers {
+  display: flex;
+  flex-direction: column;
+
+  transform: scale(1); /* Return to original size */
+  pointer-events: auto; /* Allow interaction */
+}
+
 .flexRow {
   @apply flex justify-center items-center;
 }

@@ -57,6 +57,7 @@ export default {
       height: {
         ppic2: "800px",
         head: "60vh",
+        rate:"400px"
         // Cus: "",
         
       },
