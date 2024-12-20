@@ -4,6 +4,8 @@ import { FaHeartCircleCheck } from "react-icons/fa6";
 import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
+  const hover = "hover:text-subMain transi text-white relative";
+  const Hover = ({ isActive }) => (isActive ? "text-subMain" : hover);
   return (
     <>
       {/* Logo */}
@@ -46,21 +48,30 @@ const Navbar = () => {
 
           {/*Menu*/}
           <div className="col-span-3  font-medium text-sm hidden xl:gap-14 2xl:gap-20 lg:flex justify-between xl:justify-end items-center">
-            <NavLink className=" transi navs" to={`/stream/movies`}>
+            <NavLink className={Hover} to={`/stream/movies`}>
               Movies
             </NavLink>
-            <NavLink className=" transi navs" to={`/stream/about`}>
+            <NavLink className={Hover} to={`/stream/about`}>
               About
             </NavLink>
-            <NavLink className=" transi navs" to={`/stream/contact`}>
+            <NavLink className={Hover} to={`/stream/contact`}>
               Contact
             </NavLink>
-            <NavLink className=" transi navs" to={`/stream/contact`}>
+            <NavLink className={Hover} to={`/stream/user`}>
               <FaUserCircle />
             </NavLink>
-            <NavLink className=" transi navs relative" to={`/stream/contact`}>
+            <NavLink
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "text-subMain"
+                    : "hover:text-subMain transi text-white relative"
+                } hov`
+              }
+              to={`/stream/favourite`}
+            >
               <FaHeartCircleCheck />
-              <p className="w-4 h-4 flexCol_mdRow rounded-full text-xs bg-subMain text-white absolute top-[-15px] right-[-1px] ">
+              <p className="w-4 h-4 flexCol_mdRow rounded-full hova text-xs bg-subMain text-white absolute top-[-15px] right-[-1px]">
                 3
               </p>
             </NavLink>

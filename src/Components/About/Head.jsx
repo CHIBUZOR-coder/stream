@@ -1,4 +1,4 @@
-const Head = () => {
+const Head = ({tittle}) => {
   return (
     <div>
       <div
@@ -10,7 +10,7 @@ const Head = () => {
         <div className="w-full h-full bg-drkb">
           <div className="absolute   w-full lg:top-24 top-16 flex flex-col">
             <h1 className="text-2xl  lg:text-h1 text-white text-center font-bold">
-              About Us
+             {tittle}
             </h1>
           </div>
         </div>

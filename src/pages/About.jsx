@@ -6,7 +6,7 @@ const About = () => {
     <div>
       <Layout>
         <div className=" px-2 my-6">
-          <Head />
+          <Head tittle={" About Us"} />
 
           <div className="xl:py-20 py-10 px-4 ">
             <div className="grid grid-flow-row xl:grid-cols-2 gap-16 items-center  ">
@@ -45,9 +45,7 @@ const About = () => {
                   </div>
                   <div className="p-8 bg-dry rounded-lg ">
                     <span className="text-3xl block font-extrabold ">8k</span>
-                    <h4 className="text-lg font-semibold my-2 ">
-                   Users
-                    </h4>
+                    <h4 className="text-lg font-semibold my-2 ">Users</h4>
                     <p className="mb0 text-text leading-7 text-sm ">
                       Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                     </p>
@@ -55,10 +53,10 @@ const About = () => {
                 </div>
               </div>
 
-
-              <div style={{backgroundImage:"url('./images/marvel.jpg')"}} className=" xl:block mt-10 lg:mt-0 bg-cover bg-center hidden h-[32rem] ">
-
-              </div>
+              <div
+                style={{ backgroundImage: "url('./images/marvel.jpg')" }}
+                className=" xl:block mt-10 lg:mt-0 bg-cover bg-center hidden h-[32rem] "
+              ></div>
             </div>
           </div>
         </div>

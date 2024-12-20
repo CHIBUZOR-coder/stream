@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound.jsx";
 import Movies from "./pages/Movies.jsx";
 import About from "./pages/About.jsx";
 import User from "./pages/DashBoard/ADMIN/Users.jsx";
+import Favourite from "./pages/DashBoard/FavouriteMovies.jsx";
 
 
 const router = createBrowserRouter([
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/stream/about",
         element: <About />,
+      },
+      {
+        path: "/stream/favourite",
+        element: <Favourite />,
       },
       {
         path: "*",

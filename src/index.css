@@ -51,8 +51,15 @@ select:focus {
   z-index: 1000;
 }
 
+.hov{
+  position: relative;
+}
+.hov:hover .hova {
+  color: white;
+}
+
 .navs {
-  @apply hover:text-subMain text-[1.2rem];
+  @apply text-[1.2rem];
 }
 
 .linearbg {
