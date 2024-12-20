@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <div>
       <Layout>
-        <div className="min-h-screen px-2 ">
+        <div className="min-h-screen px-5 ">
           <Banner />
           <PopularMovies />
           <Promos />

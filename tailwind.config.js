@@ -33,7 +33,10 @@ export default {
       },
       colors: {
         main:"rgba(8, 10, 26, 1)",
+        main2:"rgba(8, 10, 26, 0.5)",
+
         subMain:"rgba(242, 0, 0, 1)",
+        subMain2:"rgba(242, 0, 0, 0.5)",
         dry:"rgba(11, 15, 41, 1)",
         star:"rgba(255, 176, 0, 1)",
         text:"rgba(192, 192, 192, 1)",
