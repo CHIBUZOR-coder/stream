@@ -42,6 +42,9 @@ export default {
         text:"rgba(192, 192, 192, 1)",
         border:"rgba(75, 85, 99, 1)",
         dryGray:"rgba(224, 213, 213, 1)",
+        drkb:"rgba(27, 30, 50, 0.8)",
+        
+        // darkb:"rgba(27, 30, 50, 0.8)"
 
         
         // **************

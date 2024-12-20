@@ -11,7 +11,7 @@ const Navbar = () => {
         <div className="container  px-5 py-6  lg:grid gap-10 grid-cols-7 justify-between items-center">
           <div className="col-span-1 lg:block hidden ">
             <div className="flex justify-center items-center">
-              <Link to={`/`}>
+              <Link to={`/stream/`}>
                 <img
                   className="h-20 w-20 rounded-full"
                   src="https://res.cloudinary.com/dtjgj2odu/image/upload/v1734517937/StreamLogo_ao5f75.png"
@@ -60,7 +60,9 @@ const Navbar = () => {
             </NavLink>
             <NavLink className=" transi navs relative" to={`/stream/contact`}>
               <FaHeartCircleCheck />
-              <p className="w-4 h-4 flexCol_mdRow rounded-full text-xs bg-subMain text-white absolute top-[-15px] right-[-1px] ">3</p>
+              <p className="w-4 h-4 flexCol_mdRow rounded-full text-xs bg-subMain text-white absolute top-[-15px] right-[-1px] ">
+                3
+              </p>
             </NavLink>
           </div>
           {/*Menu Done*/}
