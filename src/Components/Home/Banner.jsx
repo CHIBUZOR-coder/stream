@@ -6,7 +6,8 @@ import { BiTime } from "react-icons/bi";
 import { Link, Links } from "react-router-dom";
 
 const Banner = () => {
-  const movieList = Movies;
+  // const selected = Movies.filter((movie) => movie.id <= 15);
+
   // Utility function to shuffle an array
   const shuffleArray = (array) => {
     return [...array].sort(() => Math.random() - 0.5); // Fisher-Yates shuffle
@@ -16,7 +17,7 @@ const Banner = () => {
   // };
 
   const randomMovies = shuffleArray(Movies);
-  console.log(movieList);
+ 
 
   return (
     <div className="relative w-full">

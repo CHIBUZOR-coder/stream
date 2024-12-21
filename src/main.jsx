@@ -6,11 +6,10 @@ import App from "./App.jsx";
 import Home from "./pages/Home.jsx";
 import Contact from "./pages/Contact.jsx";
 import NotFound from "./pages/NotFound.jsx";
-import Movies from "./pages/Movies.jsx";
 import About from "./pages/About.jsx";
 import User from "./pages/DashBoard/ADMIN/Users.jsx";
 import Favourite from "./pages/DashBoard/FavouriteMovies.jsx";
-
+import MoviesPage from "./pages/MoviesPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +26,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/stream/movies",
-        element: <Movies />,
+        element: <MoviesPage />,
       },
       {
         path: "/stream/user",

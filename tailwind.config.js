@@ -43,6 +43,7 @@ export default {
         border:"rgba(75, 85, 99, 1)",
         dryGray:"rgba(224, 213, 213, 1)",
         drkb:"rgba(27, 30, 50, 0.8)",
+        drkb2:"rgba(27, 30, 50, 1)",
         
         // darkb:"rgba(27, 30, 50, 0.8)"
 
