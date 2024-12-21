@@ -48,7 +48,7 @@ const TopRated = () => {
                     </Link>
 
                     <div className="flex  gap-2 text-star ">
-                      <Star value={movie.ratig} />
+                      <Star value={movie.rating} />
                     </div>
                   </div>
                 </div>

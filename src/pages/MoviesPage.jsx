@@ -3,19 +3,52 @@ import Filters from "../Components/MoviesPage/Filter";
 import { Movies } from "../Data/MovieData";
 import Layout from "../Layout/Layout";
 import { FaHeart } from "react-icons/fa";
+import { useContext } from "react";
+import { MovieContext } from "../Context/MovieContext";
 
 const MoviesPage = () => {
+  const { userChoice } = useContext(MovieContext);
+
+const filterMovies = () => {
+  if (!userChoice || Object.keys(userChoice).length === 0) {
+    return Movies; // If no filters are selected, return all movies.
+  }
+
+  return Movies.filter((movie) => {
+    let matches = true;
+
+    // Check userChoice against each filter
+    for (const [key, value] of Object.entries(userChoice)) {
+      if (key === "1" && movie.category !== value) {
+        matches = false; // Check category filter
+      } else if (key === "2" && movie.approxiY !== value) {
+        matches = false; // Check year filter (using approxiY)
+      } else if (key === "3" && movie.approxiT !== value) {
+        matches = false; // Check time filter (using approxiT)
+      } else if (key === "4" && movie.approxiR !== value) {
+        matches = false; // Check rate filter
+      }
+    }
+
+    return matches;
+  });
+};
+
+
+  const filteredMovies = filterMovies();
+
+
   return (
     <Layout>
       <div className="px-2 my-6">
         <Filters Movies={Movies} />
         <p className="text-lg font-medium my-6">
-          Total items found 
-          <span className="font-bold text-subMain"> {Movies.length}</span>
+          Total items found
+          <span className="font-bold text-subMain"> {filteredMovies.length}</span>
         </p>
 
         <div className="grid sm:mt-10 mt-6 xl:grid-cols-4 2xl:grid-cols-5 lg:grid-cols-3 sm:grid-cols-1 gap-6">
-          {Movies.map((movie, index) => (
+          {filteredMovies.map((movie, index) => (
             <Link
               to={`/movies/${movie.name}`}
               key={`${movie.id}`}

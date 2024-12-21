@@ -126,41 +126,23 @@
 
 // export default Filters;
 
-
-
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CategoryData } from "../../Data/CategoryData";
 import { MdArrowDropDown } from "react-icons/md";
 import { FaCheck } from "react-icons/fa";
+import { MovieContext } from "../../Context/MovieContext";
 
-const YearData = [
-  { name: "Sort By Year" },
-  { tittle: "1700 - 1800", id: 1 },
-  { tittle: "1800 - 1900", id: 2 },
-  { tittle: "1900 - 2000", id: 3 },
-  { tittle: "2000 - 2100", id: 4 },
-  { tittle: "2010 - 2030", id: 5 },
-];
-
-const TimesData = [
-  { name: "Sort By Hours" },
-  { tittle: "1 - 2 Hours", id: 1 },
-  { tittle: "2 - 3 Hours", id: 2 },
-  { tittle: "3 - 4 Hours", id: 3 },
-  { tittle: "4 - 5 Hours", id: 4 },
-];
-
-const RatesData = [
-  { name: "Sort By Rates" },
-  { tittle: "1 Star", id: 1 },
-  { tittle: "2 Star", id: 2 },
-  { tittle: "3 Star", id: 3 },
-  { tittle: "4 Star", id: 4 },
-  { tittle: "5 Star", id: 5 },
-];
-
-const Filters = ({Movies}) => {
-  const [selectedItems, setSelectedItems] = useState({}); // State for selected items
+const Filters = ({ Movies }) => {
+  // const [selectedItems, setSelectedItems] = useState({}); // State for selected items
+  const {
+    setSelectedItems,
+    selectedItems,
+    RatesData,
+    TimesData,
+    YearData,
+    HandleGetSelected,
+    userChoice,
+  } = useContext(MovieContext);
   const [isActive, setActive] = useState(null);
   const [activeState, setSate] = useState(false);
 
@@ -171,6 +153,9 @@ const Filters = ({Movies}) => {
     { id: 4, items: RatesData },
   ];
 
+  useEffect(() => {
+    console.log("flter", userChoice);
+  }, [userChoice]);
   const handleToggle = (id) => {
     if (isActive === id) {
       setActive(null);
@@ -186,6 +171,8 @@ const Filters = ({Movies}) => {
       ...prev,
       [dropdownId]: itemId, // Update only the selected dropdown
     }));
+
+    HandleGetSelected(dropdownId, itemId);
   };
 
   return (
