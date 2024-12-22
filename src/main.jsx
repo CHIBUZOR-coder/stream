@@ -5,24 +5,28 @@ import "./index.css";
 import App from "./App.jsx";
 // import Home from "./pages/Home.jsx";
 // import Contact from "./pages/Contact.jsx";
-import NotFound from "./pages/NotFound.jsx";
+// import NotFound from "./pages/NotFound.jsx";
 // import About from "./pages/About.jsx";
-import User from "./pages/DashBoard/ADMIN/Users.jsx";
-import Favourite from "./pages/DashBoard/FavouriteMovies.jsx";
+// import User from "./pages/DashBoard/ADMIN/Users.jsx";
+// import Favourite from "./pages/DashBoard/FavouriteMovies.jsx";
 // import MoviesPage from "./pages/MoviesPage.jsx";
 
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
 const MoviesPage = lazy(() => import("./pages/MoviesPage"));
+const User = lazy(() => import("./pages/DashBoard/ADMIN/Users"));
+const Favourite = lazy(() => import("./pages/DashBoard/FavouriteMovies"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+
 const router = createBrowserRouter([
   {
     path: "/stream/",
     element: <App />,
     children: [
       {
-        path: "/stream/",
-        element: <Home />,
+        index: true,
+        element: <Home />, // Default route
       },
       {
         path: "/stream/contact",
@@ -37,11 +41,11 @@ const router = createBrowserRouter([
         element: <User />,
       },
       {
-        path: "/stream/about",
+        path: "about",
         element: <About />,
       },
       {
-        path: "/stream/favourite",
+        path: "favourite",
         element: <Favourite />,
       },
       {
@@ -54,7 +58,7 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Suspense fallback={<div></div>}>
+    <Suspense fallback={<div>Loading...</div>}>
       <RouterProvider router={router} />
     </Suspense>
   </StrictMode>

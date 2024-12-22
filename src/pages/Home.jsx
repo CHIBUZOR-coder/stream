@@ -4,6 +4,7 @@ import Promos from "../Components/Home/Promos";
 import TopRated from "../Components/Home/TopRated";
 import Layout from "../Layout/Layout";
 
+
 const Home = () => {
   return (
     <div>

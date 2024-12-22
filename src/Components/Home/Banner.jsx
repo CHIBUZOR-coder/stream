@@ -1,23 +1,19 @@
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Movies } from "../../Data/MovieData";
 import { FaHeart, FaRegCalendarAlt } from "react-icons/fa";
 import { BiTime } from "react-icons/bi";
 import { Link, Links } from "react-router-dom";
+import { useContext } from "react";
+import { MovieContext } from "../../Context/MovieContext";
 
 const Banner = () => {
-  // const selected = Movies.filter((movie) => movie.id <= 15);
-
+  const { Movies } = useContext(MovieContext);
   // Utility function to shuffle an array
   const shuffleArray = (array) => {
     return [...array].sort(() => Math.random() - 0.5); // Fisher-Yates shuffle
   };
-  // const shuffleArray = (array) => {
-  //   return [...array].sort(() => Math.floor(Math.random() * 43) + 1);
-  // };
 
   const randomMovies = shuffleArray(Movies);
- 
 
   return (
     <div className="relative w-full">

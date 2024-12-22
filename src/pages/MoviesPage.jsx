@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import Filters from "../Components/MoviesPage/Filter";
-import { Movies } from "../Data/MovieData";
 import Layout from "../Layout/Layout";
 import { FaHeart } from "react-icons/fa";
 import { useContext, useState } from "react";
@@ -8,19 +7,14 @@ import { MovieContext } from "../Context/MovieContext";
 import { CgSpinner } from "react-icons/cg";
 
 const MoviesPage = () => {
-  const { userChoice } = useContext(MovieContext);
+  const { userChoice, Movies } = useContext(MovieContext);
   const maxPage = 10;
   const [page, SetPage] = useState(maxPage);
   const [load, setLoad] = useState(false);
- const HandelLoadMore = () => {
-   setLoad(true); // Show the spinner
-   SetPage(page + maxPage);
-
-   setTimeout(() => {
-     setLoad(false); // Hide the spinner after 800ms
-   }, 800);
- };
-
+  const HandelLoadMore = () => {
+    setLoad(true); // Show the spinner
+    SetPage(page + maxPage);
+  };
 
   const filterMovies = () => {
     if (!userChoice || Object.keys(userChoice).length === 0) {
@@ -87,7 +81,6 @@ const MoviesPage = () => {
             className=" border-2 flex justify-center items-center gap-2 rounded-md cursor-pointer border-subMain py-3 px-8"
           >
             LoadMore
-           
           </span>
         </div>
       </div>
