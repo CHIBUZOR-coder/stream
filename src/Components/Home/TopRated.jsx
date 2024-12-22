@@ -1,16 +1,29 @@
 import { useState } from "react";
-import { BsBookmarkStarFill, BsCaretLeft, BsCaretLeftFill, BsCaretRight, BsCaretRightFill, BsChevronLeft } from "react-icons/bs";
+import {
+  BsBookmarkStarFill,
+  BsCaretLeft,
+  BsCaretLeftFill,
+  BsCaretRight,
+  BsCaretRightFill,
+  BsChevronLeft,
+} from "react-icons/bs";
+import { BsFillSearchHeartFill } from "react-icons/bs";
 import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Movies } from "../../Data/MovieData";
 import { FaHeart, FaRegStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Star from "./Star";
+import { memo } from "react";
 
 const TopRated = () => {
   const [nextEl, setNext] = useState(null);
   const [prevEl, setPrev] = useState(null);
-  const className ="hover:bg-dry transi text-sm rounded w-8 h-8 flex flex-col justify-center items-center bg-subMain text-white"
+  const className =
+    "hover:bg-dry transi text-sm rounded w-8 h-8 flex flex-col justify-center items-center bg-subMain text-white";
+
+  const SearchHeartIcon = memo(() => <BsFillSearchHeartFill />);
+
   return (
     <div className="my-16">
       <div className="flex font-bold gap-4 my-6 items-center ">
@@ -62,7 +75,7 @@ const TopRated = () => {
             <BsCaretLeftFill />
           </button>
           <button className={className} ref={(node) => setNext(node)}>
-            <BsCaretRightFill />
+            <SearchHeartIcon />
           </button>
         </div>
       </div>

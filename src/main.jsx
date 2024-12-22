@@ -1,16 +1,20 @@
-import { Children, StrictMode } from "react";
+import { Children, lazy, StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
-import Home from "./pages/Home.jsx";
-import Contact from "./pages/Contact.jsx";
+// import Home from "./pages/Home.jsx";
+// import Contact from "./pages/Contact.jsx";
 import NotFound from "./pages/NotFound.jsx";
-import About from "./pages/About.jsx";
+// import About from "./pages/About.jsx";
 import User from "./pages/DashBoard/ADMIN/Users.jsx";
 import Favourite from "./pages/DashBoard/FavouriteMovies.jsx";
-import MoviesPage from "./pages/MoviesPage.jsx";
+// import MoviesPage from "./pages/MoviesPage.jsx";
 
+const Home = lazy(() => import("./pages/Home"));
+const About = lazy(() => import("./pages/About"));
+const Contact = lazy(() => import("./pages/Contact"));
+const MoviesPage = lazy(() => import("./pages/MoviesPage"));
 const router = createBrowserRouter([
   {
     path: "/stream/",
@@ -50,6 +54,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <Suspense fallback={<div></div>}>
+      <RouterProvider router={router} />
+    </Suspense>
   </StrictMode>
 );
