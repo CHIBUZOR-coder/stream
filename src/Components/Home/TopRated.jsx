@@ -75,7 +75,7 @@ const TopRated = () => {
             <BsCaretLeftFill />
           </button>
           <button className={className} ref={(node) => setNext(node)}>
-            <SearchHeartIcon />
+            <BsCaretRightFill />
           </button>
         </div>
       </div>
