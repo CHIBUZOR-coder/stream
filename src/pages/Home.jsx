@@ -11,6 +11,7 @@ const Home = () => {
       <Layout>
         <div className="min-h-screen px-5 ">
           <Banner />
+        
           <PopularMovies />
           <Promos />
           <TopRated />

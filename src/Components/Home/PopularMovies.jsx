@@ -17,7 +17,7 @@ const PopularMovies = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  xl:grid-cols-4  w-full gap-8">
         {selected.map((movie) => (
           <Link
-            to={`/movies/${movie.name}`}
+            to={`/stream/movie/${movie.id}`}
             key={`${movie.id}`}
             className="border h-64 border-border rounded bg-center bg-cover transi hover:scale-95 w-full relative"
             style={{

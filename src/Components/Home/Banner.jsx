@@ -5,6 +5,7 @@ import { BiTime } from "react-icons/bi";
 import { Link, Links } from "react-router-dom";
 import { useContext } from "react";
 import { MovieContext } from "../../Context/MovieContext";
+// import { Movies } from "../../Data/MovieData";
 
 const Banner = () => {
   const { Movies } = useContext(MovieContext);
@@ -37,6 +38,7 @@ const Banner = () => {
         {randomMovies.map((movie) => (
           <SwiperSlide
             key={movie.id}
+            loading="lazy"
             className="bg-center  bg-cover relative overflow-hidden rounded"
             style={{
               backgroundImage: `url('./images/${movie.image}.jpg')`,
@@ -64,7 +66,7 @@ const Banner = () => {
                 <div className=" flex items-center gap-4 mt-4">
                   <Link
                     className="bg-subMain hover:text-main transi hover:bg-white text-white px-8 py-3 rounded font-medium names"
-                    to={`/movies/${movie.name}  `}
+                    to={`/movies/${movie.id}  `}
                   >
                     watch
                   </Link>

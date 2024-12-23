@@ -58,7 +58,7 @@ const MoviesPage = () => {
         <div className="grid sm:mt-10 mt-6 xl:grid-cols-4 2xl:grid-cols-5 lg:grid-cols-3 sm:grid-cols-1 gap-6">
           {filteredMovies.slice(0, page).map((movie, index) => (
             <Link
-              to={`/movies/${movie.name}`}
+              to={`/stream/movie/${movie.id}`}
               key={`${movie.id}`}
               className="border h-64 border-border rounded bg-center bg-cover transi hover:scale-95 w-full relative"
               style={{
