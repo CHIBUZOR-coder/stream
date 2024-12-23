@@ -1,4 +1,4 @@
-import { FaPlay, FaShareAlt } from "react-icons/fa";
+import { FaDownload, FaPlay, FaShareAlt } from "react-icons/fa";
 import FlexMovie from "../Home/FlexMovie";
 import { Link } from "react-router-dom";
 
@@ -59,6 +59,14 @@ const MovieInfo = ({ movie }) => {
                   </Link>
                 </div>
               </div>
+            </div>
+
+            <div className="col-span-2 md:mt-0 mt-2  flex justify-end ">
+              <button className="md:w-1/4 w-full relative flexCol bg-subMain hover:bg-transparent border-2 border-subMain transi md:h-64 rounded font-medium">
+                <div className="flexRow gap-6 text-md uppercase tracking-widest absolute md:rotate-90">
+                  Download <FaDownload className="h-6 w-6  md:-rotate-90" />
+                </div>
+              </button>
             </div>
           </div>
         </div>
