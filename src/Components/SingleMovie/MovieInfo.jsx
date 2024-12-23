@@ -12,16 +12,18 @@ const MovieInfo = ({ movie }) => {
         backgroundImage: `url('../images/${movie.image}.jpg')`,
       }}
     >
-      <div className="lg:bg-main3 h-full w-full flexCol">
-        <div className=" mx-auto px-3 xl:px-20 xl:grid grid-cols-3 flex-col py-10 lg:py-20 gap-6 ">
-          <div
-            style={{
-              backgroundImage: `url('../images/${movie.image}.jpg')`,
-            }}
-            className="xl:col-span-1 w-60 xl:order-none order-last h-head bg-dry border border-gray-800 rounded-lg bg-cover bg-center"
-          ></div>
+      <div className="bg-main3 h-full w-full flexCol">
+        <div className=" mx-auto px-3 xl:px-20 xl:grid grid-cols-3  flexCol gap-14  py-10 lg:py-20 xl:gap-6 ">
+          <div className="flex justify-center items-center w-full">
+            <div
+              style={{
+                backgroundImage: `url('../images/${movie.image}.jpg')`,
+              }}
+              className="xl:col-span-1 w-[80%] xl:order-none order-last h-head bg-dry border border-gray-800 rounded-lg bg-cover bg-center"
+            ></div>
+          </div>
 
-          <div className="col-span-2 md:grid grid-cols-5 gap-4 items-center">
+          <div className="col-span-2  flex flex-col gap-8   md:grid grid-cols-5 md:gap-4  items-center">
             <div className="col-span-3 flex flex-col gap-4">
               {/* movie tittle */}
               <p className="xl:text-4xl capitalize font-sans text-2xl font-bold">
@@ -53,7 +55,7 @@ const MovieInfo = ({ movie }) => {
                 <div className="sm:col-span-2 col-span-3 flex justify-end font-medium text-sm">
                   <Link
                     to={`/watch/${movie.name}`}
-                    className="bg-dry hover:text-main transi hover:bg-subMain  transi border-2 border-subMain text-white px-8 py-3  font-medium names rounded-full flexRow gap-4 w-full sm:py-3 "
+                    className="bg-dry hover:text-main transi hover:bg-subMain   transi border-2 border-subMain text-white px-8 py-3  font-medium names rounded-full flexRow gap-4 w-full sm:py-3 "
                   >
                     <FaPlay className="w-3 h-3" /> watch
                   </Link>
@@ -61,8 +63,8 @@ const MovieInfo = ({ movie }) => {
               </div>
             </div>
 
-            <div className="col-span-2 md:mt-0 mt-2  flex justify-end ">
-              <button className="md:w-1/4 w-full relative flexCol bg-subMain hover:bg-transparent border-2 border-subMain transi md:h-64 rounded font-medium">
+            <div className="col-span-2  w-full  flex justify-end ">
+              <button className="md:w-1/3 lg:w1/4 w-full relative flexCol bg-subMain hover:bg-transparent border-2 border-subMain transi md:h-64 h-16 rounded font-medium">
                 <div className="flexRow gap-6 text-md uppercase tracking-widest absolute md:rotate-90">
                   Download <FaDownload className="h-6 w-6  md:-rotate-90" />
                 </div>
