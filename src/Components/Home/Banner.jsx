@@ -1,10 +1,10 @@
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Link } from "react-router-dom";
 import { FaHeart, FaRegCalendarAlt } from "react-icons/fa";
-import { BiTime } from "react-icons/bi";
-import { Link, Links } from "react-router-dom";
 import { useContext } from "react";
 import { MovieContext } from "../../Context/MovieContext";
+import FlexMovie from "./FlexMovie";
 // import { Movies } from "../../Data/MovieData";
 
 const Banner = () => {
@@ -45,23 +45,11 @@ const Banner = () => {
             }}
           >
             <div className="absolute w-full h-full linearbg top-0 ">
-              <div className="absolute top-[45%] md:top-[20%] left-[5%]">
+              <div className="absolute top-[45%] md:top-[20%] left-[5%] flex flex-col gap-2">
                 <h1 className="xl:text-4xl truncate names capitalize font-sans sm:text-2xl text-xl font-bold">
                   {movie.name}
                 </h1>
-                <div className="flex justify-start items-center gap-4">
-                  <div className="   ">
-                    <span className="names">{movie.category}</span>
-                  </div>
-                  <div className=" flex justify-center items-center gap-1  ">
-                    <FaRegCalendarAlt className="text-subMain" />
-                    <span className="names">{movie.year}</span>
-                  </div>
-                  <div className="flex justify-center items-center gap-1   ">
-                    <BiTime className="text-subMain" />
-                    <span className="names">{movie.time}</span>
-                  </div>
-                </div>
+                <FlexMovie movie={movie} />
 
                 <div className=" flex items-center gap-4 mt-4">
                   <Link

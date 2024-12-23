@@ -19,8 +19,14 @@ select:focus {
 .flexCol {
   @apply flex flex-col  justify-center items-center;
 }
+
 .flexCol_mdRow {
   @apply flex flex-col md:flex-row justify-center items-center;
+}
+
+
+.flexRow {
+  @apply flex justify-center items-center;
 }
 
 .hovers {
@@ -37,10 +43,6 @@ select:focus {
 
   transform: scale(1); /* Return to original size */
   pointer-events: auto; /* Allow interaction */
-}
-
-.flexRow {
-  @apply flex justify-center items-center;
 }
 
 .transi {
