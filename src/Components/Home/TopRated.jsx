@@ -39,6 +39,24 @@ const TopRated = () => {
           autoplay={true}
           speed={1000}
           modules={[Navigation, Autoplay]}
+          breakpoints={{
+            0: {
+              slidesPerView: 1,
+            },
+            400: {
+              slidesPerView: 2,
+            },
+            768: {
+              slidesPerView: 3,
+            },
+            1024: {
+              slidesPerView: 4,
+            },
+            1280: {
+              slidesPerView: 5,
+              spaceBetween: 30,
+            },
+          }}
         >
           {Movies.map((movie) => (
             <SwiperSlide key={movie.id}>

@@ -12,6 +12,7 @@ const SingleMovie = () => {
 
   const movie = Movies.find((movie) => movie.id === parseInt(id));
   console.log(movie);
+
   return (
     <div>
       <Layout>

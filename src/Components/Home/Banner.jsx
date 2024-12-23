@@ -33,6 +33,7 @@ const Banner = () => {
         speed={1000}
         modules={[Autoplay]}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
+        
         className="w-full h-72  lg:h-72 xl:h-96 bg-dry"
       >
         {randomMovies.map((movie) => (
