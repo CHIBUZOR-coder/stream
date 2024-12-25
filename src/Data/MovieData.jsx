@@ -15,6 +15,7 @@ export const Movies = [
     language: "English",
     description:
       "The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe.",
+
   },
   {
     id: 2,
@@ -48,6 +49,7 @@ export const Movies = [
     approxiR: "3 Star",
     language: "English",
     description: "The continuing adventures of assassin John Wick.",
+
   },
   {
     id: 4,
@@ -729,4 +731,5 @@ export const Movies = [
     description:
       "A rat who can cook makes an unusual alliance with a young kitchen worker at a famous restaurant.",
   },
+
 ];
