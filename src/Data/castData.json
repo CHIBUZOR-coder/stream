@@ -18,7 +18,8 @@
         "movieId": 1,
         "name": "Chris Evans",
         "image": "",
-        "role": "Captain America"
+        "role": "Captain America",
+        "role2": "Cole Turner"
     },
     {
         "id": 4,
@@ -74,7 +75,8 @@
         "movieId": 1,
         "name": "Josh Brolin",
         "image": "",
-        "role": "Thanos"
+        "role": "Thanos",
+        "role2": "Cable"
     },
     {
         "id": 12,
@@ -264,7 +266,8 @@
         "movieId": 2,
         "name": "Anthony Mackie",
         "image": "",
-        "role": "Falcon"
+        "role": "Falcon",
+        "role2": "Grandson Of Sam"
     },
     {
         "id": 39,
@@ -875,7 +878,8 @@
         "movieId": 9,
         "name": "Peter Dinklage",
         "image": "",
-        "role": "Scourge"
+        "role": "Scourge",
+        "role2": "Phil Betterman"
     },
     {
         "id": 136,
@@ -1043,14 +1047,17 @@
         "movieId": 10,
         "name": "Rob Delaney",
         "image": "",
-        "role": "Billy Langston"
+        "role": "Billy Langston",
+        "role2": "Andrew Sullivan"
     },
     {
         "id": 160,
         "movieId": 11,
         "name": "Ryan Reynolds",
         "image": "",
-        "role": "Michael Bryce"
+        "role": "Michael Bryce",
+        "role2": "Guy",
+        "role3": "Deadpool"
     },
     {
         "id": 161,
@@ -1232,7 +1239,7 @@
         "movieId": 14,
         "name": "Tobey Maguire",
         "image": "",
-        "role": "Spider-Man / Peter Parker"
+        "role": "Spiderman"
     },
     {
         "id": 187,
@@ -1246,7 +1253,7 @@
         "movieId": 14,
         "name": "Willem Dafoe",
         "image": "",
-        "role": "Green Goblin / Norman Osborn"
+        "role": "Green Goblin"
     },
     {
         "id": 189,
@@ -1548,5 +1555,1076 @@
         "name": "Patrick Fabian",
         "image": "",
         "role": "Peter"
+    },
+    {
+        "id": 253,
+        "movieId": 21,
+        "name": "Noah Centineo",
+        "image": "",
+        "role": "Brooks Rattigan"
+    },
+    {
+        "id": 254,
+        "movieId": 21,
+        "name": "Laura Marano",
+        "image": "",
+        "role": "Celia Lieberman"
+    },
+    {
+        "id": 255,
+        "movieId": 21,
+        "name": "Camila Mendes",
+        "image": "",
+        "role": "Shelby Pace"
+    },
+    {
+        "id": 256,
+        "movieId": 21,
+        "name": "Odiseas Georgiadis",
+        "image": "",
+        "role": "Murph"
+    },
+    {
+        "id": 257,
+        "movieId": 21,
+        "name": "Matt Walsh",
+        "image": "",
+        "role": "Charlie Rattigan"
+    },
+    {
+        "id": 258,
+        "movieId": 21,
+        "name": "Carrie Lazar",
+        "image": "",
+        "role": "Lillian Lieberman"
+    },
+    {
+        "id": 259,
+        "movieId": 22,
+        "name": "Haley Lu Richardson",
+        "image": "",
+        "role": "Hadley Sullivan"
+    },
+    {
+        "id": 260,
+        "movieId": 22,
+        "name": "Ben Hardy",
+        "image": "",
+        "role": "Oliver Jones"
+    },
+    {
+        "id": 261,
+        "movieId": 22,
+        "name": "Jameela Jamil",
+        "image": "",
+        "role": "Narrator"
+    },
+    {
+        "id": 262,
+        "movieId": 22,
+        "name": "Rob Delaney",
+        "image": "",
+        "role": "Andrew Sullivan"
+    },
+    {
+        "id": 263,
+        "movieId": 22,
+        "name": "Dexter Fletcher",
+        "image": "",
+        "role": "Val Jones"
+    },
+    {
+        "id": 264,
+        "movieId": 22,
+        "name": "Katrina Nare",
+        "image": "",
+        "role": "Charlotte"
+    },
+    {
+        "id": 265,
+        "movieId": 23,
+        "name": "Kat Graham",
+        "image": "",
+        "role": "Juliet"
+    },
+    {
+        "id": 266,
+        "movieId": 23,
+        "name": "Tom Hopper",
+        "image": "",
+        "role": "Charles"
+    },
+    {
+        "id": 267,
+        "movieId": 23,
+        "name": "Laura Hopper",
+        "image": "",
+        "role": "Margaret"
+    },
+    {
+        "id": 268,
+        "movieId": 23,
+        "name": "Raymond Ablack",
+        "image": "",
+        "role": "Brandon"
+    },
+    {
+        "id": 269,
+        "movieId": 23,
+        "name": "Daniela Di Muro",
+        "image": "",
+        "role": "British Woman #2"
+    },
+    {
+        "id": 270,
+        "movieId": 23,
+        "name": "Sean Amsing",
+        "image": "",
+        "role": "Rob"
+    },
+    {
+        "id": 271,
+        "movieId": 23,
+        "name": "Emilio Solfrizzi",
+        "image": "",
+        "role": "Salvio D'Angelo"
+    },
+    {
+        "id": 272,
+        "movieId": 23,
+        "name": "Katie McGovern",
+        "image": "",
+        "role": "British Woman #1"
+    },
+    {
+        "id": 273,
+        "movieId": 24,
+        "name": "Charlie Day",
+        "image": "",
+        "role": "Peter"
+    },
+    {
+        "id": 274,
+        "movieId": 24,
+        "name": "Jenny Slate",
+        "image": "",
+        "role": "Emma"
+    },
+    {
+        "id": 275,
+        "movieId": 24,
+        "name": "Gina Rodriguez",
+        "image": "",
+        "role": "Morgan"
+    },
+    {
+        "id": 276,
+        "movieId": 24,
+        "name": "Manny Jacinto",
+        "image": "",
+        "role": "Lee"
+    },
+    {
+        "id": 277,
+        "movieId": 24,
+        "name": "Scott Eastwood",
+        "image": "",
+        "role": "Noah"
+    },
+    {
+        "id": 278,
+        "movieId": 24,
+        "name": "Clark Backo",
+        "image": "",
+        "role": "Ginny"
+    },
+    {
+        "id": 279,
+        "movieId": 24,
+        "name": "Ben McKenzie",
+        "image": "",
+        "role": "Leighton's Dad"
+    },
+    {
+        "id": 280,
+        "movieId": 25,
+        "name": "Anna Jullienne",
+        "image": "",
+        "role": "Charlotte"
+    },
+    {
+        "id": 281,
+        "movieId": 25,
+        "name": "Stephanie Colbert",
+        "image": "missc",
+        "role": "Miss C"
+    },
+    {
+        "id": 282,
+        "movieId": 25,
+        "name": "Jennifer Barclay",
+        "image": "joan",
+        "role": "Joan"
+    },
+    {
+        "id": 283,
+        "movieId": 25,
+        "name": "Rachel House",
+        "image": "manawaru",
+        "role": "Manawaru"
+    },
+    {
+        "id": 284,
+        "movieId": 25,
+        "name": "Matt Whelan",
+        "image": "gareth",
+        "role": "Gareth"
+    },
+    {
+        "id": 285,
+        "movieId": 26,
+        "name": "Natalie Portman",
+        "image": "",
+        "role": "Jane Foster"
+    },
+    {
+        "id": 286,
+        "movieId": 26,
+        "name": "Christian Bale",
+        "image": "",
+        "role": "Gorr the God Butcher"
+    },
+    {
+        "id": 287,
+        "movieId": 26,
+        "name": "Russell Crowe",
+        "image": "",
+        "role": "Zeus"
+    },
+    {
+        "id": 288,
+        "movieId": 26,
+        "name": "Taika Waititi",
+        "image": "",
+        "role": "Korg"
+    },
+    {
+        "id": 289,
+        "movieId": 26,
+        "name": "Matt Damon",
+        "image": "",
+        "role": "Fake Thor"
+    },
+    {
+        "id": 290,
+        "movieId": 26,
+        "name": "Melissa McCarthy",
+        "image": "",
+        "role": "Fake Lady Thor"
+    },
+    {
+        "id": 291,
+        "movieId": 27,
+        "name": "Cate Blanchett",
+        "image": "",
+        "role": "Hela"
+    },
+    {
+        "id": 292,
+        "movieId": 27,
+        "name": "Jeff Goldblum",
+        "image": "",
+        "role": "Grandmaster"
+    },
+    {
+        "id": 293,
+        "movieId": 27,
+        "name": "Karl Urban",
+        "image": "",
+        "role": "Skurge"
+    },
+    {
+        "id": 294,
+        "movieId": 27,
+        "name": "Anthony Hopkins",
+        "image": "",
+        "role": "Odin"
+    },
+    {
+        "id": 295,
+        "movieId": 28,
+        "name": "Ana de Armas",
+        "image": "",
+        "role": "Sadie Rhodes"
+    },
+    {
+        "id": 296,
+        "movieId": 28,
+        "name": "Lizze Broadway",
+        "image": "",
+        "role": "Mattie Turner"
+    },
+    {
+        "id": 297,
+        "movieId": 28,
+        "name": "Adrien Brody",
+        "image": "",
+        "role": "Leveque"
+    },
+    {
+        "id": 298,
+        "movieId": 28,
+        "name": "Tate Donovan",
+        "image": "",
+        "role": "Cole's Dad"
+    },
+    {
+        "id": 299,
+        "movieId": 28,
+        "name": "Mustafa Shakir",
+        "image": "",
+        "role": "Monte Jackson"
+    },
+    {
+        "id": 300,
+        "movieId": 28,
+        "name": "Amy Sedaris",
+        "image": "",
+        "role": "Cole's Mum"
+    },
+    {
+        "id": 301,
+        "movieId": 28,
+        "name": "John Cho",
+        "image": "",
+        "role": "The Leopard"
+    },
+    {
+        "id": 302,
+        "movieId": 28,
+        "name": "Mike Moh",
+        "image": "",
+        "role": "Wagner"
+    },
+    {
+        "id": 303,
+        "movieId": 29,
+        "name": "Jodie Comer",
+        "image": "",
+        "role": "Millie Rusk"
+    },
+    {
+        "id": 304,
+        "movieId": 29,
+        "name": "Joe Keery",
+        "image": "",
+        "role": "Keys"
+    },
+    {
+        "id": 305,
+        "movieId": 29,
+        "name": "Lil Rel Howery",
+        "image": "",
+        "role": "Buddy"
+    },
+    {
+        "id": 306,
+        "movieId": 29,
+        "name": "Utkarsh Ambudkar",
+        "image": "",
+        "role": "Mouser"
+    },
+    {
+        "id": 307,
+        "movieId": 29,
+        "name": "Aaron W Reed",
+        "image": "",
+        "role": "Bank Manager"
+    },
+    {
+        "id": 308,
+        "movieId": 29,
+        "name": "Matty Cardarople",
+        "image": "",
+        "role": "Gamer"
+    },
+    {
+        "id": 309,
+        "movieId": 30,
+        "name": "Morena Baccarin",
+        "image": "",
+        "role": "Vanessa Carlysle"
+    },
+    {
+        "id": 310,
+        "movieId": 30,
+        "name": "T.J. Miller",
+        "image": "",
+        "role": "Weasel"
+    },
+    {
+        "id": 311,
+        "movieId": 30,
+        "name": "Ed Skrein",
+        "image": "",
+        "role": "Ajax"
+    },
+    {
+        "id": 312,
+        "movieId": 30,
+        "name": "Gina Carano",
+        "image": "",
+        "role": "Angel Dust"
+    },
+    {
+        "id": 313,
+        "movieId": 30,
+        "name": "Brianna Hildebrand",
+        "image": "",
+        "role": "Negasonic Teenage Warhead"
+    },
+    {
+        "id": 314,
+        "movieId": 30,
+        "name": "Karan Soni",
+        "image": "",
+        "role": "Dopinder"
+    },
+    {
+        "id": 315,
+        "movieId": 30,
+        "name": "Leslie Uggams",
+        "image": "",
+        "role": "Blind Al"
+    },
+    {
+        "id": 316,
+        "movieId": 31,
+        "name": "Zazie Beetz",
+        "image": "",
+        "role": "Domino"
+    },
+    {
+        "id": 317,
+        "movieId": 31,
+        "name": "Jack Kesy",
+        "image": "",
+        "role": "Black Tom Cassidy"
+    },
+    {
+        "id": 318,
+        "movieId": 31,
+        "name": "Julian Dennison",
+        "image": "",
+        "role": "Russell Collins"
+    },
+    {
+        "id": 349,
+        "movieId": 32,
+        "name": "Hugh Jackman",
+        "image": "",
+        "role": "Wolverine"
+    },
+    {
+        "id": 340,
+        "movieId": 32,
+        "name": "Jennifer Garner",
+        "image": "",
+        "role": "Elektra"
+    },
+    {
+        "id": 341,
+        "movieId": 32,
+        "name": "Dafne Keen",
+        "image": "",
+        "role": "Elektra"
+    },
+    {
+        "id": 341,
+        "movieId": 33,
+        "name": "Katherine Heigl",
+        "image": "",
+        "role": "Jen Kornfeldt"
+    },
+    {
+        "id": 342,
+        "movieId": 33,
+        "name": "Ashton Kutcher",
+        "image": "",
+        "role": "Spencer Aimes"
+    },
+    {
+        "id": 343,
+        "movieId": 33,
+        "name": "Tom Selleck",
+        "image": "",
+        "role": "Mr. Kornfeldt"
+    },
+    {
+        "id": 344,
+        "movieId": 33,
+        "name": "Lisa Ann Walter",
+        "image": "",
+        "role": "Olivia"
+    },
+    {
+        "id": 345,
+        "movieId": 33,
+        "name": "Martin Mull",
+        "image": "",
+        "role": "Holbrook"
+    },
+    {
+        "id": 346,
+        "movieId": 33,
+        "name": "Alex Borstein",
+        "image": "",
+        "role": "Lily Bailey"
+    },
+    {
+        "id": 347,
+        "movieId": 33,
+        "name": "Rob Riggle",
+        "image": "",
+        "role": "Henry"
+    },
+    {
+        "id": 348,
+        "movieId": 33,
+        "name": "Catherine O'Hara",
+        "image": "",
+        "role": "Kristen"
+    },
+    {
+        "id": 349,
+        "movieId": 34,
+        "name": "Jackie Chan",
+        "image": "",
+        "role": "Inspector Lee"
+    },
+    {
+        "id": 350,
+        "movieId": 34,
+        "name": "Chris Tucker",
+        "image": "",
+        "role": "Detective James Carter"
+    },
+    {
+        "id": 351,
+        "movieId": 34,
+        "name": "Tom Wilkinson",
+        "image": "",
+        "role": "Thomas Griffin"
+    },
+    {
+        "id": 352,
+        "movieId": 34,
+        "name": "Elizabeth Pena",
+        "image": "",
+        "role": "Tania Johnson"
+    },
+    {
+        "id": 353,
+        "movieId": 34,
+        "name": "TziMa",
+        "image": "",
+        "role": "Consul Han"
+    },
+    {
+        "id": 354,
+        "movieId": 34,
+        "name": "Chris Penn",
+        "image": "",
+        "role": "Clive Cod"
+    },
+    {
+        "id": 355,
+        "movieId": 34,
+        "name": "Ken Leung",
+        "image": "",
+        "role": "Sang"
+    },
+    {
+        "id": 356,
+        "movieId": 34,
+        "name": "Julia Hsu",
+        "image": "",
+        "role": "Soo Yung"
+    },
+    {
+        "id": 357,
+        "movieId": 34,
+        "name": "John Doe",
+        "image": "",
+        "role": "Example Role"
+    },
+    {
+        "id": 358,
+        "movieId": 34,
+        "name": "Jackie Chan",
+        "image": "",
+        "role": "Inspector Lee"
+    },
+    {
+        "id": 359,
+        "movieId": 34,
+        "name": "Chris Tucker",
+        "image": "",
+        "role": "Detective James Carter"
+    },
+    {
+        "id": 360,
+        "movieId": 34,
+        "name": "Tom Wilkinson",
+        "image": "",
+        "role": "Thomas Griffin"
+    },
+    {
+        "id": 361,
+        "movieId": 34,
+        "name": "Elizabeth Pena",
+        "image": "",
+        "role": "Tania Johnson"
+    },
+    {
+        "id": 362,
+        "movieId": 34,
+        "name": "TziMa",
+        "image": "",
+        "role": "Consul Han"
+    },
+    {
+        "id": 363,
+        "movieId": 34,
+        "name": "Chris Penn",
+        "image": "",
+        "role": "Clive Cod"
+    },
+    {
+        "id": 364,
+        "movieId": 34,
+        "name": "Ken Leung",
+        "image": "",
+        "role": "Sang"
+    },
+    {
+        "id": 365,
+        "movieId": 34,
+        "name": "Julia Hsu",
+        "image": "",
+        "role": "Soo Yung"
+    },
+    {
+        "id": 366,
+        "movieId": 34,
+        "name": "John Doe",
+        "image": "",
+        "role": "Example Role"
+    },
+    {
+        "id": 355,
+        "movieId": 34,
+        "name": "Jackie Chan",
+        "image": "",
+        "role": "Inspector Lee"
+    },
+    {
+        "id": 356,
+        "movieId": 34,
+        "name": "Chris Tucker",
+        "image": "",
+        "role": "Detective James Carter"
+    },
+    {
+        "id": 357,
+        "movieId": 34,
+        "name": "Tom Wilkinson",
+        "image": "",
+        "role": "Thomas Griffin"
+    },
+    {
+        "id": 358,
+        "movieId": 34,
+        "name": "Elizabeth Pena",
+        "image": "",
+        "role": "Tania Johnson"
+    },
+    {
+        "id": 359,
+        "movieId": 34,
+        "name": "TziMa",
+        "image": "",
+        "role": "Consul Han"
+    },
+    {
+        "id": 360,
+        "movieId": 34,
+        "name": "Chris Penn",
+        "image": "",
+        "role": "Clive Cod"
+    },
+    {
+        "id": 361,
+        "movieId": 34,
+        "name": "Ken Leung",
+        "image": "",
+        "role": "Sang"
+    },
+    {
+        "id": 362,
+        "movieId": 34,
+        "name": "Julia Hsu",
+        "image": "",
+        "role": "Soo Yung"
+    },
+    {
+        "id": 364,
+        "movieId": 35,
+        "name": "Roselyn Sánchez",
+        "image": "roselyn_sanchez",
+        "role": "Isabella Molina"
+    },
+    {
+        "id": 365,
+        "movieId": 35,
+        "name": "Zhang Ziyi",
+        "image": "zhang_ziyi",
+        "role": "Hu Li"
+    },
+    {
+        "id": 366,
+        "movieId": 35,
+        "name": "John Lone",
+        "image": "john_lone",
+        "role": "Ricky Tan"
+    },
+    {
+        "id": 367,
+        "movieId": 36,
+        "name": "Yvan Attal",
+        "image": "YvanAttal",
+        "role": "George"
+    },
+    {
+        "id": 368,
+        "movieId": 36,
+        "name": "Sun Mingming",
+        "image": "SunMingming",
+        "role": "Kung Fu Giant"
+    },
+    {
+        "id": 369,
+        "movieId": 36,
+        "name": "Noémie Lenoir",
+        "image": "Lenoir",
+        "role": "Genevieve"
+    },
+    {
+        "id": 370,
+        "movieId": 36,
+        "name": "Hiroyuki Sanada",
+        "image": "Hiroyuki",
+        "role": "Kenji"
+    },
+    {
+        "id": 371,
+        "movieId": 36,
+        "name": "Zhang Jingchu",
+        "image": "Jingchu",
+        "role": "Soo Yung"
+    },
+    {
+        "id": 372,
+        "movieId": 37,
+        "name": "Fraser Brown",
+        "image": "",
+        "role": "Mr. Brown"
+    },
+    {
+        "id": 373,
+        "movieId": 37,
+        "name": "Dan Avidan",
+        "image": "",
+        "role": "Dan"
+    },
+    {
+        "id": 374,
+        "movieId": 37,
+        "name": "Arin Hanson",
+        "image": "",
+        "role": "Arin"
+    },
+    {
+        "id": 375,
+        "movieId": 37,
+        "name": "MatPat",
+        "image": "",
+        "role": "MatPat"
+    },
+    {
+        "id": 376,
+        "movieId": 37,
+        "name": "John Cartwright",
+        "image": "",
+        "role": "John"
+    },
+    {
+        "id": 377,
+        "movieId": 37,
+        "name": "Brian Alano",
+        "image": "",
+        "role": "Brian"
+    },
+    {
+        "id": 378,
+        "movieId": 37,
+        "name": "Jack De Sena",
+        "image": "",
+        "role": "Jack"
+    },
+    {
+        "id": 379,
+        "movieId": 37,
+        "name": "Jennifer Hale",
+        "image": "",
+        "role": "Jennifer"
+    },
+    {
+        "id": 380,
+        "movieId": 37,
+        "name": "chris carpenter",
+        "image": "",
+        "role": "Troy Mayfield"
+    },
+    {
+        "id": 381,
+        "movieId": 37,
+        "name": "Indiana Massara",
+        "image": "",
+        "role": "Paige"
+    },
+    {
+        "id": 382,
+        "movieId": 37,
+        "name": "Philip Solomon",
+        "image": "",
+        "role": "Nick"
+    },
+    {
+        "id": 383,
+        "movieId": 37,
+        "name": "Sean Astin",
+        "image": "",
+        "role": "Jimmy"
+    },
+    {
+        "id": 384,
+        "movieId": 37,
+        "name": "Mary Lynn Rajskub",
+        "image": "",
+        "role": "Laura"
+    },
+    {
+        "id": 385,
+        "movieId": 37,
+        "name": "Mira Sorvino",
+        "image": "",
+        "role": "Kate Mayfeild"
+    },
+    {
+        "id": 386,
+        "movieId": 37,
+        "name": "Jack De Sena",
+        "image": "",
+        "role": "Jack"
+    },
+    {
+        "id": 387,
+        "movieId": 38,
+        "name": "Nicolas Cage",
+        "image": "",
+        "role": "Grug Crood"
+    },
+    {
+        "id": 388,
+        "movieId": 38,
+        "name": "Emma Stone",
+        "image": "",
+        "role": "Eep Crood"
+    },
+    {
+        "id": 389,
+        "movieId": 38,
+        "name": "Ryan Reynolds",
+        "image": "",
+        "role": "Guy"
+    },
+    {
+        "id": 390,
+        "movieId": 38,
+        "name": "Catherine Keener",
+        "image": "",
+        "role": "Ugga Crood"
+    },
+    {
+        "id": 391,
+        "movieId": 38,
+        "name": "Clark Duke",
+        "image": "",
+        "role": "Thunk Crood"
+    },
+    {
+        "id": 392,
+        "movieId": 38,
+        "name": "Cloris Leachman",
+        "image": "",
+        "role": "Gran"
+    },
+    {
+        "id": 393,
+        "movieId": 38,
+        "name": "Randy Thom",
+        "image": "",
+        "role": "Sandy Crood"
+    },
+    {
+        "id": 394,
+        "movieId": 38,
+        "name": "Chris Sanders",
+        "image": "",
+        "role": "Belt"
+    },
+    {
+        "id": 395,
+        "movieId": 39,
+        "name": "Peter Dinklage",
+        "image": "",
+        "role": "Phil Betterman"
+    },
+    {
+        "id": 396,
+        "movieId": 39,
+        "name": "Leslie Mann",
+        "image": "",
+        "role": "Hope Betterman"
+    },
+    {
+        "id": 397,
+        "movieId": 39,
+        "name": "Kelly Marie Tran",
+        "image": "",
+        "role": "Dawn Betterman"
+    },
+    {
+        "id": 398,
+        "movieId": 40,
+        "name": "Antonio Banderas",
+        "image": "",
+        "role": "Puss in Boots"
+    },
+    {
+        "id": 399,
+        "movieId": 40,
+        "name": "Salma Hayek",
+        "image": "",
+        "role": "Kitty Softpaws"
+    },
+    {
+        "id": 400,
+        "movieId": 40,
+        "name": "Zach Galifianakis",
+        "image": "",
+        "role": "Humpty Dumpty"
+    },
+    {
+        "id": 401,
+        "movieId": 40,
+        "name": "Billy Bob Thornton",
+        "image": "",
+        "role": "Jack"
+    },
+    {
+        "id": 402,
+        "movieId": 40,
+        "name": "Amy Sedaris",
+        "image": "",
+        "role": "Jill"
+    },
+    {
+        "id": 403,
+        "movieId": 40,
+        "name": "Constance Marie",
+        "image": "",
+        "role": "Imelda"
+    },
+    {
+        "id": 404,
+        "movieId": 41,
+        "name": "Chris Miller",
+        "image": "",
+        "role": "Food Prisoner"
+    },
+    {
+        "id": 405,
+        "movieId": 41,
+        "name": "Walt Dohrn",
+        "image": "",
+        "role": "Water Prisoner"
+    },
+    {
+        "id": 406,
+        "movieId": 41,
+        "name": "Charlotte Newhouse",
+        "image": "",
+        "role": "Alessandra"
+    },
+    {
+        "id": 407,
+        "movieId": 41,
+        "name": "Gilles Marini",
+        "image": "",
+        "role": "Paolo"
+    },
+    {
+    "id": 415,
+    "movieId": 42,
+    "name": "Samson Kayo",
+    "image": "",
+    "role": "Babby bear"
+    },
+    {
+        "id": 410,
+        "movieId": 42,
+        "name": "Harvey Guillén",
+        "image": "",
+        "role": "Perrito"
+    },
+    {
+        "id": 411,
+        "movieId": 42,
+        "name": "Florence Pugh",
+        "image": "",
+        "role": "Goldilocks"
+    },
+    {
+        "id": 412,
+        "movieId": 42,
+        "name": "Olivia Colman",
+        "image": "",
+        "role": "Mama Bear"
+    },
+    {
+        "id": 413,
+        "movieId": 42,
+        "name": "John Mulaney",
+        "image": "",
+        "role": "Jack Horner"
+    },
+    {
+        "id": 414,
+        "movieId": 42,
+        "name": "Wagner Moura",
+        "image": "",
+        "role": "Wolf"
     }
 ]
