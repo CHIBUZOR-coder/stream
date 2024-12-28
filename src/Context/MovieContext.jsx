@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 
 import { Movies } from "../Data/MovieData";
+import { Casts } from "../Data/CastsData";
 import { CategoryData } from "../Data/CategoryData"; // Include CategoryData
 
 export const MovieContext = createContext();
@@ -86,6 +87,7 @@ const MovieProvider = ({ children }) => {
         HandleGetSelected,
         userChoice,
         Movies,
+        Casts,
       }}
     >
       {children}

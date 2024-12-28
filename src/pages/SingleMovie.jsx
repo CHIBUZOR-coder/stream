@@ -7,7 +7,7 @@ import MovieCasts from "../Components/SingleMovie/MovieCasts";
 
 const SingleMovie = () => {
   const { id } = useParams();
-  const { Movies } = useContext(MovieContext);
+  const { Casts, Movies } = useContext(MovieContext);
   console.log(id);
 
   const movie = Movies.find((movie) => movie.id === parseInt(id));
@@ -17,10 +17,8 @@ const SingleMovie = () => {
     <div>
       <Layout>
         <MovieInfo movie={movie} />
-        <div className="container mx-auto px-2 my-6 min-h-screen">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <MovieCasts />
-          </div>
+        <div className="container mx-auto px-2 my-6 min-h-screen  ">
+          <MovieCasts movieId={movie.id} />
         </div>
       </Layout>
     </div>
