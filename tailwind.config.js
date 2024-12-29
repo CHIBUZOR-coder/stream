@@ -35,6 +35,8 @@ export default {
         main:"rgba(8, 10, 26, 1)",
         main2:"rgba(8, 10, 26, 0.5)",
         main3:"rgba(8, 10, 26, 0.85)",
+        blacktrans:"rgba(0, 0, 0, 0.2)",
+
 
         subMain:"rgba(242, 0, 0, 1)",
         subMain2:"rgba(242, 0, 0, 0.5)",

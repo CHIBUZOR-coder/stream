@@ -20,10 +20,13 @@ const PopularMovies = () => {
             to={`/stream/movie/${movie.id}`}
             key={`${movie.id}`}
             className="border h-64 border-border rounded bg-center bg-cover transi hover:scale-95 w-full relative"
-            style={{
-              backgroundImage: `url('./images/${movie.image}.jpg')`,
-            }}
           >
+            <img
+              src={`./images/${movie.image}.jpg`}
+              loading="lazy"
+              className="w-full h-full object-cover"
+              alt=""
+            />
             <div className="absolute flex  justify-between items-center left-0 bottom-0 bg-main2 w-full text-white px-4 py-3">
               <h3 className="font-semibold truncate">{movie.name}</h3>
               <button className="h-8 w-8 text-sm flexCol transi hover:bg-transparent border-subMain bg-subMain2 border-2 rounded-md text-white ">

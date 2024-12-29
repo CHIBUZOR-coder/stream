@@ -60,13 +60,9 @@ const TopRated = () => {
         >
           {Movies.map((movie) => (
             <SwiperSlide key={movie.id}>
-              <div
-                style={{
-                  backgroundImage: `url('./images/${movie.image}.jpg')`,
-                }}
-                className="p-4 h-rate border border-border bg-cover bg-center"
-              >
-                <div className=" gap-6 hovered   absolute bg-black h-full  bg-opacity-40 left-0 right-0 bottom-0">
+              <div className=" h-rate border border-border bg-cover bg-center">
+                <img src={`./images/${movie.image}.jpg`} loading="lazy" className="w-full h-full object-cover " alt="" />
+                <div className=" gap-6 hovered   absolute bg-blacktrans h-full w-full   left-0 right-0 bottom-0">
                   <div className="w-full hovers  bg-black bg-opacity-60 object-cover  flex flex-col relative justify-center gap-5 items-center h-full">
                     <button className="w-12 h-12 flex  justify-center items-center transi hover:bg-subMain rounded-full bg-white bg-opacity-30  text-white">
                       <FaHeart />

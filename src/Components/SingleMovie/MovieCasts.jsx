@@ -14,9 +14,7 @@ const MovieCasts = ({ movieId }) => {
 
   const selected = Casts.filter((item) => item.movieId === parseInt(movieId));
   console.log(selected);
-  
 
- 
   return (
     <div className="px-3 w-full">
       <div className="flex items-center gap-8 md:gap-4">
@@ -32,22 +30,39 @@ const MovieCasts = ({ movieId }) => {
           autoplay={true}
           speed={1000}
           modules={[Autoplay, Navigation]}
+          loop={true}
+          breakpoints={{
+            0: {
+              slidesPerView: 1,
+            },
+            400: {
+              slidesPerView: 2,
+            },
+            768: {
+              slidesPerView: 3,
+            },
+            1024: {
+              slidesPerView: 4,
+            },
+            1280: {
+              slidesPerView: 5,
+              spaceBetween: 30,
+            },
+          }}
         >
           {selected.map((item) => (
-            <SwiperSlide key={item.id} className="w-full p-4">
-              <div className="flexCol gap-2  italic w-[80%] text-xs text-text rounded bg-dry border pb-2 ">
-                <div
-                  style={{
-                    backgroundImage: `url('../castImages/${item.image}.jpg')`,
-                  }}
-                  className="h-[230px] border-gray-800 w-full bg-cover bg-center"
-                >
-                 
+            <SwiperSlide key={item.id} className="w-full p-4 ">
+              <div className="flexCol gap-2  italic w-[100%] text-xs text-text rounded bg-dry border pb-2 ">
+                <div className="h-[230px] border-gray-800 w-full  bg-cover bg-center">
+                  <img
+                    className="h-full w-full object-cover"
+                    src={`../castImages/${item.image}.jpg`}
+                    alt=""
+                  />
                 </div>
 
                 <p>{item.name}</p>
                 <p>Role : {item.role}</p>
-
               </div>
             </SwiperSlide>
           ))}

@@ -1,12 +1,13 @@
 
 
 import { useContext, useEffect, useState } from "react";
+import React from "react";
 import { CategoryData } from "../../Data/CategoryData";
 import { MdArrowDropDown } from "react-icons/md";
 import { FaCheck } from "react-icons/fa";
 import { MovieContext } from "../../Context/MovieContext";
 
-const Filters = ({ Movies }) => {
+const Filters  = React.memo( ({ Movies }) => {
   // const [selectedItems, setSelectedItems] = useState({}); // State for selected items
   const {
     setSelectedItems,
@@ -98,6 +99,6 @@ const Filters = ({ Movies }) => {
       ))}
     </div>
   );
-};
+});
 
 export default Filters;

@@ -20,6 +20,8 @@ select:focus {
   @apply flex flex-col  justify-center items-center;
 }
 
+
+
 .flexCol_mdRow {
   @apply flex flex-col md:flex-row justify-center items-center;
 }

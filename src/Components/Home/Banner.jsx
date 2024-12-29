@@ -1,4 +1,5 @@
 import { Autoplay } from "swiper/modules";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Link } from "react-router-dom";
 import { FaHeart, FaRegCalendarAlt } from "react-icons/fa";
@@ -7,14 +8,14 @@ import { MovieContext } from "../../Context/MovieContext";
 import FlexMovie from "./FlexMovie";
 // import { Movies } from "../../Data/MovieData";
 
-const Banner = () => {
+const Banner = React.memo(() => {
   const { Movies } = useContext(MovieContext);
   // Utility function to shuffle an array
-  const shuffleArray = (array) => {
-    return [...array].sort(() => Math.random() - 0.5); // Fisher-Yates shuffle
-  };
+  // const shuffleArray = (array) => {
+  //   return [...array].sort(() => Math.random() - 0.5); // Fisher-Yates shuffle
+  // };
 
-  const randomMovies = shuffleArray(Movies);
+  // const randomMovies = shuffleArray(Movies);
 
   return (
     <div className="relative w-full">
@@ -29,22 +30,26 @@ const Banner = () => {
         direction="vertical"
         spaceBetween={0}
         slidesPerView={1}
+        lazy={true}
+        preloadImages={false}
         loop={true}
         speed={1000}
         modules={[Autoplay]}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
-        
         className="w-full h-72  lg:h-72 xl:h-96 bg-dry"
       >
-        {randomMovies.map((movie) => (
+        {Movies.map((movie) => (
           <SwiperSlide
             key={movie.id}
             loading="lazy"
             className="bg-center  bg-cover relative overflow-hidden rounded"
-            style={{
-              backgroundImage: `url('./images/${movie.image}.jpg')`,
-            }}
           >
+            <img
+              src={`./images/${movie.image}.jpg`}
+              loading="lazy"
+              className="w-full h-full object-cover"
+              alt=""
+            />
             <div className="absolute w-full h-full linearbg top-0 ">
               <div className="absolute top-[45%] md:top-[20%] left-[5%] flex flex-col gap-2">
                 <h1 className="xl:text-4xl truncate names capitalize font-sans sm:text-2xl text-xl font-bold">
@@ -70,6 +75,6 @@ const Banner = () => {
       </Swiper>
     </div>
   );
-};
+});
 
 export default Banner;
