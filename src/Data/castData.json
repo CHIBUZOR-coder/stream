@@ -2642,10 +2642,31 @@
         "role": "Shelley"
     },
     {
-    "id": 417,
-    "movieId": 25,
-    "name": "Daniel Watterson",
-    "image": "DanielWatterson",
-    "role": "Chad"
+        "id": 417,
+        "movieId": 25,
+        "name": "Daniel Watterson",
+        "image": "DanielWatterson",
+        "role": "Chad"
+    },
+    {
+        "id": 4053,
+        "movieId": 41,
+        "name": "Guillaume Aretos",
+        "image": "",
+        "role": "Le Chuchoteur"
+    },
+    {
+        "id": 4056,
+        "movieId": 41,
+        "name": "Miles Bakshi",
+        "image": "",
+        "role": "Sir Timoteo"
+    },
+    {
+        "id": 407,
+        "movieId": 41,
+        "name": "Gilles Marini",
+        "image": "",
+        "role": "Paolo"
     }
 ]

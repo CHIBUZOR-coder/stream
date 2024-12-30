@@ -5,11 +5,7 @@ import "swiper/css/navigation";
 import "aos";
 import "aos/dist/aos.css";
 import Navbar from "./Navbar/Navbar";
-import MovieProvider from "./Context/MovieContext";
-
-
-
-
+import { MovieProvider } from "./Context/MovieContext";
 
 function App() {
   return (

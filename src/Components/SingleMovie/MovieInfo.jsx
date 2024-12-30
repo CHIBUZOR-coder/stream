@@ -63,9 +63,9 @@ const MovieInfo = ({ movie }) => {
               </div>
             </div>
 
-            <div className="col-span-2  w-full  flex justify-end ">
-              <button className="md:w-1/3 lg:w1/4 w-full relative flexCol bg-subMain hover:bg-transparent border-2 border-subMain transi md:h-64 h-16 rounded font-medium">
-                <div className="flexRow gap-6 text-md uppercase tracking-widest absolute md:rotate-90">
+            <div className="col-span-2  w-full   flex justify-end ">
+              <button className="md:w-1/3 lg:w1/4 w-full relative flexCol bg-subMain md:mr-[5rem] mr-0 lg:mr-0 hover:bg-transparent border-2 border-subMain transi md:h-64 h-16 rounded font-medium">
+                <div className="flexRow gap-6 text-md  uppercase tracking-widest absolute md:rotate-90">
                   Download <FaDownload className="h-6 w-6  md:-rotate-90" />
                 </div>
               </button>

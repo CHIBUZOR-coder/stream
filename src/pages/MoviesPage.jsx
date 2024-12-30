@@ -3,7 +3,8 @@ import Filters from "../Components/MoviesPage/Filter";
 import Layout from "../Layout/Layout";
 import { FaHeart } from "react-icons/fa";
 import { useContext, useState } from "react";
-import { MovieContext } from "../Context/MovieContext";
+// import { MovieContext } from "../Context/MovieContext";
+import  MovieContext  from "../Context/MovieContext"; 
 import { CgSpinner } from "react-icons/cg";
 
 const MoviesPage = () => {

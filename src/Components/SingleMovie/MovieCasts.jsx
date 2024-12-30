@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import { FaUserFriends } from "react-icons/fa";
 import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { MovieContext } from "../../Context/MovieContext";
+import  MovieContext  from "../../Context/MovieContext";
 import { BsCaretLeftFill, BsCaretRightFill } from "react-icons/bs";
 
 const MovieCasts = ({ movieId }) => {

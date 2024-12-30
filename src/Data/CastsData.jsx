@@ -2508,14 +2508,14 @@ export const Casts = [
     id: 376,
     movieId: 37,
     name: "Indiana Massara",
-    image: "Indiana",
+    image: "IndianaMassara2",
     role: "Paige",
   },
   {
     id: 377,
     movieId: 37,
     name: "Philip Solomon",
-    image: "PhilipSolomon",
+    image: "philipSolomon",
     role: "Nick",
   },
   {
@@ -2543,14 +2543,14 @@ export const Casts = [
     id: 381,
     movieId: 37,
     name: "Jack De Sena",
-    image: "jack_de_sena",
+    image: "JackDeSena",
     role: "Jack",
   },
   {
     id: 382,
     movieId: 38,
     name: "Nicolas Cage",
-    image: "Nicolas Cage",
+    image: "NicolasCage",
     role: "Grug Crood",
   },
   {
@@ -2564,7 +2564,7 @@ export const Casts = [
     id: 384,
     movieId: 38,
     name: "Ryan Reynolds",
-    image: "ryan_reynolds",
+    image: "rayn3",
     role: "Guy",
   },
   {
@@ -2606,7 +2606,7 @@ export const Casts = [
     id: 390,
     movieId: 39,
     name: "Nicolas Cage",
-    image: "Nicolas Cage",
+    image: "NicolasCage",
     role: "Grug Crood",
   },
   {
@@ -2620,7 +2620,7 @@ export const Casts = [
     id: 392,
     movieId: 39,
     name: "Ryan Reynolds",
-    image: "rayn",
+    image: "rayn3",
     role: "Guy",
   },
   {
@@ -2629,6 +2629,13 @@ export const Casts = [
     name: "Peter Dinklage",
     image: "PeterDinklage",
     role: "Phil Betterman",
+  },
+  {
+    id: 387,
+    movieId: 39,
+    name: "Cloris Leachman",
+    image: "ClorisLeachman2",
+    role: "Gran",
   },
   {
     id: 394,
@@ -2656,7 +2663,7 @@ export const Casts = [
     id: 397,
     movieId: 40,
     name: "Salma Hayek",
-    image: "salma",
+    image: "Salma22",
     role: "Kitty Softpaws",
   },
   {
@@ -2677,7 +2684,7 @@ export const Casts = [
     id: 400,
     movieId: 40,
     name: "Amy Sedaris",
-    image: "amy_sedaris",
+    image: "AmySedaris2",
     role: "Jill",
   },
   {
@@ -2713,8 +2720,29 @@ export const Casts = [
     id: 406,
     movieId: 41,
     name: "Charlotte Newhouse",
-    image: "Charlottee",
+    image: "Charlottee2",
     role: "Alessandra",
+  },
+  {
+    id: 4063,
+    movieId: 41,
+    name: "Bret Marnell",
+    image: "BretMarnell",
+    role: "Toilet Papper Prisoner",
+  },
+  {
+    id: 4053,
+    movieId: 41,
+    name: "Guillaume Aretos",
+    image: "GuillaumeAretos",
+    role: "Le Chuchoteur",
+  },
+  {
+    id: 4056,
+    movieId: 41,
+    name: "Miles Bakshi",
+    image: "MilesBakshi22",
+    role: "Sir Timoteo",
   },
   {
     id: 407,
@@ -2735,7 +2763,7 @@ export const Casts = [
     id: 409,
     movieId: 42,
     name: "Salma Hayek",
-    image: "salma",
+    image: "Salma22",
     role: "Kitty Softpaws",
   },
   {
@@ -2785,7 +2813,7 @@ export const Casts = [
     id: 423,
     movieId: 43,
     name: "Ian Holm",
-    image: "iIanHolm",
+    image: "IanHolm",
     role: "Skinner",
   },
   {
@@ -2820,7 +2848,7 @@ export const Casts = [
     id: 428,
     movieId: 43,
     name: "Brad Bird",
-    image: "brad_bird",
+    image: "BradBird",
     role: "Director",
   },
   {

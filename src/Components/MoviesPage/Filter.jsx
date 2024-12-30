@@ -5,7 +5,7 @@ import React from "react";
 import { CategoryData } from "../../Data/CategoryData";
 import { MdArrowDropDown } from "react-icons/md";
 import { FaCheck } from "react-icons/fa";
-import { MovieContext } from "../../Context/MovieContext";
+import MovieContext  from "../../Context/MovieContext";
 
 const Filters  = React.memo( ({ Movies }) => {
   // const [selectedItems, setSelectedItems] = useState({}); // State for selected items
