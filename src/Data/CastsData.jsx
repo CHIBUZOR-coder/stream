@@ -794,7 +794,7 @@ export const Casts = [
     movieId: 8,
     name: "Zendaya",
     role: "MJ",
-    image: "mj",
+    image: "Zendayaa",
   },
   {
     id: 114,
@@ -815,7 +815,7 @@ export const Casts = [
     movieId: 8,
     name: "Willem Dafoe",
     role: "Green Goblin",
-    image: "green",
+    image: "greengoblin",
   },
   {
     id: 117,
@@ -871,7 +871,7 @@ export const Casts = [
     movieId: 8,
     name: "J. K. Simmons",
     role: "J. John Jameson",
-    image: "simsons",
+    image: "simsons2",
   },
   {
     id: 125,
