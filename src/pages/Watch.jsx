@@ -37,7 +37,7 @@ const Watch = () => {
           <video
             controls 
             autoPlay
-            className="w-fullh-[200px] md:h-screen rounded object-cover "
+            className="w-full h-[200px] md:h-screen rounded object-cover "
           >
             <source
               src={`../Moviess/${movie.video}.mp4`}

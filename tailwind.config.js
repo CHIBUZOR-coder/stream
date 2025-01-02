@@ -55,6 +55,7 @@ export default {
         primary: "rgb(241, 236, 236)",
         primary2: "rgba(255,255,255,0.6)",
         trans: "rgba(30, 26, 26, 0.6)",
+        transb: "rgba(30, 26, 26, 0.8)",
         trans2: "rgb(0,0,0,0.5)",
         btn: "rgba(229,231,235,0.6)",
       },
