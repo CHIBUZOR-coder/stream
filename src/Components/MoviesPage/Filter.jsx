@@ -1,5 +1,3 @@
-
-
 import { useContext, useEffect, useState } from "react";
 import React from "react";
 import { CategoryData } from "../../Data/CategoryData";
