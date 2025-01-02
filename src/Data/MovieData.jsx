@@ -682,7 +682,7 @@ export const Movies = [
     id: 41,
     name: "Puss in Boots: The Three Diablos",
     image: "puss2",
-    video: "",
+    video: "Puss_In_Boot_The_Last_Wish_2022",
     time: "13m",
     approxiT: "less",
     popular: "false",

@@ -15,7 +15,7 @@ const Watch = () => {
 
   return (
     <Layout>
-      <div className="container  bg-dry min-h-screen p-6 mb-12">
+      <div className="container  bg-dry md:min-h-screen p-6 mb-12">
         <div className="flexBtn w-full justify-between flex-wrap mb-6 gap-2 bg-main text-white p-6 rounded border border-gray-800">
           <Link
             to={`/stream/movie/${movie.id}`}
@@ -37,7 +37,7 @@ const Watch = () => {
           <video
             controls 
             autoPlay
-            className="w-full h-screen rounded object-cover "
+            className="w-fullh-[200px] md:h-screen rounded object-cover "
           >
             <source
               src={`../Moviess/${movie.video}.mp4`}
@@ -47,7 +47,7 @@ const Watch = () => {
           </video>
         ) : (
           <div className="flex justify-center items-center w-full ">
-            <div className=" h-[400px] rounded overflow-hidden text-white relative w-full bg-center bg-cover">
+            <div className="h-[200px] md:h-[400px] rounded overflow-hidden text-white relative w-full bg-center bg-cover">
               <div className=" bg-main2 w-full h-full flexCol absolute top-0 left-0">
                 <button
                   onClick={() => setPlay(true)}
