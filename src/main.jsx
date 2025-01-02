@@ -6,6 +6,7 @@ import App from "./App.jsx";
 import Watch from "./pages/Watch.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
+import Profile from "./pages/DashBoard/Profile.jsx";
 // import SingleMovie from "./pages/SingleMovie.jsx";
 // import Home from "./pages/Home.jsx";
 // import Contact from "./pages/Contact.jsx";
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register />,
+      },
+      {
+        path: "profile",
+        element: <Profile />,
       },
       {
         path: "*",
