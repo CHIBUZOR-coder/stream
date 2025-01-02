@@ -3,6 +3,8 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
+import Watch from "./pages/Watch.jsx";
+import Login from "./pages/Login.jsx";
 // import SingleMovie from "./pages/SingleMovie.jsx";
 // import Home from "./pages/Home.jsx";
 // import Contact from "./pages/Contact.jsx";
@@ -31,11 +33,11 @@ const router = createBrowserRouter([
         element: <Home />, // Default route
       },
       {
-        path: "/stream/contact",
+        path: "contact",
         element: <Contact />,
       },
       {
-        path: "/stream/movies",
+        path: "movies",
         element: <MoviesPage />,
       },
       {
@@ -51,8 +53,16 @@ const router = createBrowserRouter([
         element: <Favourite />,
       },
       {
-        path: "/stream/movie/:id",
+        path: "movie/:id",
         element: <SingleMovie />,
+      },
+      {
+        path: "watch/:name",
+        element: <Watch />,
+      },
+      {
+        path: "login",
+        element: <Login />,
       },
       {
         path: "*",

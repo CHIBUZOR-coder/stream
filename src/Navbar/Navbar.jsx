@@ -10,7 +10,7 @@ const Navbar = () => {
     <>
       {/* Logo */}
       <div className="bg-main px-7 shadow-md sticky  top-0 z-20">
-        <div className="container  px-5 py-6  lg:grid gap-10 grid-cols-7 justify-between items-center">
+        <div className="container  px-5 py-4  lg:grid gap-10 grid-cols-7 justify-between items-center">
           <div className="col-span-1 lg:block hidden ">
             <div className="flex justify-center items-center">
               <Link to={`/stream/`}>
@@ -57,7 +57,7 @@ const Navbar = () => {
             <NavLink className={Hover} to={`/stream/contact`}>
               Contact
             </NavLink>
-            <NavLink className={Hover} to={`/stream/user`}>
+            <NavLink className={Hover} to={`/stream/login`}>
               <FaUserCircle />
             </NavLink>
             <NavLink

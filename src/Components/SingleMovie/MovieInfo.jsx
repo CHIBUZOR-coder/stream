@@ -54,7 +54,7 @@ const MovieInfo = ({ movie }) => {
 
                 <div className="sm:col-span-2 col-span-3 flex justify-end font-medium text-sm">
                   <Link
-                    to={`/watch/${movie.name}`}
+                    to={`/stream/watch/${movie.name}`}
                     className="bg-dry hover:text-main transi hover:bg-subMain   transi border-2 border-subMain text-white px-8 py-3  font-medium names rounded-full flexRow gap-4 w-full sm:py-3 "
                   >
                     <FaPlay className="w-3 h-3" /> watch

@@ -46,7 +46,6 @@ const Banner = React.memo(() => {
           >
             <img
               src={`./images/${movie.image}.jpg`}
-            
               className="w-full h-full object-cover"
               alt=""
             />
@@ -60,7 +59,7 @@ const Banner = React.memo(() => {
                 <div className=" flex items-center gap-4 mt-4">
                   <Link
                     className="bg-subMain hover:text-main transi hover:bg-white text-white px-8 py-3 rounded font-medium names"
-                    to={`/movies/${movie.id}  `}
+                    to={`/stream/watch/${movie.name}`}
                   >
                     watch
                   </Link>
