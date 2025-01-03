@@ -3,10 +3,13 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
-import Watch from "./pages/Watch.jsx";
-import Login from "./pages/Login.jsx";
-import Register from "./pages/Register.jsx";
-import Profile from "./pages/DashBoard/Profile.jsx";
+
+// import DashboardPage from "./pages/DashBoard/Components/Dashboard/DashboardPage.jsx";
+// import DashboardPage from "./pages/DashBoard/DashboardPage";
+// import Watch from "./pages/Watch.jsx";
+// import Login from "./pages/Login.jsx";
+// import Register from "./pages/Register.jsx";
+// import DashboardPage from "./pages/DashBoard/DashboardPage.jsx";
 // import SingleMovie from "./pages/SingleMovie.jsx";
 // import Home from "./pages/Home.jsx";
 // import Contact from "./pages/Contact.jsx";
@@ -24,6 +27,10 @@ const User = lazy(() => import("./pages/DashBoard/ADMIN/Users"));
 const Favourite = lazy(() => import("./pages/DashBoard/FavouriteMovies"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const SingleMovie = lazy(() => import("./pages/SingleMovie"));
+const Watch = lazy(() => import("./pages/Watch"));
+const Login = lazy(() => import("./pages/Login"));
+const Register = lazy(() => import("./pages/Register"));
+const DashboardPage = lazy(() => import("./pages/DashBoard/Dashboard.jsx"));
 
 const router = createBrowserRouter([
   {
@@ -71,8 +78,8 @@ const router = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: "profile",
-        element: <Profile />,
+        path: "dash",
+        element: <DashboardPage />,
       },
       {
         path: "*",
