@@ -81,7 +81,14 @@ select:focus {
 
 .login_logo {
   /* box-shadow: 0 4px 6px rgba(11, 15, 41, 0.9), 0 1px 3px rgba(11, 15, 41, 1); */
-   box-shadow: 0 4px 4px rgba(225, 15, 41, 1);
+  box-shadow: 0 4px 4px rgba(225, 15, 41, 1);
+}
+
+.edit:hover .editchild {
+  color: white;
+}
+.delete:hover .deletechild {
+  color: rgb(242, 0, 0);
 }
 
 @media (max-width: 550px) {

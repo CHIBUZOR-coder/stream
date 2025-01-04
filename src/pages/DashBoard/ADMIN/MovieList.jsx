@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import MovieContext from "../../../../Context/MovieContext";
-import Table from "../Favourites/Table";
+import MovieContext from "../../../Context/MovieContext";
+import Table from "../../../Custom/Table";
 
 const MovieList = () => {
-  const { Movies, isAdmin } = useContext(MovieContext);
+  const { Movies, User } = useContext(MovieContext);
   return (
     <div className="flex flex-col gap-6">
       <div className="flex justify-between items-center p-0 md:p-4 ">
@@ -15,7 +15,7 @@ const MovieList = () => {
         </button>
       </div>
 
-      <Table Movies={Movies} isAdmin={isAdmin} />
+      <Table data={Movies} User={User} />
     </div>
   );
 };

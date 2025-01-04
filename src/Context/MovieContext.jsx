@@ -9,14 +9,29 @@ import { FaHeart, FaListAlt, FaUser } from "react-icons/fa";
 import { RiLockPasswordLine, RiMovie2Fill } from "react-icons/ri";
 import { HiViewColumns } from "react-icons/hi2";
 import { FiSettings } from "react-icons/fi";
-import UpdatePage from "../pages/DashBoard/Components/DashboardComponents/UpdateProfile";
+import Profile from "../pages/DashBoard/Components/DashboardComponents/Profile";
+import { userData } from "../Data/UserData";
 
 // import DashboardPage from "../pages/DashBoard/Dashboard";
 
 const MovieContext = createContext();
 
 const MovieProvider = ({ children }) => {
-  const [isAdmin, setIsAdmin] = useState(true);
+  const user = {
+    name: "John Doe",
+    image: "Adam",
+    review: "Great service and content!",
+    star: 5,
+    role: "Admin",
+
+  };
+  const Users = userData;
+  console.log(CategoryData);
+  
+ 
+
+  const [User, setUser] = useState(user);
+  console.log("from MovieContext", User.role);
   const [selectedItems, setSelectedItems] = useState({});
   const [userChoice, setUserChoice] = useState(null);
   // ***************Dashbord***************
@@ -24,7 +39,7 @@ const MovieProvider = ({ children }) => {
     // Retrieve the initial value from localStorage or set a default
     return localStorage.getItem("Active") || "Dashboard";
   });
-  const [display, setDisplay] = useState(<UpdatePage />);
+  const [display, setDisplay] = useState(<Profile />);
 
   const YearData = [
     { name: "Sort By Year" },
@@ -93,22 +108,54 @@ const MovieProvider = ({ children }) => {
   };
 
   const slideLinks = [
-    { name: "Dashboard", link: "/dashboard", icon: <BsFillGridFill /> },
-    { name: "Movies List", link: "/movielist", icon: <FaListAlt /> },
-    { name: "Add Movie", link: "/addmovie", icon: <RiMovie2Fill /> },
-    { name: "Categories", link: "/categories", icon: <FaListAlt /> },
-    { name: "Notifications", link: "/notifications", icon: <HiViewColumns /> },
-    { name: "Users", link: "dashboard/users", icon: <FaUser /> },
+    {
+      name: "Dashboard",
+      link: "/dashboard",
+      icon: <BsFillGridFill />,
+      user: "All",
+    },
+    {
+      name: "Movies List",
+      link: "/movielist",
+      icon: <FaListAlt />,
+      user: "All",
+    },
+    {
+      name: "Add Movie",
+      link: "/addmovie",
+      icon: <RiMovie2Fill />,
+      user: "Admin",
+    },
+    {
+      name: "Categories",
+      link: "/categories",
+      icon: <FaListAlt />,
+      user: "Admin",
+    },
+    {
+      name: "Notifications",
+      link: "/notifications",
+      icon: <HiViewColumns />,
+      user: "All",
+    },
+    { name: "Users", link: "dashboard/users", icon: <FaUser />, user: "Admin" },
     {
       name: "Update Profile",
       link: "dashboard/profile",
       icon: <FiSettings />,
+      user: "All",
     },
-    { name: "Favourite Movies", link: "/messages", icon: <FaHeart /> },
+    {
+      name: "Favourite Movies",
+      link: "/messages",
+      icon: <FaHeart />,
+      user: "All",
+    },
     {
       name: "Change Password",
       link: "/password",
       icon: <RiLockPasswordLine />,
+      user: "All",
     },
   ];
 
@@ -129,7 +176,9 @@ const MovieProvider = ({ children }) => {
         HandleActiveChange,
         display,
         setDisplay,
-        isAdmin,
+        User,
+        Users,
+        CategoryData
       }}
     >
       {children}

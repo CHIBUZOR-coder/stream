@@ -3,7 +3,9 @@ import { GoEye } from "react-icons/go";
 import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-const Table = ({ Movies, isAdmin }) => {
+const Table = ({ data, User }) => {
+  console.log(User.role);
+  
   const Head = "text-xs text-left text-main font-semibold px-6 py-2 uppercase ";
   const Text = "text-sm text-left leading-6 whitespace-nowrap px-5 py-3";
   return (
@@ -35,7 +37,7 @@ const Table = ({ Movies, isAdmin }) => {
           </tr>
         </thead>
         <tbody className=" bg-main divide-y divide-gray-800">
-          {Movies.map((movie, i) => (
+          {data.map((movie, i) => (
             <tr key={i}>
               <td className={`${Text}`}>
                 <div className="w-12 bg-dry borer border-border rounded h-12 overflow-hidden ">
@@ -62,13 +64,14 @@ const Table = ({ Movies, isAdmin }) => {
                 <p>{movie.hours}</p>
               </td>
               <td className={`${Text} float-right flexRow gap-2`}>
-                {isAdmin ? (
+                {User.role === "Admin" ? (
                   <>
-                    <button className="bg-dry border border-border flexRow gap-2 text-border px-2 py-1 rounded">
-                      Edit <FaEdit className="text-green-500 " />
+                    <button className="bg-dry border border-border flexRow gap-2 text-border transi edit  hover:bg-green-500 hover:text-white px-2 py-1 rounded">
+                      Edit{" "}
+                      <FaEdit className="text-green-500 editchild  transi " />
                     </button>
-                    <button className="bg-subMain text-white rounded flexCol w-6 h-6 ">
-                      <MdDelete />
+                    <button className="bg-subMain text-white rounded flexCol w-6 h-6  hover:bg-main transi border border-subMain delete  ">
+                      <MdDelete className="deletechild transi" />
                     </button>
                   </>
                 ) : (

@@ -2,10 +2,10 @@ import { FaRegListAlt, FaUser } from "react-icons/fa";
 import MovieContext from "../../../../Context/MovieContext";
 import { useContext } from "react";
 import { HiViewGridAdd } from "react-icons/hi";
-import Table from "../Favourites/Table";
+import Table from "../../../../Custom/Table";
 
 const Profile = () => {
-   const { Movies, isAdmin } = useContext(MovieContext);
+  const { Movies, User } = useContext(MovieContext);
   const ProfileData = [
     {
       bg: "bg-orange-600",
@@ -50,7 +50,7 @@ const Profile = () => {
       </div>
       <h3 className="font-medium my-4 text-border">Recent Movies</h3>
 
-      <Table Movies={Movies.slice(0, 6)} isAdmin={isAdmin} />
+      <Table data={Movies.slice(0, 6)}  User={User} />
     </div>
   );
 };

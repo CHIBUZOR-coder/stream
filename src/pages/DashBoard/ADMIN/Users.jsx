@@ -1,11 +1,47 @@
-import Layout from "../../../Layout/Layout";
+import { useContext } from "react";
+import MovieContext from "../../../Context/MovieContext";
+import Table from "../../../Custom/Table";
+import { HiPlusCircle } from "react-icons/hi2";
+import Table2 from "../../../Custom/Table2";
 
-const User = () => {
+const Users = () => {
+  const { Users, CategoryData } = useContext(MovieContext);
+  console.log("cdata", CategoryData);
+
+  const headList = [
+    {
+      id: 1,
+      title: "Image",
+    },
+    {
+      id: 2,
+      title: "Id",
+    },
+    {
+      id: 3,
+      title: "Date",
+    },
+    {
+      id: 4,
+      title: "Full Name",
+    },
+    {
+      id: 5,
+      title: "Email",
+    },
+    {
+      id: 6,
+      title: "Actions",
+    },
+  ];
+
   return (
-    <Layout>
-      <div>User</div>
-    </Layout>
+    <div className="flex flex-col gap-6">
+      <h2 className="md:text-xl text-lg text-white  font-bold">Users</h2>
+
+      <Table2 data={Users} headList={headList} For={"user"} />
+    </div>
   );
 };
 
-export default User;
+export default Users;
