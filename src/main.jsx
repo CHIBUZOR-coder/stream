@@ -3,6 +3,8 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
+import DashboardPage from "./pages/DashBoard/Dashboard.jsx";
+// import Dashboard from "./pages/DashBoard/Dashboard.jsx";
 
 // import DashboardPage from "./pages/DashBoard/Components/Dashboard/DashboardPage.jsx";
 // import DashboardPage from "./pages/DashBoard/DashboardPage";
@@ -30,7 +32,7 @@ const SingleMovie = lazy(() => import("./pages/SingleMovie"));
 const Watch = lazy(() => import("./pages/Watch"));
 const Login = lazy(() => import("./pages/Login"));
 const Register = lazy(() => import("./pages/Register"));
-const DashboardPage = lazy(() => import("./pages/DashBoard/Dashboard.jsx"));
+const Dashboard = lazy(() => import("./pages/DashBoard/Dashboard"));
 
 const router = createBrowserRouter([
   {
@@ -79,7 +81,7 @@ const router = createBrowserRouter([
       },
       {
         path: "dash",
-        element: <DashboardPage />,
+        element: <Dashboard />,
       },
       {
         path: "*",

@@ -153,7 +153,7 @@ export const Movies = [
   },
   {
     id: 10,
-    name: "Mission Impossible Dead Reckoning Part One",
+    name: "Mission Impossible Dead Reck 1",
     image: "missionI",
     video: "",
     time: "2h 43m",

@@ -9,20 +9,22 @@ import { FaHeart, FaListAlt, FaUser } from "react-icons/fa";
 import { RiLockPasswordLine, RiMovie2Fill } from "react-icons/ri";
 import { HiViewColumns } from "react-icons/hi2";
 import { FiSettings } from "react-icons/fi";
+import UpdatePage from "../pages/DashBoard/Components/UpdateProfile/UpdateProfile";
+
 // import DashboardPage from "../pages/DashBoard/Dashboard";
-import DboardPage from "../pages/DashBoard/Components/Dashboard/DboardPage";
 
 const MovieContext = createContext();
 
 const MovieProvider = ({ children }) => {
+  const [isAdmin, setIsAdmin] = useState(false);
   const [selectedItems, setSelectedItems] = useState({});
   const [userChoice, setUserChoice] = useState(null);
-  // ***************
-const [isActive, setIsActive] = useState(() => {
-  // Retrieve the initial value from localStorage or set a default
-  return localStorage.getItem("Active") || "Dashboard";
-});
-  const [display, setDisplay] = useState(<DboardPage />);
+  // ***************Dashbord***************
+  const [isActive, setIsActive] = useState(() => {
+    // Retrieve the initial value from localStorage or set a default
+    return localStorage.getItem("Active") || "Dashboard";
+  });
+  const [display, setDisplay] = useState(<UpdatePage />);
 
   const YearData = [
     { name: "Sort By Year" },
@@ -127,6 +129,7 @@ const [isActive, setIsActive] = useState(() => {
         HandleActiveChange,
         display,
         setDisplay,
+        isAdmin,
       }}
     >
       {children}

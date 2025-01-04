@@ -1,7 +1,7 @@
 import { Input } from "../../../../Custom/Input";
 import Uploader from "./Uploader";
 
-const DboardPage = () => {
+const UpdateProfile = () => {
   return (
     <div className=" w-full rounded-md ">
       <div className=" p-4 flex flex-col gap-6 text-white bg-dry border border-gray-800 rounded-md">
@@ -29,4 +29,4 @@ const DboardPage = () => {
   );
 };
 
-export default DboardPage;
+export default UpdateProfile;

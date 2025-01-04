@@ -1,12 +1,11 @@
 import { Input } from "../../Custom/Input";
-import Uploader from "./Components/Dashboard/Uploader";
+import Uploader from "./Components/UpdateProfile/Uploader";
 
 const UpdatePassword = () => {
   return (
-    <div className=" p-4 flex flex-col gap-6 text-white bg-dry border border-gray-800 rounded-md">
-      <p className="text-xl font-bold">Profile</p>
+    <div className=" p-4 flex flex-col gap-6 text-white bg-dry ">
+      <p className="text-xl font-bold">Change Password</p>
 
-      <Uploader />
       <Input
         label={"Previous Password"}
         placeholder={"******"}
