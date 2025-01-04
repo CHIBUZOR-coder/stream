@@ -1,1 +1,0 @@
-import{j as t}from"./index-BeVra00e.js";import{L as r}from"./Layout-BCYDH0uP.js";const i=()=>t.jsx(r,{children:t.jsx("div",{children:t.jsx("p",{className:"text-white",children:" Favourite"})})});export{i as default};
