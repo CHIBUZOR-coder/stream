@@ -1,5 +1,5 @@
 import { Input } from "../../../../Custom/Input";
-import Uploader from "./Uploader";
+import Uploader from "../UpdateProfile/Uploader";
 
 const UpdateProfile = () => {
   return (

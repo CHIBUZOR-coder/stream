@@ -9,14 +9,14 @@ import { FaHeart, FaListAlt, FaUser } from "react-icons/fa";
 import { RiLockPasswordLine, RiMovie2Fill } from "react-icons/ri";
 import { HiViewColumns } from "react-icons/hi2";
 import { FiSettings } from "react-icons/fi";
-import UpdatePage from "../pages/DashBoard/Components/UpdateProfile/UpdateProfile";
+import UpdatePage from "../pages/DashBoard/Components/DashboardComponents/UpdateProfile";
 
 // import DashboardPage from "../pages/DashBoard/Dashboard";
 
 const MovieContext = createContext();
 
 const MovieProvider = ({ children }) => {
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(true);
   const [selectedItems, setSelectedItems] = useState({});
   const [userChoice, setUserChoice] = useState(null);
   // ***************Dashbord***************

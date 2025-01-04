@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
-import DashboardPage from "./pages/DashBoard/Dashboard.jsx";
+
 // import Dashboard from "./pages/DashBoard/Dashboard.jsx";
 
 // import DashboardPage from "./pages/DashBoard/Components/Dashboard/DashboardPage.jsx";
@@ -26,7 +26,7 @@ const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
 const MoviesPage = lazy(() => import("./pages/MoviesPage"));
 const User = lazy(() => import("./pages/DashBoard/ADMIN/Users"));
-const Favourite = lazy(() => import("./pages/DashBoard/FavouriteMovies"));
+
 const NotFound = lazy(() => import("./pages/NotFound"));
 const SingleMovie = lazy(() => import("./pages/SingleMovie"));
 const Watch = lazy(() => import("./pages/Watch"));
@@ -59,10 +59,7 @@ const router = createBrowserRouter([
         path: "about",
         element: <About />,
       },
-      {
-        path: "favourite",
-        element: <Favourite />,
-      },
+      
       {
         path: "movie/:id",
         element: <SingleMovie />,

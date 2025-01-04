@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from "react";
-import SideBar from "./Components/UpdateProfile/SideBar";
-
-import Favourite from "./FavouriteMovies";
-import UpdatePassword from "./UpdatePassword";
+import SideBar from "./Components/DashboardComponents/SideBar";
 import MovieContext from "../../Context/MovieContext";
-import UpdateProfile from "./Components/UpdateProfile/UpdateProfile";
+import UpdateProfile from "./Components/DashboardComponents/UpdateProfile";
 import Layout from "../../Layout/Layout";
+import MovieList from "./Components/DashboardComponents/MovieList";
+import UpdatePassword from "./Components/DashboardComponents/UpdatePassword";
+import Favourite from "./Components/DashboardComponents/FavouriteMovies";
+import Profile from "./Components/DashboardComponents/Profile";
 
 const Dashboard = () => {
   // const { isActive, display } = useContext(MovieContext);
@@ -30,11 +31,11 @@ const Dashboard = () => {
     } else if (isActive === "Add Movie") {
       setDisplay(<div> Add Movie</div>);
     } else if (isActive === "Movies List") {
-      setDisplay(<div> Movies List</div>);
+      setDisplay(<MovieList />);
     } else if (isActive === "Dashboard") {
-      setDisplay(<div> Dashboard</div>);
+      setDisplay(<Profile />);
     } else {
-      setDisplay(<div> Profile</div>);
+      setDisplay(<Profile />);
     }
   }, [isActive]);
 

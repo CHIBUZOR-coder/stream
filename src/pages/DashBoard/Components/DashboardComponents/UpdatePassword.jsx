@@ -1,5 +1,6 @@
-import { Input } from "../../Custom/Input";
-import Uploader from "./Components/UpdateProfile/Uploader";
+import { Input } from "../../../../Custom/Input";
+
+
 
 const UpdatePassword = () => {
   return (
