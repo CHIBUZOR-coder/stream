@@ -41,12 +41,12 @@ const Dashboard = () => {
 
   return (
     <Layout>
-      <div className="flex md:flex-row flex-col min-h-screen bg-main py-3 px-4 gap-10 md:gap-8 md:px-10 ">
-        <div className=" w-full md:w-[25%] relative rounded-md ">
+      <div className="flex lg:flex-row flex-col min-h-screen bg-main py-3 px-5 gap-10 md:gap-8 lg:px-10 ">
+        <div className=" w-full lg:w-[25%] relative rounded-md ">
           <SideBar />
         </div>
 
-        <div className=" w-full md:w-[75%] bg-dry  rounded-md border border-gray-800 p-6">
+        <div className=" w-full lg:w-[75%] bg-dry  rounded-md border border-gray-800 p-6">
           {display}
         </div>
       </div>
