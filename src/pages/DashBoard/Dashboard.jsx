@@ -65,7 +65,7 @@ const Dashboard = () => {
               ModalDisplay ? "" : "hidden"
             }  z-20 h-full bg-modal flex flex-col justify-start items-center gap-5  p-4 `}
           >
-            <div className="flex justify-end items-center w-1/2 ">
+            <div className="flex justify-end items-center w-full md:w-1/2 ">
               <span
                 onClick={() => setModalDisplay((prev) => !prev)}
                 className="rounded-full border-2 border-subMain hover:text-subMain text-white transi hover:border-white hover:rotate-180 "
@@ -74,7 +74,7 @@ const Dashboard = () => {
               </span>
             </div>
 
-            <div className="w-1/2 rounded-lg border border-border flexCol  gap-10 p-6 bg-dry">
+            <div className=" w-full md:w-1/2  rounded-lg border border-border flexCol  gap-10 p-6 bg-dry">
               <h2 className="text-2xl font-bold ">Create Category</h2>
               <form className="flex flex-col gap-6 text-left" action="">
                 <Input
