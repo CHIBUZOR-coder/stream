@@ -2,8 +2,11 @@ import { FaCloudDownloadAlt, FaEdit } from "react-icons/fa";
 import { GoEye } from "react-icons/go";
 import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
+import MovieContext from "../Context/MovieContext";
+import { useContext } from "react";
 
 const Table2 = ({ data, headList, For }) => {
+  const { currentModal, ModalChangeUpdate } = useContext(MovieContext);
   const Head = "text-xs text-left text-main font-semibold px-6 py-2 uppercase ";
   const Text = "text-sm text-left leading-6 whitespace-nowrap px-5 py-3";
   return (
@@ -34,7 +37,13 @@ const Table2 = ({ data, headList, For }) => {
                     <p>{item.tittle}</p>
                   </td>
                   <td className={`${Text} float-left flexRow gap-5`}>
-                    <button className="bg-dry border border-border flexRow transi edit  hover:bg-green-500 hover:text-white gap-2 text-border px-2 py-1 rounded">
+                    <button
+                      onClick={() => {
+                        ModalChangeUpdate(item.tittle);
+                        console.log(currentModal);
+                      }}
+                      className="bg-dry border border-border flexRow transi edit  hover:bg-green-500 hover:text-white gap-2 text-border px-2 py-1 rounded"
+                    >
                       Edit{" "}
                       <FaEdit className="text-green-500 editchild  transi " />
                     </button>

@@ -13,6 +13,7 @@ import NotUser from "../NotUser";
 import Users from "./ADMIN/Users";
 import { Input } from "../../Custom/Input";
 import { HiPlusCircle } from "react-icons/hi2";
+import { RxUpdate } from "react-icons/rx";
 
 const Dashboard = () => {
   const {
@@ -24,10 +25,11 @@ const Dashboard = () => {
     setCurrentModal,
     ModalDisplay,
     setModalDisplay,
+    UpdatedTite,
   } = useContext(MovieContext);
 
   useEffect(() => {
-    console.log(isActive);
+    // console.log(isActive);
     if (isActive === "Update Profile") {
       setDisplay(<UpdateProfile />);
     } else if (isActive === "Favourite Movies") {
@@ -39,12 +41,7 @@ const Dashboard = () => {
     } else if (isActive === "Users") {
       setDisplay(<Users />);
     } else if (isActive === "Categories") {
-      setDisplay(
-        <Categories
-          ModalDisplay={ModalDisplay}
-          setModalDisplay={setModalDisplay}
-        />
-      );
+      setDisplay(<Categories />);
     } else if (isActive === "Add Movie") {
       setDisplay(<div> Add Movie</div>);
     } else if (isActive === "Movies List") {
@@ -75,23 +72,56 @@ const Dashboard = () => {
             </div>
 
             <div className=" w-full md:w-1/2  rounded-lg border border-border flexCol  gap-10 p-6 bg-dry">
-              <h2 className="text-2xl font-bold ">Create Category</h2>
-              <form className="flex flex-col gap-6 text-left" action="">
-                <Input
-                  label={"Category Name"}
-                  placeholder={"Add category name"}
-                  type={"text"}
-                />
-                <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setModalDisplay((prev) => !prev);
-                  }}
-                  className="w-full font-semibold  flexRow py-3 rounded border-2 gap-3 cursor-pointer transi border-subMain bg-subMain text-white hover:bg-main"
-                >
-                  <HiPlusCircle /> Add
-                </button>
-              </form>
+              {currentModal === "Add" ? (
+                <>
+                  <h2 className="text-2xl font-bold ">Create Category</h2>
+                  <form className="flex flex-col gap-6 text-left" action="">
+                    <Input
+                      label={"Category Name"}
+                      placeholder={"Add category name"}
+                      type={"text"}
+                    />
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setCurrentModal("Add");
+                        setModalDisplay((prev) => !prev);
+                      }}
+                      className="w-full font-semibold  flexRow py-3 rounded border-2 gap-3 Oga cursor-pointer transi border-subMain bg-subMain text-white hover:bg-main"
+                    >
+                      <HiPlusCircle className="pikin h-7 w-7" /> Add
+                    </button>
+                  </form>
+                </>
+              ) : (
+                ""
+              )}
+
+              {currentModal === "Edit" ? (
+                <>
+                  <h2 className="text-2xl font-bold ">Update Category</h2>
+                  <form className="flex flex-col gap-6 text-left" action="">
+                    <Input
+                      label={"Category Name"}
+                      placeholder={`${UpdatedTite}`}
+                      type={"text"}
+                    />
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setCurrentModal("Add");
+                        setModalDisplay((prev) => !prev);
+                        console.log(currentModal);
+                      }}
+                      className="w-full font-semibold transi Oga  flexRow py-3 rounded border-2 gap-3 cursor-pointer transi border-subMain bg-subMain text-white hover:bg-main"
+                    >
+                      <RxUpdate className="pikin" /> Update
+                    </button>
+                  </form>
+                </>
+              ) : (
+                ""
+              )}
             </div>
           </div>
           <div className=" w-full lg:w-[25%] relative rounded-md ">

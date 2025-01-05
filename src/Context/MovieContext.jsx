@@ -25,10 +25,10 @@ const MovieProvider = ({ children }) => {
     role: "Admin",
   };
   const Users = userData;
-  console.log(CategoryData);
+  // console.log(CategoryData);
 
   const [User, setUser] = useState(user);
-  console.log("from MovieContext", User.role);
+  // console.log("from MovieContext", User.role);
   const [selectedItems, setSelectedItems] = useState({});
   const [userChoice, setUserChoice] = useState(null);
   // ***************Dashbord***************
@@ -38,9 +38,17 @@ const MovieProvider = ({ children }) => {
   });
   const [display, setDisplay] = useState(<Profile />);
   // *****************Modal Display********
-  const [currentModal, setCurrentModal] = useState(() => {
-    return localStorage.getItem("ModalDisplay") || "category";
-  });
+  const [currentModal, setCurrentModal] = useState("Add");
+  const [UpdatedTite, setUpdatedTitle] = useState(null);
+  console.log(currentModal);
+  const ModalChangeUpdate = (Title) => {
+    setModalDisplay((prev) => !prev);
+    setCurrentModal("Edit");
+    console.log(currentModal);
+    console.log(Title);
+    setUpdatedTitle(Title);
+  };
+
   const [ModalDisplay, setModalDisplay] = useState(false);
 
   const YearData = [
@@ -185,6 +193,8 @@ const MovieProvider = ({ children }) => {
         setCurrentModal,
         ModalDisplay,
         setModalDisplay,
+        ModalChangeUpdate,
+        UpdatedTite,
       }}
     >
       {children}
