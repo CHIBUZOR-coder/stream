@@ -23,12 +23,9 @@ const MovieProvider = ({ children }) => {
     review: "Great service and content!",
     star: 5,
     role: "Admin",
-
   };
   const Users = userData;
   console.log(CategoryData);
-  
- 
 
   const [User, setUser] = useState(user);
   console.log("from MovieContext", User.role);
@@ -40,6 +37,11 @@ const MovieProvider = ({ children }) => {
     return localStorage.getItem("Active") || "Dashboard";
   });
   const [display, setDisplay] = useState(<Profile />);
+  // *****************Modal Display********
+  const [currentModal, setCurrentModal] = useState(() => {
+    return localStorage.getItem("ModalDisplay") || "category";
+  });
+  const [ModalDisplay, setModalDisplay] = useState(false);
 
   const YearData = [
     { name: "Sort By Year" },
@@ -178,7 +180,11 @@ const MovieProvider = ({ children }) => {
         setDisplay,
         User,
         Users,
-        CategoryData
+        CategoryData,
+        currentModal,
+        setCurrentModal,
+        ModalDisplay,
+        setModalDisplay,
       }}
     >
       {children}

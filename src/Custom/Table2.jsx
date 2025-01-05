@@ -11,8 +11,8 @@ const Table2 = ({ data, headList, For }) => {
       <table className="table-auto w-full text-white border  border-border divide-y divide-border">
         <thead>
           <tr className="bg-dryGray">
-            {headList.map((item, index) => (
-              <th scope="col" className={`${Head}`}>
+            {headList.map((item, i) => (
+              <th key={i} scope="col" className={`${Head}`}>
                 {item.title}
               </th>
             ))}

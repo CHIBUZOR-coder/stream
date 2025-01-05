@@ -1,10 +1,10 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import MovieContext from "../../../Context/MovieContext";
 import Table from "../../../Custom/Table";
 import { HiPlusCircle } from "react-icons/hi2";
 import Table2 from "../../../Custom/Table2";
 
-const Categories = () => {
+const Categories = ({ setModalDisplay, ModalDisplay }) => {
   const { Movies, User, CategoryData } = useContext(MovieContext);
   const selectedData = CategoryData.filter((item) => item.display === "show");
   console.log("cdata", CategoryData);
@@ -32,7 +32,10 @@ const Categories = () => {
     <div className="flex flex-col gap-6">
       <div className="flex justify-between items-center p-0 md:p-4 ">
         <h2 className="md:text-xl text-lg text-white  font-bold">Categories</h2>
-        <button className="bg-main font-medium flexRow transi hover:bg-main  gap-4 text-text hover:text-green-500 border border-subMain hover:border-green-500 py-2 px-4 rounded ">
+        <button
+          onClick={() => setModalDisplay((prev) => !prev)}
+          className="bg-main font-medium flexRow transi hover:bg-main  gap-4 text-text hover:text-green-500 border border-subMain hover:border-green-500 py-2 px-4 rounded "
+        >
           <HiPlusCircle /> Create
         </button>
       </div>
