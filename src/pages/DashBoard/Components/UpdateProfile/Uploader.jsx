@@ -35,7 +35,7 @@
 import { useDropzone } from "react-dropzone";
 import { FiUploadCloud } from "react-icons/fi";
 
-const Uploader = ({ onFileUploaded }) => {
+const Uploader = ({ onFileUploaded, For }) => {
   const { getRootProps, getInputProps } = useDropzone({
     multiple: true,
     maxSize: 1000000, // 1 MB
@@ -56,7 +56,9 @@ const Uploader = ({ onFileUploaded }) => {
           <FiUploadCloud />
         </span>
         <p className="text-text text-xl mt-2">
-          Drag your image here or click to upload
+          {For === "vidoe"
+            ? " Drag your  video here or click to upload"
+            : " Drag your image here or click to upload"}
         </p>
         <em className=" text-lg text-border">
           <small>Only jpg, jpeg, png, gif files are allowed</small>

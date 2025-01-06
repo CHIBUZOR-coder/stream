@@ -3,6 +3,7 @@ import { BsBookmarkStarFill } from "react-icons/bs";
 import { CgSelectR } from "react-icons/cg";
 import Star from "../Home/Star";
 import { userData } from "../../Data/UserData";
+import SelectRating from "../../Custom/SelectRating";
 
 const MovieRates = ({ movie }) => {
   const [rating, setRating] = useState(null);
@@ -58,7 +59,7 @@ const MovieRates = ({ movie }) => {
             <div className="">
               <label className="text-border font-semibold">Select Rating</label>
               <div className="relative ">
-                <select
+                {/* <select
                   className="w-full mt-2 px-3 py-4 text-text bg-main border border-border rounded appearance-none"
                   id=""
                   onChange={(e) => setRating(e.target.value)}
@@ -68,7 +69,9 @@ const MovieRates = ({ movie }) => {
                       {option.tittle}
                     </option>
                   ))}
-                </select>
+                </select> */}
+
+                <SelectRating data={Ratings} setRating={setRating} />
                 {/* Custom Arrow */}
                 <div className="absolute top-[47%] cursor-pointer right-4 flex items-center  transform pointer-events-auto">
                   {/* <FaArrowDown className="text-white h-6 w-6" /> */}
