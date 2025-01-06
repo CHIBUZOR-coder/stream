@@ -1,0 +1,1 @@
+import{j as r}from"./index-DKd5fQNS.js";const d=({label:e,placeholder:t,type:s,bg:l})=>r.jsxs("div",{className:"text-sm w-full",children:[r.jsx("label",{htmlFor:"",children:e}),r.jsx("input",{type:s,placeholder:t,className:`w-full mt-2 px-6 p-4 text-white border border-border rounded ${l?"bg-main":"bg-dry"}`})]});export{d as I};
