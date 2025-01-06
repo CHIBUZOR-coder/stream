@@ -14,6 +14,7 @@ import Users from "./ADMIN/Users";
 import { Input } from "../../Custom/Input";
 import { HiPlusCircle } from "react-icons/hi2";
 import { RxUpdate } from "react-icons/rx";
+import AddMovies from "./ADMIN/AddMovies";
 
 const Dashboard = () => {
   const {
@@ -43,7 +44,7 @@ const Dashboard = () => {
     } else if (isActive === "Categories") {
       setDisplay(<Categories />);
     } else if (isActive === "Add Movie") {
-      setDisplay(<div> Add Movie</div>);
+      setDisplay(<AddMovies />);
     } else if (isActive === "Movies List") {
       setDisplay(<MovieList />);
     } else if (isActive === "Dashboard") {
