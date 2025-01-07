@@ -112,7 +112,7 @@ const AddMovie = () => {
           <div className="w-full grid md:grid-cols-2 gap-6 ">
             {/* Images */}
             <div className="flex flex-col gap-2 w-full col-span-2 md:col-span-1 ">
-              <p className="text-border font-semibold text-sm ">Movie Images</p>
+              <p className="text-border font-semibold text-sm ">Movie Image</p>
               <Uploader
                 onFileUploaded={handleFileUploaded}
                 prviewSetter={setpreviewImageV}
