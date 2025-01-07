@@ -96,6 +96,7 @@ select:focus {
   transition: ease-in-out .7s;
 }
 
+
 @media (max-width: 550px) {
   .footText {
     font-size: 12px;
