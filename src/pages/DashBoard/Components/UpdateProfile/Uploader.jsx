@@ -1,7 +1,7 @@
 import { useDropzone } from "react-dropzone";
 import { FiUploadCloud } from "react-icons/fi";
 
-const Uploader = ({ onFileUploaded, For, prviewSetter, MainImage }) => {
+const Uploader = ({ onFileUploaded, For, prviewSetter, MainImageSetter }) => {
   const { getRootProps, getInputProps } = useDropzone({
     multiple: For === "video" ? true : false,
     maxSize: For === "video" ? 750000000 : 1000000,
@@ -25,7 +25,7 @@ const Uploader = ({ onFileUploaded, For, prviewSetter, MainImage }) => {
         For === "video" ? acceptedFiles : acceptedFiles,
         previewFile,
         prviewSetter,
-        MainImage
+        MainImageSetter
       );
     },
   });

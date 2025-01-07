@@ -29,8 +29,8 @@ const AddMovie = () => {
     prviewSetter(preview);
   };
 
-  const handleFileUploaded = (newFiles, preview, prviewSetter, MainImage) => {
-    MainImage((prevImages) => [...prevImages, ...newFiles]);
+  const handleFileUploaded = (newFiles, preview, prviewSetter, MainImageSetter) => {
+    MainImageSetter((prevImages) => [...prevImages, ...newFiles]);
     prviewSetter(preview);
     console.log(newFiles);
   };
@@ -126,7 +126,7 @@ const AddMovie = () => {
               <Uploader
                 onFileUploaded={handleFileUploaded}
                 prviewSetter={setpreviewImageV}
-                MainImage={setMovieImages}
+                MainImageSetter={setMovieImages}
                 For={""}
               />
             </div>
@@ -242,7 +242,7 @@ const AddMovie = () => {
                 onFileUploaded={handleFileUploaded}
                 For={"image"}
                 prviewSetter={setpreviewImageC}
-                MainImage={setImages}
+                MainImageSetter={setImages}
               />
             </div>
           </div>
