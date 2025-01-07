@@ -5,11 +5,7 @@ const Uploader = ({ onFileUploaded, For, prviewSetter, MainImageSetter }) => {
   const { getRootProps, getInputProps } = useDropzone({
     multiple: For === "video" ? true : false,
     maxSize: For === "video" ? 750000000 : 1000000,
-    // accept: For === "video" ? "video/mp4" : "image/jpeg, image/png, image/gif",
-    // onDrop: (acceptedFiles) => {
-    //   const newFiles = acceptedFiles.map((file) => URL.createObjectURL(file));
-    //   onFileUploaded(For === "video" ? newFiles[0] : newFiles); // Single file for images
-    // },
+   
     onDrop: (acceptedFiles, rejectedFiles) => {
       if (rejectedFiles.length > 0) {
         console.error("Some files were rejected due to size or format.");
@@ -20,13 +16,21 @@ const Uploader = ({ onFileUploaded, For, prviewSetter, MainImageSetter }) => {
         URL.createObjectURL(file)
       );
       // onFileUploaded(For === "video" ? previewFile[0] : previewFile); // Single file for ima
-
-      onFileUploaded(
-        For === "video" ? acceptedFiles : acceptedFiles,
-        previewFile,
-        prviewSetter,
-        MainImageSetter
-      );
+      if (For === "video") {
+        onFileUploaded(
+          acceptedFiles,
+          previewFile,
+          prviewSetter,
+          // MainImageSetter
+        );
+      } else {
+        onFileUploaded(
+          acceptedFiles,
+          previewFile,
+          prviewSetter,
+          MainImageSetter
+        );
+      }
     },
   });
 

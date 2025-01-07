@@ -63,7 +63,7 @@ const Banner = React.memo(() => {
                   >
                     watch
                   </Link>
-                  <span className="bg-white flex justify-center items-center hover:text-subMain transi text-white px-3 py-3 rounded bg-opacity-30 ">
+                  <span className="bg-white flex justify-center cursor-pointer items-center hover:text-subMain transi text-white px-3 py-3 rounded bg-opacity-30 ">
                     <FaHeart />
                   </span>
                 </div>

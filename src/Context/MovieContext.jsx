@@ -37,6 +37,7 @@ const MovieProvider = ({ children }) => {
     return localStorage.getItem("Active") || "Dashboard";
   });
   const [display, setDisplay] = useState(<Profile />);
+  // ********Dashboard Done**************
   // *****************Modal Display********
   const [currentModal, setCurrentModal] = useState("Add");
   const [UpdatedTite, setUpdatedTitle] = useState(null);
@@ -48,8 +49,33 @@ const MovieProvider = ({ children }) => {
     console.log(Title);
     setUpdatedTitle(Title);
   };
-
   const [ModalDisplay, setModalDisplay] = useState(false);
+  // *****************Modal Display Done********
+
+
+  
+  // *****Form****************
+  const handleFileUploaded = (
+    newFiles,
+    preview,
+    prviewSetter,
+    MainImageSetter
+  ) => {
+    MainImageSetter((prevImages) => [...prevImages, ...newFiles]);
+    prviewSetter(preview);
+    console.log(newFiles);
+  };
+
+  const handleFileUploadedVideo = (newFiles, preview, prviewSetter) => {
+    prviewSetter(newFiles);
+    prviewSetter(preview);
+  };
+
+  const setInputVal = (vale, setter, mainVal) => {
+    setter(vale);
+    console.log(mainVal);
+  };
+  // ******For Done*******
 
   const YearData = [
     { name: "Sort By Year" },
@@ -195,6 +221,9 @@ const MovieProvider = ({ children }) => {
         setModalDisplay,
         ModalChangeUpdate,
         UpdatedTite,
+        handleFileUploaded,
+        handleFileUploadedVideo,
+        setInputVal,
       }}
     >
       {children}

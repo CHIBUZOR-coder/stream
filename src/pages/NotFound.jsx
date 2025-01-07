@@ -27,7 +27,7 @@ const NotFound = () => {
 
           <Link
             to={"/stream/"}
-            className="bg-subMain text-white flexRow gap-3 font-medium py-2 px-4 rounded-md hover:bg-dry transi hover:text-gray-500"
+            className="bg-subMain border border-subMain text-white flexRow gap-3 font-medium py-2 px-4 rounded-md hover:bg-dry transi hover:text-gray-500"
           >
             <BiHomeAlt/> Back To Home
           </Link>
