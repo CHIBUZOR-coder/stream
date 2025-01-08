@@ -121,7 +121,7 @@ const AddMovie = () => {
               />
 
               {/* PreviewImage */}
-              <div className=" w-full  relative col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 items-center ">
+              <div className=" w-full  relative col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 items-center cursor-default ">
                 <div className="flex gap-4 flex-wrap">
                   {MovieImages.length > 0 ? (
                     MovieImages.map((image, index) => (
@@ -157,17 +157,19 @@ const AddMovie = () => {
                 />
               ) : (
                 <div className="w-full col-span-2 md:col-span-1 flex flex-col justify-center items-center bg-main border-border border-2 h-[178.5px] border-dashed rounded-md">
-                  <p className="w-full p-8  text-lg text-text text-center">
-                    This Feild will only be active after adding Movie Image
-                  </p>
-                  <span className=" flex justify-center items-center animate-pulse rounded-full ">
-                    <TbInfoSquareRoundedFilled className="w-10 h-10" />
-                  </span>
+                  <div className=" animate-pulse">
+                    <p className="w-full p-8  text-lg text-text  text-center">
+                      This Feild will only be active after adding Movie Image
+                    </p>
+                    <span className=" flex justify-center items-center  rounded-full ">
+                      <TbInfoSquareRoundedFilled className="w-10 h-10" />
+                    </span>
+                  </div>
                 </div>
               )}
 
               {/* PreviewVideo*/}
-              <div className=" w-full  relative col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 items-center ">
+              <div className=" w-full  relative col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 items-center cursor-default ">
                 <div className="flex gap-4 flex-wrap">
                   {Video.length > 0 ? (
                     MovieImages.map((image, index) => (
@@ -238,7 +240,7 @@ const AddMovie = () => {
           <div className="w-full grid md:grid-cols-2 gap-6">
             <Input
               label={"Full Name"}
-              placeholder={"Movie featured"}
+              placeholder={"Name"}
               type={"text"}
               bg={true}
               setter={setname}
@@ -269,7 +271,7 @@ const AddMovie = () => {
             </div>
           </div>
           {/* Preview */}
-          <div className=" w-full  relative col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 items-center ">
+          <div className=" w-full  relative col-span-2 grid grid-cols-1 md:grid-cols-3 gap-6 items-start cursor-default ">
             <div className="flex gap-4 flex-wrap">
               {Images.length > 0 ? (
                 Images.map((image, index) => (
@@ -291,14 +293,43 @@ const AddMovie = () => {
               )}
             </div>
 
-            {/* Category */}
-            {/* <div className="w-full relative text-sm">
-              <SelectRating data={selectedData} />
-              <div className="absolute top-[47%] cursor-pointer right-4 flex items-center  transform pointer-events-auto">
-             
-                <CgSelectR className="text-white h-4 w-4 " />
-              </div>
-            </div> */}
+            <div
+              className={`bg-main w-full border-2 border-border col-span-2 border-dashed rounded-md p-2 `}
+            >
+              {Casts.length > 0 ? (
+                <div
+                  className={` ${
+                    Casts.length > 0
+                      ? "grid   grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-3 items-center p-2"
+                      : " flex justify-start items-center"
+                  } w-full `}
+                >
+                  {Casts.map((cast, i) => (
+                    <div
+                      key={i}
+                      className="flex flex-col items-center justify-center"
+                    >
+                      <div className=" p-2 bg-main border border-border rounded ">
+                        <img
+                          src={
+                            cast.imageurl.length > 0
+                              ? URL.createObjectURL(cast.imageurl[0])
+                              : ""
+                          }
+                          alt={`${cast.name}'s Image`}
+                          className="w-32 h-32 object-cover rounded"
+                        />
+                      </div>
+                      <p>{cast.name}</p>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="w-full flex justify-center items-center  ">
+                  <p className="text-text w-full text-center">No cast added</p>
+                </div>
+              )}
+            </div>
           </div>
 
           <div className="w-full flex justify-center gap-6">
@@ -317,7 +348,7 @@ const AddMovie = () => {
                 AddCast(Name, Role, Images);
                 // Additional functionality for Add button
               }}
-              className="md:w-1/2 w-full  font-semibold flexRow py-3 rounded border-2 gap-3 Oga cursor-pointer transi  border-subMain bg-main text-white hover:bg-subMain"
+              className="md:w-1/2 w-full  font-semibold flexRow py-3  rounded border-2 gap-2 Ogaa cursor-pointer transi  border-subMain bg-main text-white hover:bg-subMain"
             >
               <HiPlusCircle className="pikin h-7 w-7" /> Add Cast
             </span>

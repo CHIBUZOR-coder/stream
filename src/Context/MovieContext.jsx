@@ -52,8 +52,6 @@ const MovieProvider = ({ children }) => {
   const [ModalDisplay, setModalDisplay] = useState(false);
   // *****************Modal Display Done********
 
-
-  
   // *****Form****************
   const handleFileUploaded = (
     newFiles,
@@ -63,7 +61,8 @@ const MovieProvider = ({ children }) => {
   ) => {
     MainImageSetter((prevImages) => [...prevImages, ...newFiles]);
     prviewSetter(preview);
-    console.log(newFiles);
+    console.log("file", newFiles);
+    console.log("preview", preview);
   };
 
   const handleFileUploadedVideo = (newFiles, preview, prviewSetter) => {

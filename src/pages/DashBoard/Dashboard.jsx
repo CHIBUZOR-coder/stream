@@ -129,7 +129,7 @@ const Dashboard = () => {
             <SideBar />
           </div>
 
-          <div className=" w-full lg:w-[75%] bg-dry  rounded-md border border-gray-800 p-4">
+          <div className=" w-full lg:w-[75%] bg-dry  rounded-md border border-gray-800 rightbar p-4">
             {display}
           </div>
         </div>
