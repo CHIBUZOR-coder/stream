@@ -1,0 +1,71 @@
+import React, { useContext, useState } from "react";
+import Banner from "./Banner";
+import { BlogContext } from "./Context/EcomContext";
+import { Link } from "react-router-dom";
+
+function BlogListItem() {
+  const { fetchedData } = useContext(BlogContext);
+  const [activePage, setPage] = useState(1);
+
+  const pageShow = [
+    { page: 1 },
+    { page: 2 },
+    { page: 3 },
+  ];
+
+  const selected1 = fetchedData.filter((data) => data.id <= 5);
+  const selected2 = fetchedData.filter((data) => data.id >= 6 && data.id <= 10);
+  const selected3 = fetchedData.filter((data) => data.id >= 11 && data.id <= 15);
+  const [itemsToShow, setItemsTshow] = useState(selected1);
+
+  // Handle page click logic
+  const HandlePage_Active = (pageNum) => {
+    setPage(pageNum); // Set the active page
+    if (pageNum === 1) setItemsTshow(selected1); // Update items for page 1
+    else if (pageNum === 2) setItemsTshow(selected2); // Update items for page 2
+    else setItemsTshow(selected3); // Update items for page 3
+  };
+
+  return (
+    <div className="bg-blue-200 w-[55rem] m-auto flex flex-col gap-2">
+      <div className="w-[100%] pb-20">
+        <Banner />
+      </div>
+      {itemsToShow.map((Blog) => (
+        <div
+          key={Blog.id}
+          className="w-full p-5 flex gap-2 justify-center items-center"
+        >
+          <Link
+            to={"/"}
+            style={{
+              backgroundImage: url(./img/${Blog.image}),
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+            }}
+            className="w-[40%] h-48 p-5"
+          ></Link>
+          <div className="flex w-[40%] h-48 flex-col">
+            <div className="font-semibold text-xl">{Blog.head}</div>
+            <div className="font-semibold">{Blog.text}</div>
+          </div>
+        </div>
+      ))}
+
+      <div className="flex justify-center items-center w-full p-2 gap-4">
+        {pageShow.map((num) => (
+          <p
+            onClick={() => HandlePage_Active(num.page)} // Call HandlePage_Active with page number
+            className={`rounded-full ${
+              activePage === num.page ? "bg-red-400" : "bg-gray-500"
+            } cursor-pointer h-8 w-8 flex justify-center items-center`}
+          >
+            {num.page}
+          </p>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default BlogListItem;

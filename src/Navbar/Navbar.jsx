@@ -68,7 +68,7 @@ const Navbar = () => {
                     : "hover:text-subMain transi text-white relative"
                 } hov`
               }
-              to={`/stream/favourite`}
+              to={`/stream/favouritpage`}
             >
               <FaHeartCircleCheck />
               <p className="w-4 h-4 flexCol_mdRow rounded-full hova text-xs bg-subMain text-white absolute top-[-15px] right-[-1px]">
