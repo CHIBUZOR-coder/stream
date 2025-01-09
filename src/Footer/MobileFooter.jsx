@@ -69,7 +69,7 @@ const HandleActive = (value) => {
                     isActive === mobLink.name
                       ? "bg-white text-main"
                       : "text-white"
-                  } py-2 px-3 rounded-md flex justify-center items-center hover:text-main hover:bg-white transi ${
+                  } py-2 px-3 rounded-md flex justify-center items-center hover:text-main hover:bg-white  ${
                     mobLink.bg ? "text-white " : ""
                   }  `}
                 >
