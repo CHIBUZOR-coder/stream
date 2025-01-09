@@ -8,7 +8,6 @@
 //   const { Movies, User } = useContext(MovieContext);
 // const selected = Movies.slice(0, 10);
 
- 
 //   return (
 //     <Layout>
 //       <div className="flex flex-col gap-6">
@@ -26,11 +25,11 @@
 
 // export default FavouritePage;
 
-
 import { useContext, useState, useEffect, useMemo } from "react";
 import MovieContext from "../Context/MovieContext";
-import Table from "../Custom/Table";
 import Layout from "../Layout/Layout";
+import { Link } from "react-router-dom";
+import { GoEye } from "react-icons/go";
 
 const FavouritePage = () => {
   const { Movies, User } = useContext(MovieContext);
@@ -44,6 +43,9 @@ const FavouritePage = () => {
 
   // Total pages for pagination
   const totalPages = Math.ceil(Movies.length / itemsPerPage);
+    const Head =
+      "text-xs text-left text-main font-semibold px-6 py-2 uppercase ";
+    const Text = "text-sm text-left leading-6 whitespace-nowrap px-5 py-3";
 
   return (
     <Layout>
@@ -55,8 +57,70 @@ const FavouritePage = () => {
           </h2>
         </div>
 
-        {/* Movies Table */}
-        <Table data={paginatedMovies} User={User} />
+        <div className="overflow-x-scroll overflow-hidden relative w-full">
+          <table className="table-auto w-full text-white border  border-border divide-y divide-border">
+            <thead>
+              <tr className="bg-dryGray">
+                <th scope="col" className={`${Head}`}>
+                  Image
+                </th>
+                <th scope="col" className={`${Head}`}>
+                  Name
+                </th>
+                <th scope="col" className={`${Head}`}>
+                  Category
+                </th>
+                {/* <th scope="col" className={`${Head}`}>
+              Language
+            </th> */}
+                <th scope="col" className={`${Head}`}>
+                  Year
+                </th>
+                <th scope="col" className={`${Head}`}>
+                  Hours
+                </th>
+                <th scope="col" className={`${Head}`}>
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody className=" bg-main divide-y divide-gray-800">
+              {paginatedMovies.map((movie, i) => (
+                <tr key={i}>
+                  <td className={`${Text}`}>
+                    <div className="w-12 bg-dry borer border-border rounded h-12 overflow-hidden ">
+                      <img
+                        src={`./images/${movie.image}.jpg`}
+                        alt={movie.name}
+                        className="w-full h-full object-cover rounded-md"
+                      />
+                    </div>
+                  </td>
+                  <td className={`${Text}`}>
+                    <p>{movie.name}</p>
+                  </td>
+                  <td className={`${Text}`}>
+                    <p>{movie.category}</p>
+                  </td>
+                  <td className={`${Text}`}>
+                    <p>{movie.year}</p>
+                  </td>
+                  <td className={`${Text}`}>
+                    <p>{movie.hours}</p>
+                  </td>
+                  <td className={`${Text} float-right flexRow gap-2`}>
+                    <Link
+                      to={`/stream/watch/${movie.name}`}
+                      className="bg-subMain text-white rounded flexCol py-2 px-4  "
+                    >
+                      <GoEye className="w-6 h-6" />
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
         {/* Pagination Controls */}
         <div className="flex justify-center gap-2 mb-7 mt-2">
