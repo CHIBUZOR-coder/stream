@@ -165,6 +165,7 @@ export const Movies = [
     rating: 2.5,
     approxiR: "2 Star",
     language: "English",
+    fav: true,
     description: "Seventh installment of the Mission Impossible franchise.",
   },
   {
@@ -180,6 +181,7 @@ export const Movies = [
     approxiY: "2010 - 2030",
     rating: 3,
     approxiR: "3 Star",
+    fav: true,
     language: "English",
     description:
       "The world's top bodyguard gets a new client, a hitman who must testify at the International Criminal Court. They must put their differences aside and work together to make it to the trial on time.",
@@ -229,6 +231,7 @@ export const Movies = [
     category: "Action",
     year: "2002",
     approxiY: "2000 - 2010",
+    fav: true,
     rating: 4.5,
     approxiR: "4 Star",
     language: "English",

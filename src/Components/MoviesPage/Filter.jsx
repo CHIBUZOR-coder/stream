@@ -53,7 +53,7 @@ const Filters  = React.memo( ({ Movies }) => {
       {Filter.map((dropdown) => (
         <div key={dropdown.id} onClick={() => handleToggle(dropdown.id)}>
           <div className="relative w-full flex items-center cursor-pointer border-gray-800 text-white px-4 py-2 text-left bg-main rounded-lg focus:outline-none focus:ring-1 focus:border-dry">
-            <span className="block font-semibold">
+            <span className="block font-semibold text-[0.7rem] filterr md:text-[1rem] ">
               {selectedItems[dropdown.id]
                 ? dropdown.items.find(
                     (item) => item.id === selectedItems[dropdown.id]
@@ -88,7 +88,7 @@ const Filters  = React.memo( ({ Movies }) => {
                       <FaCheck className="h-4 w-4" />
                     )}
                   </span>
-                  <span className="truncate font-semibold">{item.tittle}</span>
+                  <span className="truncate font-semibold ">{item.tittle}</span>
                 </div>
               ))}
             </div>

@@ -33,13 +33,17 @@ import { GoEye } from "react-icons/go";
 
 const FavouritePage = () => {
   const { Movies, User } = useContext(MovieContext);
+  
   const [page, setPage] = useState(1);
   const itemsPerPage = 10;
 
+  
   // Paginated movies for the current page
   const paginatedMovies = useMemo(() => {
     return Movies.slice((page - 1) * itemsPerPage, page * itemsPerPage);
   }, [Movies, page]);
+
+
 
   // Total pages for pagination
   const totalPages = Math.ceil(Movies.length / itemsPerPage);

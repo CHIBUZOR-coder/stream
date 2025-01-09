@@ -109,4 +109,7 @@ select:focus {
     height: 1rem;
     width: 1rem;
   }
+  .filterr{
+    font-size: 0.5rem;
+  }
 }
