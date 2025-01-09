@@ -96,6 +96,11 @@ select:focus {
   transition: ease-in-out 0.7s;
 }
 
+.mobie_notiP:hover .mobie_noti {
+  color: white;
+  background-color: rgba(8, 10, 26, 1);
+}
+
 @media (max-width: 550px) {
   .footText {
     font-size: 12px;
@@ -103,7 +108,5 @@ select:focus {
   .pikin {
     height: 1rem;
     width: 1rem;
-    
   }
-
 }
