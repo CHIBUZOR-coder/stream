@@ -3,7 +3,7 @@ import { GoEye } from "react-icons/go";
 import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-const Table = ({ data, User }) => {
+const Table = ({ data, User  }) => {
   // console.log(User.role);
   
   const Head = "text-xs text-left text-main font-semibold px-6 py-2 uppercase ";

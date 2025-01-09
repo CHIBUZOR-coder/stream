@@ -1,11 +1,14 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import MovieContext from "../Context/MovieContext";
 import Table from "../Custom/Table";
 import Layout from "../Layout/Layout";
 
 const FavouritePage = () => {
-  const { Movies, User } = useContext(MovieContext);
+  const { Movies, User, selected } = useContext(MovieContext);
+
+  const maxPage = 10;
+  const [page, SetPage] = useState(maxPage);
   return (
     <Layout>
       <div className="flex flex-col gap-6">
@@ -15,7 +18,7 @@ const FavouritePage = () => {
           </h2>
         </div>
 
-        <Table data={Movies} User={User} />
+        <Table data={selected} User={User} page={false} maxPage={false} />
       </div>
     </Layout>
   );

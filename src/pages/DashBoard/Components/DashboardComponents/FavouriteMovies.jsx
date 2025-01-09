@@ -4,6 +4,7 @@ import Table from "../../../../Custom/Table";
 
 const Favourite = () => {
   const { Movies, User } = useContext(MovieContext);
+      const selected = Movies.slice(0, 10);
   return (
     <div className="flex flex-col gap-6">
       <div className="flex justify-between items-center p-0 md:p-4 ">
@@ -15,7 +16,7 @@ const Favourite = () => {
         </button>
       </div>
 
-      <Table data={Movies}  User={User} />
+      <Table data={selected}  User={User} />
     </div>
   );
 };

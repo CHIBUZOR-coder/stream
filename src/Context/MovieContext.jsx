@@ -51,6 +51,8 @@ const MovieProvider = ({ children }) => {
   };
   const [ModalDisplay, setModalDisplay] = useState(false);
   // *****************Modal Display Done********
+// Frontend pagination
+
 
   // *****Form****************
   const handleFileUploaded = (
