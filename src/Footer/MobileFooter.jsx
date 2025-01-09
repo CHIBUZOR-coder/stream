@@ -10,36 +10,6 @@ const MobileFooter = () => {
   const hover = "hover:text-subMain transi text-white relative";
   const Hover = ({ isActive }) => (isActive ? "text-subMain  " : hover);
 
-  const MobileLinks = [
-    {
-      icon: <BiHomeAlt className="w-6 h-6" />,
-      path: "/stream/",
-      name: "home",
-      bg: false,
-    },
-    {
-      icon: <FaHeartCircleCheck className="w-6 h-6" />,
-      path: "/stream/favouritpage",
-      name: "favourite",
-      bg: false,
-    },
-    {
-      icon: <FaUserCircle className="w-6 h-6" />,
-      path: "/stream/login",
-      name: "login",
-      bg: false,
-    },
-    {
-      icon: (
-        <button>
-          <CgMenu className="w-6 h-6" />
-        </button>
-      ),
-      path: "",
-      name: "",
-      bg: true,
-    },
-  ];
 
   return (
     <>
