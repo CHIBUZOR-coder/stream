@@ -7,8 +7,8 @@ import Layout from "../Layout/Layout";
 const FavouritePage = () => {
   const { Movies, User } = useContext(MovieContext);
 const selected = Movies.slice(0, 10);
-  const maxPage = 10;
-  const [page, SetPage] = useState(maxPage);
+
+ 
   return (
     <Layout>
       <div className="flex flex-col gap-6">
@@ -18,7 +18,7 @@ const selected = Movies.slice(0, 10);
           </h2>
         </div>
 
-        <Table data={selected} User={User} page={false} maxPage={false} />
+        <Table data={selected} User={User}  />
       </div>
     </Layout>
   );
