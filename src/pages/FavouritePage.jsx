@@ -59,7 +59,7 @@ const FavouritePage = () => {
         <Table data={paginatedMovies} User={User} />
 
         {/* Pagination Controls */}
-        <div className="flex justify-center gap-2 mt-4">
+        <div className="flex justify-center gap-2 mb-7 mt-2">
           <button
             disabled={page === 1}
             onClick={() => setPage((prev) => prev - 1)}
