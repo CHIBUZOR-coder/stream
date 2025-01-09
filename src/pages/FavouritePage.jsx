@@ -57,7 +57,7 @@ const FavouritePage = () => {
           </h2>
         </div>
 
-        <div className="overflow-x-scroll overflow-hidden relative w-full">
+        {/* <div className="overflow-x-scroll overflow-hidden relative w-full">
           <table className="table-auto w-full text-white border  border-border divide-y divide-border">
             <thead>
               <tr className="bg-dryGray">
@@ -70,9 +70,7 @@ const FavouritePage = () => {
                 <th scope="col" className={`${Head}`}>
                   Category
                 </th>
-                {/* <th scope="col" className={`${Head}`}>
-              Language
-            </th> */}
+             
                 <th scope="col" className={`${Head}`}>
                   Year
                 </th>
@@ -120,7 +118,7 @@ const FavouritePage = () => {
               ))}
             </tbody>
           </table>
-        </div>
+        </div> */}
 
         {/* Pagination Controls */}
         <div className="flex justify-center gap-2 mb-7 mt-2">
