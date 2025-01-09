@@ -5,8 +5,8 @@ import Table from "../Custom/Table";
 import Layout from "../Layout/Layout";
 
 const FavouritePage = () => {
-  const { Movies, User, selected } = useContext(MovieContext);
-
+  const { Movies, User } = useContext(MovieContext);
+const selected = Movies.slice(0, 10);
   const maxPage = 10;
   const [page, SetPage] = useState(maxPage);
   return (
