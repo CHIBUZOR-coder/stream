@@ -101,7 +101,7 @@ select:focus {
   background-color: rgba(8, 10, 26, 1);
 }
 
-@media (max-width: 400px) {
+@media (max-width: 350px) {
   .footText {
     font-size: 12px;
   }
