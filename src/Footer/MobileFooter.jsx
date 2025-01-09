@@ -70,7 +70,7 @@ const HandleActive = (value) => {
                       ? "bg-white text-main"
                       : "text-white"
                   } py-2 px-3 rounded-md flex justify-center items-center hover:text-main hover:bg-white transi ${
-                    mobLink.bg ? "bg-white text-dry" : ""
+                    mobLink.bg ? "text-white " : ""
                   }  `}
                 >
                   {mobLink.icon}
