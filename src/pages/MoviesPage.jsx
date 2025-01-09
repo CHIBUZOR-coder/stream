@@ -2,20 +2,16 @@ import { Link } from "react-router-dom";
 import Filters from "../Components/MoviesPage/Filter";
 import Layout from "../Layout/Layout";
 import { FaHeart } from "react-icons/fa";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 // import { MovieContext } from "../Context/MovieContext";
-import  MovieContext  from "../Context/MovieContext"; 
+import MovieContext from "../Context/MovieContext";
 import { CgSpinner } from "react-icons/cg";
 
 const MoviesPage = () => {
   const { userChoice, Movies } = useContext(MovieContext);
-  const maxPage = 10;
-  const [page, SetPage] = useState(maxPage);
-  const [load, setLoad] = useState(false);
-  const HandelLoadMore = () => {
-    setLoad(true); // Show the spinner
-    SetPage(page + maxPage);
-  };
+  const maxDisplay = 10;
+  const maxPage = 39;
+  const [page, SetPage] = useState(0);
 
   const filterMovies = () => {
     if (!userChoice || Object.keys(userChoice).length === 0) {
@@ -43,6 +39,33 @@ const MoviesPage = () => {
   };
 
   const filteredMovies = filterMovies();
+  const HandelLoadQuantity = (val) => {
+    if (val === "next") {
+      if (page + maxDisplay < filteredMovies.length) {
+        SetPage(page + maxDisplay);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    } else if (val === "prev") {
+      if (page - maxDisplay >= 0) {
+        SetPage(page - maxDisplay);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    } else {
+      console.log("error");
+    }
+  };
+
+  useEffect(() => {
+    console.log("page", page);
+  }, [page]);
+
+  useEffect(() => {
+    console.log("filtered", filteredMovies.length);
+  }, [filterMovies]);
+
+  useEffect(() => {
+    console.log("max", maxDisplay);
+  }, [maxDisplay]);
 
   return (
     <Layout>
@@ -56,8 +79,11 @@ const MoviesPage = () => {
           </span>
         </p>
 
-        <div className="grid sm:mt-10 mt-6 xl:grid-cols-4 2xl:grid-cols-5 lg:grid-cols-3 sm:grid-cols-1 gap-6">
-          {filteredMovies.slice(0, page).map((movie, index) => (
+        <div
+          id="#top"
+          className="grid sm:mt-10 mt-6 xl:grid-cols-4 2xl:grid-cols-5 lg:grid-cols-3 sm:grid-cols-1 gap-6"
+        >
+          {filteredMovies.slice(page, page + maxDisplay).map((movie, index) => (
             <Link
               to={`/stream/movie/${movie.id}`}
               key={`${movie.id}`}
@@ -76,12 +102,23 @@ const MoviesPage = () => {
           ))}
         </div>
 
-        <div className=" my-10 md:my-16 flex justify-center items-center w-full">
+        <div className=" my-10 md:my-16 flex justify-center gap-5 items-center w-full">
           <span
-            onClick={HandelLoadMore}
-            className=" border-2 flex justify-center items-center gap-2 rounded-md cursor-pointer border-subMain py-3 px-8"
+            onClick={(e) => HandelLoadQuantity("prev")}
+            className={` ${
+              page > 0 ? "bg-subMain" : ""
+            } border-2 flex justify-center items-center gap-2 rounded-md cursor-pointer border-subMain py-3 px-8`}
           >
-            LoadMore
+            prev
+          </span>
+
+          <span
+            onClick={(e) => HandelLoadQuantity("next")}
+            className={` ${
+              page < maxPage ? "bg-subMain" : ""
+            } border-2 flex justify-center items-center gap-2 rounded-md cursor-pointer border-subMain py-3 px-8`}
+          >
+            next
           </span>
         </div>
       </div>
