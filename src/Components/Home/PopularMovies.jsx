@@ -8,7 +8,7 @@ import MovieContext from "../../Context/MovieContext";
 const PopularMovies = () => {
   const { AddToCart } = useContext(MovieContext);
   const selected = Movies.filter((movie) => movie.popular === "true");
-  console.log("selected", selected);
+  // console.log("selected", selected);
 
   return (
     <div>

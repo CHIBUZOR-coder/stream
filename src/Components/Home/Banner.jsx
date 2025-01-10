@@ -31,8 +31,8 @@ const Banner = React.memo(() => {
         direction="vertical"
         spaceBetween={0}
         slidesPerView={1}
-        lazy={true}
-        preloadImages={false}
+        lazy="true"
+       
         loop={true}
         speed={1000}
         modules={[Autoplay]}

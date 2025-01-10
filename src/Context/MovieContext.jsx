@@ -41,7 +41,7 @@ const MovieProvider = ({ children }) => {
   // *****************Modal Display********
   const [currentModal, setCurrentModal] = useState("Add");
   const [UpdatedTite, setUpdatedTitle] = useState(null);
-  console.log(currentModal);
+  // console.log(currentModal);
   const ModalChangeUpdate = (Title) => {
     setModalDisplay((prev) => !prev);
     setCurrentModal("Edit");
@@ -59,11 +59,13 @@ const MovieProvider = ({ children }) => {
   });
   useEffect(() => {
     const favouriteCount = FavouriteCart.reduce((acc, curr) => {
-      return acc + curr;
+      return acc + curr.quantity;
     }, 0);
     const count = favouriteCount ? favouriteCount : 0;
     setFavouriteCount(count);
-  }, []);
+
+    console.log(count);
+  }, [FavouriteCart]);
   // *****Form****************
   const handleFileUploaded = (
     newFiles,
@@ -207,16 +209,20 @@ const MovieProvider = ({ children }) => {
   ];
 
   //Alert
-  const Alert = (success, errorMessage, message) => {
+  const Alert = (success, value) => {
     if (success) {
+      let message;
+      message = value;
       return message;
     } else if (!success) {
+      let errorMessage;
+      errorMessage = value;
       return errorMessage;
     }
   };
 
   useEffect(() => {
-    console.log("FavouriteMovies",FavouriteCart);
+    console.log("FavouriteMovies", FavouriteCart);
   }, [FavouriteCart]);
 
   //Add to favorite cart
@@ -227,19 +233,35 @@ const MovieProvider = ({ children }) => {
     const addedMovie = StoredFavouriteCart.find(
       (item) => item.id === parseInt(movie.id)
     );
-
+    let feedback;
     const total = amount;
     const vat = 22;
+    const quantity = 1;
     if (addedMovie) {
+      console.log("Movie already exists");
+      feedback = Alert(false, " Movie already exist");
+      console.log("feedback", feedback);
+
+      return;
+
       // addedMovie = { ...addedMovie, amount, vat };
       StoredFavouriteCart = StoredFavouriteCart.map((item) =>
-        item.id === parseInt(movie.id) ? { ...item, total, amount, vat } : item
+        item.id === parseInt(movie.id)
+          ? { ...item, total, amount, vat, quantity }
+          : item
       );
     } else {
       StoredFavouriteCart = [
         ...StoredFavouriteCart,
-        { ...movie, total, amount, vat },
+        { ...movie, total, amount, vat, quantity },
       ];
+      const check = StoredFavouriteCart.find(
+        (item) => item.name === movie.name
+      );
+      if (check) {
+        feedback = Alert(true, " Movie added Succesfully");
+        console.log("feedback", feedback);
+      }
     }
 
     localStorage.setItem("FavouriteCart", JSON.stringify(StoredFavouriteCart));
@@ -277,6 +299,7 @@ const MovieProvider = ({ children }) => {
         setInputVal,
         AddToCart,
         Alert,
+        FavouriteCount,
       }}
     >
       {children}

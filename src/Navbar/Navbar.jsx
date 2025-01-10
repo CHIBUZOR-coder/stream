@@ -1,9 +1,12 @@
+import { useContext } from "react";
 import { BsFillSearchHeartFill } from "react-icons/bs";
 import { FaUserCircle } from "react-icons/fa";
 import { FaHeartCircleCheck } from "react-icons/fa6";
 import { Link, NavLink } from "react-router-dom";
+import MovieContext from "../Context/MovieContext";
 
 const Navbar = () => {
+  const { FavouriteCount } = useContext(MovieContext);
   const hover = "hover:text-subMain transi text-white relative";
   const Hover = ({ isActive }) => (isActive ? "text-subMain" : hover);
   return (
@@ -72,7 +75,7 @@ const Navbar = () => {
             >
               <FaHeartCircleCheck />
               <p className="w-4 h-4 flexCol_mdRow rounded-full hova text-xs bg-subMain text-white absolute top-[-15px] right-[-1px]">
-                3
+                {FavouriteCount}
               </p>
             </NavLink>
           </div>
