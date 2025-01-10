@@ -15,6 +15,7 @@ export const Movies = [
     language: "English",
     description:
       "The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe.",
+    price: 150,
   },
   {
     id: 2,
@@ -32,6 +33,7 @@ export const Movies = [
     language: "English",
     description:
       "After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.",
+    price: 200,
   },
   {
     id: 3,
@@ -48,6 +50,7 @@ export const Movies = [
     approxiR: "3 Star",
     language: "English",
     description: "The continuing adventures of assassin John Wick.",
+    price: 180,
   },
   {
     id: 4,
@@ -65,6 +68,7 @@ export const Movies = [
     language: "English",
     description:
       "Four teenagers are sucked into a magical video game, and the only way they can escape is to work together to finish the game.",
+    price: 160,
   },
   {
     id: 5,
@@ -82,6 +86,7 @@ export const Movies = [
     language: "English",
     description:
       "As they return to rescue one of their own, the players will have to brave parts unknown from arid deserts to snowy mountains, to escape the world's most dangerous game.",
+    price: 170,
   },
   {
     id: 6,
@@ -99,6 +104,7 @@ export const Movies = [
     language: "English",
     description:
       "Peter Parker balances his life as an ordinary high school student in Queens with his superhero alter-ego Spider-Man, and finds himself on the trail of a new menace prowling the skies of New York City.",
+    price: 150,
   },
   {
     id: 7,
@@ -116,6 +122,7 @@ export const Movies = [
     language: "English",
     description:
       "Peter Parker and his friends go on a summer trip to Europe. However, they will hardly be able to rest - Peter will have to agree to help Nick Fury uncover the mystery of creatures that cause natural disasters and destruction throughout the continent.",
+    price: 190,
   },
   {
     id: 8,
@@ -133,6 +140,7 @@ export const Movies = [
     language: "English",
     description:
       "With Spider man's identity now revealed, Peter asks Doctor Strange for help. When a spell goes wrong, dangerous foes from other worlds start to appear, forcing Peter to discover what it truly means to be Spiderman.",
+    price: 220,
   },
   {
     id: 9,
@@ -150,6 +158,7 @@ export const Movies = [
     language: "English",
     description:
       "The film is set in 1994 and will introduce new characters and a new storyline that will take the Transformers universe in a new direction.",
+    price: 160,
   },
   {
     id: 10,
@@ -167,6 +176,7 @@ export const Movies = [
     language: "English",
     fav: true,
     description: "Seventh installment of the Mission Impossible franchise.",
+    price: 230,
   },
   {
     id: 11,
@@ -185,6 +195,7 @@ export const Movies = [
     language: "English",
     description:
       "The world's top bodyguard gets a new client, a hitman who must testify at the International Criminal Court. They must put their differences aside and work together to make it to the trial on time.",
+    price: 180,
   },
   {
     id: 12,
@@ -202,6 +213,7 @@ export const Movies = [
     language: "English",
     description:
       "Fueled by his restored faith in humanity and inspired by Superman's selfless act, Bruce Wayne enlists the help of his new-found ally, Diana Prince, to face an even greater enemy.",
+    price: 150,
   },
   {
     id: 13,
@@ -219,6 +231,7 @@ export const Movies = [
     language: "English",
     description:
       "When bitten by a genetically modified spider, a nerdy, shy, and awkward high school student gains spider-like abilities that he eventually must use to fight evil as a superhero after tragedy befalls his family.",
+    price: 150,
   },
   {
     id: 14,
@@ -237,6 +250,7 @@ export const Movies = [
     language: "English",
     description:
       "Peter Parker is beset with troubles in his failing personal life as he battles a brilliant scientist named Doctor Otto Octavius.",
+    price: 180,
   },
   {
     id: 15,
@@ -254,6 +268,7 @@ export const Movies = [
     language: "English",
     description:
       "A strange black entity from another world bonds with Peter Parker and causes inner turmoil as he contends with new villains, temptations, and revenge.",
+    price: 200,
   },
   {
     id: 16,
@@ -271,6 +286,7 @@ export const Movies = [
     language: "English",
     description:
       "This contemporary romantic comedy, based on a global bestseller, follows native New Yorker Rachel Chu to Singapore to meet her boyfriend's family.",
+    price: 160,
   },
   {
     id: 17,
@@ -288,6 +304,7 @@ export const Movies = [
     language: "English",
     description:
       "A high school student finds herself face-to-face with her long-term crush when she signs up to run a kissing booth at the spring carnival.",
+    price: 170,
   },
   {
     id: 18,
@@ -305,6 +322,7 @@ export const Movies = [
     language: "English",
     description:
       "In the sequel to 2018's THE KISSING BOOTH, high school senior Elle juggles a long-distance relationship with her dreamy boyfriend Noah, college applications, and a new friendship with a handsome classmate that could change everything.",
+    price: 150,
   },
   {
     id: 19,
@@ -322,6 +340,7 @@ export const Movies = [
     language: "English",
     description:
       "It's the summer before Elle heads to college, and she has a secret decision to make. Elle has been accepted into Harvard, where boyfriend Noah is matriculating, and also Berkeley, where her BFF Lee is headed and has to decide if she should move across the country to be with her boyfriend or stay and fulfill her lifelong promise to go to Berkeley with her BFF. Whose heart will Elle break?",
+    price: 170,
   },
   {
     id: 20,
@@ -339,6 +358,7 @@ export const Movies = [
     language: "English",
     description:
       "Zoey is a brilliant college student who's determined to challenge the conventional ideas of love and dating. Her life soon gets turned upside down when an amnesiac mistakenly believes she's his girlfriend, who also happens to share the name Zoey.",
+    price: 190,
   },
   {
     id: 21,
@@ -356,6 +376,7 @@ export const Movies = [
     language: "English",
     description:
       "To save up for college, Brooks Rattigan creates an app where anyone can pay him to play the perfect stand-in boyfriend for any occasion.",
+    price: 155,
   },
   {
     id: 22,
@@ -373,6 +394,7 @@ export const Movies = [
     language: "English",
     description:
       "On their flight from New York to London, Hadley and Oliver fall in love with each other. However, they lose each other at customs and the possibility of ever meeting each other again seems improbable, but destiny may have a way of changing the odds.",
+    price: 160,
   },
   {
     id: 23,
@@ -390,6 +412,7 @@ export const Movies = [
     language: "English",
     description:
       "A newly single woman learns the Italian villa she reserved is double-booked, and she'll have to share it with a cynical stranger.",
+    price: 165,
   },
   {
     id: 24,
@@ -407,6 +430,7 @@ export const Movies = [
     language: "English",
     description:
       "Peter and Emma are total strangers who are both dumped by their respective partners. They team up to break up their exes' new relationships and win them back.",
+    price: 175,
   },
   {
     id: 25,
@@ -424,6 +448,7 @@ export const Movies = [
     language: "English",
     description:
       "After a break-up, corporate executive Gabriela Diaz enters a contest to Win an Inn overlooking New Zealand's countryside. Thousands of airline miles later, she finds The Bellbird Valley Farm lacking in curb appeal but is determined to renovate.",
+    price: 185,
   },
   {
     id: 26,
@@ -441,6 +466,7 @@ export const Movies = [
     language: "English",
     description:
       "The sequel to Thor: Ragnarok and the fourth movie in the Thor saga.",
+    price: 200,
   },
   {
     id: 27,
@@ -458,8 +484,8 @@ export const Movies = [
     language: "English",
     description:
       "Imprisoned on the planet Sakaar, Thor gets pitted against The Hulk, a former ally and fellow Avenger. Thor's quest for survival",
+    price: 150,
   },
-
   {
     id: 28,
     name: "Ghosted",
@@ -476,6 +502,7 @@ export const Movies = [
     language: "English",
     description:
       "Cole falls head over heels for enigmatic Sadie, but then makes the shocking discovery that she's a secret agent. Before they can decide on a second date, Cole and Sadie are swept away on an international adventure to save the world.",
+    price: 190,
   },
   {
     id: 29,
@@ -550,7 +577,7 @@ export const Movies = [
     name: "Killers",
     image: "killers",
     video: "",
-    time: "1h 40",
+    time: "1h 40m",
     approxiT: "1 - 2 hrs",
     popular: "false",
     category: "Dramma",
@@ -628,7 +655,7 @@ export const Movies = [
     approxiR: "3 Star",
     language: "English",
     description:
-      "A teenage coding genius has just 30 days to create the world's greatest video game or his family loses everything. No pressure ",
+      "A teenage coding genius has just 30 days to create the world's greatest video game or his family loses everything. No pressure",
   },
   {
     id: 38,

@@ -51,9 +51,19 @@ const MovieProvider = ({ children }) => {
   };
   const [ModalDisplay, setModalDisplay] = useState(false);
   // *****************Modal Display Done********
-// Frontend pagination
 
-
+  //Favourite Cart
+  const [FavouriteCount, setFavouriteCount] = useState(0);
+  const [FavouriteCart, setFavouriteCart] = useState(() => {
+    return localStorage.getItem("FavoriteCart") || [];
+  });
+  useEffect(() => {
+    const favouriteCount = FavouriteCart.reduce((acc, curr) => {
+      return acc + curr;
+    }, 0);
+    const count = favouriteCount ? favouriteCount : 0;
+    setFavouriteCount(count);
+  }, []);
   // *****Form****************
   const handleFileUploaded = (
     newFiles,
@@ -196,6 +206,46 @@ const MovieProvider = ({ children }) => {
     },
   ];
 
+  //Alert
+  const Alert = (success, errorMessage, message) => {
+    if (success) {
+      return message;
+    } else if (!success) {
+      return errorMessage;
+    }
+  };
+
+  useEffect(() => {
+    console.log("FavouriteMovies",FavouriteCart);
+  }, [FavouriteCart]);
+
+  //Add to favorite cart
+  const AddToCart = (movie, amount) => {
+    let StoredFavouriteCart =
+      JSON.parse(localStorage.getItem("FavouriteCart")) || [];
+
+    const addedMovie = StoredFavouriteCart.find(
+      (item) => item.id === parseInt(movie.id)
+    );
+
+    const total = amount;
+    const vat = 22;
+    if (addedMovie) {
+      // addedMovie = { ...addedMovie, amount, vat };
+      StoredFavouriteCart = StoredFavouriteCart.map((item) =>
+        item.id === parseInt(movie.id) ? { ...item, total, amount, vat } : item
+      );
+    } else {
+      StoredFavouriteCart = [
+        ...StoredFavouriteCart,
+        { ...movie, total, amount, vat },
+      ];
+    }
+
+    localStorage.setItem("FavouriteCart", JSON.stringify(StoredFavouriteCart));
+    setFavouriteCart(StoredFavouriteCart);
+  };
+
   return (
     <MovieContext.Provider
       value={{
@@ -225,6 +275,8 @@ const MovieProvider = ({ children }) => {
         handleFileUploaded,
         handleFileUploadedVideo,
         setInputVal,
+        AddToCart,
+        Alert,
       }}
     >
       {children}

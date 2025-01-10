@@ -9,7 +9,8 @@ import FlexMovie from "./FlexMovie";
 // import { Movies } from "../../Data/MovieData";
 
 const Banner = React.memo(() => {
-  const { Movies } = useContext(MovieContext);
+  
+  const { Movies, AddToCart } = useContext(MovieContext);
   // Utility function to shuffle an array
   const shuffleArray = (array) => {
     return [...array].sort(() => Math.random() - 0.5); // Fisher-Yates shuffle
@@ -63,7 +64,10 @@ const Banner = React.memo(() => {
                   >
                     watch
                   </Link>
-                  <span className="bg-white flex justify-center cursor-pointer items-center hover:text-subMain transi text-white px-3 py-3 rounded bg-opacity-30 ">
+                  <span
+                    onClick={AddToCart}
+                    className="bg-white flex justify-center cursor-pointer items-center hover:text-subMain transi text-white px-3 py-3 rounded bg-opacity-30 "
+                  >
                     <FaHeart />
                   </span>
                 </div>

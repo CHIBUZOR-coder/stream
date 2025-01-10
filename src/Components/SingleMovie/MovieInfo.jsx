@@ -50,14 +50,9 @@ const MovieInfo = ({ movie }) => {
         <meta property="og:description" content={movie.description} />
         <meta
           property="og:image"
-          content={`https://res.cloudinary.com/dtjgj2odu/image/upload/v1734517937/StreamLogo_ao5f75.png`}
+          content={`url('../images/${movie.image}.jpg`}
         />
-        <meta
-          property="og:url"
-          content={
-            "https://res.cloudinary.com/dtjgj2odu/image/upload/v1734517937/StreamLogo_ao5f75.png"
-          }
-        />
+        <meta property="og:url" content={url} />
         <meta property="og:type" content="video.movie" />
       </Helmet>
 
