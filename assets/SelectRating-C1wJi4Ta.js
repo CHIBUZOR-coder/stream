@@ -1,0 +1,1 @@
+import{j as t}from"./index-DGUMJEjt.js";const o=({data:r,setRating:a})=>t.jsx("select",{className:"w-full mt-2 px-3 py-4 text-text bg-main border border-border rounded appearance-none",id:"",onChange:e=>a(e.target.value),children:r.map((e,n)=>t.jsx("option",{value:e.value,children:e.tittle},n))});export{o as S};
