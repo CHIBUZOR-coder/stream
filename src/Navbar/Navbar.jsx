@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <>
       {/* Logo */}
-      <div className="bg-main px-7 shadow-md sticky  top-0 z-20">
+      <div className="bg-main px-7 shadow-md sticky  top-0 z-50">
         <div className="container  px-5 py-4  lg:grid gap-10 grid-cols-7 justify-between items-center">
           <div className="col-span-1 lg:block hidden ">
             <div className="flex justify-center items-center">

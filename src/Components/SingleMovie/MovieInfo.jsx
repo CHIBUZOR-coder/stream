@@ -1,13 +1,68 @@
 import { FaDownload, FaPlay, FaShareAlt } from "react-icons/fa";
 import FlexMovie from "../Home/FlexMovie";
 import { Link } from "react-router-dom";
-
+import { FaFacebook, FaWhatsapp, FaInstagram, FaTiktok } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { useState } from "react";
+import { MdCancel } from "react-icons/md";
+import { Helmet } from "react-helmet";
 const MovieInfo = ({ movie }) => {
+  // console.log("movie",movie);
+   const url = `${window.location.protocol}//${window.location.host}/stream/movie/${movie.id}`;
+  const [shareOpen, setShareOpen] = useState(false);
+
+  const HandleToggleShare = () => {
+    setShareOpen((prev) => !prev);
+  };
+
+  <Helmet>
+    <title>{movie.name}</title>
+    <meta name="description" content={movie.description} />
+    <meta property="og:title" content={movie.name} />
+    <meta property="og:description" content={movie.description} />
+    <meta property="og:image" content={`url('../images/${movie.image}.jpg')`} />
+    <meta property="og:url" content={url} />
+    <meta property="og:type" content="video.movie" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={movie.name} />
+    <meta name="twitter:description" content={movie.description} />
+    <meta
+      name="twitter:image"
+      content={`url('../images/${movie.image}.jpg')`}
+    />
+  </Helmet>;
+
+ 
+  const socials = [
+    {
+      path: `https://wa.me/?text=${encodeURIComponent(url)}`,
+      icon: <FaWhatsapp className="h-7 w-7" />,
+    },
+    {
+      path: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+        url
+      )}`,
+      icon: <FaFacebook className="h-7 w-7" />,
+    },
+    {
+      path: `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}`,
+      icon: <FaXTwitter className="h-7 w-7" />,
+    },
+    {
+      path: `https://www.instagram.com/?url=${encodeURIComponent(url)}`, // Instagram doesn't have a native share URL for web
+      icon: <FaInstagram className="h-7 w-7" />,
+    },
+    {
+      path: `https://www.tiktok.com/share?url=${encodeURIComponent(url)}`, // TikTok might not support direct sharing via URL
+      icon: <FaTiktok className="h-7 w-7" />,
+    },
+  ];
+
   // const gap = "gap-2";
   return (
     <div
       loading="lazy"
-      className="bg-center w-full xl:h-screen  bg-cover relative overflow-hidden rounded"
+      className="bg-center w-full xl:h-screen  bg-cover  overflow-hidden rounded relative"
       style={{
         backgroundImage: `url('../images/${movie.image}.jpg')`,
       }}
@@ -38,10 +93,43 @@ const MovieInfo = ({ movie }) => {
               </div>
               {/* description */}
               <p className="text-white text-sm">{movie.description}</p>
-              {/* share */}
-              <div className="grid sm:grid-cols-5 grid-col-2 gap-4 p-5 bg-main border border-gray-800 rounded-lg">
-                <button className="flexCol h-10 w-10 border-r border-border gap-2">
-                  <FaShareAlt className="text-white" />
+
+              {/* **********share********** */}
+
+              <div
+                className={` ${
+                  shareOpen ? "" : "hidden"
+                }  absolute  top-0 left-[0] w-full h-full bg-main2 flex justify-center items-center `}
+              >
+                {/* *****cancel********* */}
+                <span
+                  onClick={() => setShareOpen((prev) => !prev)}
+                  className="rounded-full absolute top-[20%] md:top-[12%] md:right-[30%] right-[8%] border-2 h-14 w-14 border-subMain hover:text-subMain text-white transi hover:border-white hover:rotate-180 flex justify-center items-center"
+                >
+                  <MdCancel className="h-12 w-12" />
+                </span>
+                {/* ********* */}
+                <div className="  py-10 -mt-10 md:-mt-28 z-40  px-4 bg-main rounded-md grid md:grid-cols-5 grid-cols-3 justify-center gap-5 border border-border ">
+                  {socials.map((social, i) => (
+                    <a
+                      key={i}
+                      href={social.path}
+                      className="bg-border p-2 rounded-md transi flex justify-center items-center hover:bg-white hover:text-border"
+                    >
+                      {social.icon}
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              <div className="grid sm:grid-cols-5 grid-col-2 gap-4 p-5 bg-main border border-gray-800 rounded-lg relative">
+                <button className="flexCol p-1 border-r border-border gap-2 ">
+                  <span
+                    onClick={HandleToggleShare}
+                    className="p-2 bg-border rounded-md"
+                  >
+                    <FaShareAlt className="text-white" />
+                  </span>
                 </button>
 
                 {/* Language */}
