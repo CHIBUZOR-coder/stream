@@ -61,6 +61,7 @@ select:focus {
 }
 .hov:hover .hova {
   color: white;
+  background-color: rgba(8, 10, 26, 1);
 }
 
 .navs {

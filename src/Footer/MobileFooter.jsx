@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { BsCollectionPlay, BsCollectionPlayFill } from "react-icons/bs";
-import { CgMenu } from "react-icons/cg";
+import { CgMenuRound } from "react-icons/cg";
 import { FaUserCircle } from "react-icons/fa";
 import { FaHeartCircleCheck } from "react-icons/fa6";
 import { Link, NavLink } from "react-router-dom";
-import { BiHomeAlt } from "react-icons/bi";
+
 import MovieContext from "../Context/MovieContext";
 
 const MobileFooter = () => {
@@ -24,7 +24,7 @@ const MobileFooter = () => {
                   `${
                     isActive
                       ? "text-main bg-white"
-                      : "hover:text-subMain transi text-white relative"
+                      : "hover:text-main hover:bg-white transi text-white relative"
                   } hov px-4 py-3 flex justify-center items-center rounded-md`
                 }
                 to={`/stream/movies`}
@@ -37,13 +37,13 @@ const MobileFooter = () => {
                   `${
                     isActive
                       ? "text-main bg-white"
-                      : "hover:text-subMain transi text-white relative"
+                      : "hover:text-main hover:bg-white  transi text-white relative"
                   } hov   px-4 py-3 flex justify-center items-center rounded-md`
                 }
                 to={`/stream/favouritpage`}
               >
                 <FaHeartCircleCheck className="w-6 h-6" />
-                <p className="w-4 h-4 flexCol_mdRow rounded-full hova text-xs bg-subMain text-white absolute top-[-2px] -right-[-9px]">
+                <p className="w-4 h-4 flexCol_mdRow rounded-full hova text-xs bg-white text-main absolute top-[0.6px] -right-[-9px]">
                   {FavouriteCount}
                 </p>
               </NavLink>
@@ -52,7 +52,7 @@ const MobileFooter = () => {
                   `${
                     isActive
                       ? "text-main bg-white"
-                      : "hover:text-subMain transi text-white relative"
+                      : "hover:text-main hover:bg-white transi text-white relative"
                   } hov  px-4 py-3 flex justify-center items-center rounded-md`
                 }
                 to={`/stream/login`}
@@ -60,8 +60,8 @@ const MobileFooter = () => {
                 <FaUserCircle className="w-6 h-6" />
               </NavLink>
 
-              <button className=" px-4 py-3 flex justify-center items-center rounded-md bg-white text-main">
-                <CgMenu className="w-6 h-6" />
+              <button className=" px-4 py-3 flex justify-center items-center rounded-md  text-white transi hover:text-main hover:bg-white">
+                <CgMenuRound className="w-6 h-6" />
               </button>
             </div>
           </div>

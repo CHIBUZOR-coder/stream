@@ -1,9 +1,11 @@
 import { useContext } from "react";
-import { BsFillSearchHeartFill } from "react-icons/bs";
+import { BsCollectionPlayFill, BsFillSearchHeartFill } from "react-icons/bs";
 import { FaUserCircle } from "react-icons/fa";
 import { FaHeartCircleCheck } from "react-icons/fa6";
 import { Link, NavLink } from "react-router-dom";
 import MovieContext from "../Context/MovieContext";
+import { FaInfoCircle } from "react-icons/fa";
+import { TiContacts } from "react-icons/ti";
 
 const Navbar = () => {
   const { FavouriteCount } = useContext(MovieContext);
@@ -50,31 +52,73 @@ const Navbar = () => {
           {/**Search Form Done**/}
 
           {/*Menu*/}
-          <div className="col-span-3  font-medium text-sm hidden xl:gap-14 2xl:gap-20 lg:flex justify-between xl:justify-end items-center">
-            <NavLink className={Hover} to={`/stream/movies`}>
+          <div className="col-span-3  font-medium text-sm hidden xl:gap-8 2xl:gap-16 lg:flex justify-between xl:justify-end items-center">
+            <NavLink
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "text-main bg-white"
+                    : "hover:text-main hover:bg-white transi text-white relative"
+                } hov p-2 flex justify-center gap-2 items-center rounded-md`
+              }
+              to={`/stream/movies`}
+            >
               Movies
+              <BsCollectionPlayFill />
             </NavLink>
-            <NavLink className={Hover} to={`/stream/about`}>
+
+            <NavLink
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "text-main bg-white"
+                    : "hover:text-main hover:bg-white transi text-white relative"
+                } hov p-2 flex justify-center gap-2 items-center rounded-md`
+              }
+              to={`/stream/movies`}
+            >
               About
+              <FaInfoCircle />
             </NavLink>
-            <NavLink className={Hover} to={`/stream/contact`}>
+
+            <NavLink
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "text-main bg-white"
+                    : "hover:text-main hover:bg-white transi text-white relative"
+                } hov p-2 flex justify-center gap-2 items-center rounded-md`
+              }
+              to={`/stream/movies`}
+            >
               Contact
+              <TiContacts />
             </NavLink>
-            <NavLink className={Hover} to={`/stream/login`}>
+
+            <NavLink
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "text-main bg-white"
+                    : "hover:text-main hover:bg-white transi text-white relative"
+                } hov  p-2 flex justify-center items-center rounded-md`
+              }
+              to={`/stream/login`}
+            >
               <FaUserCircle />
             </NavLink>
             <NavLink
               className={({ isActive }) =>
                 `${
                   isActive
-                    ? "text-subMain"
-                    : "hover:text-subMain transi text-white relative"
-                } hov`
+                    ? "text-main bg-white"
+                    : "hover:text-main hover:bg-white  transi text-white relative"
+                } hov   p-3 flex justify-center items-center rounded-md`
               }
               to={`/stream/favouritpage`}
             >
-              <FaHeartCircleCheck />
-              <p className="w-4 h-4 flexCol_mdRow rounded-full hova text-xs bg-subMain text-white absolute top-[-15px] right-[-1px]">
+              <FaHeartCircleCheck className="w-6 h-6" />
+              <p className="w-4 h-4 flexCol_mdRow rounded-full hova text-xs bg-white text-main absolute -top-[-1px] -right-[-3px]">
                 {FavouriteCount}
               </p>
             </NavLink>
