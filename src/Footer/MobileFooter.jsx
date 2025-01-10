@@ -1,15 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BsCollectionPlay, BsCollectionPlayFill } from "react-icons/bs";
 import { CgMenu } from "react-icons/cg";
 import { FaUserCircle } from "react-icons/fa";
 import { FaHeartCircleCheck } from "react-icons/fa6";
 import { Link, NavLink } from "react-router-dom";
 import { BiHomeAlt } from "react-icons/bi";
+import MovieContext from "../Context/MovieContext";
 
 const MobileFooter = () => {
   const hover = "hover:text-subMain transi text-white relative";
   const Hover = ({ isActive }) => (isActive ? "text-subMain  " : hover);
-
+  const { FavouriteCount } = useContext(MovieContext);
 
   return (
     <>
@@ -42,8 +43,8 @@ const MobileFooter = () => {
                 to={`/stream/favouritpage`}
               >
                 <FaHeartCircleCheck className="w-6 h-6" />
-                <p className="w-4 h-4 flexCol_mdRow rounded-full hova text-xs bg-subMain text-white absolute top-[-15px] right-[-1px]">
-                  3
+                <p className="w-4 h-4 flexCol_mdRow rounded-full hova text-xs bg-subMain text-white absolute top-[-2px] -right-[-9px]">
+                  {FavouriteCount}
                 </p>
               </NavLink>
               <NavLink
