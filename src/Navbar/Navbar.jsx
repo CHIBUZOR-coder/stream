@@ -75,7 +75,7 @@ const Navbar = () => {
                     : "hover:text-main hover:bg-white transi text-white relative"
                 } hov p-2 flex justify-center gap-2 items-center rounded-md`
               }
-              to={`/stream/movies`}
+              to={`/stream/about`}
             >
               About
               <FaInfoCircle />
@@ -89,7 +89,7 @@ const Navbar = () => {
                     : "hover:text-main hover:bg-white transi text-white relative"
                 } hov p-2 flex justify-center gap-2 items-center rounded-md`
               }
-              to={`/stream/movies`}
+              to={`/stream/contact`}
             >
               Contact
               <TiContacts />
