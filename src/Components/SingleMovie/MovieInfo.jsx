@@ -46,28 +46,19 @@ const MovieInfo = ({ movie }) => {
       <Helmet>
         <title>{movie.name}</title>
         <meta name="description" content={movie.description} />
-
-        {/* Open Graph (OG) Tags */}
         <meta property="og:title" content={movie.name} />
         <meta property="og:description" content={movie.description} />
         <meta
           property="og:image"
-          content={`${window.location.origin}/images/${movie.image}.jpg`}
+          content={`https://res.cloudinary.com/dtjgj2odu/image/upload/v1734517937/StreamLogo_ao5f75.png`}
         />
-        <meta property="og:url" content={url} />
-        <meta property="og:type" content="video.movie" />
-
-        {/* Twitter Tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={movie.name} />
-        <meta name="twitter:description" content={movie.description} />
         <meta
-          name="twitter:image"
-          content={`${window.location.origin}/images/${movie.image}.jpg`}
+          property="og:url"
+          content={
+            "https://res.cloudinary.com/dtjgj2odu/image/upload/v1734517937/StreamLogo_ao5f75.png"
+          }
         />
-
-        {/* Additional Social Media Notes */}
-        {/* Instagram and WhatsApp rely on Open Graph tags. */}
+        <meta property="og:type" content="video.movie" />
       </Helmet>
 
       <div
