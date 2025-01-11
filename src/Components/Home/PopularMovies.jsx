@@ -20,7 +20,7 @@ const PopularMovies = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  xl:grid-cols-4  w-full gap-8">
         {selected.map((movie) => (
           <div
-            className="border-2 border-border rounded-md bg-center bg-cover transi hover:scale-95 w-full flex flex-col "
+            className="border-2 relative border-border rounded bg-center bg-cover transi hover:scale-95 w-full flex flex-col "
             key={`${movie.id}`}
           >
             <Link
@@ -35,7 +35,7 @@ const PopularMovies = () => {
               />
             </Link>
 
-            <div className="flex  justify-between items-center  bg-dry w-full text-white px-4 py-3">
+            <div className="flex absolute bottom-0  justify-between items-center  bg-trans2 w-full text-white px-4 py-3">
               <h3 className="font-semibold truncate">{movie.name}</h3>
               <button
                 onClick={() => AddToCart(movie, movie.price)}

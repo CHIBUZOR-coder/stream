@@ -64,6 +64,13 @@ select:focus {
   background-color: rgba(8, 10, 26, 1);
 }
 
+
+.hov2:hover .hova2 {
+  color: white;
+  background-color: rgba(242, 0, 0, 1);
+}
+
+
 .navs {
   @apply text-[1.2rem];
 }

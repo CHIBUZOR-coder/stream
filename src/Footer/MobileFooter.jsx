@@ -7,16 +7,15 @@ import { Link, NavLink } from "react-router-dom";
 
 import MovieContext from "../Context/MovieContext";
 
-const MobileFooter = () => {
+const MobileFooter = ({ setMenuOpen }) => {
   const hover = "hover:text-subMain transi text-white relative";
   const Hover = ({ isActive }) => (isActive ? "text-subMain  " : hover);
   const { FavouriteCount } = useContext(MovieContext);
 
   return (
     <>
-      <div className="flex-btn h-full  ">
- 
-        <div className="fixed lg:hidden z-50 bottom-0 w-full bg-main">
+      <div className="flex-btn   ">
+        <div className="fixed lg:hidden z-40 bottom-0 w-full bg-main">
           <div className="bg-sub flex justify-between items-center w-full p-2 ">
             <div className="flex w-full justify-between">
               <NavLink
@@ -60,7 +59,10 @@ const MobileFooter = () => {
                 <FaUserCircle className="w-6 h-6" />
               </NavLink>
 
-              <button className=" px-4 py-3 flex justify-center items-center rounded-md  text-white transi hover:text-main hover:bg-white">
+              <button
+                onClick={() => setMenuOpen((prev) => !prev)}
+                className=" px-4 py-3 flex justify-center items-center rounded-md  text-white transi hover:text-main hover:bg-white"
+              >
                 <CgMenuRound className="w-6 h-6" />
               </button>
             </div>

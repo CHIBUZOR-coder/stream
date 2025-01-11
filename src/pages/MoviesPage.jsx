@@ -86,7 +86,7 @@ const MoviesPage = () => {
         >
           {filteredMovies.slice(page, page + maxDisplay).map((movie, index) => (
             <div
-              className="border-2 border-border rounded-md bg-center bg-cover transi hover:scale-95 w-full flex flex-col "
+              className="border-2 border-border rounded bg-center bg-cover relative transi hover:scale-95 w-full flex flex-col "
               key={`${movie.id}`}
             >
               <Link
@@ -101,7 +101,7 @@ const MoviesPage = () => {
                 />
               </Link>
 
-              <div className="flex  justify-between items-center  bg-dry w-full text-white px-4 py-3">
+              <div className="flex absolute bottom-0  justify-between items-center  bg-trans2 w-full text-white px-4 py-3">
                 <h3 className="font-semibold truncate">{movie.name}</h3>
                 <button
                   onClick={() => AddToCart(movie, movie.price)}

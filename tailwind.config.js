@@ -58,6 +58,7 @@ export default {
         trans: "rgba(30, 26, 26, 0.6)",
         transb: "rgba(30, 26, 26, 0.8)",
         trans2: "rgb(0,0,0,0.5)",
+        trans2: "rgb(0,0,0,0.6)",
         btn: "rgba(229,231,235,0.6)",
       },
       fontFamily: {
