@@ -10,6 +10,7 @@ const MovieInfo = ({ movie }) => {
   // console.log("movie",movie);
   const url = `${window.location.protocol}//${window.location.host}/stream/movie/${movie.id}`;
   const [shareOpen, setShareOpen] = useState(false);
+    const [play, setPlay] = useState(false);
 
   const HandleToggleShare = () => {
     setShareOpen((prev) => !prev);
@@ -58,13 +59,14 @@ const MovieInfo = ({ movie }) => {
 
       <div
         loading="lazy"
-        className="bg-center w-full xl:h-screen  bg-cover  overflow-hidden rounded relative"
+        className="bg-center w-full md:h-screen  bg-cover  overflow-hidden rounded relative"
         style={{
           backgroundImage: `url('../images/${movie.image}.jpg')`,
         }}
       >
         <div className="bg-main3 h-full w-full flexCol">
           <div className=" mx-auto px-3 xl:px-20 xl:grid grid-cols-3  flexCol gap-14  py-10 lg:py-20 xl:gap-6 ">
+            {/* child */}
             <div className="flex justify-center items-center w-full">
               <div
                 style={{
@@ -73,9 +75,47 @@ const MovieInfo = ({ movie }) => {
                 className="xl:col-span-1 w-[80%] xl:order-none order-last h-head bg-dry border border-gray-800 rounded-lg bg-cover bg-center"
               ></div>
             </div>
+            {/* ****** */}
 
+            {/* child */}
             <div className="col-span-2  flex flex-col gap-8   md:grid grid-cols-5 md:gap-4  items-center">
+              {/* child */}
               <div className="col-span-3 flex flex-col gap-4">
+                <div className="w-full rounded-md">
+                  {play ? (
+                    <video
+                      controls
+                      autoPlay
+                      className="w-full h-[150px]  rounded object-cover "
+                    >
+                      <source
+                        src={`url('${movie.trailer})`}
+                        type="video/mp4"
+                        title={movie.name}
+                      />
+                    </video>
+                  ) : (
+                    <div className="flex justify-center items-center w-full ">
+                      <div className="h-[200px]  rounded overflow-hidden text-white relative w-full bg-center bg-cover">
+                        <div className=" bg-main2 w-full h-full flexCol absolute top-0 left-0">
+                          <button
+                            onClick={() => setPlay(true)}
+                            className="bg-white text-subMain flexCol border border-subMain rounded-full w-16 h-16 transi"
+                          >
+                            <FaPlay />
+                          </button>
+                        </div>
+
+                        <img
+                          src={`../images/${movie.image}.jpg`}
+                          className="w-full h-full object-cover"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  )}
+                </div>
+
                 {/* movie tittle */}
                 <p className="xl:text-4xl capitalize font-sans text-2xl font-bold">
                   {movie.name}
@@ -147,6 +187,7 @@ const MovieInfo = ({ movie }) => {
                 </div>
               </div>
 
+              {/* child */}
               <div className="col-span-2  w-full   flex justify-end ">
                 <button className="md:w-1/3 lg:w1/4 w-full relative flexCol bg-subMain md:mr-[5rem] mr-0 lg:mr-0 hover:bg-transparent border-2 border-subMain transi md:h-64 h-16 rounded font-medium">
                   <div className="flexRow gap-6 text-md  uppercase tracking-widest absolute md:rotate-90">

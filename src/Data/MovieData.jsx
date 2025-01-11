@@ -16,6 +16,7 @@ export const Movies = [
     description:
       "The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe.",
     price: 150,
+    trailer: "https://youtu.be/6ZfuNTqbHE8",
   },
   {
     id: 2,
@@ -34,6 +35,7 @@ export const Movies = [
     description:
       "After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.",
     price: 200,
+    trailer: "https://youtu.be/TcMBFSGVi1c",
   },
   {
     id: 3,
@@ -51,6 +53,7 @@ export const Movies = [
     language: "English",
     description: "The continuing adventures of assassin John Wick.",
     price: 180,
+    trailer: "https://youtu.be/qEVUtrk8_B4",
   },
   {
     id: 4,
@@ -69,6 +72,7 @@ export const Movies = [
     description:
       "Four teenagers are sucked into a magical video game, and the only way they can escape is to work together to finish the game.",
     price: 160,
+    trailer: "https://youtu.be/v_TJKwJwN0E",
   },
   {
     id: 5,
@@ -87,6 +91,7 @@ export const Movies = [
     description:
       "As they return to rescue one of their own, the players will have to brave parts unknown from arid deserts to snowy mountains, to escape the world's most dangerous game.",
     price: 170,
+    trailer: "https://youtu.be/rBxcF-r9Ibs",
   },
   {
     id: 6,
@@ -105,6 +110,7 @@ export const Movies = [
     description:
       "Peter Parker balances his life as an ordinary high school student in Queens with his superhero alter-ego Spider-Man, and finds himself on the trail of a new menace prowling the skies of New York City.",
     price: 150,
+    trailer: "https://youtu.be/U0D3AOldjMU",
   },
   {
     id: 7,
@@ -123,6 +129,7 @@ export const Movies = [
     description:
       "Peter Parker and his friends go on a summer trip to Europe. However, they will hardly be able to rest - Peter will have to agree to help Nick Fury uncover the mystery of creatures that cause natural disasters and destruction throughout the continent.",
     price: 190,
+    trailer: "",
   },
   {
     id: 8,
@@ -141,6 +148,7 @@ export const Movies = [
     description:
       "With Spider man's identity now revealed, Peter asks Doctor Strange for help. When a spell goes wrong, dangerous foes from other worlds start to appear, forcing Peter to discover what it truly means to be Spiderman.",
     price: 220,
+    trailer: "",
   },
   {
     id: 9,
@@ -159,6 +167,7 @@ export const Movies = [
     description:
       "The film is set in 1994 and will introduce new characters and a new storyline that will take the Transformers universe in a new direction.",
     price: 160,
+    trailer: "",
   },
   {
     id: 10,
@@ -177,6 +186,7 @@ export const Movies = [
     fav: true,
     description: "Seventh installment of the Mission Impossible franchise.",
     price: 230,
+    trailer: "",
   },
   {
     id: 11,
@@ -196,6 +206,7 @@ export const Movies = [
     description:
       "The world's top bodyguard gets a new client, a hitman who must testify at the International Criminal Court. They must put their differences aside and work together to make it to the trial on time.",
     price: 180,
+    trailer: "",
   },
   {
     id: 12,
@@ -214,7 +225,10 @@ export const Movies = [
     description:
       "Fueled by his restored faith in humanity and inspired by Superman's selfless act, Bruce Wayne enlists the help of his new-found ally, Diana Prince, to face an even greater enemy.",
     price: 150,
+    trailer: "",
   },
+  //
+
   {
     id: 13,
     name: "Spiderman",
@@ -232,6 +246,7 @@ export const Movies = [
     description:
       "When bitten by a genetically modified spider, a nerdy, shy, and awkward high school student gains spider-like abilities that he eventually must use to fight evil as a superhero after tragedy befalls his family.",
     price: 150,
+    trailer: "",
   },
   {
     id: 14,
@@ -251,6 +266,7 @@ export const Movies = [
     description:
       "Peter Parker is beset with troubles in his failing personal life as he battles a brilliant scientist named Doctor Otto Octavius.",
     price: 180,
+    trailer: "",
   },
   {
     id: 15,
@@ -269,6 +285,7 @@ export const Movies = [
     description:
       "A strange black entity from another world bonds with Peter Parker and causes inner turmoil as he contends with new villains, temptations, and revenge.",
     price: 200,
+    trailer: "",
   },
   {
     id: 16,
@@ -287,6 +304,7 @@ export const Movies = [
     description:
       "This contemporary romantic comedy, based on a global bestseller, follows native New Yorker Rachel Chu to Singapore to meet her boyfriend's family.",
     price: 160,
+    trailer: "",
   },
   {
     id: 17,
@@ -305,11 +323,12 @@ export const Movies = [
     description:
       "A high school student finds herself face-to-face with her long-term crush when she signs up to run a kissing booth at the spring carnival.",
     price: 170,
+    trailer: "",
   },
   {
     id: 18,
     name: "The Kissing Booth 2",
-    image: "kissingb2.",
+    image: "kissingb2",
     video: "",
     time: "2h 11m",
     approxiT: "2 - 3 hrs",
@@ -323,6 +342,7 @@ export const Movies = [
     description:
       "In the sequel to 2018's THE KISSING BOOTH, high school senior Elle juggles a long-distance relationship with her dreamy boyfriend Noah, college applications, and a new friendship with a handsome classmate that could change everything.",
     price: 150,
+    trailer: "",
   },
   {
     id: 19,
@@ -341,6 +361,7 @@ export const Movies = [
     description:
       "It's the summer before Elle heads to college, and she has a secret decision to make. Elle has been accepted into Harvard, where boyfriend Noah is matriculating, and also Berkeley, where her BFF Lee is headed and has to decide if she should move across the country to be with her boyfriend or stay and fulfill her lifelong promise to go to Berkeley with her BFF. Whose heart will Elle break?",
     price: 170,
+    trailer: "",
   },
   {
     id: 20,
@@ -359,6 +380,7 @@ export const Movies = [
     description:
       "Zoey is a brilliant college student who's determined to challenge the conventional ideas of love and dating. Her life soon gets turned upside down when an amnesiac mistakenly believes she's his girlfriend, who also happens to share the name Zoey.",
     price: 190,
+    trailer: "",
   },
   {
     id: 21,
@@ -377,6 +399,7 @@ export const Movies = [
     description:
       "To save up for college, Brooks Rattigan creates an app where anyone can pay him to play the perfect stand-in boyfriend for any occasion.",
     price: 155,
+    trailer: "",
   },
   {
     id: 22,
@@ -395,6 +418,7 @@ export const Movies = [
     description:
       "On their flight from New York to London, Hadley and Oliver fall in love with each other. However, they lose each other at customs and the possibility of ever meeting each other again seems improbable, but destiny may have a way of changing the odds.",
     price: 160,
+    trailer: "",
   },
   {
     id: 23,
@@ -413,6 +437,7 @@ export const Movies = [
     description:
       "A newly single woman learns the Italian villa she reserved is double-booked, and she'll have to share it with a cynical stranger.",
     price: 165,
+    trailer: "",
   },
   {
     id: 24,
@@ -431,6 +456,7 @@ export const Movies = [
     description:
       "Peter and Emma are total strangers who are both dumped by their respective partners. They team up to break up their exes' new relationships and win them back.",
     price: 175,
+    trailer: "",
   },
   {
     id: 25,
@@ -449,7 +475,9 @@ export const Movies = [
     description:
       "After a break-up, corporate executive Gabriela Diaz enters a contest to Win an Inn overlooking New Zealand's countryside. Thousands of airline miles later, she finds The Bellbird Valley Farm lacking in curb appeal but is determined to renovate.",
     price: 185,
+    trailer: "",
   },
+
   {
     id: 26,
     name: "Thor Love and Thunder",
@@ -467,6 +495,7 @@ export const Movies = [
     description:
       "The sequel to Thor: Ragnarok and the fourth movie in the Thor saga.",
     price: 200,
+    trailer: "",
   },
   {
     id: 27,
@@ -485,12 +514,12 @@ export const Movies = [
     description:
       "Imprisoned on the planet Sakaar, Thor gets pitted against The Hulk, a former ally and fellow Avenger. Thor's quest for survival",
     price: 150,
+    trailer: "",
   },
   {
     id: 28,
     name: "Ghosted",
     image: "ghosted",
-    popular: "true",
     video: "Ghosted_2023",
     time: "1h 56m",
     approxiT: "1 - 2 hrs",
@@ -503,6 +532,7 @@ export const Movies = [
     description:
       "Cole falls head over heels for enigmatic Sadie, but then makes the shocking discovery that she's a secret agent. Before they can decide on a second date, Cole and Sadie are swept away on an international adventure to save the world.",
     price: 190,
+    trailer: "",
   },
   {
     id: 29,
@@ -520,6 +550,7 @@ export const Movies = [
     language: "English",
     description:
       "A bank teller discovers that he's actually an NPC inside a brutal, open-world video game.",
+    trailer: "",
   },
   {
     id: 30,
@@ -537,6 +568,7 @@ export const Movies = [
     language: "English",
     description:
       "A wisecracking mercenary gets experimented on and becomes immortal but ugly, and sets out to track down the man who ruined his looks.",
+    trailer: "",
   },
   {
     id: 31,
@@ -554,6 +586,7 @@ export const Movies = [
     language: "English",
     description:
       "Wisecracking mercenary Deadpool meets Russell, an angry teenage mutant who lives at an orphanage. When Russell becomes the target of Cable -- a genetically enhanced soldier from the future -- Deadpool realizes that he'll need some help saving the boy from such a superior enemy. He soon joins forces with Bedlam, Shatterstar, Domino and other powerful mutants to protect young Russell from Cable and his advanced weaponry.",
+    trailer: "",
   },
   {
     id: 32,
@@ -571,6 +604,7 @@ export const Movies = [
     language: "English",
     description:
       "Deadpool's peaceful existence comes crashing down when the Time Variance Authority recruits him to help safeguard the multiverse. He soon unites with his would-be pal, Wolverine, to complete the mission and save his world from an existential threat.",
+    trailer: "",
   },
   {
     id: 33,
@@ -588,6 +622,7 @@ export const Movies = [
     language: "English",
     description:
       "Three years after a fateful trip to the French Riviera, Jen (Katherine Heigl) enjoys the good life in suburbia with her handsome husband, Spencer (Ashton Kutcher). That comes crashing down, however, when gunfire rings out the morning after his 30th birthday. It turns out that Spencer has not been honest with Jen about his job; he's a deadly spy. Now she must learn to dodge bullets while keeping up an appearance of normalcy.",
+    trailer: "",
   },
   {
     id: 34,
@@ -605,6 +640,7 @@ export const Movies = [
     language: "English",
     description:
       "A loyal and dedicated Hong Kong Inspector teams up with a reckless and loudmouthed LAPD detective to rescue the Chinese Consul's kidnapped daughter, while trying to arrest a dangerous crime lord along the way.",
+    trailer: "",
   },
   {
     id: 35,
@@ -622,6 +658,7 @@ export const Movies = [
     language: "English",
     description:
       "Carter and Lee head to Hong Kong for vacation, but become embroiled in a counterfeit money scam.",
+    trailer: "",
   },
   {
     id: 36,
@@ -639,6 +676,7 @@ export const Movies = [
     language: "English",
     description:
       "After an attempted assassination on Ambassador Han, Lee and Carter head to Paris to protect the Ambassador and his daughter, but they soon learn that the attack was not an isolated incident.",
+    trailer: "",
   },
   {
     id: 37,
@@ -656,6 +694,7 @@ export const Movies = [
     language: "English",
     description:
       "A teenage coding genius has just 30 days to create the world's greatest video game or his family loses everything. No pressure",
+    trailer: "",
   },
   {
     id: 38,
@@ -673,6 +712,7 @@ export const Movies = [
     language: "English",
     description:
       "After their cave is destroyed, a caveman family must trek through an unfamiliar fantastical world with the help of an inventive",
+    trailer: "",
   },
   {
     id: 39,
@@ -690,6 +730,7 @@ export const Movies = [
     language: "English",
     description:
       "The prehistoric family the Croods are challenged by a rival family the Bettermans, who claim to be better and more evolved.",
+    trailer: "",
   },
   {
     id: 40,
@@ -707,6 +748,7 @@ export const Movies = [
     language: "English",
     description:
       "An outlaw cat, his childhood egg-friend, and a seductive thief kitty set out in search for the eggs of the fabled Golden Goose to clear his name, restore his lost honor, and regain the trust of his mother and town.",
+    trailer: "",
   },
   {
     id: 41,
@@ -724,6 +766,7 @@ export const Movies = [
     language: "English",
     description:
       "Puss in Boots returns with the help of three kittens to rescue a precious ruby from the evil Whisperer.",
+    trailer: "",
   },
   {
     id: 42,
@@ -741,6 +784,7 @@ export const Movies = [
     language: "English",
     description:
       "Puss in Boots discovers that his passion for adventure has taken its toll: he has burned through eight of his nine lives. Puss sets out on an epic journey to find the mythical Last Wish and restore his nine lives.",
+    trailer: "",
   },
   {
     id: 43,
@@ -758,5 +802,6 @@ export const Movies = [
     language: "English",
     description:
       "A rat who can cook makes an unusual alliance with a young kitchen worker at a famous restaurant.",
+    trailer: "",
   },
 ];
