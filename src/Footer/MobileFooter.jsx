@@ -14,10 +14,10 @@ const MobileFooter = () => {
 
   return (
     <>
-      <div className="flex-btn h-full overflow-y-scroll flex-grow w-full">
-        {/* Drawer */}
-        <div className="fixed lg:hidden z-50 bottom-0 w-full">
-          <div className="bg-main flex justify-between items-center w-full p-2 gap-4">
+      <div className="flex-btn h-full  ">
+ 
+        <div className="fixed lg:hidden z-50 bottom-0 w-full bg-main">
+          <div className="bg-sub flex justify-between items-center w-full p-2 ">
             <div className="flex w-full justify-between">
               <NavLink
                 className={({ isActive }) =>
