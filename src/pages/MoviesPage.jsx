@@ -8,7 +8,8 @@ import MovieContext from "../Context/MovieContext";
 import { CgSpinner } from "react-icons/cg";
 
 const MoviesPage = () => {
-  const { userChoice, Movies } = useContext(MovieContext);
+  const { userChoice, Movies, AddToCart } = useContext(MovieContext);
+
   const maxDisplay = 10;
   const maxPage = 39;
   const [page, SetPage] = useState(0);
@@ -84,21 +85,32 @@ const MoviesPage = () => {
           className="grid sm:mt-10 mt-6 xl:grid-cols-4 2xl:grid-cols-5 lg:grid-cols-3 sm:grid-cols-1 gap-6"
         >
           {filteredMovies.slice(page, page + maxDisplay).map((movie, index) => (
-            <Link
-              to={`/stream/movie/${movie.id}`}
+            <div
+              className="border-2 border-border rounded-md bg-center bg-cover transi hover:scale-95 w-full flex flex-col "
               key={`${movie.id}`}
-              className="border h-64 border-border rounded bg-center bg-cover transi hover:scale-95 w-full relative"
-              style={{
-                backgroundImage: `url('./images/${movie.image}.jpg')`,
-              }}
             >
-              <div className="absolute flex  justify-between items-center left-0 bottom-0 bg-main2 w-full text-white px-4 py-3">
+              <Link
+                to={`/stream/movie/${movie.id}`}
+                className=" h-64  bg-center bg-cover "
+              >
+                <img
+                  src={`./images/${movie.image}.jpg`}
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                  alt=""
+                />
+              </Link>
+
+              <div className="flex  justify-between items-center  bg-dry w-full text-white px-4 py-3">
                 <h3 className="font-semibold truncate">{movie.name}</h3>
-                <button className="h-8 w-8 text-sm flexCol transi hover:bg-transparent border-subMain bg-subMain2 border-2 rounded-md text-white ">
+                <button
+                  onClick={() => AddToCart(movie, movie.price)}
+                  className="h-8 w-8 text-sm flexCol transi hover:bg-transparent border-subMain bg-subMain2 border-2 rounded-md text-white "
+                >
                   <FaHeart />
                 </button>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
 

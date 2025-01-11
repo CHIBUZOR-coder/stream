@@ -38,7 +38,7 @@ const PopularMovies = () => {
             <div className="flex  justify-between items-center  bg-dry w-full text-white px-4 py-3">
               <h3 className="font-semibold truncate">{movie.name}</h3>
               <button
-                onClick={() => AddToCart(movie)}
+                onClick={() => AddToCart(movie, movie.price)}
                 className="h-8 w-8 text-sm flexCol transi hover:bg-transparent border-subMain bg-subMain2 border-2 rounded-md text-white "
               >
                 <FaHeart />
