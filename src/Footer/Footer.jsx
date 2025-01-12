@@ -56,8 +56,8 @@ const Footer = () => {
     },
   ];
   return (
-    <div className="bg-dry pt-4  pb-20 px-4 border-2 border-black w-full">
-      <div className="grid grid-cols-2 w-full gap-y-10 text-[10px] md:text-16px ">
+    <div className="bg-dry pt-4  pb-20 md:pb-4 px-4 border-2 border-black w-full">
+      <div className="grid grid-cols-2 md:grid-cols-4 w-full  gap-y-10 text-[10px] litlle md:text-[16px] ">
         {Links.map((link, index) => (
           <div
             key={index}
@@ -82,7 +82,7 @@ const Footer = () => {
           <div className="w-full flex justify-center items-center ">
             <div className="w-10 h-10   bg-[url('https://res.cloudinary.com/dtjgj2odu/image/upload/v1734517937/StreamLogo_ao5f75.png')] bg-center bg-cover"></div>
           </div>
-          <div className="flex footText text-border flex-col gap-4 item-center">
+          <div className="flex w-full footText text-border flex-col  gap-4 item-center">
             <p>198 Unity Road, </p>
          
             <p> Suit 200 Ikeja, Lagos</p>

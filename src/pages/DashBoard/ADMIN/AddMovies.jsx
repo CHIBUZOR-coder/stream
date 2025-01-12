@@ -6,7 +6,7 @@ import SelectRating from "../../../Custom/SelectRating";
 import MovieContext from "../../../Context/MovieContext";
 import { CgSelectR } from "react-icons/cg";
 import { TbInfoSquareRoundedFilled } from "react-icons/tb";
-import { useToast } from "react-toastify";
+import { MdLocalMovies } from "react-icons/md";
 
 const AddMovie = () => {
   const {
@@ -14,23 +14,49 @@ const AddMovie = () => {
     handleFileUploaded,
     handleFileUploadedVideo,
     setInputVal,
+    Movies,
   } = useContext(MovieContext);
+  const [check, setCheck] = useState(null);
+
   let Ffor = "video";
   const [Images, setImages] = useState(""); // Array to store multiple image URLs
-  const [Video, setVideo] = useState([]); // Array to store multiple image URLs
-  const [previewVideo, setpreviewVideo] = useState(null); // Array to store multiple image URLs
+
+  const [PreviewVideo, setPreviewVideo] = useState(null); // Array to store multiple image URLs
   const [previewImageV, setpreviewImageV] = useState(null); // Array to store multiple image URLs
   const [previewImageC, setpreviewImageC] = useState(null); // Array to store multiple image URLs
   const selectedData = CategoryData.filter((item) => item.display === "show");
   const [Casts, setCasts] = useState([]);
   const [Name, setname] = useState("");
   const [Role, setRole] = useState("");
-  const [MovieImages, setMovieImages] = useState(""); // Array to store multiple image URLs
+  const [MovieImages, setMovieImages] = useState([]); // Array to store multiple image URLs
   const [MovieTitle, setMovieTitle] = useState("");
   const [MovieHour, setMovieHour] = useState("");
   const [MovieLanguage, setMovieLanguage] = useState("");
   const [MovieYears, setMovieYear] = useState("");
-  const [MovieVideo, setMovieVideo] = useState(null);
+  const [MovieVideo, setMovieVideo] = useState([]);
+
+  useEffect(() => {
+    if (MovieVideo.length > 0) {
+      const value = MovieVideo[0].name.slice(0, -4);
+      const result = Movies.find((item) => item.video === value);
+      if (result && result.image === MovieImages[0].name.slice(0, -4)) {
+        console.log(result.image);
+
+        setCheck(result);
+        console.log(result);
+      } else console.log("No Match found");
+    }
+  }, [MovieVideo]);
+
+  // useEffect(() => {
+  //   if (MovieImages.length > 0) {
+  //     console.log("Images", MovieImages[0].name.slice(0, -4));
+  //   }
+  // }, [MovieImages]);
+
+  useEffect(() => {
+    console.log("check", check);
+  }, [check]);
 
   const AddCast = (name, role, imageurl) => {
     if (!name || !role || !imageurl) {
@@ -154,17 +180,17 @@ const AddMovie = () => {
               {MovieImages.length > 0 ? (
                 <Uploader
                   onFileUploaded={handleFileUploadedVideo}
-                  prviewSetter={setVideo}
+                  prviewSetter={setPreviewVideo}
                   MainVideoSetter={setMovieVideo}
                   For={Ffor}
                 />
               ) : (
-                <div className="w-full col-span-2 md:col-span-1 flex flex-col justify-center items-center bg-main border-border border-2 h-[178.5px] border-dashed rounded-md">
+                <div className="w-full col-span-2 md:col-span-1 flex flex-col justify-center items-center bg-main border-border border-2 py-4 md:py-0 h-auto md:h-[178.5px] border-dashed rounded-md">
                   <div className=" animate-pulse">
                     <p className="w-full p-8  text-lg text-text  text-center">
                       This Feild will only be active after adding Movie Image
                     </p>
-                    <span className=" flex justify-center items-center  rounded-full ">
+                    <span className=" flex justify-center items-center mt-0 md:-mt-2  rounded-full ">
                       <TbInfoSquareRoundedFilled className="w-10 h-10" />
                     </span>
                   </div>
@@ -174,14 +200,38 @@ const AddMovie = () => {
               {/* PreviewVideo*/}
               <div className=" w-full  relative col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 items-center cursor-default ">
                 <div className="flex gap-4 flex-wrap">
-                  {Video.length > 0 ? (
-                    MovieImages.map((image, index) => (
+                  {MovieVideo.length > 0 ? (
+                    check ? (
+                      MovieVideo.map((image, index) => (
+                        <div
+                          key={index}
+                          className="w-32 h-32 p-2 bg-main border border-border rounded flex items-center justify-center"
+                        >
+                          <img
+                            src={previewImageV}
+                            alt={`Uploaded Preview ${index + 1}`}
+                            className="object-cover w-full h-full rounded"
+                          />
+                        </div>
+                      ))
+                    ) : (
+                      <p>
+                        There seems to be an error with your selection. Please
+                        check well
+                      </p>
+                    )
+                  ) : (
+                    <p> No video selected</p>
+                  )}
+
+                  {/* {MovieVideo.length > 0 ? (
+                    MovieVideo.map((image, index) => (
                       <div
                         key={index}
                         className="w-32 h-32 p-2 bg-main border border-border rounded flex items-center justify-center"
                       >
                         <img
-                          src={previewImageV}
+                          src={PreviewVideo}
                           alt={`Uploaded Preview ${index + 1}`}
                           className="object-cover w-full h-full rounded"
                         />
@@ -191,7 +241,7 @@ const AddMovie = () => {
                     <p className="text-sm text-gray-500 p-4 rounded-md border border-border bg-main">
                       No video selected
                     </p>
-                  )}
+                  )} */}
                 </div>
               </div>
             </div>

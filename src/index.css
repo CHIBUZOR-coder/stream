@@ -107,12 +107,11 @@ select:focus {
   background-color: rgba(8, 10, 26, 1);
 }
 
-
-
-@media (max-width: 350px) {
+@media (max-width: 389.9px) {
   .footText {
-    font-size: 12px;
+    font-size: 8px;
   }
+
   .pikin {
     height: 1rem;
     width: 1rem;
@@ -121,6 +120,8 @@ select:focus {
     font-size: 0.5rem;
   }
 }
+
+
 
 /* @media (max-width: 400px) {
 

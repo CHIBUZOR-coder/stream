@@ -22,6 +22,7 @@ const Uploader = ({
       const previewFile = URL.createObjectURL(file);
       // Clear previous preview and set the new one
       // prviewSetter(previewFile); // Update the preview with the new file's preview URL
+      
 
       // onFileUploaded(For === "video" ? previewFile[0] : previewFile); // Single file for ima
       if (For === "video") {

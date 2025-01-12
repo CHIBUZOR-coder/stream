@@ -83,6 +83,10 @@ const MovieProvider = ({ children }) => {
     prviewSetter(preview);
     console.log("file", newFiles);
     console.log("preview", preview);
+    console.log(
+      "filename",
+      newFiles[0].name.slice(0, -4) // Drops the last 4 characters
+    );
   };
 
   const handleFileUploadedVideo = (
@@ -93,6 +97,10 @@ const MovieProvider = ({ children }) => {
   ) => {
     MainVideoSetter(newFiles);
     prviewSetter(preview);
+    console.log("file", newFiles);
+    console.log("filename", newFiles[0].name.slice(0, -4));
+
+    console.log("preview", preview);
   };
 
   const setInputVal = (vale, setter, mainVal) => {

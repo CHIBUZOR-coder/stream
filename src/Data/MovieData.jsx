@@ -719,7 +719,7 @@ export const Movies = [
     name: "Hero Mode",
     image: "hero",
     confirm: "hero",
-    video: "",
+    video: "zoetech",
     time: "1h 28m",
     approxiT: "1 - 2 hrs",
     popular: "true",
