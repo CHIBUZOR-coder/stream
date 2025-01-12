@@ -16,7 +16,7 @@ export const Movies = [
     description:
       "The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe.",
     price: 150,
-    trailer: "https://youtu.be/6ZfuNTqbHE8",
+    trailer: "https://www.youtube.com/embed/6ZfuNTqbHE8",
   },
   {
     id: 2,
@@ -35,7 +35,7 @@ export const Movies = [
     description:
       "After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.",
     price: 200,
-    trailer: "https://youtu.be/TcMBFSGVi1c",
+    trailer: "https://www.youtube.com/embed/TcMBFSGVi1c",
   },
   {
     id: 3,
@@ -53,7 +53,7 @@ export const Movies = [
     language: "English",
     description: "The continuing adventures of assassin John Wick.",
     price: 180,
-    trailer: "https://youtu.be/qEVUtrk8_B4",
+    trailer: "https://www.youtube.com/embed/qEVUtrk8_B4",
   },
   {
     id: 4,
@@ -72,7 +72,7 @@ export const Movies = [
     description:
       "Four teenagers are sucked into a magical video game, and the only way they can escape is to work together to finish the game.",
     price: 160,
-    trailer: "https://youtu.be/v_TJKwJwN0E",
+    trailer: "https://www.youtube.com/embed/v_TJKwJwN0E",
   },
   {
     id: 5,
@@ -91,7 +91,7 @@ export const Movies = [
     description:
       "As they return to rescue one of their own, the players will have to brave parts unknown from arid deserts to snowy mountains, to escape the world's most dangerous game.",
     price: 170,
-    trailer: "https://youtu.be/rBxcF-r9Ibs",
+    trailer: "https://www.youtube.com/embed/rBxcF-r9Ibs",
   },
   {
     id: 6,
@@ -246,7 +246,7 @@ export const Movies = [
     description:
       "When bitten by a genetically modified spider, a nerdy, shy, and awkward high school student gains spider-like abilities that he eventually must use to fight evil as a superhero after tragedy befalls his family.",
     price: 150,
-    trailer: "",
+    trailer: "https://www.youtube.com/embed/t06RUxPbp_c",
   },
   {
     id: 14,

@@ -25,7 +25,9 @@ const SingleMovie = () => {
         <MovieInfo movie={movie} />
         <div className="container mx-auto px-2 my-6 min-h-screen  ">
           <MovieCasts movieId={movie.id} />
+
           <MovieRates movie={movie} />
+
           <div className="my-16">
             <div className="flex items-center gap-8 md:gap-4">
               <BsCollectionFill className="w-6 h-6 md:w-4 md:h-4 text-subMain" />
