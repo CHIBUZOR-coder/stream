@@ -96,7 +96,19 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense
+      fallback={
+        <div className="w-full h-[100vh] bg-main flex justify-center items-center">
+          <div className="w-[100px] h-[100px] rounded-full bg-dry border border-border animate-bounce">
+            <img
+              className="h-full w-full rounded-full"
+              src="https://res.cloudinary.com/dtjgj2odu/image/upload/v1734517937/StreamLogo_ao5f75.png"
+              alt=""
+            />
+          </div>
+        </div>
+      }
+    >
       <RouterProvider router={router} />
     </Suspense>
   </StrictMode>

@@ -66,7 +66,7 @@ const MovieInfo = ({ movie }) => {
       >
         <div className="bg-main3  w-full flexCol ">
           {/* movie tittle */}
-          <p className="xl:text-4xl text-subMain capitalize font-sans mt-8 text-2xl font-bold italic md:text-center">
+          <p className="xl:text-4xl text-white capitalize font-sans mt-8 text-2xl font-bold italic md:text-center">
             {movie.name}
           </p>
           <div className="w-full  mx-auto px-3  xl:px-8 xl:grid grid-cols-3   flexCol gap-14  py-6 lg:py-8 xl:gap-6 ">
@@ -85,7 +85,7 @@ const MovieInfo = ({ movie }) => {
             <div className="col-span-2   flex flex-col gap-8   md:grid grid-cols-5 md:gap-4  items-center">
               {/* child */}
               <div className="col-span-4 flex flex-col gap-4 md:gap-8 justify-center items-center">
-                <div className="w-full rounded border-2 border-text h-[250px]  ">
+                <div className="w-full rounded border-[3px] border-main h-[250px]  ">
                   <iframe
                     width="100%"
                     height="100%"
