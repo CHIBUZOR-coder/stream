@@ -6,40 +6,9 @@ import { FaXTwitter } from "react-icons/fa6";
 import { useState } from "react";
 import { MdCancel } from "react-icons/md";
 import { Helmet } from "react-helmet";
-const MovieInfo = ({ movie }) => {
+const MovieInfo = ({ movie, setShareOpen, url }) => {
   // console.log("movie",movie);
-  const url = `${window.location.protocol}//${window.location.host}/stream/movie/${movie.id}`;
-  const [shareOpen, setShareOpen] = useState(false);
-  const [play, setPlay] = useState(false);
-
-  const HandleToggleShare = () => {
-    setShareOpen((prev) => !prev);
-  };
-
-  const socials = [
-    {
-      path: `https://wa.me/?text=${encodeURIComponent(url)}`,
-      icon: <FaWhatsapp className="h-7 w-7" />,
-    },
-    {
-      path: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-        url
-      )}`,
-      icon: <FaFacebook className="h-7 w-7" />,
-    },
-    {
-      path: `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}`,
-      icon: <FaXTwitter className="h-7 w-7" />,
-    },
-    {
-      path: `https://www.instagram.com/?url=${encodeURIComponent(url)}`, // Instagram doesn't have a native share URL for web
-      icon: <FaInstagram className="h-7 w-7" />,
-    },
-    {
-      path: `https://www.tiktok.com/share?url=${encodeURIComponent(url)}`, // TikTok might not support direct sharing via URL
-      icon: <FaTiktok className="h-7 w-7" />,
-    },
-  ];
+ 
 
   // const gap = "gap-2";
   return (
@@ -59,7 +28,7 @@ const MovieInfo = ({ movie }) => {
 
       <div
         loading="lazy"
-        className="bg-center w-full md:min-h-screen  bg-cover  overflow-hidden rounded relative "
+        className="bg-center w-full md:min-h-screen  bg-cover  overflow-hidden rounded "
         style={{
           backgroundImage: `url('../images/${movie.image}.jpg')`,
         }}
@@ -69,22 +38,23 @@ const MovieInfo = ({ movie }) => {
           <p className="xl:text-4xl text-white capitalize font-sans mt-8 text-2xl font-bold italic md:text-center">
             {movie.name}
           </p>
-          <div className="w-full  mx-auto px-3  xl:px-8 xl:grid grid-cols-3   flexCol gap-14  py-6 lg:py-8 xl:gap-6 ">
+
+          <div className="w-full mx-auto px-3  xl:px-8 lg:grid grid-cols-3   flexCol gap-14  py-6 lg:py-10 xl:gap-6 ">
             {/* child */}
-            <div className="xl:col-span-1 flex justify-center md:justify-start items-start w-full  h-full">
+            <div className="xl:col-span-1 flex justify-center lg:justify-start items-start w-full  h-full">
               <div
                 style={{
                   backgroundImage: `url('../images/${movie.image}.jpg')`,
                 }}
-                className=" w-[80%] h-head bg-dry border border-gray-800 rounded-lg bg-cover bg-center"
+                className=" w-[80%] h-head bg-dry border border-dry rounded-lg bg-cover bg-center"
               ></div>
             </div>
             {/* ****** */}
 
             {/* child */}
-            <div className="col-span-2   flex flex-col gap-8   md:grid grid-cols-5 md:gap-4  items-center">
+            <div className="col-span-2  py-2  lg:grid grid-cols-5  flex flex-col gap-8   justify-center  items-center ">
               {/* child */}
-              <div className="col-span-4 flex flex-col gap-4 md:gap-8 justify-center items-center">
+              <div className="col-span-4 md:col-span-5 lg:col-span-4 flex flex-col gap-4 md:gap-8 justify-center items-center   ">
                 <div className="w-full rounded border-[3px] border-main h-[250px]  ">
                   <iframe
                     width="100%"
@@ -105,40 +75,17 @@ const MovieInfo = ({ movie }) => {
                   <FlexMovie movie={movie && movie} />
                 </div>
                 {/* description */}
-                <p className="text-white text-sm">{movie.description}</p>
+                <div className="px-4">
+                  <p className="text-white text-sm">{movie.description}</p>
+                </div>
 
                 {/* **********share********** */}
-
-                <div
-                  className={` ${
-                    shareOpen ? "" : "hidden"
-                  }  absolute  top-0 left-[0] w-full h-full bg-main2 flex justify-center items-center `}
-                >
-                  {/* *****cancel********* */}
-                  <span
-                    onClick={() => setShareOpen((prev) => !prev)}
-                    className="rounded-full absolute top-[20%] md:top-[12%] md:right-[30%] right-[8%] border-2 h-14 w-14 border-subMain hover:text-subMain text-white transi hover:border-white hover:rotate-180 flex justify-center items-center"
-                  >
-                    <MdCancel className="h-12 w-12" />
-                  </span>
-                  {/* ********* */}
-                  <div className="  py-10 -mt-10 md:-mt-28 z-40  px-4 bg-main rounded-md grid md:grid-cols-5 grid-cols-3 justify-center gap-5 border border-border ">
-                    {socials.map((social, i) => (
-                      <a
-                        key={i}
-                        href={social.path}
-                        className="bg-border p-2 rounded-md transi flex justify-center items-center hover:bg-white hover:text-border"
-                      >
-                        {social.icon}
-                      </a>
-                    ))}
-                  </div>
-                </div>
 
                 <div className="grid sm:grid-cols-5 grid-col-2 gap-4 p-5 bg-main border border-gray-800 rounded-lg relative">
                   <button className="flexCol p-1 border-r border-border gap-2 ">
                     <span
-                      onClick={HandleToggleShare}
+                      onClick={() => setShareOpen(prev=> !prev)
+                      }
                       className="p-2 bg-border rounded-md"
                     >
                       <FaShareAlt className="text-white" />
@@ -165,10 +112,10 @@ const MovieInfo = ({ movie }) => {
               </div>
 
               {/* child */}
-              <div className="  w-full flex justify-end ">
-                <button className="md:w-1/2 lg:w1/4 w-full relative flexCol bg-subMain md:mr-[5rem] mr-0 lg:mr-0 hover:bg-transparent border-2 border-subMain transi md:h-64 h-16 rounded font-medium">
-                  <div className="flexRow gap-6 text-md  uppercase tracking-widest absolute md:rotate-90">
-                    Download <FaDownload className="h-6 w-6  md:-rotate-90" />
+              <div className="  w-full  flex justify-end grid-cols-1  ">
+                <button className=" lg:w-1/2 w-full relative flexCol bg-subMain   hover:bg-transparent border-2 border-subMain transi lg:h-64 h-16 rounded font-medium">
+                  <div className="flexRow gap-6 text-md  uppercase tracking-widest absolute lg:rotate-90">
+                    Download <FaDownload className="h-6 w-6  lg:-rotate-90" />
                   </div>
                 </button>
               </div>

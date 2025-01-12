@@ -13,20 +13,21 @@ export default {
         
       },
       
-
-      keyframes: {
-        // Clockwise spin (spinRight)
-        spinRight: {
-          from: { transform: "rotate(0deg)" },
-          to: { transform: "rotate(360deg)" },
-        },
-        // Counterclockwise spin (spinLeft)
-        spinLeft: {
-          from: { transform: "rotate(0deg)" },
-          to: { transform: "rotate(360deg)" },
+     keyframes: {
+        bounceCustom: {
+          '0%, 100%': {
+            transform: 'translateY(-25%)',
+            animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)',
+          },
+          '50%': {
+            transform: 'translateY(0)',
+            animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)',
+          },
         },
       },
-
+      animation: {
+        bounceFast: 'bounceCustom 0.5s infinite', // Custom keyframes with a faster duration
+      },
 
       fontSize:{
         h1:"2.6rem"

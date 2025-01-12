@@ -22,6 +22,13 @@ import App from "./App.jsx";
 // import Favourite from "./pages/DashBoard/FavouriteMovies.jsx";
 // import MoviesPage from "./pages/MoviesPage.jsx";
 
+// const Home = lazy(
+//   () =>
+//     new Promise((resolve) =>
+//       setTimeout(() => resolve(import("./pages/Home")), 7000)
+//     )
+// );
+
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
@@ -99,7 +106,7 @@ createRoot(document.getElementById("root")).render(
     <Suspense
       fallback={
         <div className="w-full h-[100vh] bg-main flex justify-center items-center">
-          <div className="w-[100px] h-[100px] rounded-full bg-dry border border-border animate-bounce">
+          <div className="w-[100px] h-[100px] rounded-full  border border-border animate-bounce">
             <img
               className="h-full w-full rounded-full"
               src="https://res.cloudinary.com/dtjgj2odu/image/upload/v1734517937/StreamLogo_ao5f75.png"

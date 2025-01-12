@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Layout from "../Layout/Layout";
 import { Link, useParams } from "react-router-dom";
 import MovieContext from "../Context/MovieContext";
@@ -6,11 +6,14 @@ import MovieInfo from "../Components/SingleMovie/MovieInfo";
 import MovieCasts from "../Components/SingleMovie/MovieCasts";
 import MovieRates from "../Components/SingleMovie/MovieRates";
 import { BsCollectionFill } from "react-icons/bs";
-import { FaHeart } from "react-icons/fa";
+import { FaFacebook, FaHeart, FaInstagram, FaTiktok, FaWhatsapp } from "react-icons/fa";
+import { MdCancel } from "react-icons/md";
+import { FaXTwitter } from "react-icons/fa6";
 
 const SingleMovie = () => {
   const { id } = useParams();
   const { Casts, Movies } = useContext(MovieContext);
+  const [shareOpen, setShareOpen] = useState(false);
   console.log(id);
 
   const movie = Movies.find((movie) => movie.id === parseInt(id));
@@ -18,11 +21,61 @@ const SingleMovie = () => {
   const relatedMovies = Movies.filter(
     (movi) => movi.category === movie.category
   );
+  const url = `${window.location.protocol}//${window.location.host}/stream/movie/${movie.id}`;
+  const socials = [
+    {
+      path: `https://wa.me/?text=${encodeURIComponent(url)}`,
+      icon: <FaWhatsapp className="h-7 w-7" />,
+    },
+    {
+      path: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+        url
+      )}`,
+      icon: <FaFacebook className="h-7 w-7" />,
+    },
+    {
+      path: `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}`,
+      icon: <FaXTwitter className="h-7 w-7" />,
+    },
+    {
+      path: `https://www.instagram.com/?url=${encodeURIComponent(url)}`, // Instagram doesn't have a native share URL for web
+      icon: <FaInstagram className="h-7 w-7" />,
+    },
+    {
+      path: `https://www.tiktok.com/share?url=${encodeURIComponent(url)}`, // TikTok might not support direct sharing via URL
+      icon: <FaTiktok className="h-7 w-7" />,
+    },
+  ];
 
   return (
     <div>
-      <Layout>
-        <MovieInfo movie={movie} />
+      <Layout >
+        <div
+          className={` ${
+            shareOpen ? "" : "hidden"
+          }  absolute  top-0 left-0 z-50   w-full h-full bg-main2 flex justify-center items-center `}
+        >
+          <span
+            onClick={() => setShareOpen((prev) => !prev)}
+            className="rounded-full fixed top-[30%]  md:right-[25%] lg:right-[20%] right-[8%] border-2 h-14 w-14 border-subMain hover:text-subMain text-white transi hover:border-white hover:rotate-180 flex justify-center items-center"
+          >
+            <MdCancel className="h-12 w-12" />
+          </span>
+
+          <div className="  fixed top-[40%]  py-10  px-4 bg-main rounded-md grid md:grid-cols-5 grid-cols-3 justify-center gap-8 md:gap-10 lg:gap-20 border border-border ">
+            {socials.map((social, i) => (
+              <a
+                key={i}
+                href={social.path}
+                className="bg-border  p-2 rounded-md transi flex justify-center items-center hover:bg-white hover:text-border"
+              >
+                {social.icon}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <MovieInfo movie={movie} setShareOpen={setShareOpen} url={url} />
         <div className="container mx-auto px-2 my-6 min-h-screen  ">
           <MovieCasts movieId={movie.id} />
 

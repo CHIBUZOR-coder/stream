@@ -55,8 +55,10 @@ const MovieProvider = ({ children }) => {
   //Favourite Cart
   const [FavouriteCount, setFavouriteCount] = useState(0);
   const [FavouriteCart, setFavouriteCart] = useState(() => {
-    return localStorage.getItem("FavoriteCart") || [];
+    const storedCart = localStorage.getItem("FavouriteCart");
+    return storedCart ? JSON.parse(storedCart) : []; // Parse the stored value if available, otherwise return an empty array
   });
+
   useEffect(() => {
     const favouriteCount = FavouriteCart.reduce((acc, curr) => {
       return acc + curr.quantity;
@@ -65,6 +67,10 @@ const MovieProvider = ({ children }) => {
     setFavouriteCount(count);
 
     console.log(count);
+  }, [FavouriteCart]);
+
+  useEffect(() => {
+    console.log("favCart", FavouriteCart);
   }, [FavouriteCart]);
   // *****Form****************
   const handleFileUploaded = (
