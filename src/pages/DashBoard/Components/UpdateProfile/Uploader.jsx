@@ -1,27 +1,35 @@
 import { useDropzone } from "react-dropzone";
 import { FiUploadCloud } from "react-icons/fi";
 
-const Uploader = ({ onFileUploaded, For, prviewSetter, MainImageSetter }) => {
+const Uploader = ({
+  onFileUploaded,
+  For,
+  prviewSetter,
+  MainImageSetter,
+  MainVideoSetter,
+}) => {
   const { getRootProps, getInputProps } = useDropzone({
     multiple: For === "video" ? true : false,
     maxSize: For === "video" ? 750000000 : 1000000,
-   
+
     onDrop: (acceptedFiles, rejectedFiles) => {
       if (rejectedFiles.length > 0) {
         console.error("Some files were rejected due to size or format.");
         console.log(rejectedFiles);
       }
 
-      const previewFile = acceptedFiles.map((file) =>
-        URL.createObjectURL(file)
-      );
+      const file = acceptedFiles[0]; // acceptedFiles is the file object, not an array
+      const previewFile = URL.createObjectURL(file);
+      // Clear previous preview and set the new one
+      // prviewSetter(previewFile); // Update the preview with the new file's preview URL
+
       // onFileUploaded(For === "video" ? previewFile[0] : previewFile); // Single file for ima
       if (For === "video") {
         onFileUploaded(
           acceptedFiles,
           previewFile,
           prviewSetter,
-          // MainImageSetter
+          MainVideoSetter
         );
       } else {
         onFileUploaded(

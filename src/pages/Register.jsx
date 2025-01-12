@@ -12,7 +12,7 @@ const Register = () => {
   const [Password, setPassword] = useState("");
   const [ConfirmPassword, setConfirmPassword] = useState("");
   const [userImage, setUserImage] = useState([]);
-  const [preview, setPreview] = useState([]);
+  const [preview, setPreview] = useState(null);
   return (
     <Layout>
       <div className="mx-auto relative px-2 my-4 flexCol ">
@@ -72,6 +72,7 @@ const Register = () => {
                 onFileUploaded={handleFileUploaded}
                 prviewSetter={setPreview}
                 MainImageSetter={setUserImage}
+                For={"image"}
               />
             </div>
 

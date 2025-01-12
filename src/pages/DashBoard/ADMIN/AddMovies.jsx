@@ -6,6 +6,7 @@ import SelectRating from "../../../Custom/SelectRating";
 import MovieContext from "../../../Context/MovieContext";
 import { CgSelectR } from "react-icons/cg";
 import { TbInfoSquareRoundedFilled } from "react-icons/tb";
+import { useToast } from "react-toastify";
 
 const AddMovie = () => {
   const {
@@ -17,9 +18,9 @@ const AddMovie = () => {
   let Ffor = "video";
   const [Images, setImages] = useState(""); // Array to store multiple image URLs
   const [Video, setVideo] = useState([]); // Array to store multiple image URLs
-  const [previewVideo, setpreviewVideo] = useState([]); // Array to store multiple image URLs
-  const [previewImageV, setpreviewImageV] = useState([]); // Array to store multiple image URLs
-  const [previewImageC, setpreviewImageC] = useState([]); // Array to store multiple image URLs
+  const [previewVideo, setpreviewVideo] = useState(null); // Array to store multiple image URLs
+  const [previewImageV, setpreviewImageV] = useState(null); // Array to store multiple image URLs
+  const [previewImageC, setpreviewImageC] = useState(null); // Array to store multiple image URLs
   const selectedData = CategoryData.filter((item) => item.display === "show");
   const [Casts, setCasts] = useState([]);
   const [Name, setname] = useState("");
@@ -29,6 +30,7 @@ const AddMovie = () => {
   const [MovieHour, setMovieHour] = useState("");
   const [MovieLanguage, setMovieLanguage] = useState("");
   const [MovieYears, setMovieYear] = useState("");
+  const [MovieVideo, setMovieVideo] = useState(null);
 
   const AddCast = (name, role, imageurl) => {
     if (!name || !role || !imageurl) {
@@ -131,7 +133,7 @@ const AddMovie = () => {
                       >
                         <img
                           src={previewImageV}
-                          alt={`Uploaded Preview ${index + 1}`}
+                          alt={`Uploaded Preview ${image.name}`}
                           className="object-cover w-full h-full rounded"
                         />
                       </div>
@@ -153,6 +155,7 @@ const AddMovie = () => {
                 <Uploader
                   onFileUploaded={handleFileUploadedVideo}
                   prviewSetter={setVideo}
+                  MainVideoSetter={setMovieVideo}
                   For={Ffor}
                 />
               ) : (

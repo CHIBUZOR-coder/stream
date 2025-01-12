@@ -66,11 +66,11 @@ const MovieProvider = ({ children }) => {
     const count = favouriteCount ? favouriteCount : 0;
     setFavouriteCount(count);
 
-    console.log(count);
+    // console.log(count);
   }, [FavouriteCart]);
 
   useEffect(() => {
-    console.log("favCart", FavouriteCart);
+    // console.log("favCart", FavouriteCart);
   }, [FavouriteCart]);
   // *****Form****************
   const handleFileUploaded = (
@@ -79,14 +79,19 @@ const MovieProvider = ({ children }) => {
     prviewSetter,
     MainImageSetter
   ) => {
-    MainImageSetter((prevImages) => [...prevImages, ...newFiles]);
+    MainImageSetter(newFiles);
     prviewSetter(preview);
     console.log("file", newFiles);
     console.log("preview", preview);
   };
 
-  const handleFileUploadedVideo = (newFiles, preview, prviewSetter) => {
-    prviewSetter(newFiles);
+  const handleFileUploadedVideo = (
+    newFiles,
+    preview,
+    prviewSetter,
+    MainVideoSetter
+  ) => {
+    MainVideoSetter(newFiles);
     prviewSetter(preview);
   };
 
@@ -227,9 +232,9 @@ const MovieProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    console.log("FavouriteMovies", FavouriteCart);
-  }, [FavouriteCart]);
+  // useEffect(() => {
+  //   console.log("FavouriteMovies", FavouriteCart);
+  // }, [FavouriteCart]);
 
   //Add to favorite cart
   const AddToCart = (movie, amount) => {
