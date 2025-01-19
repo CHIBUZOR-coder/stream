@@ -2,7 +2,7 @@ import { createContext, useCallback, useEffect, useState } from "react";
 
 import { Movies } from "../Data/MovieData";
 import { Casts } from "../Data/CastsData";
-import { CategoryData } from "../Data/CategoryData"; // Include CategoryData
+// import { CategoryData } from "../Data/CategoryData"; // Include CategoryData
 
 import { BsFillGridFill } from "react-icons/bs";
 import { FaHeart, FaListAlt, FaUser } from "react-icons/fa";
@@ -11,12 +11,39 @@ import { HiViewColumns } from "react-icons/hi2";
 import { FiSettings } from "react-icons/fi";
 import Profile from "../pages/DashBoard/Components/DashboardComponents/Profile";
 import { userData } from "../Data/UserData";
+import DataResolve from "../DataFetching/DataResolve";
 
 // import DashboardPage from "../pages/DashBoard/Dashboard";
 
 const MovieContext = createContext();
 
 const MovieProvider = ({ children }) => {
+  // fetchied
+  const [categoryData, setCategoryData] = useState(null);
+  const [CategoryId, setCategoryId] = useState(null);
+
+  const {
+    data: AllCategory,
+    isLoading,
+    error,
+  } = DataResolve("http://localhost:5000/api/getCategory", "GET");
+
+  useEffect(() => {
+    if (AllCategory) {
+      setCategoryData(AllCategory.data);
+    }
+  }, [AllCategory]);
+
+  // useEffect(() => {
+  //   if (categoryData) console.log("data:", categoryData[0].name);
+  // }, [categoryData]);
+
+  //id retrival for update
+  const IdRetrival = (id, setter) => {
+    setter(parseInt(id));
+    console.log(id);
+  };
+
   const user = {
     name: "John Doe",
     image: "Adam",
@@ -73,21 +100,63 @@ const MovieProvider = ({ children }) => {
     // console.log("favCart", FavouriteCart);
   }, [FavouriteCart]);
   // *****Form****************
+
   const handleFileUploaded = (
     newFiles,
     preview,
     prviewSetter,
     MainImageSetter
   ) => {
-    MainImageSetter(newFiles);
+    if (typeof MainImageSetter === "function") {
+      MainImageSetter(newFiles);
+    } else {
+      console.error("MainImageSetter is not a function");
+    }
+
     prviewSetter(preview);
+
     console.log("file", newFiles);
-    console.log("preview", preview);
+
     console.log(
       "filename",
-      newFiles[0].name.slice(0, -4) // Drops the last 4 characters
+      newFiles.name.slice(0, -4) // Drops the last 4 characters
     );
   };
+  // const handleFileUploaded = (
+  //   newFiles,
+  //   preview,
+  //   prviewSetter,
+  //   MainImageSetter
+  // ) => {
+  //   MainImageSetter(newFiles);
+  //   prviewSetter(preview);
+  //   console.log("file", newFiles);
+  //   console.log("preview", preview);
+  //   console.log(
+  //     "filename",
+  //     newFiles[0].name.slice(0, -4) // Drops the last 4 characters
+  //   );
+  // };
+
+  // const handleFileUploadedVideo = (
+  //   newFiles,
+  //   preview,
+  //   prviewSetter,
+  //   MainVideoSetter
+  // ) => {
+  //   MainVideoSetter(newFiles);
+  //   prviewSetter(preview);
+  //   console.log("file", newFiles);
+  //   console.log("filename", newFiles[0].name.slice(0, -4));
+
+  //   console.log("preview", preview);
+  // };
+
+  // const setInputVal = (vale, setter, mainVal, indicator) => {
+  //   setter(vale);
+  //   console.log(`${indicator}:`, mainVal);
+  //   console.log("mainval", mainVal);
+  // };
 
   const handleFileUploadedVideo = (
     newFiles,
@@ -95,18 +164,23 @@ const MovieProvider = ({ children }) => {
     prviewSetter,
     MainVideoSetter
   ) => {
-    MainVideoSetter(newFiles);
+    if (typeof MainVideoSetter === "function") {
+      MainVideoSetter(newFiles);
+    } else {
+      console.error("MainImageSetter is not a function");
+    }
     prviewSetter(preview);
+
     console.log("file", newFiles);
-    console.log("filename", newFiles[0].name.slice(0, -4));
-
-    console.log("preview", preview);
+    console.log("filename", newFiles.name.slice(0, -4));
   };
 
-  const setInputVal = (vale, setter, mainVal) => {
+  const setInputVal = (vale, setter, mainVal, indicator) => {
     setter(vale);
-    console.log(mainVal);
+    console.log(`${indicator}:`, mainVal);
+    console.log("mainval", mainVal);
   };
+
   // ******For Done*******
 
   const YearData = [
@@ -143,7 +217,7 @@ const MovieProvider = ({ children }) => {
       };
 
       const datasets = {
-        1: CategoryData,
+        1: categoryData,
         2: YearData,
         3: TimesData,
         4: RatesData,
@@ -306,7 +380,6 @@ const MovieProvider = ({ children }) => {
         setDisplay,
         User,
         Users,
-        CategoryData,
         currentModal,
         setCurrentModal,
         ModalDisplay,
@@ -319,6 +392,10 @@ const MovieProvider = ({ children }) => {
         AddToCart,
         Alert,
         FavouriteCount,
+        categoryData,
+        IdRetrival,
+        CategoryId,
+        setCategoryId,
       }}
     >
       {children}

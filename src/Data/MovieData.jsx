@@ -23,7 +23,7 @@ export const Movies = [
     id: 2,
     name: "Avengers End Game",
     image: "endgame",
-    confirm: "endgame",
+   
     video: "",
     time: "3h 1m",
     approxiT: "3 - 4 hrs",
@@ -245,7 +245,7 @@ export const Movies = [
     id: 13,
     name: "Spiderman",
     image: "spiderman",
-    confirm: "spiderman",
+
     video: "",
     time: "2h 1m",
     approxiT: "2 - 3 hrs",

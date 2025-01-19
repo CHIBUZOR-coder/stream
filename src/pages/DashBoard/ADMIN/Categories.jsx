@@ -1,15 +1,42 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import MovieContext from "../../../Context/MovieContext";
 import Table from "../../../Custom/Table";
 import { HiPlusCircle } from "react-icons/hi2";
 import Table2 from "../../../Custom/Table2";
+import DataResolve from "../../../DataFetching/DataResolve";
 
-const Categories = () => {
-  const { setModalDisplay, currentModal, setCurrentModal, CategoryData } =
+const Categories = ({ IdRetrival, setter }) => {
+  const { setModalDisplay, currentModal, setCurrentModal, categoryData } =
     useContext(MovieContext);
-  const selectedData = CategoryData.filter((item) => item.display === "show");
-  // console.log("cdata", CategoryData);
+  const [categories, setCategories] = useState([]);
 
+  //Delete Category
+  const HandeleDelete = async (e, id) => {
+    e.preventDefault();
+    try {
+      const res = await fetch("http://localhost:5000/api/deleteCategory", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer your-auth-token",
+        },
+        body: JSON.stringify({ id }),
+      });
+
+      const data = await res.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  // const selectedData = CategoryData.filter((item) => item.display === "show");
+  // console.log("cdata", CategoryData);
+  useEffect(() => {
+    if (categoryData) {
+      setCategories(categoryData);
+    }
+  }, [categoryData]);
   const headList = [
     {
       id: 1,
@@ -44,7 +71,15 @@ const Categories = () => {
           <HiPlusCircle /> Create
         </button>
       </div>
-      <Table2 data={selectedData} headList={headList} For={"category"} />
+      <Table2
+        data={categories}
+        headList={headList}
+        For={"category"}
+        HandeleDelete={HandeleDelete}
+        IdRetrival={IdRetrival}
+        setter={setter}
+        setCurrentModal={setCurrentModal}
+      />
     </div>
   );
 };

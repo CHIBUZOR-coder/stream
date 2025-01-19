@@ -27,7 +27,22 @@ const Dashboard = () => {
     ModalDisplay,
     setModalDisplay,
     UpdatedTite,
+    setInputVal,
+    IdRetrival,
   } = useContext(MovieContext);
+
+  useEffect(() => {
+    console.log(currentModal);
+  }, [currentModal]);
+  //values sent to input below
+  const [newCategory, setNewCategory] = useState("");
+  const [newUpDate, setNewUpdate] = useState("");
+
+  //Values sent to fetch request below
+  const [updatCategory, setUpdateCategory] = useState({ tittle: "", id: null });
+  const [tittle, setTittle] = useState({ tittle: "" });
+
+  const [categoryId, setCatgoryId] = useState(null);
 
   useEffect(() => {
     // console.log(isActive);
@@ -42,7 +57,7 @@ const Dashboard = () => {
     } else if (isActive === "Users") {
       setDisplay(<Users />);
     } else if (isActive === "Categories") {
-      setDisplay(<Categories />);
+      setDisplay(<Categories IdRetrival={IdRetrival} setter={setCatgoryId} />);
     } else if (isActive === "Add Movie") {
       setDisplay(<AddMovies />);
     } else if (isActive === "Movies List") {
@@ -53,6 +68,66 @@ const Dashboard = () => {
       setDisplay(<Profile />);
     }
   }, [isActive]);
+
+  useEffect(() => {
+    setTittle({ tittle: newCategory });
+    setUpdateCategory((prev) => ({
+      ...prev,
+      tittle: newUpDate,
+      id: categoryId,
+    }));
+  }, [newCategory, newUpDate, categoryId]);
+
+  //Update  Category
+  const HandeleUpdateCategory = async () => {
+    // e.preventDefault();
+    try {
+      const res = await fetch("http://localhost:5000/api/updateCategory", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer your-auth-token",
+        },
+        body: JSON.stringify(updatCategory),
+      });
+
+      const data = await res.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  useEffect(() => {
+    console.log("updatedCatergory", updatCategory);
+  }, [updatCategory]);
+
+
+  
+  //Add Catehgory
+  const HandeleAddCategory = async () => {
+    // e.preventDefault();
+
+    try {
+      const res = await fetch("http://localhost:5000/api/createCartegory", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer your-auth-token",
+        },
+        body: JSON.stringify(tittle),
+      });
+
+      const data = await res.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  useEffect(() => {
+    console.log(newCategory);
+  }, [newCategory]);
 
   return (
     <Layout>
@@ -76,55 +151,69 @@ const Dashboard = () => {
               {currentModal === "Add" ? (
                 <>
                   <h2 className="text-2xl font-bold ">Create Category</h2>
-                  <form className="flex flex-col gap-6 text-left" action="">
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      setCurrentModal("Add");
+                      setModalDisplay((prev) => !prev);
+                      HandeleAddCategory();
+                    }}
+                    className="flex flex-col gap-6 text-left"
+                    action=""
+                  >
                     <Input
                       label={"Category Name"}
                       placeholder={"Add category name"}
                       type={"text"}
+                      setter={setNewCategory}
+                      mainVal={newCategory}
+                      setInputVal={setInputVal}
+                      indicator={"Category Name"}
+                      lablFor={"tittle"}
                     />
                     <button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setCurrentModal("Add");
-                        setModalDisplay((prev) => !prev);
-                      }}
+                      type="submit"
                       className="w-full font-semibold  flexRow py-3 rounded border-2 gap-3 Oga cursor-pointer transi border-subMain bg-subMain text-white hover:bg-main"
                     >
                       <HiPlusCircle className="pikin h-7 w-7" /> Add
                     </button>
                   </form>
                 </>
-              ) : (
-                ""
-              )}
-
-              {currentModal === "Edit" ? (
+              ) : currentModal === "Edit" ? (
                 <>
                   <h2 className="text-2xl font-bold ">Update Category</h2>
-                  <form className="flex flex-col gap-6 text-left" action="">
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      setCurrentModal("Edit");
+                      setModalDisplay((prev) => !prev);
+                      console.log(currentModal);
+                      HandeleUpdateCategory();
+                    }}
+                    className="flex flex-col gap-6 text-left"
+                    action=""
+                  >
                     <Input
                       label={"Category Name"}
                       placeholder={`${UpdatedTite}`}
+                      mainVal={newUpDate}
+                      setInputVal={setInputVal}
+                      setter={setNewUpdate}
                       type={"text"}
+                      indicator={"Category Name"}
+                      lablFor={"tittle"}
                     />
-                    <button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setCurrentModal("Add");
-                        setModalDisplay((prev) => !prev);
-                        console.log(currentModal);
-                      }}
-                      className="w-full font-semibold transi Oga  flexRow py-3 rounded border-2 gap-3 cursor-pointer transi border-subMain bg-subMain text-white hover:bg-main"
-                    >
+                    <button className="w-full font-semibold transi Oga  flexRow py-3 rounded border-2 gap-3 cursor-pointer transi border-subMain bg-subMain text-white hover:bg-main">
                       <RxUpdate className="pikin" /> Update
                     </button>
                   </form>
                 </>
               ) : (
-                ""
+                <p> No modal</p>
               )}
             </div>
           </div>
+
           <div className=" w-full lg:w-[25%] relative rounded-md ">
             <SideBar />
           </div>

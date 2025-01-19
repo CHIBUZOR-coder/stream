@@ -45,6 +45,7 @@ export default {
         dry:"rgba(11, 15, 41, 1)",
         star:"rgba(255, 176, 0, 1)",
         text:"rgba(192, 192, 192, 1)",
+        textt:"rgba(192, 192, 192, 0.3)",
         border:"rgba(75, 85, 99, 1)",
         dryGray:"rgba(224, 213, 213, 1)",
         drkb:"rgba(27, 30, 50, 0.8)",

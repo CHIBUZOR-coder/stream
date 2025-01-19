@@ -71,7 +71,7 @@ const MovieRates = ({ movie }) => {
                   ))}
                 </select> */}
 
-                <SelectRating data={Ratings} setRating={setRating} />
+                <SelectRating data={Ratings} setter={setRating} For={"movie"} />
                 {/* Custom Arrow */}
                 <div className="absolute top-[47%] cursor-pointer right-4 flex items-center  transform pointer-events-auto">
                   {/* <FaArrowDown className="text-white h-6 w-6" /> */}
@@ -104,7 +104,7 @@ const MovieRates = ({ movie }) => {
           <p className="text-xl text-text font-semibold">Reviews (56)</p>
           <div className="w-full flex flex-col bg-main gap-6 rounded-lg md:p-12 p-6 h-[550px] overflow-y-scroll ">
             {userData.map((user, i) => (
-              <div className="md:grid   flex flex-col w-full grid-cols-12 gap-5  bg-dry p-4 border border-x-gray-800  rounded-lg">
+              <div key={i} className="md:grid   flex flex-col w-full grid-cols-12 gap-5  bg-dry p-4 border border-x-gray-800  rounded-lg">
                 <div className="col-span-2 ">
                   <img
                     className="w-full  object-cover"

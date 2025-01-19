@@ -5,7 +5,15 @@ import { Link } from "react-router-dom";
 import MovieContext from "../Context/MovieContext";
 import { useContext } from "react";
 
-const Table2 = ({ data, headList, For }) => {
+const Table2 = ({
+  data,
+  headList,
+  For,
+  HandeleDelete,
+  setter,
+  IdRetrival,
+  setCurrentModal,
+}) => {
   const { currentModal, ModalChangeUpdate } = useContext(MovieContext);
   const Head = "text-xs text-left text-main font-semibold px-6 py-2 uppercase ";
   const Text = "text-sm text-left leading-6 whitespace-nowrap px-5 py-3";
@@ -39,15 +47,22 @@ const Table2 = ({ data, headList, For }) => {
                   <td className={`${Text} float-left flexRow gap-5`}>
                     <button
                       onClick={() => {
+                        setCurrentModal("Edit");
                         ModalChangeUpdate(item.tittle);
                         console.log(currentModal);
+                        console.log(item);
+
+                        IdRetrival(item.id, setter);
                       }}
                       className="bg-dry border border-border flexRow transi edit  hover:bg-green-500 hover:text-white gap-2 text-border px-2 py-1 rounded"
                     >
                       Edit{" "}
                       <FaEdit className="text-green-500 editchild  transi " />
                     </button>
-                    <button className="bg-subMain text-white rounded flexCol w-6 h-6 hover:bg-main transi border border-subMain delete  ">
+                    <button
+                      onClick={(e) => HandeleDelete(e, item.id)}
+                      className="bg-subMain text-white rounded flexCol w-6 h-6 hover:bg-main transi border border-subMain delete  "
+                    >
                       <MdDelete className="deletechild transi" />
                     </button>
                   </td>
