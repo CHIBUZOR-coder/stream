@@ -46,7 +46,7 @@ export const Casts = [
     movieId: 1,
     name: "Tom Holland",
     image: "spiderman",
-    role: "Spider-Man",
+    role: "Spiderman",
   },
   {
     id: 8,

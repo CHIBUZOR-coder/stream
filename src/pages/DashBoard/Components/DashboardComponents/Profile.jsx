@@ -51,7 +51,7 @@ const Profile = () => {
       </div>
       <h3 className="font-medium my-4 text-border">Recent Movies</h3>
 
-      <Table data={Movies.slice(0, 6)} User={User} />
+      <Table data={Movies.slice(0, 6)} User={User} For={"dash"} />
     </div>
   );
 };

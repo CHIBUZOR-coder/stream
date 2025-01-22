@@ -10,6 +10,8 @@ const Categories = ({ IdRetrival, setter }) => {
     useContext(MovieContext);
   const [categories, setCategories] = useState([]);
 
+  console.log("ddd:", categoryData);
+
   //Delete Category
   const HandeleDelete = async (e, id) => {
     e.preventDefault();
@@ -32,11 +34,11 @@ const Categories = ({ IdRetrival, setter }) => {
 
   // const selectedData = CategoryData.filter((item) => item.display === "show");
   // console.log("cdata", CategoryData);
-  useEffect(() => {
-    if (categoryData) {
-      setCategories(categoryData);
-    }
-  }, [categoryData]);
+  // useEffect(() => {
+  //   if (categoryData ) {
+  //     setCategories(categoryData.dat);
+  //   }
+  // }, []);
   const headList = [
     {
       id: 1,

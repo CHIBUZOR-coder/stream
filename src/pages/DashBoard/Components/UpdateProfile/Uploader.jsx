@@ -4,6 +4,7 @@ import { FiUploadCloud } from "react-icons/fi";
 const Uploader = ({
   onFileUploaded,
   For,
+  For2,
   prviewSetter,
   MainImageSetter,
   MainVideoSetter,
@@ -26,7 +27,9 @@ const Uploader = ({
     [For, onFileUploaded, prviewSetter, MainImageSetter, MainVideoSetter]
   );
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+  });
 
   return (
     <div className="w-full text-center">
@@ -38,7 +41,7 @@ const Uploader = ({
       >
         <label htmlFor={For === "video" ? "video" : "image"} className="w-full">
           <input
-            {...getInputProps({ name: For === "video" ? "video" : "image" })}
+            {...getInputProps({ name: For === "video" ? "video" : For ==="image"? "image": For === "imageurl"? "imageurl":"image" })}
           />
         </label>
 

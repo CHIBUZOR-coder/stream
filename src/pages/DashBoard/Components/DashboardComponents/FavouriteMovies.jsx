@@ -16,7 +16,7 @@ const Favourite = () => {
         </button>
       </div>
 
-      <Table data={selected}  User={User} />
+      <Table data={selected} User={User} For={"Fav"} />
     </div>
   );
 };

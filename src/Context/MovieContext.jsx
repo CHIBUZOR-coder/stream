@@ -12,6 +12,7 @@ import { FiSettings } from "react-icons/fi";
 import Profile from "../pages/DashBoard/Components/DashboardComponents/Profile";
 import { userData } from "../Data/UserData";
 import DataResolve from "../DataFetching/DataResolve";
+import { data } from "react-router-dom";
 
 // import DashboardPage from "../pages/DashBoard/Dashboard";
 
@@ -19,20 +20,53 @@ const MovieContext = createContext();
 
 const MovieProvider = ({ children }) => {
   // fetchied
-  const [categoryData, setCategoryData] = useState(null);
+
   const [CategoryId, setCategoryId] = useState(null);
+  const [FetchedMovies, setFetchedMovies] = useState(null);
 
   const {
     data: AllCategory,
     isLoading,
     error,
   } = DataResolve("http://localhost:5000/api/getCategory", "GET");
+  // categoryData = AllCategory.data;
+
+  // console.log("All", AllCategory.data);
+  let categoryData;
+
+  if (AllCategory) {
+    categoryData = AllCategory.data;
+    
+  }
+  // console.log("ctd", categoryData);
 
   useEffect(() => {
-    if (AllCategory) {
-      setCategoryData(AllCategory.data);
-    }
-  }, [AllCategory]);
+    const HandleGetMovies = async () => {
+      try {
+        const res = await fetch("http://localhost:5000/api/getMovies", {
+          method: "GET",
+          headers: {
+            "Content-Type": "Application/Json",
+          },
+          // body: JSON.stringify({ id }),
+        });
+        let data;
+        if (res.ok) {
+          console.log("Movies fetched successfully");
+
+          data = await res.json();
+          setFetchedMovies(data.data);
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+
+    HandleGetMovies();
+  }, []);
+
+  const AllMovies = FetchedMovies;
+  // console.log("all", AllMovies);
 
   // useEffect(() => {
   //   if (categoryData) console.log("data:", categoryData[0].name);
@@ -71,7 +105,7 @@ const MovieProvider = ({ children }) => {
   // console.log(currentModal);
   const ModalChangeUpdate = (Title) => {
     setModalDisplay((prev) => !prev);
-    setCurrentModal("Edit");
+    // setCurrentModal("Edit");
     console.log(currentModal);
     console.log(Title);
     setUpdatedTitle(Title);
@@ -122,42 +156,6 @@ const MovieProvider = ({ children }) => {
       newFiles.name.slice(0, -4) // Drops the last 4 characters
     );
   };
-  // const handleFileUploaded = (
-  //   newFiles,
-  //   preview,
-  //   prviewSetter,
-  //   MainImageSetter
-  // ) => {
-  //   MainImageSetter(newFiles);
-  //   prviewSetter(preview);
-  //   console.log("file", newFiles);
-  //   console.log("preview", preview);
-  //   console.log(
-  //     "filename",
-  //     newFiles[0].name.slice(0, -4) // Drops the last 4 characters
-  //   );
-  // };
-
-  // const handleFileUploadedVideo = (
-  //   newFiles,
-  //   preview,
-  //   prviewSetter,
-  //   MainVideoSetter
-  // ) => {
-  //   MainVideoSetter(newFiles);
-  //   prviewSetter(preview);
-  //   console.log("file", newFiles);
-  //   console.log("filename", newFiles[0].name.slice(0, -4));
-
-  //   console.log("preview", preview);
-  // };
-
-  // const setInputVal = (vale, setter, mainVal, indicator) => {
-  //   setter(vale);
-  //   console.log(`${indicator}:`, mainVal);
-  //   console.log("mainval", mainVal);
-  // };
-
   const handleFileUploadedVideo = (
     newFiles,
     preview,
@@ -302,14 +300,14 @@ const MovieProvider = ({ children }) => {
   ];
 
   //Alert
-  const Alert = (success, value) => {
+  const Alert = (success, message) => {
     if (success) {
-      let message;
-      message = value;
-      return message;
+      let value;
+      value = message;
+      return value;
     } else if (!success) {
       let errorMessage;
-      errorMessage = value;
+      errorMessage = message;
       return errorMessage;
     }
   };
@@ -396,6 +394,7 @@ const MovieProvider = ({ children }) => {
         IdRetrival,
         CategoryId,
         setCategoryId,
+        AllMovies,
       }}
     >
       {children}

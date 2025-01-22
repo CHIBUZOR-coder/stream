@@ -10,6 +10,7 @@ export const Input = ({
   mainVal,
   indicator,
   lablFor,
+
 }) => {
   return (
     <div className="text-sm w-full">

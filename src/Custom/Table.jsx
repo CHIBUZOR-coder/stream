@@ -1,11 +1,32 @@
+import { useContext, useState } from "react";
 import { FaCloudDownloadAlt, FaEdit } from "react-icons/fa";
 import { GoEye } from "react-icons/go";
 import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
+import MovieContext from "../Context/MovieContext";
 
-const Table = ({ data, User  }) => {
+const Table = ({
+  data,
+  User,
+  For,
+  Handlegeneral,
+  setdeletedMovieId,
+  HandleDeleteMovie,
+}) => {
+  const { IdRetrival } = useContext(MovieContext);
+
   // console.log(User.role);
-  
+
+  if (For === "movie") {
+    if (!data || data.length === 0) {
+      return (
+        <div className="text-center text-white py-4">
+          <p>No movies available to display.</p>
+        </div>
+      );
+    }
+  }
+
   const Head = "text-xs text-left text-main font-semibold px-6 py-2 uppercase ";
   const Text = "text-sm text-left leading-6 whitespace-nowrap px-5 py-3";
   return (
@@ -42,7 +63,7 @@ const Table = ({ data, User  }) => {
               <td className={`${Text}`}>
                 <div className="w-12 bg-dry borer border-border rounded h-12 overflow-hidden ">
                   <img
-                    src={`./images/${movie.image}.jpg`}
+                    src={`${movie.image}`}
                     alt={movie.name}
                     className="w-full h-full object-cover rounded-md"
                   />
@@ -66,11 +87,19 @@ const Table = ({ data, User  }) => {
               <td className={`${Text} float-right flexRow gap-2`}>
                 {User.role === "Admin" ? (
                   <>
-                    <button className="bg-dry border border-border flexRow gap-2 text-border transi edit  hover:bg-green-500 hover:text-white px-2 py-1 rounded">
+                    <button
+                      onClick={() => Handlegeneral(movie.name, movie.id)}
+                      className="bg-dry border border-border flexRow gap-2 text-border transi edit  hover:bg-green-500 hover:text-white px-2 py-1 rounded"
+                    >
                       Edit{" "}
                       <FaEdit className="text-green-500 editchild  transi " />
                     </button>
-                    <button className="bg-subMain text-white rounded flexCol w-6 h-6  hover:bg-main transi border border-subMain delete  ">
+                    <button
+                      onClick={(e) => {
+                        HandleDeleteMovie(e, movie.id);
+                      }}
+                      className="bg-subMain text-white rounded flexCol w-6 h-6  hover:bg-main transi border border-subMain delete  "
+                    >
                       <MdDelete className="deletechild transi" />
                     </button>
                   </>
