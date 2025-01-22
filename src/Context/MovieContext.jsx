@@ -36,6 +36,8 @@ const MovieProvider = ({ children }) => {
 
   if (AllCategory) {
     categoryData = AllCategory.data;
+    console.log("all:", AllCategory);
+    
     
   }
   // console.log("ctd", categoryData);

@@ -7,6 +7,7 @@ import MovieContext from "../../../Context/MovieContext";
 import { CgSelectR } from "react-icons/cg";
 import { TbInfoSquareRoundedFilled } from "react-icons/tb";
 import { IoIosWarning } from "react-icons/io";
+import Categories from "./Categories";
 
 const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
   const {
@@ -26,11 +27,17 @@ const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
     if (categoryData) {
       setCategories(categoryData);
     }
-  }, [categoryData]);
+  }, []);
+
+  //  console.log(categoryData);
 
   useEffect(() => {
     console.log("categryId", CategoryId);
   }, [CategoryId]);
+
+  useEffect(() => {
+    console.log("categrss", categories);
+  }, [Categories]);
 
   let Ffor = "video";
   const [Images, setImages] = useState([]);
@@ -175,89 +182,68 @@ const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
       }
     } catch (error) {
       console.log(error.message);
+      setResult(Alert(false, "Somthing went wrong "));
     } finally {
       setTimeout(() => {
         setResult(null);
       }, 3000);
+
+      setMovieTitle("");
+      setMovieHour("");
+      setDuration("");
+      setPopularr();
+      setMovieYear("");
+      YearDuration("");
+      setRatingRange("");
+      setDescription("");
+      setPrice("");
+      setTrailer("");
+      setMovieCategoryId("");
     }
   };
 
-  //Add Cast
-// const HandleAddCast = async (e) => {
-//   e.preventDefault();
-//   setLoadDiaplay("Creating Movies...");
+  const HandleAddCast = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setLoadDiaplay("Adding Movies Casts...");
 
-//   const formData = new FormData();
+    const formData = new FormData();
+    formData.append("movieId", movieId);
+    formData.append("casts", JSON.stringify(casts)); // Send cast data as a JSON string
 
-//   formData.append("movieId", movieId);
-
-//   // Append each cast as a separate field
-//   casts.forEach((cast, index) => {
-//     formData.append(`casts[${index}][name]`, cast.name);
-//     formData.append(`casts[${index}][role]`, cast.role);
-//     formData.append(`casts[${index}][imageurl]`, cast.imageurl); // Assuming this is a file Blob
-//   });
-
-//   try {
-//     const res = await fetch("http://localhost:5000/api/addCast", {
-//       method: "POST",
-//       body: formData,
-//     });
-
-//     const data = await res.json();
-
-//     if (!res.ok) {
-//       setIsLoading(false);
-//       setResult(Alert(false, data.message));
-//       console.log(data.message);
-//       return;
-//     }
-
-//     setIsLoading(false);
-//     setResult(Alert(true, "Casts added successfully!"));
-//     console.log("Casts added successfully!", data);
-//   } catch (error) {
-//     console.error("Error submitting form:", error);
-//     setResult(Alert(false, "An error occurred while submitting the form."));
-//   } finally {
-//     setTimeout(() => {
-//       setResult(null);
-//     }, 3000);
-//   }
-// };
-
-const HandleAddCast = async (e) => {
-  e.preventDefault();
-
-  const formData = new FormData();
-  formData.append("movieId", movieId);
-  formData.append("casts", JSON.stringify(casts)); // Send cast data as a JSON string
-
-  casts.forEach((cast, index) => {
-    formData.append(`casts[${index}][imageurl]`, cast.imageurl); // File
-  });
-
-  try {
-    const res = await fetch("http://localhost:5000/api/addCast", {
-      method: "POST",
-      body: formData,
+    casts.forEach((cast, index) => {
+      formData.append(`casts[${index}][imageurl]`, cast.imageurl); // File
     });
 
-    const data = await res.json();
-    if (!res.ok) {
-      console.error("Error:", data.message);
-      return;
+    try {
+      const res = await fetch("http://localhost:5000/api/addCast", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        console.error("Error:", data.message);
+        setIsLoading(false);
+        setResult(Alert(false, data.message));
+        return;
+      }
+      setIsLoading(false);
+      setResult(Alert(true, data.message));
+      console.log("Casts added successfully!:", data);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setResult(Alert(false, "Somthing went wrong "));
+    } finally {
+      setTimeout(() => {
+        setResult(null);
+      }, 6000);
     }
-    console.log("Casts added successfully:", data);
-  } catch (error) {
-    console.error("Error submitting form:", error);
-  }
-};
-
-
+  };
 
   useEffect(() => {
     setMovieCategoryId(CategoryId);
+    console.log("catId", CategoryId);
   }, [CategoryId]);
 
   useEffect(() => {
@@ -616,7 +602,7 @@ const HandleAddCast = async (e) => {
               setter={SetMovieName}
               setInputVal={setInputVal}
               mainVal={MovieName}
-              indicator={"Full Name"}
+              indicator={"Movie Name"}
               labelFor={"name"}
               center={"center"}
             />

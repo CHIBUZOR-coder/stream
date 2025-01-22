@@ -13,6 +13,8 @@ const Register = () => {
   const [ConfirmPassword, setConfirmPassword] = useState("");
   const [userImage, setUserImage] = useState([]);
   const [preview, setPreview] = useState(null);
+  const [Name, setName] = useState("");
+  const [phone, setPhone] = useState("")
   return (
     <Layout>
       <div className="mx-auto relative px-2 my-4 flexCol ">
@@ -26,7 +28,17 @@ const Register = () => {
           </div>
 
           <form className="flex flexCol gap-5 w-full">
-            <Input label={"Full Name"} placeholder={"John Doe"} type={"text"} />
+            <Input
+              label={"Full Name"}
+              placeholder={"John Doe"}
+              type={"text"}
+              setter={setName}
+              mainVal={Name}
+              labelFor={"name"}
+              setInputVal={setInputVal}
+              indicator={"Full Name"}
+              bg={true}
+            />
 
             <Input
               label={"Email"}
@@ -36,15 +48,19 @@ const Register = () => {
               setInputVal={setInputVal}
               mainVal={Email}
               bg={true}
+              labelFor={"email"}
+              indicator={"Email"}
             />
             <Input
               label={"Phone"}
               placeholder={"+1 234 567 890"}
               type={"text"}
-              setter={setPassword}
+              setter={setPhone}
               setInputVal={setInputVal}
-              mainVal={Password}
+              mainVal={phone}
               bg={true}
+              labelFor={"phone"}
+              indicator={"Phone"}
             />
 
             <Input
@@ -55,6 +71,8 @@ const Register = () => {
               setInputVal={setInputVal}
               mainVal={Password}
               bg={true}
+              labelFor={"password"}
+              indicator={"Password"}
             />
 
             <Input
@@ -65,6 +83,8 @@ const Register = () => {
               setInputVal={setInputVal}
               mainVal={ConfirmPassword}
               bg={true}
+              labelFor={"confirmpassword"}
+              indicator={"Confirm Password"}
             />
 
             <div className="">
@@ -78,19 +98,14 @@ const Register = () => {
 
             <div className=" w-full  relative col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 items-center cursor-default ">
               <div className="flex gap-4 flex-wrap">
-                {userImage.length > 0 ? (
-                  userImage.map((image, index) => (
-                    <div
-                      key={index}
-                      className="w-32 h-32 p-2 bg-main border border-border rounded flex items-center justify-center"
-                    >
-                      <img
-                        src={preview}
-                        alt={`Uploaded Preview ${index + 1}`}
-                        className="object-cover w-full h-full rounded"
-                      />
-                    </div>
-                  ))
+                {userImage.path ? (
+                  <div className="w-32 h-32 p-2 bg-main border border-border rounded flex items-center justify-center">
+                    <img
+                      src={preview}
+                      alt={`Uploaded Preview ${userImage}`}
+                      className="object-cover w-full h-full rounded"
+                    />
+                  </div>
                 ) : (
                   <p className="text-sm text-gray-500 p-4 rounded-md border border-border bg-main">
                     No images added
