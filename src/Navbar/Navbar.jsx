@@ -6,9 +6,19 @@ import { Link, NavLink } from "react-router-dom";
 import MovieContext from "../Context/MovieContext";
 import { FaInfoCircle } from "react-icons/fa";
 import { TiContacts } from "react-icons/ti";
+import { TbTableDashed } from "react-icons/tb";
+import { use } from "react";
 
 const Navbar = () => {
   const { FavouriteCount } = useContext(MovieContext);
+
+  const userData = JSON.parse(localStorage.getItem("UserInfo")) || null;
+  // console.log(userData.role);
+  
+
+  const dash = userData ? "/stream/dash" : "/stream/login";
+  // console.log("dash:", dash);
+
   const hover = "hover:text-subMain transi text-white relative";
   const Hover = ({ isActive }) => (isActive ? "text-subMain" : hover);
   return (
@@ -103,9 +113,10 @@ const Navbar = () => {
                     : "hover:text-main hover:bg-white transi text-white relative"
                 } hov  p-2 flex justify-center items-center rounded-md`
               }
-              to={`/stream/login`}
+              to={`${dash}`}
             >
-              <FaUserCircle />
+              {/* <FaUserCircle /> */}
+              {userData ? <TbTableDashed /> : <FaUserCircle />}
             </NavLink>
             <NavLink
               className={({ isActive }) =>

@@ -6,12 +6,55 @@ import Table2 from "../../../Custom/Table2";
 import DataResolve from "../../../DataFetching/DataResolve";
 
 const Categories = ({ IdRetrival, setter }) => {
-  const { setModalDisplay, currentModal, setCurrentModal, categoryData } =
-    useContext(MovieContext);
-  const [categories, setCategories] = useState([]);
+  const {
+    setModalDisplay,
+    currentModal,
+    setCurrentModal,
+    categoryDataa,
+    HandleGetCategories,
+   
+  } = useContext(MovieContext);
 
-  console.log("ddd:", categoryData);
+  // const [rerender, setRerender] = useState(false);
 
+
+  //update Category
+  //*************Update  Category*******************
+  const HandeleUpdateCategory = async () => {
+    setLoadDiaplay("Updating Category...");
+    setIsLoading(true);
+
+    // e.preventDefault();
+    try {
+      const res = await fetch("http://localhost:5000/api/updateCategory", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer your-auth-token",
+        },
+        body: JSON.stringify(updatCategory),
+      });
+      let data;
+      if (!res.ok) {
+        data = await res.json();
+
+        setIsLoading(false);
+        setResult(Alert(false, data.message));
+      }
+
+      setIsLoading(false);
+      setResult(Alert(true, "Category updated succesfully"));
+
+      data = await res.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error.message);
+    } finally {
+      setTimeout(() => {
+        setResult(null);
+      }, 6000);
+    }
+  };
   //Delete Category
   const HandeleDelete = async (e, id) => {
     e.preventDefault();
@@ -32,13 +75,7 @@ const Categories = ({ IdRetrival, setter }) => {
     }
   };
 
-  // const selectedData = CategoryData.filter((item) => item.display === "show");
-  // console.log("cdata", CategoryData);
-  // useEffect(() => {
-  //   if (categoryData ) {
-  //     setCategories(categoryData.dat);
-  //   }
-  // }, []);
+
   const headList = [
     {
       id: 1,
@@ -74,13 +111,14 @@ const Categories = ({ IdRetrival, setter }) => {
         </button>
       </div>
       <Table2
-        data={categories}
+        data={categoryDataa}
         headList={headList}
         For={"category"}
         HandeleDelete={HandeleDelete}
         IdRetrival={IdRetrival}
         setter={setter}
         setCurrentModal={setCurrentModal}
+        HandleGetCategories={HandleGetCategories}
       />
     </div>
   );

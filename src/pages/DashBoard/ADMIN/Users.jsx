@@ -5,8 +5,8 @@ import { HiPlusCircle } from "react-icons/hi2";
 import Table2 from "../../../Custom/Table2";
 
 const Users = () => {
-  const { Users, CategoryData } = useContext(MovieContext);
-  console.log("cdata", CategoryData);
+  const { staticUsers } = useContext(MovieContext);
+
 
   const headList = [
     {
@@ -39,7 +39,7 @@ const Users = () => {
     <div className="flex flex-col gap-6">
       <h2 className="md:text-xl text-lg text-white  font-bold">Users</h2>
 
-      <Table2 data={Users} headList={headList} For={"user"} />
+      <Table2 data={staticUsers} headList={headList} For={"user"} />
     </div>
   );
 };

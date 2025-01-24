@@ -13,6 +13,7 @@ import Profile from "../pages/DashBoard/Components/DashboardComponents/Profile";
 import { userData } from "../Data/UserData";
 import DataResolve from "../DataFetching/DataResolve";
 import { data } from "react-router-dom";
+import { IoLogOut } from "react-icons/io5";
 
 // import DashboardPage from "../pages/DashBoard/Dashboard";
 
@@ -20,59 +21,77 @@ const MovieContext = createContext();
 
 const MovieProvider = ({ children }) => {
   // fetchied
-
+  const staticUsers = userData;
   const [CategoryId, setCategoryId] = useState(null);
   const [FetchedMovies, setFetchedMovies] = useState(null);
+  const [FetchedCategories, setFetchedCategories] = useState(null);
+  const [issLoading, setIsLoading] = useState(false);
+  const [isLogin, setIslogin] = useState(false);
+   const [autoRender, setAutornder] = useState(false);
 
-  const {
-    data: AllCategory,
-    isLoading,
-    error,
-  } = DataResolve("http://localhost:5000/api/getCategory", "GET");
-  // categoryData = AllCategory.data;
+  // const {
+  //   data: AllCategory,
+  //   isLoading,
+  //   error,
+  // } = DataResolve("http://localhost:5000/api/getCategory", "GET");
 
-  // console.log("All", AllCategory.data);
-  let categoryData;
+  // if (AllCategory) {
+  //   categoryData = AllCategory.data;
+  //   console.log("all:", AllCategory);
+  // }
 
-  if (AllCategory) {
-    categoryData = AllCategory.data;
-    console.log("all:", AllCategory);
-    
-    
-  }
-  // console.log("ctd", categoryData);
+  const HandleGetMovies = async () => {
+    try {
+      const res = await fetch("http://localhost:5000/api/getMovies", {
+        method: "GET",
+        headers: {
+          "Content-Type": "Application/Json",
+        },
+        // body: JSON.stringify({ id }),
+      });
+      let data;
+      if (res.ok) {
+        console.log("Movies fetched successfully");
+
+        data = await res.json();
+        setFetchedMovies(data.data);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const HandleGetCategories = async () => {
+    try {
+      const res = await fetch("http://localhost:5000/api/getCategory", {
+        method: "GET",
+        headers: {
+          "Content-Type": "Application/Json",
+        },
+        // body: JSON.stringify({ id }),
+      });
+      let data;
+      if (res.ok) {
+        console.log("Categories fetched successfully");
+
+        data = await res.json();
+        setFetchedCategories(data.data);
+        // console.log(data);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   useEffect(() => {
-    const HandleGetMovies = async () => {
-      try {
-        const res = await fetch("http://localhost:5000/api/getMovies", {
-          method: "GET",
-          headers: {
-            "Content-Type": "Application/Json",
-          },
-          // body: JSON.stringify({ id }),
-        });
-        let data;
-        if (res.ok) {
-          console.log("Movies fetched successfully");
-
-          data = await res.json();
-          setFetchedMovies(data.data);
-        }
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-
     HandleGetMovies();
+    HandleGetCategories();
   }, []);
 
   const AllMovies = FetchedMovies;
-  // console.log("all", AllMovies);
+  const categoryDataa = FetchedCategories;
 
-  // useEffect(() => {
-  //   if (categoryData) console.log("data:", categoryData[0].name);
-  // }, [categoryData]);
+  // console.log("cata", categoryDataa);
 
   //id retrival for update
   const IdRetrival = (id, setter) => {
@@ -266,13 +285,13 @@ const MovieProvider = ({ children }) => {
       name: "Add Movie",
       link: "/addmovie",
       icon: <RiMovie2Fill />,
-      user: "Admin",
+      user: "ADMIN",
     },
     {
       name: "Categories",
       link: "/categories",
       icon: <FaListAlt />,
-      user: "Admin",
+      user: "ADMIN",
     },
     {
       name: "Notifications",
@@ -299,6 +318,12 @@ const MovieProvider = ({ children }) => {
       icon: <RiLockPasswordLine />,
       user: "All",
     },
+    {
+      name: "Logout",
+      link: "",
+      icon: <IoLogOut />,
+      user: "All",
+    },
   ];
 
   //Alert
@@ -317,6 +342,94 @@ const MovieProvider = ({ children }) => {
   // useEffect(() => {
   //   console.log("FavouriteMovies", FavouriteCart);
   // }, [FavouriteCart]);
+
+  //Veryfy token
+  const Autentification = async () => {
+    try {
+      const res = await fetch("http://localhost:5000/api/protectedRoute", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json", // Optional, depending on your API
+        },
+        credentials: "include", // Include cookies in the request
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        const errorData = data;
+        throw new Error(errorData.message || "Authorization failed");
+      }
+
+      if (isLogin) {
+        localStorage.setItem("userInfo", JSON.stringify(data.userInfo));
+      }
+      console.log(data);
+
+      // Assuming setUserRole is defined
+      // Assuming setUserDetails is defined
+    } catch (error) {
+      console.error("Error in Authentification:", error.message);
+    }
+  };
+
+  useEffect(() => {
+    if (isLogin) {
+      setTimeout(() => {
+        console.log("calling Authentification");
+        Autentification();
+      }, 200);
+    }
+  }, [isLogin]);
+
+  //Logout
+  const checkTokenExpiry = async () => {
+    try {
+      const userInfo = JSON.parse(localStorage.getItem("userInfo")); // Get userInfo from localStorage
+      if (!userInfo) {
+        console.log("userInfo not found");
+        return;
+      } else if (!userInfo.exp) {
+        console.log("Token has not yet expierd");
+        return;
+      }
+
+      const expTime = userInfo.exp * 1000; // Convert exp from seconds to milliseconds
+      const currentTime = Date.now(); // Get current time in milliseconds
+
+      // Check if the token is expired
+      if (expTime < currentTime) {
+        console.log("Token has expired. Clearing localStorage and cookies...");
+
+        localStorage.clear();
+        // Send a request to the backend to clear the HTTP-only cookie
+        const res = await fetch("http://localhost:5000/clear-cookies", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+        });
+
+        let data;
+
+        if (res.ok) {
+          data = await res.json(); // Make sure to wait for the response
+          console.log(data);
+        } else {
+          console.log("Failed to clear cookies. Server returned an error.");
+        }
+
+        // Optionally, perform other actions like redirecting the user to the login page
+        // window.location.href = "/login"; // Redirect to login page, or show an alert, etc.
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+  };
+
+  useEffect(() => {
+    checkTokenExpiry();
+  }, []);
 
   //Add to favorite cart
   const AddToCart = (movie, amount) => {
@@ -392,11 +505,19 @@ const MovieProvider = ({ children }) => {
         AddToCart,
         Alert,
         FavouriteCount,
-        categoryData,
+        categoryDataa,
         IdRetrival,
         CategoryId,
         setCategoryId,
         AllMovies,
+        issLoading,
+        setIsLoading,
+        checkTokenExpiry,
+        staticUsers,
+        HandleGetCategories,
+        setIslogin,
+        autoRender,
+        setAutornder,
       }}
     >
       {children}

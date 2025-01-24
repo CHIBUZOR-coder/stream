@@ -33,6 +33,10 @@ const Dashboard = () => {
     IdRetrival,
     AllMovies,
     Alert,
+    issLoading,
+    setIsLoading,
+    setAutornder,
+    HandleGetCategories,
   } = useContext(MovieContext);
 
   // console.log("all", allProductes);
@@ -57,10 +61,6 @@ const Dashboard = () => {
     }
   }, [MovieId]);
 
-  // useEffect(() => {
-  //   console.log("fetchId:", fetchId);
-  // }, [fetchId]);
-
   const Handlegeneral = (name, id) => {
     setCurrentModal("TableEdit");
     console.log("Table");
@@ -68,9 +68,6 @@ const Dashboard = () => {
     IdRetrival(id, setMoveId);
   };
 
-  // useEffect(() => {
-  //   console.log(currentModal);
-  // }, [currentModal]);
   //values sent to input below
   const [newCategory, setNewCategory] = useState("");
   const [newUpDate, setNewUpdate] = useState("");
@@ -79,14 +76,10 @@ const Dashboard = () => {
   const [updatCategory, setUpdateCategory] = useState({ tittle: "", id: null });
   const [updatedMovie, setUpdatedMovie] = useState({ name: "", movieId: null });
   const [tittle, setTittle] = useState({ tittle: "" });
-  const [isLoading, setIsLoading] = useState(false);
+
   const [categoryId, setCatgoryId] = useState(null);
   const [Result, setResult] = useState();
   const [loadDisplay, setLoadDiaplay] = useState("");
-
-  // useEffect(() => {
-  //   console.log("result", Result);
-  // }, [Result]);
 
   useEffect(() => {
     setTittle({ tittle: newCategory });
@@ -141,10 +134,6 @@ const Dashboard = () => {
       }, 6000);
     }
   };
-
-  // useEffect(() => {
-  //   console.log("updatedCatergory", updatCategory);
-  // }, [updatCategory]);
 
   //Delete Movie
   const HandleDeleteMovie = async (e, id) => {
@@ -220,8 +209,8 @@ const Dashboard = () => {
 
   //*************Update  Category*******************
   const HandeleUpdateCategory = async () => {
-    setLoadDiaplay("Updating Category...");
     setIsLoading(true);
+    setLoadDiaplay("Updating Category...");
 
     // e.preventDefault();
     try {
@@ -243,9 +232,10 @@ const Dashboard = () => {
 
       setIsLoading(false);
       setResult(Alert(true, "Category updated succesfully"));
-
+      setAutornder((prev) => !prev);
       data = await res.json();
       console.log(data);
+      HandleGetCategories();
     } catch (error) {
       console.log(error.message);
     } finally {
@@ -255,9 +245,10 @@ const Dashboard = () => {
     }
   };
 
-  // useEffect(() => {
-  //   console.log(newCategory);
-  // }, [newCategory]);
+  const Rerender = (setter) => {
+    setter((prev) => !prev);
+    console.log("Rerendering done");
+  };
 
   useEffect(() => {
     // console.log(isActive);
@@ -277,12 +268,13 @@ const Dashboard = () => {
           IdRetrival={IdRetrival}
           setter={setCatgoryId}
           setResult={setResult}
+          Rerender={Rerender}
         />
       );
     } else if (isActive === "Add Movie") {
       setDisplay(
         <AddMovies
-          isLoading={isLoading}
+          isLoading={issLoading}
           setIsLoading={setIsLoading}
           setResult={setResult}
           setLoadDiaplay={setLoadDiaplay}
@@ -322,10 +314,10 @@ const Dashboard = () => {
           </div>
           <div
             className={`${
-              isLoading ? "" : "hidden"
+              issLoading ? "" : "hidden"
             } absolute top-0 left-0 w-full h-full flex justify-center  bg-modal z-40`}
           >
-            {isLoading && (
+            {issLoading && (
               <div className=" fixed top-[200px] h-24 w-1/2 rounded-md border-border text-white  flex flex-col justify-center items-center ">
                 <RiLoader2Fill className="h-10 w-10 animate-spin" />
                 <p className="font-semibold">{loadDisplay}</p>
@@ -392,6 +384,9 @@ const Dashboard = () => {
                       setModalDisplay((prev) => !prev);
                       console.log(currentModal);
                       HandeleUpdateCategory();
+                      setTimeout(() => {
+                        Rerender(setAutornder);
+                      }, 200);
                     }}
                     className="flex flex-col gap-6 text-left"
                     action=""

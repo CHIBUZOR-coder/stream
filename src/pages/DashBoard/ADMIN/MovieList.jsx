@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import MovieContext from "../../../Context/MovieContext";
 import Table from "../../../Custom/Table";
+import { userData } from "../../../Data/UserData";
 
 const MovieList = ({
   Handlegeneral,
@@ -14,6 +15,7 @@ const MovieList = ({
   const [MovieList, setMovieList] = useState(null);
   // let selected;
 
+  
   useEffect(() => {
     if (AllMovies && AllMovies.length > 0) {
       const selected = AllMovies.slice(0, 10);
@@ -76,7 +78,7 @@ const MovieList = ({
 
       <Table
         data={MovieList}
-        User={User}
+        User={userData}
         For={"movie"}
         dataId={dataId}
         Handlegeneral={Handlegeneral}

@@ -3,8 +3,11 @@ import MovieContext from "../../../../Context/MovieContext";
 import Table from "../../../../Custom/Table";
 
 const Favourite = () => {
-  const { Movies, User } = useContext(MovieContext);
+  const { Movies } = useContext(MovieContext);
       const selected = Movies.slice(0, 10);
+
+  const userData = JSON.parse(localStorage.getItem("UserInfo")) || null;
+
   return (
     <div className="flex flex-col gap-6">
       <div className="flex justify-between items-center p-0 md:p-4 ">
@@ -16,7 +19,7 @@ const Favourite = () => {
         </button>
       </div>
 
-      <Table data={selected} User={User} For={"Fav"} />
+      <Table data={selected} User={userData} For={"Fav"} />
     </div>
   );
 };

@@ -14,6 +14,7 @@ const Table = ({
   HandleDeleteMovie,
 }) => {
   const { IdRetrival } = useContext(MovieContext);
+  
 
   // console.log(User.role);
 
@@ -85,7 +86,7 @@ const Table = ({
                 <p>{movie.hours}</p>
               </td>
               <td className={`${Text} float-right flexRow gap-2`}>
-                {User.role === "Admin" ? (
+                {User && User.role === "Admin" ? (
                   <>
                     <button
                       onClick={() => Handlegeneral(movie.name, movie.id)}

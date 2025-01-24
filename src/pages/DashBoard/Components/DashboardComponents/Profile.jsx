@@ -7,6 +7,8 @@ import Table from "../../../../Custom/Table";
 const Profile = () => {
   const { Movies, User } = useContext(MovieContext);
   const selected = Movies.slice(0, 10);
+  const userData = JSON.parse(localStorage.getItem("UserInfo")) || null;
+
   const ProfileData = [
     {
       bg: "bg-orange-600",
@@ -51,7 +53,7 @@ const Profile = () => {
       </div>
       <h3 className="font-medium my-4 text-border">Recent Movies</h3>
 
-      <Table data={Movies.slice(0, 6)} User={User} For={"dash"} />
+      <Table data={Movies.slice(0, 6)} User={userData} For={"dash"} />
     </div>
   );
 };

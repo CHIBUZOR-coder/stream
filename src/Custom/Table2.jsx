@@ -3,7 +3,7 @@ import { GoEye } from "react-icons/go";
 import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 import MovieContext from "../Context/MovieContext";
-import { useContext } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 
 const Table2 = ({
   data,
@@ -13,10 +13,25 @@ const Table2 = ({
   setter,
   IdRetrival,
   setCurrentModal,
+  HandleGetCategories,
 }) => {
-  const { currentModal, ModalChangeUpdate } = useContext(MovieContext);
+  const { currentModal, ModalChangeUpdate, autoRender } =
+    useContext(MovieContext);
+//     const hasFetchedData = useRef(false);
+
+
+//  useEffect(() => {
+//    if (!hasFetchedData.current || autoRender) {
+//      HandleGetCategories();
+//      console.log("Fetching updated categories...");
+//      hasFetchedData.current = true; // Mark categories as fetched
+//    }
+//  }, [autoRender, HandleGetCategories]);
+
+
   const Head = "text-xs text-left text-main font-semibold px-6 py-2 uppercase ";
   const Text = "text-sm text-left leading-6 whitespace-nowrap px-5 py-3";
+
   return (
     <div className="overflow-x-scroll overflow-hidden relative w-full">
       <table className="table-auto w-full text-white border  border-border divide-y divide-border">
@@ -32,42 +47,46 @@ const Table2 = ({
         <tbody className=" bg-main divide-y divide-gray-800">
           {For === "category" ? (
             <>
-              {data.map((item, i) => (
-                <tr key={i}>
-                  <td className={`${Text}`}>
-                    <p>{item.id}</p>
-                  </td>
-                  <td className={`${Text}`}>
-                    <p>{item.date}</p>
-                  </td>
+              {data &&
+                data.map((item, i) => (
+                  <tr key={i}>
+                    <td className={`${Text}`}>
+                      <p>{item.id}</p>
+                    </td>
+                    <td className={`${Text}`}>
+                      <p>{item.date}</p>
+                    </td>
 
-                  <td className={`${Text}`}>
-                    <p>{item.tittle}</p>
-                  </td>
-                  <td className={`${Text} float-left flexRow gap-5`}>
-                    <button
-                      onClick={() => {
-                        setCurrentModal("Edit");
-                        ModalChangeUpdate(item.tittle);
-                        console.log(currentModal);
-                        console.log(item);
+                    <td className={`${Text}`}>
+                      <p>{item.tittle}</p>
+                    </td>
+                    <td className={`${Text} float-left flexRow gap-5`}>
+                      <button
+                        onClick={() => {
+                          setCurrentModal("Edit");
+                          ModalChangeUpdate(item.tittle);
+                          console.log(currentModal);
+                          console.log(item);
 
-                        IdRetrival(item.id, setter);
-                      }}
-                      className="bg-dry border border-border flexRow transi edit  hover:bg-green-500 hover:text-white gap-2 text-border px-2 py-1 rounded"
-                    >
-                      Edit{" "}
-                      <FaEdit className="text-green-500 editchild  transi " />
-                    </button>
-                    <button
-                      onClick={(e) => HandeleDelete(e, item.id)}
-                      className="bg-subMain text-white rounded flexCol w-6 h-6 hover:bg-main transi border border-subMain delete  "
-                    >
-                      <MdDelete className="deletechild transi" />
-                    </button>
-                  </td>
-                </tr>
-              ))}
+                          IdRetrival(item.id, setter);
+                        }}
+                        className="bg-dry border border-border flexRow transi edit  hover:bg-green-500 hover:text-white gap-2 text-border px-2 py-1 rounded"
+                      >
+                        Edit{" "}
+                        <FaEdit className="text-green-500 editchild  transi " />
+                      </button>
+                      <button
+                        onClick={(e) => {
+                          HandeleDelete(e, item.id);
+                          HandleGetCategories();
+                        }}
+                        className="bg-subMain text-white rounded flexCol w-6 h-6 hover:bg-main transi border border-subMain delete  "
+                      >
+                        <MdDelete className="deletechild transi" />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
             </>
           ) : (
             <>
