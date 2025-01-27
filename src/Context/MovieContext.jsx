@@ -377,7 +377,7 @@ const MovieProvider = ({ children }) => {
   }, [isLogin]);
 
   const Time = 1 * 60 * 1000;
-  const InactiveTime = 4 * 60 * 1000;
+  const InactiveTime = 20 * 60 * 1000;
   let activityEvents = ["mousemove", "keydown", "mousedown", "touchstart"];
   //Logout
   const checkTokenExpiry = async () => {
@@ -445,39 +445,7 @@ const MovieProvider = ({ children }) => {
     checkTokenExpiry();
   };
 
-  // const InactiveLogOut = async () => {
-  //   console.log("starting Logout due to user being iactive");
-  //   try {
-  //     localStorage.clear();
-  //     // Send a request to the backend to clear the HTTP-only cookie
-  //     const res = await fetch("http://localhost:5000/clear-cookies", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       credentials: "include",
-  //     });
 
-  //     const data = await res.json();
-
-  //     if (res.ok) {
-  //       // Make sure to wait for the response
-  //       localStorage.setItem("InactiveLogout", "true");
-
-  //       setTimeout(() => {
-  //         navigate("/stream/login");
-  //       }, 500);
-
-  //       console.log(data);
-  //     } else {
-  //       console.log("Failed to clear cookies. Server returned an error.", data);
-  //     }
-  //   } catch (error) {
-  //     console.error("An error occurred:", error);
-  //   }
-  // };
-
-  // const InactiveTime = 4 * 60 * 1000; // Inactivity threshold (4 minutes)
   let inactivityTimer;
 
   const resetInactivityTimer = () => {

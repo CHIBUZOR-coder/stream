@@ -9,6 +9,8 @@ const UpdateProfile = () => {
   const [profileImages, setProfileImages] = useState("");
   const [Name, setName] = useState("");
   const [Email, setEmail] = useState("");
+  const [changeEmail, setChangeEmail] = useState(false);
+  const [NewEmail, setNewEmail] = useState("");
   return (
     <div className=" w-full rounded-md ">
       <div className=" p-4 flex flex-col gap-6 text-white bg-dry border border-gray-800 rounded-md">
@@ -50,8 +52,34 @@ const UpdateProfile = () => {
           setter={setName}
           setInputVal={setInputVal}
           mainVal={Name}
+          indicator={"Full Name"}
+          labelFor={"name"}
         />
 
+        <div>
+          <p>Do you wish to change your email?</p>
+          <div className="flex justify-start items-center gap-5">
+            <label>
+              <input
+                onClick={() => setChangeEmail(true)}
+                type="radio"
+                name="option"
+                value="option1"
+              ></input>
+              Yes
+            </label>
+
+            <label>
+              <input
+                onClick={() => setChangeEmail(false)}
+                type="radio"
+                name="option"
+                value="option2"
+              ></input>
+              No
+            </label>
+          </div>
+        </div>
         <Input
           label={"Email"}
           placeholder={"Streamview@gmail.com"}
@@ -59,7 +87,25 @@ const UpdateProfile = () => {
           setter={setEmail}
           setInputVal={setInputVal}
           mainVal={Email}
+          labelFor={"email"}
+          indicator={"Email"}
         />
+        <div>
+          {changeEmail ? (
+            <Input
+              label={"New Email"}
+              placeholder={"NewEmail@gmail.com"}
+              type={"email"}
+              setter={setNewEmail}
+              setInputVal={setInputVal}
+              mainVal={NewEmail}
+              labelFor={"newEmail"}
+              indicator={"New Email"}
+            />
+          ) : (
+            ""
+          )}
+        </div>
 
         <div className="flex gap-2 flex-wrap flex-col-reverse sm:flex-row justify-between items-center">
           <button className="bg-subMain font-medium transi hover:bg-main  gap-4 text-white border border-subMain py-3 px-6 rounded-lg w-full sm:w-auto ">
