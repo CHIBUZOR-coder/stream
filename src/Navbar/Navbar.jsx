@@ -17,7 +17,7 @@ const Navbar = () => {
   
 
   const dash = userData ? "/stream/dash" : "/stream/login";
-  // console.log("dash:", dash);
+  console.log("dash:", dash);
 
   const hover = "hover:text-subMain transi text-white relative";
   const Hover = ({ isActive }) => (isActive ? "text-subMain" : hover);

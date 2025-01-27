@@ -1,4 +1,4 @@
-import { createContext, useCallback, useEffect, useState } from "react";
+import { createContext, useCallback, useEffect, useRef, useState } from "react";
 
 import { Movies } from "../Data/MovieData";
 import { Casts } from "../Data/CastsData";
@@ -12,8 +12,9 @@ import { FiSettings } from "react-icons/fi";
 import Profile from "../pages/DashBoard/Components/DashboardComponents/Profile";
 import { userData } from "../Data/UserData";
 import DataResolve from "../DataFetching/DataResolve";
-import { data } from "react-router-dom";
+
 import { IoLogOut } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 // import DashboardPage from "../pages/DashBoard/Dashboard";
 
@@ -26,19 +27,21 @@ const MovieProvider = ({ children }) => {
   const [FetchedMovies, setFetchedMovies] = useState(null);
   const [FetchedCategories, setFetchedCategories] = useState(null);
   const [issLoading, setIsLoading] = useState(false);
-  const [isLogin, setIslogin] = useState(false);
-   const [autoRender, setAutornder] = useState(false);
+  const isLogin = localStorage.getItem("IsLogin") || false;
 
-  // const {
-  //   data: AllCategory,
-  //   isLoading,
-  //   error,
-  // } = DataResolve("http://localhost:5000/api/getCategory", "GET");
+  console.log("isl:", isLogin);
+  
 
-  // if (AllCategory) {
-  //   categoryData = AllCategory.data;
-  //   console.log("all:", AllCategory);
-  // }
+  const [autoRender, setAutornder] = useState(false);
+
+  const [activityStatus, setActivityStatus] = useState(false);
+  const [InactiveStart, setStart] = useState("stop");
+
+  const navigate = useNavigate();
+  // const [userr, setUserr] = useState(
+  //   JSON.parse(localStorage.getItem("UserInfo")) || null
+  // );
+  const [Result, setResult] = useState();
 
   const HandleGetMovies = async () => {
     try {
@@ -99,17 +102,10 @@ const MovieProvider = ({ children }) => {
     console.log(id);
   };
 
-  const user = {
-    name: "John Doe",
-    image: "Adam",
-    review: "Great service and content!",
-    star: 5,
-    role: "Admin",
-  };
   const Users = userData;
   // console.log(CategoryData);
+  const User = JSON.parse(localStorage.getItem("UserInfo")) || null;
 
-  const [User, setUser] = useState(user);
   // console.log("from MovieContext", User.role);
   const [selectedItems, setSelectedItems] = useState({});
   const [userChoice, setUserChoice] = useState(null);
@@ -236,7 +232,7 @@ const MovieProvider = ({ children }) => {
       };
 
       const datasets = {
-        1: categoryData,
+        1: categoryDataa,
         2: YearData,
         3: TimesData,
         4: RatesData,
@@ -279,7 +275,7 @@ const MovieProvider = ({ children }) => {
       name: "Movies List",
       link: "/movielist",
       icon: <FaListAlt />,
-      user: "All",
+      user: "ADMIN",
     },
     {
       name: "Add Movie",
@@ -299,17 +295,18 @@ const MovieProvider = ({ children }) => {
       icon: <HiViewColumns />,
       user: "All",
     },
-    { name: "Users", link: "dashboard/users", icon: <FaUser />, user: "Admin" },
-    {
-      name: "Update Profile",
-      link: "dashboard/profile",
-      icon: <FiSettings />,
-      user: "All",
-    },
+    { name: "Users", link: "dashboard/users", icon: <FaUser />, user: "ADMIN" },
+
     {
       name: "Favourite Movies",
       link: "/messages",
       icon: <FaHeart />,
+      user: "All",
+    },
+    {
+      name: "Update Profile",
+      link: "dashboard/profile",
+      icon: <FiSettings />,
       user: "All",
     },
     {
@@ -374,31 +371,34 @@ const MovieProvider = ({ children }) => {
 
   useEffect(() => {
     if (isLogin) {
-      setTimeout(() => {
-        console.log("calling Authentification");
-        Autentification();
-      }, 200);
+      console.log("calling Authentification");
+      Autentification();
     }
   }, [isLogin]);
 
+  const Time = 1 * 60 * 1000;
+  const InactiveTime = 4 * 60 * 1000;
+  let activityEvents = ["mousemove", "keydown", "mousedown", "touchstart"];
   //Logout
   const checkTokenExpiry = async () => {
+    console.log("starting Logout...");
+
     try {
       const userInfo = JSON.parse(localStorage.getItem("userInfo")); // Get userInfo from localStorage
       if (!userInfo) {
         console.log("userInfo not found");
-        return;
-      } else if (!userInfo.exp) {
-        console.log("Token has not yet expierd");
+
         return;
       }
 
       const expTime = userInfo.exp * 1000; // Convert exp from seconds to milliseconds
-      const currentTime = Date.now(); // Get current time in milliseconds
+      let currentTime = Date.now(); // Get current time in milliseconds
 
       // Check if the token is expired
       if (expTime < currentTime) {
-        console.log("Token has expired. Clearing localStorage and cookies...");
+        console.log(
+          "Token has expired. Token has expired. Logging out user..."
+        );
 
         localStorage.clear();
         // Send a request to the backend to clear the HTTP-only cookie
@@ -410,26 +410,166 @@ const MovieProvider = ({ children }) => {
           credentials: "include",
         });
 
-        let data;
+        const data = await res.json();
 
         if (res.ok) {
-          data = await res.json(); // Make sure to wait for the response
+          // Make sure to wait for the response
+          localStorage.setItem("relogin", "true");
+
+          setTimeout(() => {
+            navigate("/stream/login");
+          }, 500);
+
           console.log(data);
         } else {
-          console.log("Failed to clear cookies. Server returned an error.");
+          console.log(
+            "Failed to clear cookies. Server returned an error.",
+            data
+          );
         }
-
-        // Optionally, perform other actions like redirecting the user to the login page
-        // window.location.href = "/login"; // Redirect to login page, or show an alert, etc.
+      } else {
+        console.log("Token has not yet expired");
+        setTimeout(() => {
+          logoutUser();
+        }, Time);
       }
     } catch (error) {
       console.error("An error occurred:", error);
     }
   };
 
-  useEffect(() => {
+  // Function to log the user out and clean up
+  const logoutUser = () => {
+    console.log("Starting automatic logout...");
+
     checkTokenExpiry();
-  }, []);
+  };
+
+  // const InactiveLogOut = async () => {
+  //   console.log("starting Logout due to user being iactive");
+  //   try {
+  //     localStorage.clear();
+  //     // Send a request to the backend to clear the HTTP-only cookie
+  //     const res = await fetch("http://localhost:5000/clear-cookies", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       credentials: "include",
+  //     });
+
+  //     const data = await res.json();
+
+  //     if (res.ok) {
+  //       // Make sure to wait for the response
+  //       localStorage.setItem("InactiveLogout", "true");
+
+  //       setTimeout(() => {
+  //         navigate("/stream/login");
+  //       }, 500);
+
+  //       console.log(data);
+  //     } else {
+  //       console.log("Failed to clear cookies. Server returned an error.", data);
+  //     }
+  //   } catch (error) {
+  //     console.error("An error occurred:", error);
+  //   }
+  // };
+
+  // const InactiveTime = 4 * 60 * 1000; // Inactivity threshold (4 minutes)
+  let inactivityTimer;
+
+  const resetInactivityTimer = () => {
+    console.log("User activity detected. Resetting inactivity timer...");
+    clearTimeout(inactivityTimer);
+    setActivityStatus(true);
+
+    // Automatically set `activeStatus` to false after inactivity threshold
+    inactivityTimer = setTimeout(() => {
+      console.log("No activity detected. Setting activeStatus to false...");
+      setActivityStatus(false);
+    }, Time);
+  };
+
+  const InactiveLogOut = async () => {
+    console.log("Logging out due to inactivity...");
+    try {
+      localStorage.clear();
+      const res = await fetch("http://localhost:5000/clear-cookies", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        localStorage.setItem("InactiveLogout", "true");
+        setTimeout(() => {
+          navigate("/stream/login");
+        }, 500);
+
+        console.log(data);
+      } else {
+        console.log("Failed to clear cookies. Server returned an error.", data);
+      }
+    } catch (error) {
+      console.error("An error occurred during inactive logout:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (isLogin) {
+      console.log("User is logged in. Setting up activity listeners...");
+
+      console.log("is:", isLogin);
+
+      // Listen for user activity events
+      const activityEvents = [
+        "mousemove",
+        "keydown",
+        "mousedown",
+        "touchstart",
+      ];
+      activityEvents.forEach((event) =>
+        document.addEventListener(event, resetInactivityTimer)
+      );
+
+      if (activityStatus === true) {
+        console.log("active is True!");
+        console.log("active:", activityStatus);
+        logoutUser();
+        // InactivieLogoutCall();
+      }
+
+      // Check inactivity and log out if `activityStatus` becomes false
+      console.log(" Logging out inactive or setting active status to false");
+      const monitorInactivity = setInterval(() => {
+        if (activityStatus === false) {
+          console.log("Inactive status detected. Triggering logout...");
+          InactiveLogOut();
+        } else {
+          setActivityStatus(false);
+          console.log("active Statua false");
+          console.log("activ", activityStatus);
+        }
+      }, InactiveTime); // Check every 1 second
+
+      // Cleanup on unmount
+      return () => {
+        activityEvents.forEach((event) =>
+          document.removeEventListener(event, resetInactivityTimer)
+        );
+        clearInterval(monitorInactivity);
+        clearTimeout(inactivityTimer);
+      };
+    } else {
+      console.log("not a user");
+    }
+  }, [isLogin, activityStatus]);
 
   //Add to favorite cart
   const AddToCart = (movie, amount) => {
@@ -491,8 +631,8 @@ const MovieProvider = ({ children }) => {
         HandleActiveChange,
         display,
         setDisplay,
-        User,
         Users,
+        User,
         currentModal,
         setCurrentModal,
         ModalDisplay,
@@ -515,9 +655,12 @@ const MovieProvider = ({ children }) => {
         checkTokenExpiry,
         staticUsers,
         HandleGetCategories,
-        setIslogin,
+        HandleGetMovies,
+
         autoRender,
         setAutornder,
+        Result,
+        setResult,
       }}
     >
       {children}

@@ -11,11 +11,10 @@ import Categories from "./Categories";
 
 const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
   const {
-    CategoryData,
+    categoryDataa,
     handleFileUploaded,
     handleFileUploadedVideo,
     setInputVal,
-    Movies,
     categoryData,
     CategoryId,
     Alert,
@@ -165,17 +164,15 @@ const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
         },
         body: formData,
       });
-      let data;
+      const data = await res.json();
 
       if (!res.ok) {
         // Extract the error message from the response
-        data = await res.json();
         console.error("Error response:", data.message);
         setIsLoading(false);
         setResult(Alert(false, data.message));
-        throw new Error(data.message || "An error occurred");
+        // throw new Error(data.message || "An error occurred");
       } else {
-        data = await res.json();
         console.log(data);
         setIsLoading(false);
         setResult(Alert(true, "Movie successfully created!"));
@@ -186,7 +183,7 @@ const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
     } finally {
       setTimeout(() => {
         setResult(null);
-      }, 3000);
+      }, 5000);
 
       setMovieTitle("");
       setMovieHour("");
@@ -550,7 +547,7 @@ const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
 
               {/* Category */}
               <div className="w-full relative text-sm mt-6">
-                <SelectRating data={categories} setter={setMovieCategory} />
+                <SelectRating data={categoryDataa} setter={setMovieCategory} />
                 <div className="absolute top-[47%] cursor-pointer right-4 flex items-center  transform pointer-events-auto">
                   {/* <FaArrowDown className="text-white h-6 w-6" /> */}
                   <CgSelectR className="text-white h-4 w-4 " />

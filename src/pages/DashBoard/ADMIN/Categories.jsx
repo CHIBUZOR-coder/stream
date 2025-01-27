@@ -5,18 +5,16 @@ import { HiPlusCircle } from "react-icons/hi2";
 import Table2 from "../../../Custom/Table2";
 import DataResolve from "../../../DataFetching/DataResolve";
 
-const Categories = ({ IdRetrival, setter }) => {
+const Categories = ({ IdRetrival, setter, setResult }) => {
   const {
     setModalDisplay,
     currentModal,
     setCurrentModal,
     categoryDataa,
     HandleGetCategories,
-   
   } = useContext(MovieContext);
 
   // const [rerender, setRerender] = useState(false);
-
 
   //update Category
   //*************Update  Category*******************
@@ -55,6 +53,7 @@ const Categories = ({ IdRetrival, setter }) => {
       }, 6000);
     }
   };
+
   //Delete Category
   const HandeleDelete = async (e, id) => {
     e.preventDefault();
@@ -74,7 +73,6 @@ const Categories = ({ IdRetrival, setter }) => {
       console.log(error.message);
     }
   };
-
 
   const headList = [
     {

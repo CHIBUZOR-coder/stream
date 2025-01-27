@@ -155,6 +155,7 @@ const Layout = ({ children }) => {
             </div>
           </div>
         </div>
+        
         <Navbar />
         {children}
 

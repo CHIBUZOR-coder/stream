@@ -32,7 +32,6 @@ const Banner = React.memo(() => {
         spaceBetween={0}
         slidesPerView={1}
         lazy="true"
-       
         loop={true}
         speed={1000}
         modules={[Autoplay]}
@@ -65,7 +64,7 @@ const Banner = React.memo(() => {
                     watch
                   </Link>
                   <span
-                    onClick={AddToCart}
+                    onClick={() => AddToCart(movie, movie.price)}
                     className="bg-white flex justify-center cursor-pointer items-center hover:text-subMain transi text-white px-3 py-3 rounded bg-opacity-30 "
                   >
                     <FaHeart />

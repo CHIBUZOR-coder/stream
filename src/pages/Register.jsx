@@ -41,16 +41,17 @@ const Register = () => {
         body: formData,
       });
 
+      const data = await res.json();
+
       if (!res.ok) {
-        const errorText = await res.text(); // Read as text to handle non-JSON responses
-        console.error("Server error:", errorText);
-        setResult(Alert(true, "Registration failed. Please try again."));
+        // Read as text to handle non-JSON responses
+        console.error("Server error:", data.message);
+        setResult(Alert(true, data.message));
         setIsLoading(false);
         return;
       }
 
-      const data = await res.json(); // Parse JSON only if the response is valid
-      setResult(Alert(true, data.message));
+      // Parse JSON only if the response is valid
       setResult(Alert(true, data.message));
       setIsLoading(false);
       setName("");
@@ -70,7 +71,10 @@ const Register = () => {
       setTimeout(() => {
         setResult(null);
       }, 2000);
-      navigate("/stream/login");
+
+      setTimeout(() => {
+        navigate("/stream/login");
+      }, 3000);
     }
   };
 

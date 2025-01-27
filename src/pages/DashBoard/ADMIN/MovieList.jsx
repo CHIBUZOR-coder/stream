@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import MovieContext from "../../../Context/MovieContext";
 import Table from "../../../Custom/Table";
-import { userData } from "../../../Data/UserData";
 
 const MovieList = ({
   Handlegeneral,
@@ -15,7 +14,6 @@ const MovieList = ({
   const [MovieList, setMovieList] = useState(null);
   // let selected;
 
-  
   useEffect(() => {
     if (AllMovies && AllMovies.length > 0) {
       const selected = AllMovies.slice(0, 10);
@@ -75,15 +73,17 @@ const MovieList = ({
           Delete All
         </button>
       </div>
-
-      <Table
-        data={MovieList}
-        User={userData}
-        For={"movie"}
-        dataId={dataId}
-        Handlegeneral={Handlegeneral}
-        HandleDeleteMovie={HandleDeleteMovie}
-      />
+      <div className="flex flex-col ">
+        <h3 className="font-medium my-4 text-border">All Movies</h3>
+        <Table
+          data={MovieList}
+          User={User}
+          For={"movie"}
+          dataId={dataId}
+          Handlegeneral={Handlegeneral}
+          HandleDeleteMovie={HandleDeleteMovie}
+        />
+      </div>
     </div>
   );
 };

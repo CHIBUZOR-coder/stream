@@ -37,6 +37,9 @@ const Dashboard = () => {
     setIsLoading,
     setAutornder,
     HandleGetCategories,
+    HandleGetMovies,
+    Result,
+    setResult,
   } = useContext(MovieContext);
 
   // console.log("all", allProductes);
@@ -47,6 +50,8 @@ const Dashboard = () => {
   const [fetchId, setFetchId] = useState(null);
 
   useEffect(() => {
+
+    
     if (AllMovies) {
       console.log("from dash", AllMovies);
 
@@ -61,6 +66,7 @@ const Dashboard = () => {
     }
   }, [MovieId]);
 
+  //this sets the modal to display
   const Handlegeneral = (name, id) => {
     setCurrentModal("TableEdit");
     console.log("Table");
@@ -78,8 +84,12 @@ const Dashboard = () => {
   const [tittle, setTittle] = useState({ tittle: "" });
 
   const [categoryId, setCatgoryId] = useState(null);
-  const [Result, setResult] = useState();
+ 
   const [loadDisplay, setLoadDiaplay] = useState("");
+
+  useEffect(() => {
+    console.log("MovieId", MovieId);
+  }, [MovieId]);
 
   useEffect(() => {
     setTittle({ tittle: newCategory });
@@ -125,6 +135,7 @@ const Dashboard = () => {
 
       setIsLoading(false);
       setResult(Alert(true, "Movie updated succesfully"));
+      HandleGetMovies()
     } catch (error) {
       console.error(error.message);
       setResult(Alert(false, "Somthing went wrong"));
@@ -162,6 +173,7 @@ const Dashboard = () => {
 
       setIsLoading(false);
       setResult(Alert(true, "Movie deleted succesfully"));
+         HandleGetMovies();
     } catch (error) {
       console.error(error.message);
       setResult(Alert(false, "Somthing went wrong"));
@@ -252,17 +264,17 @@ const Dashboard = () => {
 
   useEffect(() => {
     // console.log(isActive);
-    if (isActive === "Update Profile") {
+    if (isActive  === "Update Profile") {
       setDisplay(<UpdateProfile />);
-    } else if (isActive === "Favourite Movies") {
+    } else if (isActive  === "Favourite Movies") {
       setDisplay(<Favourite />);
-    } else if (isActive === "Change Password") {
+    } else if (isActive  === "Change Password") {
       setDisplay(<UpdatePassword />);
-    } else if (isActive === "Notifications") {
+    } else if (isActive  === "Notifications") {
       setDisplay(<div> Notifications</div>);
-    } else if (isActive === "Users") {
+    } else if (isActive  === "Users") {
       setDisplay(<Users />);
-    } else if (isActive === "Categories") {
+    } else if (isActive  === "Categories") {
       setDisplay(
         <Categories
           IdRetrival={IdRetrival}
@@ -293,7 +305,16 @@ const Dashboard = () => {
         />
       );
     } else if (isActive === "Dashboard") {
-      setDisplay(<Profile />);
+      setDisplay(
+        <Profile
+          HandleDeleteMovie={HandleDeleteMovie}
+          setMoveIid={setMoveId}
+          setResult={setResult}
+          setIsLoading={setIsLoading}
+          setLoadDiaplay={setLoadDiaplay}
+          Handlegeneral={Handlegeneral}
+        />
+      );
     } else {
       setDisplay(<Profile />);
     }
@@ -303,15 +324,7 @@ const Dashboard = () => {
     <Layout>
       {User ? (
         <div className="flex lg:flex-row flex-col min-h-screen bg-main cursor-pointer relative py-3 px-5 gap-10 md:gap-8 lg:px-10 ">
-          <div
-            className={` ${
-              Result ? "Animate" : "hidden"
-            } fixed Alert  left-0 w-full z-40 flex justify-center items-center `}
-          >
-            <div className=" bg-text text-dry w-1/2 rounded-md border-[3px] border-subMain flex justify-center items-center p-4">
-              {Result && <p>{Result}</p>}
-            </div>
-          </div>
+         
           <div
             className={`${
               issLoading ? "" : "hidden"
@@ -333,7 +346,7 @@ const Dashboard = () => {
               ModalDisplay ? "" : "hidden"
             }  z-20 h-full bg-modal flex flex-col justify-start items-center gap-5  p-4 `}
           >
-            <div className="flex justify-end items-center w-full md:w-1/2 ">
+            <div className="flex fixed top-[140px] mod right-5 md:right-auto justify-end items-center w-full md:w-1/2 ">
               <span
                 onClick={() => setModalDisplay((prev) => !prev)}
                 className="rounded-full border-2 border-subMain hover:text-subMain text-white transi hover:border-white hover:rotate-180 "
@@ -342,7 +355,7 @@ const Dashboard = () => {
               </span>
             </div>
 
-            <div className=" w-full md:w-1/2  rounded-lg border border-border flexCol  gap-10 p-6 bg-dry">
+            <div className=" w-[90%] md:w-1/2 fixed top-[210px]  prof rounded-lg border border-border flexCol  gap-10 p-6 bg-dry">
               {currentModal === "Add" ? (
                 <>
                   <h2 className="text-2xl font-bold ">Create Category</h2>

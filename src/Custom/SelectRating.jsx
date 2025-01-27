@@ -59,7 +59,7 @@ const SelectRating = ({ data, setter, For }) => {
       <option value="" disabled>
         {defaultText}
       </option>
-      {data.map((option, i) => (
+      {data && data.map((option, i) => (
         <option key={i} value={option.value}>
           {option.tittle}
         </option>

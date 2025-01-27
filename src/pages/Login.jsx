@@ -13,8 +13,33 @@ const Login = () => {
   const [Result, setResult] = useState();
   const [loadDisplay, setLoadDiaplay] = useState("");
   const navigate = useNavigate();
-  const { issLoading, setIsLoading, Alert, setIslogin } =
+  const { issLoading, setIsLoading, Alert,  } =
     useContext(MovieContext);
+
+  const logAgain = localStorage.getItem("relogin") || null;
+  const InactiveLogout = localStorage.getItem("InactiveLogout") || null;
+  useEffect(() => {
+    if (InactiveLogout === "true") {
+      setResult(
+        Alert(
+          false,
+          "You have been logged out due to inactivity. Please login again"
+        )
+      );
+      setTimeout(() => {
+        setResult(null);
+        localStorage.removeItem("InactiveLogout");
+      }, 6000);
+    } else if (logAgain === "true") {
+      setResult(Alert(false, "Your session has expired. Please login again"));
+      setTimeout(() => {
+        setResult(null);
+        localStorage.removeItem("relogin");
+      }, 6000);
+    } else {
+      console.log("no action");
+    }
+  }, []);
 
   const HandleLogin = async (e) => {
     e.preventDefault();
@@ -47,7 +72,7 @@ const Login = () => {
       localStorage.setItem("UserInfo", JSON.stringify(data));
 
       if (data.success === true) {
-        setIslogin(true);
+        localStorage.setItem("IsLogin", true);
         setTimeout(() => {
           navigate("/stream/");
         }, 100);
@@ -72,6 +97,10 @@ const Login = () => {
   useEffect(() => {
     console.log("pass", Password);
   }, [Password]);
+
+  useEffect(() => {
+    console.log("result:", Result);
+  }, [Result]);
 
   return (
     <Layout>
