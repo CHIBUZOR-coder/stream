@@ -101,7 +101,10 @@ select:focus {
   rotate: 360deg;
   transition: ease-in-out 0.7s;
 }
-
+.Ogaa:hover .pikin {
+  rotate: 360deg;
+  transition: ease-in-out 0.7s;
+}
 .mobie_notiP:hover .mobie_noti {
   color: white;
   background-color: rgba(8, 10, 26, 1);

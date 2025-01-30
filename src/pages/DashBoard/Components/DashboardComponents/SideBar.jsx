@@ -9,6 +9,8 @@ const SideBar = () => {
   const nabvigate = useNavigate();
   const UserLinks = slideLinks.filter((item) => item.user === "All");
 
+  console.log(userData.role);
+
   const HandleLogout = async (e) => {
     e.preventDefault();
 
@@ -40,9 +42,10 @@ const SideBar = () => {
   return (
     <div className="sidebar  mx-auto  bg">
       {/* Parent of the sticky element is now positioned relatively */}
+
       <div className="relative  ">
         <div className="flexCol justify-start  w-full items-start md:py-6 py-12 sticky top-0 bg-dry border border-gray-800 rounded-md px-4 ">
-          {userData && userData.role === "ADMIN"
+          {userData.role === "ADMIN"
             ? userData && (
                 <>
                   {slideLinks.map((linkk, index) => (

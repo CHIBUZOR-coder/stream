@@ -19,6 +19,7 @@ const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
     CategoryId,
     Alert,
     AllMovies,
+    Result,
   } = useContext(MovieContext);
   const [check, setCheck] = useState(false);
   const [categories, setCategories] = useState([]);
@@ -176,6 +177,7 @@ const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
         console.log(data);
         setIsLoading(false);
         setResult(Alert(true, "Movie successfully created!"));
+        setCasts([]);
       }
     } catch (error) {
       console.log(error.message);
@@ -290,7 +292,16 @@ const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
   }, [movieId]);
 
   return (
-    <div className="flex flex-col gap-28">
+    <div className="flex flex-col gap-28 relative ">
+      <div
+        className={` ${
+          Result ? "Animate" : "hidden"
+        } fixed Alert  left-0 w-full z-40 flex justify-center items-center `}
+      >
+        <div className=" bg-text text-dry w-1/2 rounded-md border-[3px] border-subMain flex justify-center items-center p-4">
+          {Result && <p>{Result}</p>}
+        </div>
+      </div>
       <div className="flex flex-col gap-5">
         <h2 className="text-2xl font-bold ">Add Movie</h2>
         <form
@@ -643,7 +654,7 @@ const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
                 <div
                   className={` ${
                     casts.length > 0
-                      ? "grid   grid-cols-2  md:grid-cols-3  gap-3 items-center p-2"
+                      ? "grid   grid-cols-2  md:grid-cols-3  gap-2 md:gap-6 items-center p-2"
                       : " flex justify-start items-center"
                   } w-full `}
                 >
@@ -688,9 +699,10 @@ const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
               onClick={(e) => {
                 e.preventDefault();
                 AddCast(Name, Role, Images);
+               
                 // Additional functionality for Add button
               }}
-              className="md:w-1/2 w-full  font-semibold flexRow py-3  rounded border-2 gap-2 Ogaa cursor-pointer transi  border-subMain bg-main text-white hover:bg-subMain"
+              className="md:w-1/2 w-full  font-semibold flexRow py-3  rounded border-2 gap-2 Ogaa  cursor-pointer transi  border-subMain bg-main text-white hover:bg-subMain"
             >
               <HiPlusCircle className="pikin h-7 w-7" /> Add Cast
             </span>

@@ -5,10 +5,55 @@ import { HiViewGridAdd } from "react-icons/hi";
 import Table from "../../../../Custom/Table";
 import { MdWatchLater } from "react-icons/md";
 import { MdUnsubscribe } from "react-icons/md";
+import { useParams } from "react-router-dom";
 
 const Profile = ({ Handlegeneral, HandleDeleteMovie }) => {
-  const { Movies, AllMovies, User } = useContext(MovieContext);
+  const { Movies, AllMovies, Userr } = useContext(MovieContext);
   const selected = Movies.slice(0, 10);
+  const [singleUser, SetSingleUser] = useState(null);
+
+   const [MovieList, setMovieList] = useState(null);
+  // let selected;
+
+  useEffect(() => {
+    if (AllMovies && AllMovies.length > 0) {
+      const selected = AllMovies.slice(0, 10);
+      setMovieList(selected); // Update MovieList with a subset of AllMovies
+      // console.log("from List", AllMovies); // Debug log
+    }
+  }, [AllMovies]);
+
+  const { id } = useParams();
+
+  const HandleGetUser = async () => {
+    try {
+      const res = await fetch(`http://localhost:5000/getUser/${id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const contentType = res.headers.get("content-type");
+      if (!res.ok) {
+        throw new Error(`HTTP error! Status: ${res.status}`);
+      }
+
+      const data = await res.json();
+      console.log("User data:", data);
+      SetSingleUser(data.data);
+    } catch (error) {
+      console.error("Error in Authentication:", error.message);
+    }
+  };
+
+  useEffect(() => {
+    HandleGetUser();
+  }, []);
+
+  useEffect(() => {
+    console.log("User", Userr);
+  });
 
   const ProfileData = [
     {
@@ -65,18 +110,20 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie }) => {
         <div className=" md:w-1/2 w-[80%] flex flex-col justify-center items-center gap-3 p-5 rounded bg-main border border-border">
           <div className="flex justify-center items-center">
             <img
-              src={`${User.userInfo.image}`}
+              src={`${singleUser && singleUser.image}`}
               alt="user"
-              className="w-20 h-20 rounded-full"
+              className="w-20 h-20 rounded-full object-cover"
             ></img>
           </div>
 
           <div className="text-center">
-            <p className="font-semibold">{User.userInfo.name}</p>
-            <p className="text-sm text-dryGray">{User.userInfo.email}</p>
+            <p className="font-semibold">{singleUser && singleUser.name}</p>
+            <p className="text-sm text-dryGray">
+              {singleUser && singleUser.email}
+            </p>
             <p className="text-sm text-dryGray flex items-center justify-center gap-2">
               <FaPhoneAlt className="text-dryGray" />
-              {User.userInfo.phone}
+              {singleUser && singleUser.phone}
             </p>
           </div>
         </div>
@@ -86,11 +133,11 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie }) => {
       style: true,  */}
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
-        {User && User.role === "ADMIN"
+        {singleUser && singleUser.role === "ADMIN"
           ? ProfileData.map((item, index) => (
               <div
                 key={index}
-                className={`rounded bg-main border border-border grid grid-cols-4 gap-2`}
+                className={`rounded bg-main border border-border grid grid-cols-4 gap-2 p-4`}
               >
                 <div
                   className={`col-span-1 rounded-full h-12 w-12 flexCol ${item.bg} `}
@@ -140,7 +187,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie }) => {
 
       <Table
         data={AllMovies}
-        User={User}
+        User={singleUser}
         For={"dash"}
         Handlegeneral={Handlegeneral}
         HandleDeleteMovie={HandleDeleteMovie}

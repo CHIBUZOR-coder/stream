@@ -22,7 +22,7 @@ const Dashboard = () => {
     isActive,
     display,
     setDisplay,
-    User,
+    Userr,
     currentModal,
     setCurrentModal,
     ModalDisplay,
@@ -38,7 +38,6 @@ const Dashboard = () => {
     setAutornder,
     HandleGetCategories,
     HandleGetMovies,
-    Result,
     setResult,
   } = useContext(MovieContext);
 
@@ -49,9 +48,9 @@ const Dashboard = () => {
   const [MovieToUpdate, setMovieToUpdate] = useState("");
   const [fetchId, setFetchId] = useState(null);
 
-  useEffect(() => {
+  const User = localStorage.getItem("UserInfo") || null;
 
-    
+  useEffect(() => {
     if (AllMovies) {
       console.log("from dash", AllMovies);
 
@@ -84,7 +83,7 @@ const Dashboard = () => {
   const [tittle, setTittle] = useState({ tittle: "" });
 
   const [categoryId, setCatgoryId] = useState(null);
- 
+
   const [loadDisplay, setLoadDiaplay] = useState("");
 
   useEffect(() => {
@@ -135,7 +134,7 @@ const Dashboard = () => {
 
       setIsLoading(false);
       setResult(Alert(true, "Movie updated succesfully"));
-      HandleGetMovies()
+      HandleGetMovies();
     } catch (error) {
       console.error(error.message);
       setResult(Alert(false, "Somthing went wrong"));
@@ -173,7 +172,7 @@ const Dashboard = () => {
 
       setIsLoading(false);
       setResult(Alert(true, "Movie deleted succesfully"));
-         HandleGetMovies();
+      HandleGetMovies();
     } catch (error) {
       console.error(error.message);
       setResult(Alert(false, "Somthing went wrong"));
@@ -208,6 +207,7 @@ const Dashboard = () => {
       }
       data = await res.json();
       setIsLoading(false);
+      HandleGetCategories();
       setResult(Alert(true, "Category added successfully"));
       console.log(data);
     } catch (error) {
@@ -264,17 +264,17 @@ const Dashboard = () => {
 
   useEffect(() => {
     // console.log(isActive);
-    if (isActive  === "Update Profile") {
+    if (isActive === "Update Profile") {
       setDisplay(<UpdateProfile />);
-    } else if (isActive  === "Favourite Movies") {
+    } else if (isActive === "Favourite Movies") {
       setDisplay(<Favourite />);
-    } else if (isActive  === "Change Password") {
+    } else if (isActive === "Change Password") {
       setDisplay(<UpdatePassword />);
-    } else if (isActive  === "Notifications") {
+    } else if (isActive === "Notifications") {
       setDisplay(<div> Notifications</div>);
-    } else if (isActive  === "Users") {
+    } else if (isActive === "Users") {
       setDisplay(<Users />);
-    } else if (isActive  === "Categories") {
+    } else if (isActive === "Categories") {
       setDisplay(
         <Categories
           IdRetrival={IdRetrival}
@@ -324,7 +324,6 @@ const Dashboard = () => {
     <Layout>
       {User ? (
         <div className="flex lg:flex-row flex-col min-h-screen bg-main cursor-pointer relative py-3 px-5 gap-10 md:gap-8 lg:px-10 ">
-         
           <div
             className={`${
               issLoading ? "" : "hidden"

@@ -46,7 +46,7 @@ const Register = () => {
       if (!res.ok) {
         // Read as text to handle non-JSON responses
         console.error("Server error:", data.message);
-        setResult(Alert(true, data.message));
+        setResult(Alert(false, data.message));
         setIsLoading(false);
         return;
       }
@@ -54,6 +54,9 @@ const Register = () => {
       // Parse JSON only if the response is valid
       setResult(Alert(true, data.message));
       setIsLoading(false);
+       setTimeout(() => {
+         navigate("/stream/login");
+       }, 3000);
       setName("");
       setEmail("");
       setPhone("");
@@ -72,9 +75,7 @@ const Register = () => {
         setResult(null);
       }, 2000);
 
-      setTimeout(() => {
-        navigate("/stream/login");
-      }, 3000);
+     
     }
   };
 

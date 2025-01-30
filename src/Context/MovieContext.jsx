@@ -28,9 +28,14 @@ const MovieProvider = ({ children }) => {
   const [FetchedCategories, setFetchedCategories] = useState(null);
   const [issLoading, setIsLoading] = useState(false);
   const isLogin = localStorage.getItem("IsLogin") || false;
-
-  console.log("isl:", isLogin);
-  
+  const Users = userData;
+  // console.log(CategoryData);
+  // const User = JSON.parse(localStorage.getItem("userInfo")) || null;
+  const [Userr, setUserr] = useState(null);
+  // useEffect(() => {
+  //   console.log("User:", Userr);
+  // });
+  // console.log("isl:", isLogin);
 
   const [autoRender, setAutornder] = useState(false);
 
@@ -42,7 +47,6 @@ const MovieProvider = ({ children }) => {
   //   JSON.parse(localStorage.getItem("UserInfo")) || null
   // );
   const [Result, setResult] = useState();
-
   const HandleGetMovies = async () => {
     try {
       const res = await fetch("http://localhost:5000/api/getMovies", {
@@ -64,6 +68,7 @@ const MovieProvider = ({ children }) => {
     }
   };
 
+  const [IdUpdate, setIdUpdate] = useState();
   const HandleGetCategories = async () => {
     try {
       const res = await fetch("http://localhost:5000/api/getCategory", {
@@ -79,20 +84,27 @@ const MovieProvider = ({ children }) => {
 
         data = await res.json();
         setFetchedCategories(data.data);
-        // console.log(data);
+        console.log(data);
       }
     } catch (error) {
       console.log(error.message);
     }
   };
 
+
+
   useEffect(() => {
     HandleGetMovies();
     HandleGetCategories();
+
   }, []);
 
   const AllMovies = FetchedMovies;
   const categoryDataa = FetchedCategories;
+
+  useEffect(() => {
+    console.log("Alll", AllMovies);
+  }, []);
 
   // console.log("cata", categoryDataa);
 
@@ -101,10 +113,6 @@ const MovieProvider = ({ children }) => {
     setter(parseInt(id));
     console.log(id);
   };
-
-  const Users = userData;
-  // console.log(CategoryData);
-  const User = JSON.parse(localStorage.getItem("UserInfo")) || null;
 
   // console.log("from MovieContext", User.role);
   const [selectedItems, setSelectedItems] = useState({});
@@ -197,6 +205,12 @@ const MovieProvider = ({ children }) => {
   };
 
   // ******For Done*******
+
+  useEffect(() => {
+    if (Userr) {
+      localStorage.setItem("userInfo", JSON.stringify(Userr));
+    }
+  }, [Userr]);
 
   const YearData = [
     { name: "Sort By Year" },
@@ -360,7 +374,8 @@ const MovieProvider = ({ children }) => {
       if (isLogin) {
         localStorage.setItem("userInfo", JSON.stringify(data.userInfo));
       }
-      console.log(data);
+
+      // console.log(data);
 
       // Assuming setUserRole is defined
       // Assuming setUserDetails is defined
@@ -445,7 +460,6 @@ const MovieProvider = ({ children }) => {
     checkTokenExpiry();
   };
 
-
   let inactivityTimer;
 
   const resetInactivityTimer = () => {
@@ -493,7 +507,7 @@ const MovieProvider = ({ children }) => {
     if (isLogin) {
       console.log("User is logged in. Setting up activity listeners...");
 
-      console.log("is:", isLogin);
+      // console.log("is:", isLogin);
 
       // Listen for user activity events
       const activityEvents = [
@@ -600,7 +614,7 @@ const MovieProvider = ({ children }) => {
         display,
         setDisplay,
         Users,
-        User,
+        Userr,
         currentModal,
         setCurrentModal,
         ModalDisplay,
@@ -624,11 +638,13 @@ const MovieProvider = ({ children }) => {
         staticUsers,
         HandleGetCategories,
         HandleGetMovies,
-
+        Autentification,
         autoRender,
         setAutornder,
         Result,
         setResult,
+        IdUpdate,
+        setIdUpdate,
       }}
     >
       {children}

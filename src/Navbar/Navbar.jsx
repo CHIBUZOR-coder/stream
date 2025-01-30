@@ -13,10 +13,16 @@ const Navbar = () => {
   const { FavouriteCount } = useContext(MovieContext);
 
   const userData = JSON.parse(localStorage.getItem("UserInfo")) || null;
-  // console.log(userData.role);
-  
+  // console.log(userData.userInfo);
 
-  const dash = userData ? "/stream/dash" : "/stream/login";
+  // const dash = userData ? `/stream/dash/${userData.usrid}` : "/stream/login";
+
+  let dash;
+  if(userData && userData.userInfo){
+    dash = `/stream/dash/${userData.userInfo.id}`;
+  }else{
+    dash = "/stream/login"
+  }
   console.log("dash:", dash);
 
   const hover = "hover:text-subMain transi text-white relative";

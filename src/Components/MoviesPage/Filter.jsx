@@ -14,7 +14,7 @@ const Filters = React.memo(({ Movies }) => {
     TimesData,
     YearData,
     HandleGetSelected,
-    categoryData,
+    categoryDataa,
     userChoice,
   } = useContext(MovieContext);
 
@@ -24,15 +24,15 @@ const Filters = React.memo(({ Movies }) => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    if (categoryData) {
-      console.log("data:", categoryData);
-      setCategoryHead(categoryData[0].name);
-      setCategories(categoryData);
+    if (categoryDataa) {
+      console.log("data:", categoryDataa);
+      setCategoryHead(categoryDataa[0].name);
+      setCategories(categoryDataa);
     } else {
       setCategoryHead(<p>No data list </p>);
     }
-    console.log("categoryData", categoryData);
-  }, [categoryData]);
+    console.log("categoryData", categoryDataa);
+  }, [categoryDataa]);
 
   const Filter = [
     { id: 1, items: categories },
@@ -121,11 +121,17 @@ const Filters = React.memo(({ Movies }) => {
                   }`}
                 >
                   <span>
-                    {selectedItems[dropdown.id] === item.id && index !== 0 && (
+                    {selectedItems[dropdown.id] === 1
+                      ? selectedItems[dropdown.id] === item.id &&
+                        index >= 0 && <FaCheck className="h-4 w-4" />
+                      : selectedItems[dropdown.id] === item.id &&
+                        index !== 0 && <FaCheck className="h-4 w-4" />}
+
+                    {/* {selectedItems[dropdown.id] === item.id && index !== 0 && (
                       <FaCheck className="h-4 w-4" />
-                    )}
+                    )} */}
                   </span>
-                  <span className="truncate font-semibold ">{item.tittle}</span>
+                  <span className={`truncate font-semibold `}>{item.tittle}</span>
                 </div>
               ))}
             </div>

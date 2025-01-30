@@ -26,6 +26,9 @@ const Table = ({
     }
   }
 
+  console.log("T2",data);
+  
+
   // useEffect(() => {
   //   console.log("user:", User.role);
   // }, [User]);

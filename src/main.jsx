@@ -92,7 +92,7 @@ const router = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: "/stream/dash",
+        path: "/stream/dash/:id",
         element: <Dashboard/>,
       },
       {
