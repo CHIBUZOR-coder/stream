@@ -25,7 +25,7 @@ const Register = () => {
   const HandleRegister = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    setLoadDiaplay("Creating User. User role will be User by default");
+    setLoadDiaplay("Creating User...");
 
     const formData = new FormData();
     formData.append("name", Name);
@@ -100,7 +100,7 @@ const Register = () => {
           {issLoading && (
             <div className=" fixed top-[200px] h-24 w-1/2 rounded-md border-border text-white  flex flex-col justify-center items-center ">
               <RiLoader2Fill className="h-10 w-10 animate-spin" />
-              <p className="font-semibold">{loadDisplay}</p>
+              <p className="font-semibold w-full text-center">{loadDisplay}</p>
               <p className="font-semibold">this will take about two minutes</p>
             </div>
           )}

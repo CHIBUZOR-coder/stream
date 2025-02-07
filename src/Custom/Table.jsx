@@ -26,8 +26,7 @@ const Table = ({
     }
   }
 
-  console.log("T2",data);
-  
+  console.log("T2", data);
 
   // useEffect(() => {
   //   console.log("user:", User.role);
@@ -67,6 +66,7 @@ const Table = ({
           {data &&
             data.map((movie, i) => (
               <tr key={i}>
+                {console.log(movie)}
                 <td className={`${Text}`}>
                   <div className="w-12 bg-dry borer border-border rounded h-12 overflow-hidden ">
                     <img
@@ -80,20 +80,35 @@ const Table = ({
                   <p>{movie.name}</p>
                 </td>
                 <td className={`${Text}`}>
-                  <p>{movie.category}</p>
+                  <p>{movie.category.tittle}</p>
                 </td>
-                {/* <td className={`${Text}`}>
-                <p>{movie.language}</p>
-              </td> */}
+
                 <td className={`${Text}`}>
                   <p>{movie.year}</p>
                 </td>
                 <td className={`${Text}`}>
-                  <p>{movie.hours}</p>
+                  <p>{movie.time}</p>
                 </td>
                 <td className={`${Text} float-right flexRow gap-2`}>
-                  {User && User.role === "ADMIN" ? (
+                  {For === "dash" ? (
                     <>
+                      {" "}
+                      <button className="bg-dry border border-border flexRow gap-2 text-border px-2 py-1 rounded">
+                        Download <FaCloudDownloadAlt />
+                      </button>
+                      <Link
+                        to={`/stream/watch/${movie.id}`}
+                        className="bg-subMain text-white rounded flexCol w-6 h-6 "
+                      >
+                        <GoEye />
+                      </Link>
+                    </>
+                  ) : For === "movie" ? (
+                    <>
+                      {/* <button className="bg-dry border border-border flexRow gap-2 text-border px-2 py-1 rounded">
+                        Download <FaCloudDownloadAlt />
+                      </button> */}
+
                       <button
                         onClick={() => Handlegeneral(movie.name, movie.id)}
                         className="bg-dry border border-border flexRow gap-2 text-border transi edit  hover:bg-green-500 hover:text-white px-2 py-1 rounded"
@@ -101,6 +116,7 @@ const Table = ({
                         Edit{" "}
                         <FaEdit className="text-green-500 editchild  transi " />
                       </button>
+
                       <button
                         onClick={(e) => {
                           HandleDeleteMovie(e, movie.id);
@@ -111,18 +127,44 @@ const Table = ({
                       </button>
                     </>
                   ) : (
-                    <>
+                    ""
+                  )}
+
+                  {/* <button className="bg-dry border border-border flexRow gap-2 text-border px-2 py-1 rounded">
+                    Download <FaCloudDownloadAlt />
+                  </button>
+
+                  <button
+                    onClick={() => Handlegeneral(movie.name, movie.id)}
+                    className="bg-dry border border-border flexRow gap-2 text-border transi edit  hover:bg-green-500 hover:text-white px-2 py-1 rounded"
+                  >
+                    Edit{" "}
+                    <FaEdit className="text-green-500 editchild  transi " />
+                  </button>
+
+                  <button
+                    onClick={(e) => {
+                      HandleDeleteMovie(e, movie.id);
+                    }}
+                    className="bg-subMain text-white rounded flexCol w-6 h-6  hover:bg-main transi border border-subMain delete  "
+                  >
+                    <MdDelete className="deletechild transi" />
+                  </button>
+ */}
+                  {/* <>
                       <button className="bg-dry border border-border flexRow gap-2 text-border px-2 py-1 rounded">
                         Download <FaCloudDownloadAlt />
                       </button>
                       <Link
-                        to={`/stream/watch/${movie.name}`}
+                        to={`/stream/watch/${
+                          For === "movie" ? `${movie.id}` : `${movie.movie?.id}`
+                        }`}
                         className="bg-subMain text-white rounded flexCol w-6 h-6 "
                       >
                         <GoEye />
                       </Link>
                     </>
-                  )}
+                   */}
                 </td>
               </tr>
             ))}

@@ -29,23 +29,27 @@ const MovieProvider = ({ children }) => {
   const [issLoading, setIsLoading] = useState(false);
   const isLogin = localStorage.getItem("IsLogin") || false;
   const Users = userData;
-  // console.log(CategoryData);
-  // const User = JSON.parse(localStorage.getItem("userInfo")) || null;
-  const [Userr, setUserr] = useState(null);
-  // useEffect(() => {
-  //   console.log("User:", Userr);
-  // });
-  // console.log("isl:", isLogin);
+  const User = JSON.parse(localStorage.getItem("UserInfo")) || null;
 
   const [autoRender, setAutornder] = useState(false);
 
   const [activityStatus, setActivityStatus] = useState(false);
   const [InactiveStart, setStart] = useState("stop");
+  const [FavouriteCartMovies, setFavouriteCartMovies] = useState([]);
+
+  useEffect(() => {
+    console.log("catrrt:", FavouriteCartMovies);
+  }, [FavouriteCartMovies]);
 
   const navigate = useNavigate();
   // const [userr, setUserr] = useState(
   //   JSON.parse(localStorage.getItem("UserInfo")) || null
   // );
+
+  const TaskRunner = (task) => {
+    task();
+  };
+
   const [Result, setResult] = useState();
   const HandleGetMovies = async () => {
     try {
@@ -91,12 +95,11 @@ const MovieProvider = ({ children }) => {
     }
   };
 
-
+  // Ensures it runs only once on mount
 
   useEffect(() => {
     HandleGetMovies();
     HandleGetCategories();
-
   }, []);
 
   const AllMovies = FetchedMovies;
@@ -144,20 +147,8 @@ const MovieProvider = ({ children }) => {
     const storedCart = localStorage.getItem("FavouriteCart");
     return storedCart ? JSON.parse(storedCart) : []; // Parse the stored value if available, otherwise return an empty array
   });
+  const [favCartAlert, setFavCartAlert] = useState(false);
 
-  useEffect(() => {
-    const favouriteCount = FavouriteCart.reduce((acc, curr) => {
-      return acc + curr.quantity;
-    }, 0);
-    const count = favouriteCount ? favouriteCount : 0;
-    setFavouriteCount(count);
-
-    // console.log(count);
-  }, [FavouriteCart]);
-
-  useEffect(() => {
-    // console.log("favCart", FavouriteCart);
-  }, [FavouriteCart]);
   // *****Form****************
 
   const handleFileUploaded = (
@@ -206,11 +197,11 @@ const MovieProvider = ({ children }) => {
 
   // ******For Done*******
 
-  useEffect(() => {
-    if (Userr) {
-      localStorage.setItem("userInfo", JSON.stringify(Userr));
-    }
-  }, [Userr]);
+  // useEffect(() => {
+  //   if (Userr) {
+  //     localStorage.setItem("userInfo", JSON.stringify(Userr));
+  //   }
+  // }, [Userr]);
 
   const YearData = [
     { name: "Sort By Year" },
@@ -274,7 +265,7 @@ const MovieProvider = ({ children }) => {
   };
 
   const HandleActiveChange = (name, e) => {
-    const ActiveState = localStorage.setItem("Active", name);
+    localStorage.setItem("Active", name);
     setIsActive(name);
   };
 
@@ -303,20 +294,20 @@ const MovieProvider = ({ children }) => {
       icon: <FaListAlt />,
       user: "ADMIN",
     },
-    {
-      name: "Notifications",
-      link: "/notifications",
-      icon: <HiViewColumns />,
-      user: "All",
-    },
+    // {
+    //   name: "Notifications",
+    //   link: "/notifications",
+    //   icon: <HiViewColumns />,
+    //   user: "All",
+    // },
     { name: "Users", link: "dashboard/users", icon: <FaUser />, user: "ADMIN" },
 
-    {
-      name: "Favourite Movies",
-      link: "/messages",
-      icon: <FaHeart />,
-      user: "All",
-    },
+    // {
+    //   name: "Favourite Movies",
+    //   link: "/messages",
+    //   icon: <FaHeart />,
+    //   user: "All",
+
     {
       name: "Update Profile",
       link: "dashboard/profile",
@@ -349,10 +340,6 @@ const MovieProvider = ({ children }) => {
       return errorMessage;
     }
   };
-
-  // useEffect(() => {
-  //   console.log("FavouriteMovies", FavouriteCart);
-  // }, [FavouriteCart]);
 
   //Veryfy token
   const Autentification = async () => {
@@ -553,47 +540,103 @@ const MovieProvider = ({ children }) => {
     }
   }, [isLogin, activityStatus]);
 
+  useEffect(() => {
+    const favouriteCount = FavouriteCart.reduce((acc, curr) => {
+      return acc + curr.quantity;
+    }, 0);
+    const count = favouriteCount ? favouriteCount : 0;
+    console.log(count);
+
+    setFavouriteCount(count);
+
+    // console.log(count);
+  }, [FavouriteCart]);
+
   //Add to favorite cart
-  const AddToCart = (movie, amount) => {
-    let StoredFavouriteCart =
-      JSON.parse(localStorage.getItem("FavouriteCart")) || [];
+  const AddToCart = async (movie, movieId, Id) => {
+    const user = JSON.parse(localStorage.getItem("userInfo"));
 
-    const addedMovie = StoredFavouriteCart.find(
-      (item) => item.id === parseInt(movie.id)
-    );
-    let feedback;
-    const total = amount;
-    const vat = 22;
-    const quantity = 1;
-    if (addedMovie) {
-      console.log("Movie already exists");
-      feedback = Alert(false, " Movie already exist");
-      console.log("feedback", feedback);
+    // console.log("id:", Id);
 
-      return;
+    if (isLogin) {
+      try {
+        Id = user.id;
+        let StoredFavouriteCart =
+          JSON.parse(localStorage.getItem("FavouriteCart")) || [];
+        const res = await fetch("http://localhost:5000/addfavourite", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ movieId, Id }),
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          console.log(data);
+          setResult(Alert(false, data.message));
+          setTimeout(() => {
+            setResult(null);
+          }, 2000);
+        } else {
+          setResult(Alert(true, data.messag));
+          console.log(data);
+          let localStorageCart;
+          let quantity = 1;
+          StoredFavouriteCart = [
+            ...StoredFavouriteCart,
+            { ...movie, quantity },
+          ];
+          localStorage.setItem(
+            "FavouriteCart",
+            JSON.stringify(StoredFavouriteCart)
+          );
+          setFavouriteCart(StoredFavouriteCart);
 
-      // addedMovie = { ...addedMovie, amount, vat };
-      StoredFavouriteCart = StoredFavouriteCart.map((item) =>
-        item.id === parseInt(movie.id)
-          ? { ...item, total, amount, vat, quantity }
-          : item
-      );
-    } else {
-      StoredFavouriteCart = [
-        ...StoredFavouriteCart,
-        { ...movie, total, amount, vat, quantity },
-      ];
-      const check = StoredFavouriteCart.find(
-        (item) => item.name === movie.name
-      );
-      if (check) {
-        feedback = Alert(true, " Movie added Succesfully");
-        console.log("feedback", feedback);
+          setTimeout(() => {
+            setResult(null);
+          }, 2000);
+        }
+      } catch (error) {
+        console.log(error.message);
+        setResult(Alert(false, error.message));
       }
-    }
+    } else {
+      let StoredFavouriteCart =
+        JSON.parse(localStorage.getItem("FavouriteCart")) || [];
 
-    localStorage.setItem("FavouriteCart", JSON.stringify(StoredFavouriteCart));
-    setFavouriteCart(StoredFavouriteCart);
+      const addedMovie = StoredFavouriteCart.find(
+        (item) => item.id === parseInt(movieId)
+      );
+
+      if (addedMovie) {
+        console.log("Movie already exists");
+        setResult(Alert(false, " Movie already exist"));
+        console.log("feedback", feedback);
+
+        return;
+
+        // addedMovie = { ...addedMovie, amount, vat };
+        StoredFavouriteCart = StoredFavouriteCart.map((item) =>
+          item.id === parseInt(movie.id)
+            ? { ...item, total, amount, vat, quantity }
+            : item
+        );
+      } else {
+        let quantity = 1;
+        StoredFavouriteCart = [...StoredFavouriteCart, { ...movie, quantity }];
+        const check = StoredFavouriteCart.find((item) => item.id === movie.id);
+        if (check) {
+          setResult(Alert(true, " Movie added Succesfully"));
+          console.log(Result);
+        }
+      }
+
+      localStorage.setItem(
+        "FavouriteCart",
+        JSON.stringify(StoredFavouriteCart)
+      );
+      setFavouriteCart(StoredFavouriteCart);
+    }
   };
 
   return (
@@ -614,7 +657,7 @@ const MovieProvider = ({ children }) => {
         display,
         setDisplay,
         Users,
-        Userr,
+        // Userr,
         currentModal,
         setCurrentModal,
         ModalDisplay,
@@ -645,6 +688,13 @@ const MovieProvider = ({ children }) => {
         setResult,
         IdUpdate,
         setIdUpdate,
+        FavouriteCartMovies,
+        setFavouriteCartMovies,
+        TaskRunner,
+        favCartAlert,
+        setFavCartAlert,
+        FetchedMovies,
+        User
       }}
     >
       {children}

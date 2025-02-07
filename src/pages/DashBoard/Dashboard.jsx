@@ -16,6 +16,8 @@ import { HiPlusCircle } from "react-icons/hi2";
 import { RxUpdate } from "react-icons/rx";
 import AddMovies from "./ADMIN/AddMovies";
 import { RiLoader2Fill } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
+import Login from "../Login";
 
 const Dashboard = () => {
   const {
@@ -39,6 +41,7 @@ const Dashboard = () => {
     HandleGetCategories,
     HandleGetMovies,
     setResult,
+    User
   } = useContext(MovieContext);
 
   // console.log("all", allProductes);
@@ -48,7 +51,11 @@ const Dashboard = () => {
   const [MovieToUpdate, setMovieToUpdate] = useState("");
   const [fetchId, setFetchId] = useState(null);
 
-  const User = localStorage.getItem("UserInfo") || null;
+  // const User = JSON.parse(localStorage.getItem("UserInfo")) || null;
+  
+  
+  
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (AllMovies) {
@@ -265,13 +272,15 @@ const Dashboard = () => {
   useEffect(() => {
     // console.log(isActive);
     if (isActive === "Update Profile") {
-      setDisplay(<UpdateProfile />);
-    } else if (isActive === "Favourite Movies") {
-      setDisplay(<Favourite />);
+      setDisplay(<UpdateProfile Forr={"show"} />);
     } else if (isActive === "Change Password") {
-      setDisplay(<UpdatePassword />);
-    } else if (isActive === "Notifications") {
-      setDisplay(<div> Notifications</div>);
+      setDisplay(
+        <UpdatePassword
+          setIsLoading={setIsLoading}
+          setResult={setResult}
+          setLoadDiaplay={setLoadDiaplay}
+        />
+      );
     } else if (isActive === "Users") {
       setDisplay(<Users />);
     } else if (isActive === "Categories") {
@@ -322,7 +331,7 @@ const Dashboard = () => {
 
   return (
     <Layout>
-      {User ? (
+      {User && User.role ? (
         <div className="flex lg:flex-row flex-col min-h-screen bg-main cursor-pointer relative py-3 px-5 gap-10 md:gap-8 lg:px-10 ">
           <div
             className={`${
@@ -345,7 +354,7 @@ const Dashboard = () => {
               ModalDisplay ? "" : "hidden"
             }  z-20 h-full bg-modal flex flex-col justify-start items-center gap-5  p-4 `}
           >
-            <div className="flex fixed top-[140px] mod right-5 md:right-auto justify-end items-center w-full md:w-1/2 ">
+            <div className="flex absolute top-[60px] mod right-5 md:right-auto justify-end items-center w-full md:w-1/2 ">
               <span
                 onClick={() => setModalDisplay((prev) => !prev)}
                 className="rounded-full border-2 border-subMain hover:text-subMain text-white transi hover:border-white hover:rotate-180 "
@@ -354,7 +363,7 @@ const Dashboard = () => {
               </span>
             </div>
 
-            <div className=" w-[90%] md:w-1/2 fixed top-[210px]  prof rounded-lg border border-border flexCol  gap-10 p-6 bg-dry">
+            <div className=" w-[90%] md:w-1/2 absolute top-[160px]  prof rounded-lg border border-border flexCol  gap-10 p-6 bg-dry">
               {currentModal === "Add" ? (
                 <>
                   <h2 className="text-2xl font-bold ">Create Category</h2>
@@ -450,6 +459,10 @@ const Dashboard = () => {
                     </button>
                   </form>
                 </>
+              ) : currentModal === "DeleteUser" ? (
+                <>
+                  <UpdateProfile />
+                </>
               ) : (
                 <p>{console.log("No current modal")}</p>
               )}
@@ -465,7 +478,7 @@ const Dashboard = () => {
           </div>
         </div>
       ) : (
-        <NotUser />
+        <Login />
       )}
     </Layout>
   );

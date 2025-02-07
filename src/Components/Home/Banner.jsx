@@ -9,12 +9,13 @@ import FlexMovie from "./FlexMovie";
 // import { Movies } from "../../Data/MovieData";
 
 const Banner = React.memo(() => {
-  
-  const { Movies, AddToCart } = useContext(MovieContext);
+  const { Movies, AddToCart, AllMovies } = useContext(MovieContext);
   // Utility function to shuffle an array
   const shuffleArray = (array) => {
     return [...array].sort(() => Math.random() - 0.5); // Fisher-Yates shuffle
   };
+
+  console.log("mov:", AllMovies);
 
   const randomMovies = shuffleArray(Movies);
 
@@ -38,14 +39,14 @@ const Banner = React.memo(() => {
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         className="w-full h-72  lg:h-72 xl:h-96 bg-dry"
       >
-        {randomMovies.map((movie) => (
+        {AllMovies && AllMovies.map((movie) => (
           <SwiperSlide
             key={movie.id}
             loading="lazy"
             className="bg-center  bg-cover relative overflow-hidden rounded"
           >
             <img
-              src={`./images/${movie.image}.jpg`}
+              src={`${movie.image}`}
               className="w-full h-full object-cover"
               alt=""
             />

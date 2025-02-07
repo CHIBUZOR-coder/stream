@@ -1,27 +1,39 @@
 import { Link, useParams } from "react-router-dom";
 import Layout from "../Layout/Layout";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import MovieContext from "../Context/MovieContext";
 import { BiArrowBack } from "react-icons/bi";
 import { FaCloud, FaCloudDownloadAlt, FaHeart, FaPlay } from "react-icons/fa";
 
 const Watch = () => {
   const { name } = useParams();
-  const { Movies } = useContext(MovieContext);
-  const movie = Movies.find((movie) => movie.name === name);
-  const [play, setPlay] = useState(false);
+  const { FetchedMovies } = useContext(MovieContext);
 
-  console.log(movie.image);
+  // const movie = AllMovies.find((movie) => movie.name === name);
+  const [play, setPlay] = useState(false);
+  const [movie, setMovie] = useState(null);
+
+  useEffect(() => {
+    // console.log("watch", AllMovies);
+    if (FetchedMovies) {
+      const currentMovie = FetchedMovies.find((movie) => movie.name === name);
+      setMovie(currentMovie); // Set the movie state here
+    }
+  }, [FetchedMovies]);
+
+  useEffect(() => {
+    console.log("moviee:", movie);
+  }, [movie]);
 
   return (
     <Layout>
       <div className="container  bg-dry md:min-h-screen p-6 mb-12">
         <div className="flexBtn w-full justify-between flex-wrap mb-6 gap-2 bg-main text-white p-6 rounded border border-gray-800">
           <Link
-            to={`/stream/movie/${movie.id}`}
+            to={`/stream/movie/${movie?.id}`}
             className="btn md:text-xl w-[20%] text-sm flex gap-3 items-center font-bold text-dryGray"
           >
-            <BiArrowBack /> {movie.name}
+            <BiArrowBack /> {movie && movie?.name}
           </Link>
           <div className="flexBtn sm:w-auto w-[70%] gap-5">
             <button className="btn bg-primary2 rounded px-4 py-3 text-sm hover:text-subMain transi font-bold">
@@ -35,15 +47,17 @@ const Watch = () => {
         {/* Watch video */}
         {play ? (
           <video
-            controls 
+            controls
+            crossOrigin="anonymous"
             autoPlay
             className="w-full h-[200px] md:h-screen rounded object-cover "
           >
             <source
-              src={`../Moviess/${movie.video}.mp4`}
+              src={`${movie?.video}`}
               type="video/mp4"
-              title={movie.name}
+              title={movie?.name}
             />
+            {console.log("movieVid:", movie?.video)}
           </video>
         ) : (
           <div className="flex justify-center items-center w-full ">
@@ -58,7 +72,7 @@ const Watch = () => {
               </div>
 
               <img
-                src={`../images/${movie.image}.jpg`}
+                src={`${movie?.image}`}
                 className="w-full h-full object-cover"
                 alt=""
               />

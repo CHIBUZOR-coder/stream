@@ -6,8 +6,10 @@ import { useContext } from "react";
 import MovieContext from "../../Context/MovieContext";
 
 const PopularMovies = () => {
-  const { AddToCart } = useContext(MovieContext);
-  const selected = Movies.filter((movie) => movie.popular === "true");
+  const { AddToCart, AllMovies } = useContext(MovieContext);
+
+  const selected = (AllMovies || []).filter((movie) => movie.popular === true);
+
   // console.log("selected", selected);
 
   return (
@@ -28,7 +30,7 @@ const PopularMovies = () => {
               className=" h-64  bg-center bg-cover "
             >
               <img
-                src={`./images/${movie.image}.jpg`}
+                src={`${movie.image}`}
                 loading="lazy"
                 className="w-full h-full object-cover"
                 alt=""
@@ -38,7 +40,10 @@ const PopularMovies = () => {
             <div className="flex absolute bottom-0  justify-between items-center  bg-trans2 w-full text-white px-4 py-3">
               <h3 className="font-semibold truncate">{movie.name}</h3>
               <button
-                onClick={() => AddToCart(movie, movie.price)}
+                onClick={() => {
+                  console.log("cartt", movie.id);
+                  AddToCart(movie, movie.id);
+                }}
                 className="h-8 w-8 text-sm flexCol transi hover:bg-transparent border-subMain bg-subMain2 border-2 rounded-md text-white "
               >
                 <FaHeart />

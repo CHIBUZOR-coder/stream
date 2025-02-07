@@ -48,6 +48,10 @@ select:focus {
   pointer-events: auto; /* Allow interaction */
 }
 
+.subscribe {
+ font-family: "Montserrat", serif;
+}
+
 .transi {
   @apply transition-all ease-in-out duration-500;
 }
@@ -110,7 +114,6 @@ select:focus {
   background-color: rgba(8, 10, 26, 1);
 }
 
-
 .Alert {
   position: absolute; /* Or fixed, depending on your use case */
   top: 0;
@@ -136,7 +139,6 @@ select:focus {
   }
 }
 
-
 @media (max-width: 389.9px) {
   .footText {
     font-size: 8px;
@@ -149,10 +151,10 @@ select:focus {
   .filterr {
     font-size: 0.5rem;
   }
-  .prof{
-    top:160px;
+  .prof {
+    top: 160px;
   }
-  .mod{
-    top:90px;
+  .mod {
+    top: 90px;
   }
 }

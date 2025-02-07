@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import MovieContext from "../../../Context/MovieContext";
 import Table from "../../../Custom/Table";
 
@@ -21,6 +21,18 @@ const MovieList = ({
       // console.log("from List", AllMovies); // Debug log
     }
   }, [AllMovies]);
+
+  const [page, setPage] = useState(1);
+  const itemsPerPage = 10;
+   const totalPages = AllMovies && Math.ceil(AllMovies.length / itemsPerPage);
+
+  // Paginated movies for the current page
+  const paginatedMovies = useMemo(() => {
+    return (AllMovies || []).slice(
+      (page - 1) * itemsPerPage,
+      page * itemsPerPage
+    );
+  }, [AllMovies, page]);
 
   const HandelDeleteAll = async () => {
     const userConfirmed = window.confirm(
@@ -76,13 +88,37 @@ const MovieList = ({
       <div className="flex flex-col ">
         <h3 className="font-medium my-4 text-border">All Movies</h3>
         <Table
-          data={MovieList}
+          data={paginatedMovies}
           User={User}
           For={"movie"}
           dataId={dataId}
           Handlegeneral={Handlegeneral}
           HandleDeleteMovie={HandleDeleteMovie}
         />
+
+        {/* Pagination Controls */}
+        <div className="flex justify-center gap-2 mb-7 mt-2">
+          <button
+            disabled={page === 1}
+            onClick={() => setPage((prev) => prev - 1)}
+            className={`px-4 py-2 rounded ${
+              page === 1 ? "bg-gray-400 text-white" : "bg-subMain text-white"
+            }`}
+          >
+            Previous
+          </button>
+          <button
+            disabled={page === totalPages}
+            onClick={() => setPage((prev) => prev + 1)}
+            className={`px-4 py-2 rounded ${
+              page === totalPages
+                ? "bg-gray-400 text-white"
+                : "bg-subMain text-white"
+            }`}
+          >
+            Next
+          </button>
+        </div>
       </div>
     </div>
   );

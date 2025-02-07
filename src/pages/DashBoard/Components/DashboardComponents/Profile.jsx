@@ -1,6 +1,6 @@
 import { FaPhone, FaPhoneAlt, FaRegListAlt, FaUser } from "react-icons/fa";
 import MovieContext from "../../../../Context/MovieContext";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { HiViewGridAdd } from "react-icons/hi";
 import Table from "../../../../Custom/Table";
 import { MdWatchLater } from "react-icons/md";
@@ -9,22 +9,37 @@ import { useParams } from "react-router-dom";
 
 const Profile = ({ Handlegeneral, HandleDeleteMovie }) => {
   const { Movies, AllMovies, Userr } = useContext(MovieContext);
-  const selected = Movies.slice(0, 10);
+  // const selected = AllMovies.slice(0, 10);
   const [singleUser, SetSingleUser] = useState(null);
 
-   const [MovieList, setMovieList] = useState(null);
-  // let selected;
+  const [MovieList, setMovieList] = useState(null);
+  const [page, setPage] = useState(1);
+  const itemsPerPage = 10;
+
+  const totalPages = AllMovies && Math.ceil(AllMovies.length / itemsPerPage);
+
+  // Paginated movies for the current page
+  const paginatedMovies = useMemo(() => {
+    return (AllMovies || [])
+      .slice((page - 1) * itemsPerPage, page * itemsPerPage)
+      .filter(
+        (movie) =>
+          movie.year === "2022" ||
+          movie.year === "2023" ||
+          movie.year === "2024"
+      );
+  }, [AllMovies, page]);
+
+  console.log("pag:", paginatedMovies);
 
   useEffect(() => {
     if (AllMovies && AllMovies.length > 0) {
-      const selected = AllMovies.slice(0, 10);
-      setMovieList(selected); // Update MovieList with a subset of AllMovies
-      // console.log("from List", AllMovies); // Debug log
+      // Update MovieList with a subset of AllMovies
+      console.log("from List", AllMovies); // Debug log
     }
   }, [AllMovies]);
 
   const { id } = useParams();
-
   const HandleGetUser = async () => {
     try {
       const res = await fetch(`http://localhost:5000/getUser/${id}`, {
@@ -183,15 +198,39 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie }) => {
               </div>
             ))}
       </div>
-      <h3 className="font-medium my-4 text-border">Recent Movies</h3>
+      <h3 className="font-medium my-4 text-border">Latest Movies</h3>
 
       <Table
-        data={AllMovies}
+        data={paginatedMovies}
         User={singleUser}
         For={"dash"}
         Handlegeneral={Handlegeneral}
         HandleDeleteMovie={HandleDeleteMovie}
       />
+
+      {/* Pagination Controls */}
+      <div className="flex justify-center gap-2 mb-7 mt-2">
+        <button
+          disabled={page === 1}
+          onClick={() => setPage((prev) => prev - 1)}
+          className={`px-4 py-2 rounded ${
+            page === 1 ? "bg-gray-400 text-white" : "bg-subMain text-white"
+          }`}
+        >
+          Previous
+        </button>
+        <button
+          disabled={page === totalPages}
+          onClick={() => setPage((prev) => prev + 1)}
+          className={`px-4 py-2 rounded ${
+            page === totalPages
+              ? "bg-gray-400 text-white"
+              : "bg-subMain text-white"
+          }`}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 };

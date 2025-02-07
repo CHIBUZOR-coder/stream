@@ -8,12 +8,15 @@ import { CgSelectR } from "react-icons/cg";
 import { TbInfoSquareRoundedFilled } from "react-icons/tb";
 import { IoIosWarning } from "react-icons/io";
 import Categories from "./Categories";
+// import { Casts } from "../../../Data/CastsData";
+import { MdDelete } from "react-icons/md";
 
 const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
   const {
     categoryDataa,
     handleFileUploaded,
     handleFileUploadedVideo,
+    HandleGetMovies,
     setInputVal,
     categoryData,
     CategoryId,
@@ -177,6 +180,7 @@ const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
         console.log(data);
         setIsLoading(false);
         setResult(Alert(true, "Movie successfully created!"));
+        HandleGetMovies();
         setCasts([]);
       }
     } catch (error) {
@@ -273,6 +277,18 @@ const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
     setImages([]);
   };
 
+  const HandleDeleteCast = (e, name) => {
+    e.preventDefault();
+    setCasts((prevCasts) => prevCasts.filter((cast) => cast.name !== name));
+  };
+
+  const HandleClear = (e) => {
+    e.preventDefault();
+
+    setCasts([]);
+  };
+
+  console.log("AllM", AllMovies);
   useEffect(() => {
     if (MovieName) {
       const Idvalue = AllMovies.find((movie) => movie.name === MovieName);
@@ -648,7 +664,7 @@ const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
             </div>
 
             <div
-              className={`bg-main w-full border-2 border-border col-span-2 border-dashed rounded-md p-2 `}
+              className={`bg-main w-full border-2 border-border col-span-2 border-dashed rounded-md p-2 flex flex-col gap-5`}
             >
               {casts.length > 0 ? (
                 <div
@@ -674,7 +690,14 @@ const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
                           className="w-28 h-28 object-cover rounded"
                         />
                       </div>
-                      <p className="text-sm font-semibold">{castt.name}</p>
+                      <div className="flex flex-col justify-center items-center gap-1">
+                        <p className="text-sm font-semibold">{castt.name}</p>
+                        <button
+                          onClick={(e) => HandleDeleteCast(e, castt.name)}
+                        >
+                          <MdDelete className="deletechild transi text-subMain" />
+                        </button>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -682,6 +705,18 @@ const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
                 <div className="w-full flex justify-center items-center  ">
                   <p className="text-text w-full text-center">No cast added</p>
                 </div>
+              )}
+              {casts.length > 0 ? (
+                <div className="w-full flex justify-center items-center my-2">
+                  <button
+                    onClick={(e) => HandleClear(e)}
+                    className="border border-subMain transi hover:bg-subMain text-white py-2 px-4 rounded-lg"
+                  >
+                    Clear
+                  </button>
+                </div>
+              ) : (
+                ""
               )}
             </div>
           </div>
@@ -699,7 +734,7 @@ const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
               onClick={(e) => {
                 e.preventDefault();
                 AddCast(Name, Role, Images);
-               
+
                 // Additional functionality for Add button
               }}
               className="md:w-1/2 w-full  font-semibold flexRow py-3  rounded border-2 gap-2 Ogaa  cursor-pointer transi  border-subMain bg-main text-white hover:bg-subMain"

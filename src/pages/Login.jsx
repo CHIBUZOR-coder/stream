@@ -105,7 +105,7 @@ const Login = () => {
 
   return (
     <Layout>
-      <div className="mx-auto relative px-6  md:my-20 flexCol ">
+      <div className="mx-auto relative px-6   flexCol ">
         <div
           className={` ${
             Result ? "Animate" : "hidden"
@@ -129,7 +129,7 @@ const Login = () => {
             </div>
           )}
         </div>
-        <div className="p-6 md:p-4 md:w-[70%]  lg:w-[40%] bg-dry  rounded-lg flexCol justify-center items-center border-2 border-border  ">
+        <div className="p-6 md:p-4 md:w-[70%]  lg:w-[40%] bg-dry  rounded-lg flexCol justify-center items-center border-2 border-border my-auto md:my-9 ">
           <div className="rounded-full   login_logo">
             <img
               src="https://res.cloudinary.com/dtjgj2odu/image/upload/v1734517937/StreamLogo_ao5f75.png"
@@ -138,7 +138,7 @@ const Login = () => {
             />
           </div>
 
-          <form className="flex flexCol gap-5 w-full">
+          <form className="flex flexCol gap-5 w-full ">
             <Input
               label={"Email"}
               placeholder={"Streamview@gmail.com"}

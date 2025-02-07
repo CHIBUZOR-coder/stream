@@ -11,6 +11,7 @@ import { use } from "react";
 
 const Navbar = () => {
   const { FavouriteCount } = useContext(MovieContext);
+  // console.log("favaCount",FavouriteCount);
 
   const userData = JSON.parse(localStorage.getItem("UserInfo")) || null;
   // console.log(userData.userInfo);
@@ -18,12 +19,14 @@ const Navbar = () => {
   // const dash = userData ? `/stream/dash/${userData.usrid}` : "/stream/login";
 
   let dash;
-  if(userData && userData.userInfo){
+  let fav;
+  if (userData && userData.userInfo) {
     dash = `/stream/dash/${userData.userInfo.id}`;
-  }else{
-    dash = "/stream/login"
+    fav = `/stream/favouritpage/${userData.userInfo.id}`;
+  } else {
+    dash = "/stream/login";
   }
-  console.log("dash:", dash);
+  // console.log("dash:", dash);
 
   const hover = "hover:text-subMain transi text-white relative";
   const Hover = ({ isActive }) => (isActive ? "text-subMain" : hover);
@@ -132,7 +135,7 @@ const Navbar = () => {
                     : "hover:text-main hover:bg-white  transi text-white relative"
                 } hov   p-3 flex justify-center items-center rounded-md`
               }
-              to={`/stream/favouritpage`}
+              to={`${fav}`}
             >
               <FaHeartCircleCheck className="w-6 h-6" />
               <p className="w-4 h-4 flexCol_mdRow rounded-full hova text-xs bg-white text-main absolute -top-[-1px] -right-[-3px]">

@@ -3,7 +3,7 @@ import { Input } from "../../../../Custom/Input";
 import Uploader from "../UpdateProfile/Uploader";
 import MovieContext from "../../../../Context/MovieContext";
 
-const UpdateProfile = () => {
+const UpdateProfile = ({ Forr }) => {
   const { setInputVal, handleFileUploaded } = useContext(MovieContext);
   const [previewImage, setpreviewImage] = useState();
   const [profileImages, setProfileImages] = useState("");
@@ -14,16 +14,8 @@ const UpdateProfile = () => {
   const [Password, setPassword] = useState("");
   const [Result, setResult] = useState();
 
-  const {
-    issLoading,
-    setIsLoading,
-    Alert,
-    HandleGetUser,
-    IdUpdate,
-  
-  } = useContext(MovieContext);
-
-
+  const { issLoading, setIsLoading, Alert, HandleGetUser, IdUpdate } =
+    useContext(MovieContext);
 
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
@@ -78,30 +70,39 @@ const UpdateProfile = () => {
       <div className=" p-4 flex flex-col gap-9 text-white bg-dry border border-gray-800 rounded-md">
         <p className="text-xl font-bold">Profile</p>
 
-        <Uploader
-          onFileUploaded={handleFileUploaded}
-          prviewSetter={setpreviewImage}
-          MainImageSetter={setProfileImages}
-          For={"image"}
-        />
-        {/* PreviewImage */}
-        <div className=" w-full  relative col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 items-center ">
-          <div className="flex gap-4 flex-wrap">
-            {profileImages.path ? (
-              <div className="w-32 h-32 p-2 bg-main border border-border rounded flex items-center justify-center">
-                <img
-                  src={previewImage}
-                  alt={`Uploaded Preview ${previewImage}`}
-                  className="object-cover w-full h-full rounded"
-                />
+        <>
+          {Forr === "show" ? (
+            <>
+              {" "}
+              <Uploader
+                onFileUploaded={handleFileUploaded}
+                prviewSetter={setpreviewImage}
+                MainImageSetter={setProfileImages}
+                For={"image"}
+              />
+              {/* PreviewImage */}
+              <div className=" w-full  relative col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 items-center ">
+                <div className="flex gap-4 flex-wrap">
+                  {profileImages.path ? (
+                    <div className="w-32 h-32 p-2 bg-main border border-border rounded flex items-center justify-center">
+                      <img
+                        src={previewImage}
+                        alt={`Uploaded Preview ${previewImage}`}
+                        className="object-cover w-full h-full rounded"
+                      />
+                    </div>
+                  ) : (
+                    <p className="text-sm text-gray-500 p-4 rounded-md border border-border bg-main">
+                      No images selected
+                    </p>
+                  )}
+                </div>
               </div>
-            ) : (
-              <p className="text-sm text-gray-500 p-4 rounded-md border border-border bg-main">
-                No images selected
-              </p>
-            )}
-          </div>
-        </div>
+            </>
+          ) : (
+            ""
+          )}{" "}
+        </>
         <Input
           label={"Full Name"}
           placeholder={"John Doe"}
@@ -113,8 +114,13 @@ const UpdateProfile = () => {
           labelFor={"name"}
         />
 
-        <div>
-          <p>Do you wish to change your email?</p>
+        <div className=" flex flex-col gap-3">
+          <p>
+            {Forr === "DeleteUser"
+              ? "Did user requst email update?"
+              : "Do you wish to change your email?"}
+          </p>
+     
           <div className="flex justify-start items-center gap-7">
             <label>
               <input

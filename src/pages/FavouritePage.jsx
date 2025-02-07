@@ -1,55 +1,72 @@
-// import { useContext, useState } from "react";
-
-// import MovieContext from "../Context/MovieContext";
-// import Table from "../Custom/Table";
-// import Layout from "../Layout/Layout";
-
-// const FavouritePage = () => {
-//   const { Movies, User } = useContext(MovieContext);
-// const selected = Movies.slice(0, 10);
-
-//   return (
-//     <Layout>
-//       <div className="flex flex-col gap-6">
-//         <div className="flex justify-between items-center p-0 md:p-4 ">
-//           <h2 className="md:text-xl text-lg text-white  font-bold">
-//             Favourite Movies
-//           </h2>
-//         </div>
-
-//         <Table data={selected} User={User}  />
-//       </div>
-//     </Layout>
-//   );
-// };
-
-// export default FavouritePage;
-
 import { useContext, useState, useEffect, useMemo } from "react";
 import MovieContext from "../Context/MovieContext";
 import Layout from "../Layout/Layout";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { GoEye } from "react-icons/go";
+import { FaCloudDownloadAlt } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 
 const FavouritePage = () => {
-  const { Movies, User } = useContext(MovieContext);
-  
+  const { id } = useParams();
+  const {
+    Movies,
+    setFavouriteCartMovies,
+    FavouriteCartMovies,
+    favCartAlert,
+    setFavCartAlert,
+  } = useContext(MovieContext);
+  const GetFavouriteCart = async () => {
+    try {
+      const res = await fetch(`http://localhost:5000/getfacouriteCart/${id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        console.log("Error fetching cart:", data);
+        return;
+      }
+
+      console.log("cartData:", data.data.favouriteCartMovies);
+      localStorage.setItem(
+        "Favourite",
+        JSON.stringify(data.data.favouriteCartMovies)
+      );
+      setFavouriteCartMovies(data.data.favouriteCartMovies); // Correct way to set state
+    } catch (error) {
+      console.log("Fetch error:", error.message);
+    }
+  };
+
+  useEffect(() => {
+    GetFavouriteCart();
+  }, []); // Ensures it runs only once on mount
+
+  // Ensures it runs only once on mount
+
+  // useEffect(() => {
+  //   console.log("carttt", FavouriteCartMovies);
+  // }, [FavouriteCartMovies]);
+
   const [page, setPage] = useState(1);
   const itemsPerPage = 10;
 
-  
   // Paginated movies for the current page
   const paginatedMovies = useMemo(() => {
-    return Movies.slice((page - 1) * itemsPerPage, page * itemsPerPage);
-  }, [Movies, page]);
-
-
+    return (FavouriteCartMovies || []).slice(
+      (page - 1) * itemsPerPage,
+      page * itemsPerPage
+    );
+  }, [FavouriteCartMovies, page]);
 
   // Total pages for pagination
   const totalPages = Math.ceil(Movies.length / itemsPerPage);
-    const Head =
-      "text-xs text-left text-main font-semibold px-6 py-2 uppercase ";
-    const Text = "text-sm text-left leading-6 whitespace-nowrap px-5 py-3";
+  const Head = "text-xs text-left text-main font-semibold px-6 py-2 uppercase ";
+  const Text = "text-sm text-left leading-6 whitespace-nowrap px-5 py-3 ";
 
   return (
     <Layout>
@@ -61,7 +78,7 @@ const FavouritePage = () => {
           </h2>
         </div>
 
-        {/* <div className="overflow-x-scroll overflow-hidden relative w-full">
+        <div className="overflow-x-scroll overflow-hidden relative w-full">
           <table className="table-auto w-full text-white border  border-border divide-y divide-border">
             <thead>
               <tr className="bg-dryGray">
@@ -74,7 +91,7 @@ const FavouritePage = () => {
                 <th scope="col" className={`${Head}`}>
                   Category
                 </th>
-             
+
                 <th scope="col" className={`${Head}`}>
                   Year
                 </th>
@@ -92,37 +109,49 @@ const FavouritePage = () => {
                   <td className={`${Text}`}>
                     <div className="w-12 bg-dry borer border-border rounded h-12 overflow-hidden ">
                       <img
-                        src={`./images/${movie.image}.jpg`}
+                        src={`${movie.movie?.image}`}
                         alt={movie.name}
                         className="w-full h-full object-cover rounded-md"
                       />
                     </div>
                   </td>
                   <td className={`${Text}`}>
-                    <p>{movie.name}</p>
+                    <p>{movie.movie?.name}</p>
                   </td>
                   <td className={`${Text}`}>
-                    <p>{movie.category}</p>
+                    <p>{movie.movie?.category.tittle}</p>
                   </td>
                   <td className={`${Text}`}>
-                    <p>{movie.year}</p>
+                    <p>{movie.movie?.year}</p>
                   </td>
-                  <td className={`${Text}`}>
-                    <p>{movie.hours}</p>
+                  <td className={`${Text} `}>
+                    <p>{movie.movie?.time}</p>
                   </td>
-                  <td className={`${Text} float-right flexRow gap-2`}>
+                  <td className={`${Text}  gap-3 flex items-center `}>
+                    <button className="bg-dry border border-border flexRow gap-2 text-border px-2 py-1 rounded">
+                      Download <FaCloudDownloadAlt />
+                    </button>
                     <Link
-                      to={`/stream/watch/${movie.name}`}
-                      className="bg-subMain text-white rounded flexCol py-2 px-4  "
+                      to={`/stream/watch/${movie.id}`}
+                      className="bg-subMain text-white  hover:bg-main transi border border-subMain rounded flexCol w-6 h-6 "
                     >
-                      <GoEye className="w-6 h-6" />
+                      <GoEye />
                     </Link>
+
+                    <button
+                      onClick={(e) => {
+                        HandleDeleteMovie(e, movie.id);
+                      }}
+                      className="bg-subMain text-white rounded flexCol w-6 h-6  hover:bg-main transi border border-subMain delete  "
+                    >
+                      <MdDelete className="deletechild transi" />
+                    </button>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
-        </div> */}
+        </div>
 
         {/* Pagination Controls */}
         <div className="flex justify-center gap-2 mb-7 mt-2">

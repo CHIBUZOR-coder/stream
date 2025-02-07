@@ -3,12 +3,21 @@ import FlexMovie from "../Home/FlexMovie";
 import { Link } from "react-router-dom";
 import { FaFacebook, FaWhatsapp, FaInstagram, FaTiktok } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { MdCancel } from "react-icons/md";
 import { Helmet } from "react-helmet";
+import MovieContext from "../../Context/MovieContext";
 const MovieInfo = ({ movie, setShareOpen, url }) => {
   // console.log("movie",movie);
- 
+  const { User } = useContext(MovieContext);
+console.log("Duser:", User);
+
+  const HandleUserCheck = (e) => {
+    e.preventDefault();
+    if (!User || User.role) {
+      setShareOpen((prev) => !prev);
+    }
+  };
 
   // const gap = "gap-2";
   return (
@@ -84,8 +93,7 @@ const MovieInfo = ({ movie, setShareOpen, url }) => {
                 <div className="grid sm:grid-cols-5 grid-col-2 gap-4 p-5 bg-main border border-gray-800 rounded-lg relative">
                   <button className="flexCol p-1 border-r border-border gap-2 ">
                     <span
-                      onClick={() => setShareOpen(prev=> !prev)
-                      }
+                      onClick={() => setShareOpen((prev) => !prev)}
                       className="p-2 bg-border rounded-md"
                     >
                       <FaShareAlt className="text-white" />
@@ -102,7 +110,10 @@ const MovieInfo = ({ movie, setShareOpen, url }) => {
 
                   <div className="sm:col-span-2 col-span-3 flex justify-end font-medium text-sm">
                     <Link
-                      to={`/stream/watch/${movie.name}`}
+                      onClick={(e) => HandleUserCheck(e)}
+                      to={`${
+                        User && User.role ? `/stream/watch/${movie.name}` : ""
+                      }`}
                       className="bg-dry hover:text-main transi hover:bg-subMain   transi border-2 border-subMain text-white px-8 py-3  font-medium names rounded-full flexRow gap-4 w-full sm:py-3 "
                     >
                       <FaPlay className="w-3 h-3" /> watch

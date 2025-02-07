@@ -631,7 +631,7 @@ export const Casts = [
     id: 90,
     movieId: 6,
     name: "Jacob Batalon",
-    image: "ned3",
+    image: "ned",
     role: "Ned Leeds",
   },
   {
@@ -1439,7 +1439,7 @@ export const Casts = [
     movieId: 17,
     name: "Molly Ringwald",
     image: "molly",
-    role: "Mrs. Booth",
+    role: "Mrs. Flynn",
   },
   {
     id: 215,
