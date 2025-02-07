@@ -5,17 +5,21 @@ import { FaFacebook, FaWhatsapp, FaInstagram, FaTiktok } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { useContext, useState } from "react";
 import { MdCancel } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import MovieContext from "../../Context/MovieContext";
 const MovieInfo = ({ movie, setShareOpen, url }) => {
   // console.log("movie",movie);
   const { User } = useContext(MovieContext);
-console.log("Duser:", User);
-
+  console.log("Duser:", User);
+  const navigate = useNavigate();
   const HandleUserCheck = (e) => {
     e.preventDefault();
-    if (!User || User.role) {
+    
+    if (!User) {
       setShareOpen((prev) => !prev);
+    } else {
+      navigate(`/stream/watch/${movie.name}`);
     }
   };
 
@@ -53,7 +57,7 @@ console.log("Duser:", User);
             <div className="xl:col-span-1 flex justify-center lg:justify-start items-start w-full  h-full">
               <div
                 style={{
-                  backgroundImage: `url('../images/${movie.image}.jpg')`,
+                  backgroundImage: `url('${movie.image}')`,
                 }}
                 className=" w-[80%] h-head bg-dry border border-dry rounded-lg bg-cover bg-center"
               ></div>
@@ -109,15 +113,12 @@ console.log("Duser:", User);
                   </div>
 
                   <div className="sm:col-span-2 col-span-3 flex justify-end font-medium text-sm">
-                    <Link
+                    <button
                       onClick={(e) => HandleUserCheck(e)}
-                      to={`${
-                        User && User.role ? `/stream/watch/${movie.name}` : ""
-                      }`}
                       className="bg-dry hover:text-main transi hover:bg-subMain   transi border-2 border-subMain text-white px-8 py-3  font-medium names rounded-full flexRow gap-4 w-full sm:py-3 "
                     >
                       <FaPlay className="w-3 h-3" /> watch
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </div>

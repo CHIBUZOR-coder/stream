@@ -21,6 +21,7 @@ const Navbar = () => {
   let dash;
   let fav;
   if (userData && userData.userInfo) {
+
     dash = `/stream/dash/${userData.userInfo.id}`;
     fav = `/stream/favouritpage/${userData.userInfo.id}`;
   } else {

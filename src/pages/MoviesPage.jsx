@@ -8,7 +8,19 @@ import MovieContext from "../Context/MovieContext";
 import { CgSpinner } from "react-icons/cg";
 
 const MoviesPage = () => {
-  const { userChoice, Movies, AddToCart } = useContext(MovieContext);
+  const { userChoice, FetchedMovies, AddToCart } = useContext(MovieContext);
+  const [Movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    if (FetchedMovies) {
+      const actualMovies = FetchedMovies;
+      setMovies(actualMovies);
+    }
+  }, [FetchedMovies]);
+
+  useEffect(() => {
+    console.log("mov:", Movies);
+  }, [Movies]);
 
   const maxDisplay = 10;
   const maxPage = 39;
@@ -24,7 +36,7 @@ const MoviesPage = () => {
 
       // Check userChoice against each filter
       for (const [key, value] of Object.entries(userChoice)) {
-        if (key === "1" && movie.category !== value) {
+        if (key === "1" && movie.category.tittle !== value) {
           matches = false; // Check category filter
         } else if (key === "2" && movie.approxiY !== value) {
           matches = false; // Check year filter (using approxiY)
@@ -72,7 +84,7 @@ const MoviesPage = () => {
     <Layout>
       <div className="px-2 my-6">
         <Filters Movies={Movies} />
-        <p className="text-lg font-medium my-6">
+        <p className="text-lg font-medium flex items-center gap-2 my-6">
           Total items found
           <span className="font-bold text-subMain rounded-lg">
             {" "}
@@ -94,7 +106,7 @@ const MoviesPage = () => {
                 className=" h-64  bg-center bg-cover "
               >
                 <img
-                  src={`./images/${movie.image}.jpg`}
+                  src={`${movie.image}`}
                   loading="lazy"
                   className="w-full h-full object-cover"
                   alt=""

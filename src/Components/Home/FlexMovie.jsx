@@ -12,7 +12,7 @@ const FlexMovie = React.memo(
     return (
       <div className={`flex justify-start items-center ${gap}`}>
         <div>
-          <span className="names">{movie.category.tittle}</span>
+          {/* <span className="names">{movie.category.tittle}</span> */}
         </div>
         <div className="flex justify-center items-center gap-1">
           <FaRegCalendarAlt className="text-subMain" />

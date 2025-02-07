@@ -40,6 +40,9 @@ const Login = () => {
     }
   }, []);
 
+  const favouriteCart = JSON.parse(localStorage.getItem("FavouriteCart"));
+  console.log("favcat:", favouriteCart);
+
   const HandleLogin = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -65,6 +68,45 @@ const Login = () => {
         console.log(data);
       }
 
+      if (favouriteCart) {
+        try {
+          const user = JSON.parse(localStorage.getItem("userInfo"));
+          await Promise.all(
+            favouriteCart.map(async (movie) => {
+              const res = await fetch("http://localhost:5000/login", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                credentials: "include",
+                body: JSON.stringify({
+                  Id: user.id,
+                  movieId: movie.id,
+                }),
+              });
+            })
+          );
+
+          const favData = await res.json();
+
+          if (!res.ok) {
+            console.log(data);
+            throw new Error(favData.message);
+          }
+
+          setResult(Alert(true, favData.message));
+          setTimeout(() => {
+            setResult(null);
+          }, 2000);
+        } catch (error) {
+          console.error("Error adding favourite movies:", favError.message);
+          setResult(Alert(false, "Failed to add favourite movies"));
+        }
+        setTimeout(() => {
+          setResult(null);
+        }, 2000);
+      }
+
       setIsLoading(false);
       setResult(Alert(true, data.message));
       console.log(data);
@@ -85,6 +127,7 @@ const Login = () => {
       console.log(error.message);
       setResult(Alert(false, error.message));
     } finally {
+      localStorage.removeItem("FavouriteCart");
       setTimeout(() => {
         setResult(null);
       }, 2000);

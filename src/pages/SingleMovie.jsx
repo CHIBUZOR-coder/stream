@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Layout from "../Layout/Layout";
 import { Link, useParams } from "react-router-dom";
 import MovieContext from "../Context/MovieContext";
@@ -19,15 +19,34 @@ import { FaXTwitter } from "react-icons/fa6";
 
 const SingleMovie = () => {
   const { id } = useParams();
-  const { Casts, Movies, User } = useContext(MovieContext);
+  const { Casts, User, FetchedMovies } = useContext(MovieContext);
   const [shareOpen, setShareOpen] = useState(false);
+  const [movie, setMovie] = useState([]);
+  const [Relatedmovie, setRelatedMovie] = useState([]);
+
   console.log(id);
 
-  const movie = Movies.find((movie) => movie.id === parseInt(id));
-  console.log(movie);
-  const relatedMovies = Movies.filter(
-    (movi) => movi.category === movie.category
-  );
+  useEffect(() => {
+    if (FetchedMovies) {
+      const moviee = FetchedMovies.find((movie) => movie.id === parseInt(id));
+      setMovie(moviee);
+      const relatedMovies = FetchedMovies.filter(
+        (movi) => movi.category.tittle === movie.category
+      );
+       setRelatedMovie(relatedMovies);
+    }
+
+   
+  }, [FetchedMovies]);
+
+  useEffect(() => {
+    console.log("movieee:", movie);
+    if (movie) {
+    }
+
+    console.log("rela:", Relatedmovie);
+  }, [movie, Relatedmovie]);
+
   const url = `${window.location.protocol}//${window.location.host}/stream/movie/${movie.id}`;
   const socials = [
     {
@@ -83,7 +102,7 @@ const SingleMovie = () => {
               </p>
 
               <Link
-                to={`${!User || User.role ? "/stream/Login" : ""} `}
+                to={`${!User ? "/stream/login" : ""}`}
                 className="bg-subMain2 text-white rounded-md border-2 border-subMain transi mt-3 hover:bg-main p-2 animate-bounce hover:animate-none "
               >
                 Subscribe
@@ -130,23 +149,24 @@ const SingleMovie = () => {
             </div>
 
             <div className="grid sm:mt-10 mt-6 xl:grid-cols-4 2xl:grid-cols-5 lg:grid-cols-3 sm:grid-cols-1 gap-6">
-              {relatedMovies.map((movie, index) => (
-                <Link
-                  to={`/stream/movie/${movie.id}`}
-                  key={`${movie.id}`}
-                  className="border h-64 border-border rounded bg-center bg-cover transi hover:scale-95 w-full relative"
-                  style={{
-                    backgroundImage: `url('../images/${movie.image}.jpg')`,
-                  }}
-                >
-                  <div className="absolute flex  justify-between items-center left-0 bottom-0 bg-main2 w-full text-white px-4 py-3">
-                    <h3 className="font-semibold truncate">{movie.name}</h3>
-                    <button className="h-8 w-8 text-sm flexCol transi hover:bg-transparent border-subMain bg-subMain2 border-2 rounded-md text-white ">
-                      <FaHeart />
-                    </button>
-                  </div>
-                </Link>
-              ))}
+              {Relatedmovie &&
+                Relatedmovie.map((movie, index) => (
+                  <Link
+                    to={`/stream/movie/${movie.id}`}
+                    key={`${movie.id}`}
+                    className="border h-64 border-border rounded bg-center bg-cover transi hover:scale-95 w-full relative"
+                    style={{
+                      backgroundImage: `url('${movie.image}')`,
+                    }}
+                  >
+                    <div className="absolute flex  justify-between items-center left-0 bottom-0 bg-main2 w-full text-white px-4 py-3">
+                      <h3 className="font-semibold truncate">{movie.name}</h3>
+                      <button className="h-8 w-8 text-sm flexCol transi hover:bg-transparent border-subMain bg-subMain2 border-2 rounded-md text-white ">
+                        <FaHeart />
+                      </button>
+                    </div>
+                  </Link>
+                ))}
             </div>
           </div>
         </div>

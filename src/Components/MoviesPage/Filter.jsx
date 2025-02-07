@@ -23,15 +23,20 @@ const Filters = React.memo(({ Movies }) => {
   const [categoryHead, setCategoryHead] = useState(null);
   const [categories, setCategories] = useState([]);
 
+
+  //  useEffect(() => {
+  //    console.log("mov:", Movies);
+  //  }, [Movies]);
+
   useEffect(() => {
     if (categoryDataa) {
-      console.log("data:", categoryDataa);
+      // console.log("data:", categoryDataa);
       setCategoryHead(categoryDataa[0].name);
       setCategories(categoryDataa);
     } else {
       setCategoryHead(<p>No data list </p>);
     }
-    console.log("categoryData", categoryDataa);
+    // console.log("categoryData", categoryDataa);
   }, [categoryDataa]);
 
   const Filter = [
@@ -41,9 +46,9 @@ const Filters = React.memo(({ Movies }) => {
     { id: 4, items: RatesData },
   ];
 
-  useEffect(() => {
-    console.log("flter", userChoice);
-  }, [userChoice]);
+  // useEffect(() => {
+  //   console.log("flter", userChoice);
+  // }, [userChoice]);
   const handleToggle = (id) => {
     // console.log("id",id);
 
@@ -71,7 +76,7 @@ const Filters = React.memo(({ Movies }) => {
     <div className="my-6 bg-dry border text-dryGray border-gray-800 grid md:grid-cols-4 grid-cols-2 lg:gap-12 gap-2 rounded p-6">
       {Filter.map((dropdown) => (
         <div key={dropdown.id} onClick={() => handleToggle(dropdown.id)}>
-          {console.log("menu", dropdown)}
+          {/* {console.log("menu", dropdown)} */}
           <div className="relative w-full flex items-center cursor-pointer border-gray-800 text-white px-4 py-2 text-left bg-main rounded-lg focus:outline-none focus:ring-1 focus:border-dry">
             <span className="block font-semibold text-[0.7rem] filterr md:text-[1rem] ">
               {selectedItems[dropdown.id] ? (
