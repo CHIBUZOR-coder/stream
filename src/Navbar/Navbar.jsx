@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { BsCollectionPlayFill, BsFillSearchHeartFill } from "react-icons/bs";
 import { FaUserCircle } from "react-icons/fa";
 import { FaHeartCircleCheck } from "react-icons/fa6";
@@ -12,21 +12,28 @@ import { use } from "react";
 const Navbar = () => {
   const { FavouriteCount } = useContext(MovieContext);
   // console.log("favaCount",FavouriteCount);
-
+  const [access, setAccess] = useState(false);
   const userData = JSON.parse(localStorage.getItem("UserInfo")) || null;
-  // console.log(userData.userInfo);
+  console.log(userData.userInfo);
 
   // const dash = userData ? `/stream/dash/${userData.usrid}` : "/stream/login";
 
   let dash;
   let fav;
-  if (userData && userData.userInfo) {
-
-    dash = `/stream/dash/${userData.userInfo.id}`;
-    fav = `/stream/favouritpage/${userData.userInfo.id}`;
-  } else {
+  if (!userData) {
+    console.log("No user info yet");
     dash = "/stream/login";
+  } else {
+    dash =
+      userData.role === "ADMIN"
+        ? `/stream/dash/ad/${userData.userInfo.name}`
+        : userData.role === "USER"
+        ? `/stream/dash/us/${userData.userInfo.name}`
+        : "NOT";
+
+    fav = `/stream/favouritpage/${userData.userInfo.name}`;
   }
+
   // console.log("dash:", dash);
 
   const hover = "hover:text-subMain transi text-white relative";

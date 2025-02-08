@@ -9,7 +9,7 @@ const SideBar = () => {
   const nabvigate = useNavigate();
   const UserLinks = slideLinks.filter((item) => item.user === "All");
 
-  console.log(userData.role);
+  // console.log(userData.role);
 
   const HandleLogout = async (e) => {
     e.preventDefault();

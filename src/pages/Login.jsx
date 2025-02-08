@@ -40,9 +40,6 @@ const Login = () => {
     }
   }, []);
 
-  const favouriteCart = JSON.parse(localStorage.getItem("FavouriteCart"));
-  console.log("favcat:", favouriteCart);
-
   const HandleLogin = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -66,61 +63,62 @@ const Login = () => {
         setIsLoading(false);
         setResult(Alert(false, data.message));
         console.log(data);
+      } else {
+        setResult(Alert(true, data.message));
+        setIsLoading(false);
+        localStorage.setItem("UserInfo", JSON.stringify(data));
+        localStorage.setItem("IsLogin", true);
       }
+
+      console.log(data);
+
+      const favouriteCart = JSON.parse(localStorage.getItem("FavouriteCart"));
 
       if (favouriteCart) {
         try {
-          const user = JSON.parse(localStorage.getItem("userInfo"));
-          await Promise.all(
-            favouriteCart.map(async (movie) => {
-              const res = await fetch("http://localhost:5000/login", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                credentials: "include",
-                body: JSON.stringify({
-                  Id: user.id,
-                  movieId: movie.id,
-                }),
-              });
-            })
-          );
-
-          const favData = await res.json();
-
-          if (!res.ok) {
-            console.log(data);
-            throw new Error(favData.message);
+          const user = JSON.parse(localStorage.getItem("UserInfo"));
+          if (!user || !user.userInfo.id) {
+            console.error("User ID is missing");
+            console.log("userr:", user.userInfo.id);
+            return;
           }
 
-          setResult(Alert(true, favData.message));
-          setTimeout(() => {
-            setResult(null);
-          }, 2000);
+          await Promise.all(
+            favouriteCart.map(async (movie) => {
+              const response = await fetch(
+                "http://localhost:5000/addfavourite",
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({
+                    Id: user.userInfo.id, // Ensure `user.id` exists
+                    movieId: movie.id,
+                  }),
+                }
+              );
+
+              const favCartdata = await response.json();
+              if (!response.ok) {
+                throw new Error(
+                  `Failed to add ${movie.id} to the backend cart`
+                );
+              }
+              console.log("Added to backend:", favCartdata);
+            })
+          );
         } catch (error) {
-          console.error("Error adding favourite movies:", favError.message);
-          setResult(Alert(false, "Failed to add favourite movies"));
+          console.error("Error in Promise.all:", error.message);
         }
-        setTimeout(() => {
-          setResult(null);
-        }, 2000);
       }
-
-      setIsLoading(false);
-      setResult(Alert(true, data.message));
-      console.log(data);
-
-      localStorage.setItem("UserInfo", JSON.stringify(data));
-      localStorage.setItem("IsLogin", true);
 
       if (data.success === true) {
         localStorage.setItem("IsLogin", true);
-        setTimeout(() => {
-          navigate("/stream/");
-        }, 100);
+       setTimeout(() => {
+         navigate("/stream/");
+       }, 500);
       }
-
       setEmail("");
       setPassword("");
     } catch (error) {

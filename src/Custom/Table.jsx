@@ -14,7 +14,7 @@ const Table = ({
   setdeletedMovieId,
   HandleDeleteMovie,
 }) => {
-  console.log("user", User);
+  // console.log("user", User);
 
   if (For === "movie") {
     if (!data || data.role) {
@@ -26,7 +26,7 @@ const Table = ({
     }
   }
 
-  console.log("T2", data);
+  // console.log("T2", data);
 
   // useEffect(() => {
   //   console.log("user:", User.role);
@@ -66,7 +66,7 @@ const Table = ({
           {data &&
             data.map((movie, i) => (
               <tr key={i}>
-                {console.log(movie)}
+                {/* {console.log(movie)} */}
                 <td className={`${Text}`}>
                   <div className="w-12 bg-dry borer border-border rounded h-12 overflow-hidden ">
                     <img

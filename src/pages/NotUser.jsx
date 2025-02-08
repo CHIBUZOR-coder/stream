@@ -1,8 +1,24 @@
+import { useContext, useEffect, useState } from "react";
 import { BiHomeAlt, BiHomeAlt2 } from "react-icons/bi";
 import { FiLogIn } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import MovieContext from "../Context/MovieContext";
 
 const NotUser = () => {
+  const { unAuthorizedUser, unAuthorizedADmin } = useContext(MovieContext);
+  const [display, setDisplay] = useState(null);
+
+  useEffect(() => {
+    if (unAuthorizedADmin) {
+      setDisplay(unAuthorizedADmin);
+    } else if (unAuthorizedUser) {
+      setDisplay(unAuthorizedUser);
+    } else {
+      setDisplay(
+        "You have to be a user to gain acces to your own dashboard at this address or page. Navigate to the Signup page below and signup to gain acces to your Dashboard"
+      );
+    }
+  }, [unAuthorizedUser, unAuthorizedADmin]);
   return (
     <>
       <div className="relative flexCol w-full h-[100vh] text-white bg-main bg-center">
@@ -21,9 +37,7 @@ const NotUser = () => {
           </div>
 
           <p className=" px-44 text-center text-lg text-text italic">
-            You have to be a user to gain acces to your own dashboard at this
-            address or page. Navigate to the Signup page below and signup to
-            gain acces to your Dashboard
+            {display && display}
           </p>
 
           <Link

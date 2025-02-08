@@ -48,11 +48,11 @@ const MovieInfo = ({ movie, setShareOpen, url }) => {
       >
         <div className="bg-main3  w-full flexCol ">
           {/* movie tittle */}
-          <p className="xl:text-4xl text-white capitalize font-sans mt-8 text-2xl font-bold italic md:text-center">
+          <p className="xl:text-4xl text-white capitalize font-sans mt-12 text-2xl font-bold italic  md:text-center">
             {movie.name}
           </p>
 
-          <div className="w-full mx-auto px-3  xl:px-8 lg:grid grid-cols-3   flexCol gap-14  py-6 lg:py-10 xl:gap-6 ">
+          <div className="w-full mx-auto px-3  xl:px-5 lg:grid grid-cols-3   flexCol gap-14  py-6 lg:py-4 xl:gap-6 ">
             {/* child */}
             <div className="xl:col-span-1 flex justify-center lg:justify-start items-start w-full  h-full">
               <div
@@ -68,7 +68,7 @@ const MovieInfo = ({ movie, setShareOpen, url }) => {
             <div className="col-span-2  py-2  lg:grid grid-cols-5  flex flex-col gap-8   justify-center  items-center ">
               {/* child */}
               <div className="col-span-4 md:col-span-5 lg:col-span-4 flex flex-col gap-4 md:gap-8 justify-center items-center   ">
-                <div className="w-full rounded border-[3px] border-main h-[250px]  ">
+                <div className="w-full rounded border-[3px] border-main h-[250px] md:h-[340px]  ">
                   <iframe
                     width="100%"
                     height="100%"

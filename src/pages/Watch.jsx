@@ -50,7 +50,7 @@ const Watch = () => {
             controls
             crossOrigin="anonymous"
             autoPlay
-            className="w-full h-[200px] md:h-screen rounded object-cover "
+            className="w-full h-[200px]  md:h-screen rounded object-cover "
           >
             <source
               src={`${movie?.video}`}
@@ -61,7 +61,7 @@ const Watch = () => {
           </video>
         ) : (
           <div className="flex justify-center items-center w-full ">
-            <div className="h-[200px] md:h-[400px] rounded overflow-hidden text-white relative w-full bg-center bg-cover">
+            <div className="h-[200px]  md:h-[400px] rounded overflow-hidden text-white relative w-full bg-center bg-cover">
               <div className=" bg-main2 w-full h-full flexCol absolute top-0 left-0">
                 <button
                   onClick={() => setPlay(true)}

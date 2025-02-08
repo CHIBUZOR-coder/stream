@@ -30,12 +30,15 @@ const MovieProvider = ({ children }) => {
   const isLogin = localStorage.getItem("IsLogin") || false;
   const Users = userData;
   const User = JSON.parse(localStorage.getItem("UserInfo")) || null;
+  const [unAuthorizedUser, setunAuthorizedUser] = useState(null);
+  const [unAuthorizedADmin, setunAuthorizedADmin] = useState(null);
 
   const [autoRender, setAutornder] = useState(false);
 
   const [activityStatus, setActivityStatus] = useState(false);
   const [InactiveStart, setStart] = useState("stop");
   const [FavouriteCartMovies, setFavouriteCartMovies] = useState([]);
+  const [roleCheck, setRoleCheck] = useState(false);
 
   useEffect(() => {
     console.log("catrrt:", FavouriteCartMovies);
@@ -687,6 +690,8 @@ const MovieProvider = ({ children }) => {
         Result,
         setResult,
         IdUpdate,
+        roleCheck,
+        setRoleCheck,
         setIdUpdate,
         FavouriteCartMovies,
         setFavouriteCartMovies,
@@ -694,7 +699,11 @@ const MovieProvider = ({ children }) => {
         favCartAlert,
         setFavCartAlert,
         FetchedMovies,
-        User
+        User,
+        unAuthorizedUser,
+        setunAuthorizedUser,
+        unAuthorizedADmin,
+        setunAuthorizedADmin,
       }}
     >
       {children}

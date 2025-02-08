@@ -1,4 +1,4 @@
-import { Children, lazy, StrictMode, Suspense } from "react";
+import { Children, lazy, StrictMode, Suspense, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
@@ -44,6 +44,18 @@ const Login = lazy(() => import("./pages/Login"));
 const Register = lazy(() => import("./pages/Register"));
 
 const FavouritePage = lazy(() => import("./pages/FavouritePage.jsx"));
+function generateRandomString(length) {
+  const chars =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let result = "";
+  for (let i = 0; i < length; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return result;
+}
+
+console.log(generateRandomString(10)); // Example output: "A1bC2dE3Fg"
+const result = generateRandomString(8);
 
 const router = createBrowserRouter([
   {
@@ -92,8 +104,12 @@ const router = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: "/stream/dash/:id",
-        element: <Dashboard/>,
+        path: `/stream/dash/us/:name`,
+        element: <Dashboard />,
+      },
+      {
+        path: "/stream/dash/ad/:name",
+        element: <Dashboard />,
       },
       {
         path: "*",

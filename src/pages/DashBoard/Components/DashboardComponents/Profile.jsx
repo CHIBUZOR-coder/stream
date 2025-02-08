@@ -6,17 +6,43 @@ import Table from "../../../../Custom/Table";
 import { MdWatchLater } from "react-icons/md";
 import { MdUnsubscribe } from "react-icons/md";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Profile = ({ Handlegeneral, HandleDeleteMovie }) => {
-  const { Movies, AllMovies, Userr } = useContext(MovieContext);
+  const {
+    Movies,
+    AllMovies,
+    setRoleCheck,
+    unAuthorizedUser,
+    setunAuthorizedUser,
+    unAuthorizedADmin,
+    setunAuthorizedADmin,
+  } = useContext(MovieContext);
+  const { name } = useParams();
+  const userData = JSON.parse(localStorage.getItem("UserInfo")) || null;
+
+  console.log("userData:", userData.role);
+
   // const selected = AllMovies.slice(0, 10);
   const [singleUser, SetSingleUser] = useState(null);
-
+  const navigate = useNavigate();
   const [MovieList, setMovieList] = useState(null);
   const [page, setPage] = useState(1);
   const itemsPerPage = 10;
-
   const totalPages = AllMovies && Math.ceil(AllMovies.length / itemsPerPage);
+  let UserLink;
+  if (userData) {
+    console.log("userData.role:", userData.role);
+
+    if (userData.role === "ADMIN") {
+      UserLink = `http://localhost:5000/getAdmin/${name}`;
+    } else if (userData.role === "USER") {
+      UserLink = `http://localhost:5000/getUser/${name}`;
+    } else {
+      UserLink = "nothing";
+    }
+  }
+  console.log("UserLink", UserLink);
 
   // Paginated movies for the current page
   const paginatedMovies = useMemo(() => {
@@ -30,20 +56,32 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie }) => {
       );
   }, [AllMovies, page]);
 
-  console.log("pag:", paginatedMovies);
-
-  useEffect(() => {
-    if (AllMovies && AllMovies.length > 0) {
-      // Update MovieList with a subset of AllMovies
-      console.log("from List", AllMovies); // Debug log
-    }
-  }, [AllMovies]);
-
-  const { id } = useParams();
   const HandleGetUser = async () => {
+    if (UserLink.includes("getAdmin")) {
+      console.log("This is an ADMIN link");
+      if (name.slice(-3) !== userData.userInfo.name.slice(-3)) {
+        setunAuthorizedADmin("You are not authorized to acces this route!");
+        navigate("*");
+
+        return;
+      }
+    } else if (UserLink.includes("getUser")) {
+      console.log("This is a USER link");
+      if (name.slice(-3) !== userData.userInfo.name.slice(-3)) {
+        setunAuthorizedUser("You must be a registerd user to acces route");
+        navigate("*");
+        return;
+      }
+    } else {
+      console.log("Unknown link type");
+    }
+
+    console.log("Getting User...");
+
     try {
-      const res = await fetch(`http://localhost:5000/getUser/${id}`, {
+      const res = await fetch(`${UserLink}`, {
         method: "GET",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
@@ -53,10 +91,12 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie }) => {
       if (!res.ok) {
         throw new Error(`HTTP error! Status: ${res.status}`);
       }
-
       const data = await res.json();
-      console.log("User data:", data);
+      console.log("Userdataaaaa:", data);
+
       SetSingleUser(data.data);
+      setRoleCheck(true);
+      localStorage.setItem("role", data.data.role);
     } catch (error) {
       console.error("Error in Authentication:", error.message);
     }
@@ -66,9 +106,9 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie }) => {
     HandleGetUser();
   }, []);
 
-  useEffect(() => {
-    console.log("User", Userr);
-  });
+  // useEffect(() => {
+  //   console.log("User", Userr);
+  // });
 
   const ProfileData = [
     {
