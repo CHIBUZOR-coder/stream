@@ -15,7 +15,7 @@ const Banner = React.memo(() => {
     return [...array].sort(() => Math.random() - 0.5); // Fisher-Yates shuffle
   };
 
-  console.log("mov:", AllMovies);
+  // console.log("mov:", AllMovies);
 
   const randomMovies = shuffleArray(Movies);
 

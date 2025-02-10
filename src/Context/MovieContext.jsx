@@ -40,21 +40,15 @@ const MovieProvider = ({ children }) => {
   const [FavouriteCartMovies, setFavouriteCartMovies] = useState([]);
   const [roleCheck, setRoleCheck] = useState(false);
 
+  const [index, setIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const typingSpeed = 100;
+
   useEffect(() => {
     console.log("catrrt:", FavouriteCartMovies);
   }, [FavouriteCartMovies]);
 
   const navigate = useNavigate();
-  // const [userr, setUserr] = useState(
-  //   JSON.parse(localStorage.getItem("UserInfo")) || null
-  // );
-
-    useEffect(() => {
-      
-
-      console.log("Add:", unAuthorizedADmin);
-      console.log("USSS:", unAuthorizedUser);
-    }, [unAuthorizedADmin, unAuthorizedUser]);
 
   const TaskRunner = (task) => {
     task();
@@ -115,11 +109,28 @@ const MovieProvider = ({ children }) => {
   const AllMovies = FetchedMovies;
   const categoryDataa = FetchedCategories;
 
-  useEffect(() => {
-    console.log("Alll", AllMovies);
-  }, []);
+  //Typewriter
 
-  // console.log("cata", categoryDataa);
+
+const HandleTypewrite = (textArray, setTypewriter) => {
+  if (!textArray || textArray.length === 0) return;
+
+  const currentText = textArray[index];
+  let timeout;
+
+  // Type one character at a time until the full text is displayed
+  if (charIndex < currentText.length) {
+    timeout = setTimeout(() => {
+       setTypewriter(currentText.substring(0, charIndex + 1));
+      setCharIndex((prev) => prev + 1);
+    }, typingSpeed);
+  }
+
+  // Return a cleanup function (optional in this case)
+  return () => clearTimeout(timeout);
+};
+
+ 
 
   //id retrival for update
   const IdRetrival = (id, setter) => {
@@ -711,6 +722,11 @@ const MovieProvider = ({ children }) => {
         setunAuthorizedUser,
         unAuthorizedADmin,
         setunAuthorizedADmin,
+        typingSpeed,
+        Text,
+        charIndex,
+        index,
+        HandleTypewrite,
       }}
     >
       {children}

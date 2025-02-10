@@ -3,20 +3,113 @@ import Footer from "../Footer/Footer";
 import MobileFooter from "../Footer/MobileFooter";
 import Navbar from "../Navbar/Navbar";
 import { MdCancel } from "react-icons/md";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { BsCollectionPlayFill } from "react-icons/bs";
 import { TiContacts } from "react-icons/ti";
-import { FaFacebook, FaInfoCircle, FaInstagram, FaTiktok, FaUserCircle, FaWhatsapp } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaInfoCircle,
+  FaInstagram,
+  FaTiktok,
+  FaUserCircle,
+  FaWhatsapp,
+} from "react-icons/fa";
 import { FaHeartCircleCheck, FaXTwitter } from "react-icons/fa6";
 import MovieContext from "../Context/MovieContext";
 
 const Layout = ({ children }) => {
   const { FavouriteCount } = useContext(MovieContext);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchResult, setSearchResult] = useState([]);
+  const [Height, setHeight] = useState(null);
+    const [Text, setText] = useState("");
   const hover = "hover:text-subMain transi text-white relative";
   const Hover = ({ isActive }) => (isActive ? "text-subMain" : hover);
+  const textArray = useMemo(() => ["Search Movie Name Here"], []);
 
+  const { typingSpeed, charIndex, index, HandleTypewrite } =
+    useContext(MovieContext);
+
+  
+
+ useEffect(() => {
+   const cleanup = HandleTypewrite(textArray, setText);
+   return cleanup;
+ }, [charIndex, index, textArray, typingSpeed, HandleTypewrite]);
+
+  // console.log(!!"hello"); // true (non-empty string)
+  // console.log(!!"");
+
+  const HandleFetchStart = async (value) => {
+    if (!value.trim()) {
+      setSearchResult([]); // Clear results if input is empty
+      return;
+    }
+    try {
+      const res = await fetch("http://localhost:5000/api/getMovies", {
+        method: "GET",
+        headers: {
+          "Content-Type": "Application/Json",
+        },
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        console.log(data);
+        throw new Error("Failed to fetch search results");
+      }
+
+      // setSearchResult(
+      //   data.filter((movie) => {
+      //     return (
+      //       value &&
+      //       movie &&
+      //       movie.name &&
+      //       movie.name.toLowerCase().includes(value)
+      //     );
+      //   })
+      // );
+      console.log("Fetched data:", data);
+
+      setSearchResult(
+        data.data.filter((movie) =>
+          movie?.name?.toLowerCase().includes(value.toLowerCase())
+        )
+      );
+
+      // console.log(result);
+    } catch (error) {
+      console.error("Error fetching search results:", error.message);
+      setError("Failed to fetch search results. Please try again.");
+    }
+  };
+
+  const HandleInputChange = (e) => {
+    e.preventDefault();
+
+    const value = e.target.value.trim();
+    // if (value) {
+    //   setHeight(true);
+    // } else {
+    //   setHeight(false);
+    // }
+
+    setHeight(!!value);
+
+    HandleFetchStart(value); // Perform the fetch
+    if (value.length <= 0) {
+      setHeight(false);
+    }
+  };
+
+  useEffect(() => {
+    console.log("height:", Height);
+  }, [Height]);
+
+  useEffect(() => {
+    console.log("Searchresult:", searchResult);
+  }, [searchResult]);
   const socials = [
     {
       path: `#`,
@@ -156,7 +249,24 @@ const Layout = ({ children }) => {
           </div>
         </div>
 
-        <Navbar />
+        <Navbar
+          HandleInputChange={HandleInputChange}
+          searchResult={searchResult}
+          Text={Text}
+        />
+
+        <div
+          className={` ${
+            searchResult && searchResult.length > 0 ? "" : "hidden"
+          } absolute w-full top-20 md:top-28 z-50 left-0 flex flex-col gap-5 bg-drkb text-white p-5 h-[300px] md:h-[400px] overflow-y-auto`}
+        >
+          {searchResult &&
+            searchResult.map((movie, i) => (
+              <Link to={`/stream/movie/${movie.id}`} className="font-semibold">
+                {movie.name}
+              </Link>
+            ))}
+        </div>
         {children}
 
         <Footer />

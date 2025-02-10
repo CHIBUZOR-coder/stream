@@ -68,17 +68,17 @@ const MoviesPage = () => {
     }
   };
 
-  useEffect(() => {
-    console.log("page", page);
-  }, [page]);
+  // useEffect(() => {
+  //   console.log("page", page);
+  // }, [page]);
 
-  useEffect(() => {
-    console.log("filtered", filteredMovies.length);
-  }, [filterMovies]);
+  // useEffect(() => {
+  //   console.log("filtered", filteredMovies.length);
+  // }, [filterMovies]);
 
-  useEffect(() => {
-    console.log("max", maxDisplay);
-  }, [maxDisplay]);
+  // useEffect(() => {
+  //   console.log("max", maxDisplay);
+  // }, [maxDisplay]);
 
   return (
     <Layout>

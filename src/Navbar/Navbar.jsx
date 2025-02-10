@@ -9,7 +9,7 @@ import { TiContacts } from "react-icons/ti";
 import { TbTableDashed } from "react-icons/tb";
 import { use } from "react";
 
-const Navbar = () => {
+const Navbar = ({ HandleInputChange, Text }) => {
   const { FavouriteCount } = useContext(MovieContext);
   // console.log("favaCount",FavouriteCount);
   const [access, setAccess] = useState(false);
@@ -70,9 +70,10 @@ const Navbar = () => {
               </button>
 
               <input
+                onChange={(e) => HandleInputChange(e)}
                 className="font-mono  placeholder:text-border text-sm w-4/5 h-12 bg-transparent border-none px-2 text-black"
                 type="text"
-                placeholder="Search movie name"
+                placeholder={`${Text ? Text : "Search movie name"}`}
               />
             </form>
           </div>
