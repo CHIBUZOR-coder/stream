@@ -54,7 +54,7 @@ const Layout = ({ children }) => {
                 <Link to={`/stream/`}>
                   <img
                     className="h-20 w-20 rounded-full"
-                    src="https://res.cloudinary.com/dtjgj2odu/image/upload/v1734517937/StreamLogo_ao5f75.png"
+                    src="https://res.cloudinary.com/dtjgj2odu/image/upload/v1739151976/logoround_awixqx.png"
                     alt=""
                   />
                 </Link>
@@ -155,7 +155,7 @@ const Layout = ({ children }) => {
             </div>
           </div>
         </div>
-        
+
         <Navbar />
         {children}
 

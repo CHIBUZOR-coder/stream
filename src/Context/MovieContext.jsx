@@ -49,6 +49,13 @@ const MovieProvider = ({ children }) => {
   //   JSON.parse(localStorage.getItem("UserInfo")) || null
   // );
 
+    useEffect(() => {
+      
+
+      console.log("Add:", unAuthorizedADmin);
+      console.log("USSS:", unAuthorizedUser);
+    }, [unAuthorizedADmin, unAuthorizedUser]);
+
   const TaskRunner = (task) => {
     task();
   };

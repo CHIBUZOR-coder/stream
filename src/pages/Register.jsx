@@ -81,7 +81,7 @@ const Register = () => {
 
   return (
     <Layout>
-      <div className="mx-auto relative  my-4 flexCol">
+      <div className="mx-auto relative px-6  my-4 flexCol">
         <div
           className={` ${
             Result ? "Animate" : "hidden"
@@ -109,9 +109,9 @@ const Register = () => {
         <div className="p-4  md:w-[70%] lg:w-[40%] bg-dry  rounded-lg flexCol justify-center items-center border-2 border-border  ">
           <div className="rounded-full login_logo">
             <img
-              src="https://res.cloudinary.com/dtjgj2odu/image/upload/v1734517937/StreamLogo_ao5f75.png"
+              src="https://res.cloudinary.com/dtjgj2odu/image/upload/v1739151976/logoround_awixqx.png"
               alt="logo"
-              className=" w-32 h-32 object-contain"
+              className=" w-36 h-36 object-contain"
             />
           </div>
 

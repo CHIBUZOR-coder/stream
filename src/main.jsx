@@ -4,6 +4,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
 import Dashboard from "./pages/DashBoard/Dashboard";
+// import ResetPassword from "./pages/ResetPassword.jsx";
+// import AccountRecovery from "./pages/AccountRecovery.jsx";
+
+// import Recovery from "./pages/Recovery.jsx";
 
 // import FavouritePage from "./pages/FavouritePage.jsx";
 
@@ -36,26 +40,28 @@ const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
 const MoviesPage = lazy(() => import("./pages/MoviesPage"));
 const User = lazy(() => import("./pages/DashBoard/ADMIN/Users"));
-
+const AccountRecovery = lazy(() => import("./pages/AccountRecovery.jsx"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const SingleMovie = lazy(() => import("./pages/SingleMovie"));
 const Watch = lazy(() => import("./pages/Watch"));
 const Login = lazy(() => import("./pages/Login"));
 const Register = lazy(() => import("./pages/Register"));
-
 const FavouritePage = lazy(() => import("./pages/FavouritePage.jsx"));
-function generateRandomString(length) {
-  const chars =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  let result = "";
-  for (let i = 0; i < length; i++) {
-    result += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
-  return result;
-}
+const ResetPassword = lazy(() => import("./pages/ResetPassword.jsx"));
 
-console.log(generateRandomString(10)); // Example output: "A1bC2dE3Fg"
-const result = generateRandomString(8);
+
+// function generateRandomString(length) {
+//   const chars =
+//     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+//   let result = "";
+//   for (let i = 0; i < length; i++) {
+//     result += chars.charAt(Math.floor(Math.random() * chars.length));
+//   }
+//   return result;
+// }
+
+// console.log(generateRandomString(10)); // Example output: "A1bC2dE3Fg"
+// const result = generateRandomString(8);
 
 const router = createBrowserRouter([
   {
@@ -112,6 +118,14 @@ const router = createBrowserRouter([
         element: <Dashboard />,
       },
       {
+        path: "recovery",
+        element: <AccountRecovery />,
+      },
+      {
+        path: "resetPassword/:token",
+        element: <ResetPassword />,
+      },
+      {
         path: "*",
         element: <NotFound />,
       },
@@ -124,10 +138,10 @@ createRoot(document.getElementById("root")).render(
     <Suspense
       fallback={
         <div className="w-full h-[100vh] bg-main flex justify-center items-center">
-          <div className="w-[100px] h-[100px] rounded-full  border border-border animate-bounce">
+          <div className="w-[250px] h-[250px] rounded-full  border border-border animate-bounce">
             <img
               className="h-full w-full rounded-full"
-              src="https://res.cloudinary.com/dtjgj2odu/image/upload/v1734517937/StreamLogo_ao5f75.png"
+              src="https://res.cloudinary.com/dtjgj2odu/image/upload/v1739151976/logoround_awixqx.png"
               alt=""
             />
           </div>

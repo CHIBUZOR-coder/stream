@@ -13,9 +13,9 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie }) => {
     Movies,
     AllMovies,
     setRoleCheck,
-    unAuthorizedUser,
+
     setunAuthorizedUser,
-    unAuthorizedADmin,
+
     setunAuthorizedADmin,
   } = useContext(MovieContext);
   const { name } = useParams();
@@ -61,7 +61,9 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie }) => {
       console.log("This is an ADMIN link");
       if (name.slice(-3) !== userData.userInfo.name.slice(-3)) {
         setunAuthorizedADmin("You are not authorized to acces this route!");
-        navigate("*");
+     setTimeout(() => {
+       navigate("*");
+     }, 100);
 
         return;
       }
@@ -69,7 +71,9 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie }) => {
       console.log("This is a USER link");
       if (name.slice(-3) !== userData.userInfo.name.slice(-3)) {
         setunAuthorizedUser("You must be a registerd user to acces route");
-        navigate("*");
+        setTimeout(() => {
+          navigate("*");
+        }, 100);
         return;
       }
     } else {

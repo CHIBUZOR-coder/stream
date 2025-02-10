@@ -14,7 +14,7 @@ const Navbar = () => {
   // console.log("favaCount",FavouriteCount);
   const [access, setAccess] = useState(false);
   const userData = JSON.parse(localStorage.getItem("UserInfo")) || null;
-  console.log(userData.userInfo);
+  // console.log(userData.userInfo);
 
   // const dash = userData ? `/stream/dash/${userData.usrid}` : "/stream/login";
 
@@ -41,14 +41,14 @@ const Navbar = () => {
   return (
     <>
       {/* Logo */}
-      <div className="bg-main px-7 shadow-md sticky  top-0 z-40">
+      <div className="bg-main px-7 shadow-md sticky   top-0 z-40">
         <div className="container  px-5 py-4  lg:grid gap-10 grid-cols-7 justify-between items-center">
           <div className="col-span-1 lg:block hidden ">
             <div className="flex justify-center items-center">
               <Link to={`/stream/`}>
                 <img
                   className="h-20 w-20 rounded-full"
-                  src="https://res.cloudinary.com/dtjgj2odu/image/upload/v1734517937/StreamLogo_ao5f75.png"
+                  src="https://res.cloudinary.com/dtjgj2odu/image/upload/v1739151976/logoround_awixqx.png"
                   alt=""
                 />
               </Link>

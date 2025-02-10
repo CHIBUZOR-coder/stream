@@ -115,9 +115,9 @@ const Login = () => {
 
       if (data.success === true) {
         localStorage.setItem("IsLogin", true);
-       setTimeout(() => {
-         navigate("/stream/");
-       }, 500);
+        setTimeout(() => {
+          navigate("/stream/");
+        }, 500);
       }
       setEmail("");
       setPassword("");
@@ -146,7 +146,7 @@ const Login = () => {
 
   return (
     <Layout>
-      <div className="mx-auto relative px-6   flexCol ">
+      <div className="mx-auto relative px-6 mb-4   flexCol ">
         <div
           className={` ${
             Result ? "Animate" : "hidden"
@@ -173,9 +173,9 @@ const Login = () => {
         <div className="p-6 md:p-4 md:w-[70%]  lg:w-[40%] bg-dry  rounded-lg flexCol justify-center items-center border-2 border-border my-auto md:my-9 ">
           <div className="rounded-full   login_logo">
             <img
-              src="https://res.cloudinary.com/dtjgj2odu/image/upload/v1734517937/StreamLogo_ao5f75.png"
+              src="https://res.cloudinary.com/dtjgj2odu/image/upload/v1739151976/logoround_awixqx.png"
               alt="logo"
-              className=" w-28 h-28 object-contain"
+              className=" w-36 h-36 object-contain"
             />
           </div>
 
@@ -216,6 +216,15 @@ const Login = () => {
               >
                 {" "}
                 Signup
+              </Link>
+            </p>
+
+            <p className="text-center text-border">
+              <Link
+                to="/stream/recovery"
+                className="text-dryGray transi hover:text-subMain font-semibold"
+              >
+                Forgot your password?
               </Link>
             </p>
           </form>
