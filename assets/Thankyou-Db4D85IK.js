@@ -1,0 +1,11 @@
+import{r as t,M as j,X as b,j as e,g as I}from"./index-BbsWcVuM.js";const P=()=>{const{Result:E,setResult:l,Alert:i,User:c}=t.useContext(j),[u]=b(),[d,S]=t.useState(u.get("transaction_id")),[m,f]=t.useState(!0),[a,x]=t.useState(null),h=localStorage.getItem("orderId"),y=c?c.userInfo.email:"unavailable email",[g,p]=t.useState([]);t.useEffect(()=>{console.log("status:",a)},[a]);const v=async(s,r)=>{try{const n=await fetch("http://localhost:5000/verify-payment",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({transaction_id:s,orderId:r,email:y})}),o=await n.json();n.ok?(console.log(o),l(i(!0,o.message)||"Order successful"),localStorage.setItem("Recipt",o.data),f(!1),localStorage.removeItem("orderId"),x(o.data.status)):l(i(!1,o.message)||"Order failed")}catch(n){console.log(n)}finally{setTimeout(()=>{l(null)},3e3)}};return t.useEffect(()=>{v(d,h)},[d]),t.useEffect(()=>{if(a==="COMPLETED"){let s=0;const r=setInterval(()=>{p(n=>[...n,{id:s++,left:Math.random()*100+"vw",animationDuration:Math.random()*2+3+"s"}])},300);return setTimeout(()=>clearInterval(r),3e3),()=>clearInterval(r)}},[a]),e.jsx(I,{children:e.jsxs("div",{className:"flex flex-col items-center justify-center min-h-screen bg-gray-100 relative overflow-hidden",children:[m?e.jsx("div",{className:"bg-white flex justify-center items-center shadow-lg max-w-md text-center rounded-full p-2 h-48 w-48 relative",children:e.jsx("div",{className:"text-subMain font-semibold animate-pulse",children:"Verifying Payment..."})}):a&&a==="COMPLETED"?e.jsx("div",{children:e.jsxs("h2",{className:"text-2xl font-bold text-green-500 text-center",children:["Payment Successful! ",e.jsx("br",{}),"Thank you for subscribing to our service!"]})}):e.jsx("h2",{className:"text-2xl font-bold text-red-500",children:"Payment Failed!"}),a==="COMPLETED"&&g.map(s=>e.jsx("span",{className:"absolute text-3xl animate-fall",style:{left:s.left,animationDuration:s.animationDuration},children:"🎉"},s.id)),e.jsx("style",{children:`
+            @keyframes fall {
+              0% { transform: translateY(-100vh); opacity: 1; }
+              100% { transform: translateY(100vh); opacity: 0; }
+            }
+            .animate-fall {
+              position: absolute;
+              top: 0;
+              animation: fall linear infinite;
+            }
+          `})]})})};export{P as default};
