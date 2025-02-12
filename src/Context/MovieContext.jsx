@@ -32,6 +32,7 @@ const MovieProvider = ({ children }) => {
   const User = JSON.parse(localStorage.getItem("UserInfo")) || null;
   const [unAuthorizedUser, setunAuthorizedUser] = useState(null);
   const [unAuthorizedADmin, setunAuthorizedADmin] = useState(null);
+  const [orderId, setOrderId] = useState(null);
 
   const [autoRender, setAutornder] = useState(false);
 
@@ -111,26 +112,23 @@ const MovieProvider = ({ children }) => {
 
   //Typewriter
 
+  const HandleTypewrite = (textArray, setTypewriter) => {
+    if (!textArray || textArray.length === 0) return;
 
-const HandleTypewrite = (textArray, setTypewriter) => {
-  if (!textArray || textArray.length === 0) return;
+    const currentText = textArray[index];
+    let timeout;
 
-  const currentText = textArray[index];
-  let timeout;
+    // Type one character at a time until the full text is displayed
+    if (charIndex < currentText.length) {
+      timeout = setTimeout(() => {
+        setTypewriter(currentText.substring(0, charIndex + 1));
+        setCharIndex((prev) => prev + 1);
+      }, typingSpeed);
+    }
 
-  // Type one character at a time until the full text is displayed
-  if (charIndex < currentText.length) {
-    timeout = setTimeout(() => {
-       setTypewriter(currentText.substring(0, charIndex + 1));
-      setCharIndex((prev) => prev + 1);
-    }, typingSpeed);
-  }
-
-  // Return a cleanup function (optional in this case)
-  return () => clearTimeout(timeout);
-};
-
- 
+    // Return a cleanup function (optional in this case)
+    return () => clearTimeout(timeout);
+  };
 
   //id retrival for update
   const IdRetrival = (id, setter) => {
@@ -727,6 +725,7 @@ const HandleTypewrite = (textArray, setTypewriter) => {
         charIndex,
         index,
         HandleTypewrite,
+        setOrderId,
       }}
     >
       {children}

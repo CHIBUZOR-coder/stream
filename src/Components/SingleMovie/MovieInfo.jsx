@@ -15,8 +15,8 @@ const MovieInfo = ({ movie, setShareOpen, url }) => {
   const navigate = useNavigate();
   const HandleUserCheck = (e) => {
     e.preventDefault();
-    
-    if (!User) {
+
+    if (!User || User.userInfo.subscription !== "SUBSCRIBED") {
       setShareOpen((prev) => !prev);
     } else {
       navigate(`/stream/watch/${movie.name}`);

@@ -16,15 +16,53 @@ import {
 } from "react-icons/fa";
 import { MdCancel } from "react-icons/md";
 import { FaXTwitter } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
 const SingleMovie = () => {
   const { id } = useParams();
-  const { Casts, User, FetchedMovies } = useContext(MovieContext);
+  const { Casts, User, FetchedMovies, Alert, Result, setResult, setOrderId } =
+    useContext(MovieContext);
   const [shareOpen, setShareOpen] = useState(false);
   const [movie, setMovie] = useState([]);
   const [Relatedmovie, setRelatedMovie] = useState([]);
+  const navigate = useNavigate();
 
   console.log(id);
+
+  const HandleSubscribe = async (e, email) => {
+    e.preventDefault();
+    if (User && User.userInfo.subscription === "SUBSCRIBED") {
+      console.log("User is already subscribed!");
+      setResult(Alert(true, "You are lready subscribed!"));
+      return;
+    } else if (!User || !User.role) {
+      console.log("Not a user!");
+      navigate("/stream/login");
+      return;
+    }
+    const planId = 72352;
+    try {
+      const res = await fetch("http://localhost:5000/initiate_payment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, plan_id: planId }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        console.log("false", data);
+      }
+      console.log("trueSub:", data);
+      localStorage.setItem("orderId", data.orderId);
+
+      
+       window.location = data.payment_link;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     if (FetchedMovies) {
@@ -33,10 +71,8 @@ const SingleMovie = () => {
       const relatedMovies = FetchedMovies.filter(
         (movi) => movi.category.tittle === movie.category
       );
-       setRelatedMovie(relatedMovies);
+      setRelatedMovie(relatedMovies);
     }
-
-   
   }, [FetchedMovies]);
 
   useEffect(() => {
@@ -94,19 +130,19 @@ const SingleMovie = () => {
                 <h1 className="text-2xl font-bold">🤖Opps!</h1>
               </div>
               <p className="font-semibold text-text subscribe">
-                Only a valid and subscribed user can streame live. You will need
-                to signup or login if you are already a user.
+                Only a valid and subscribed user can stream live. Signup or
+                login if you are already a user.
                 <p className="font-semibold text-text text-center">
-                  Please subscribe after signup to enjoy our services.
+                  Please subscribe to enjoy our services.
                 </p>
               </p>
 
-              <Link
-                to={`${!User ? "/stream/login" : ""}`}
+              <button
+                onClick={(e) => HandleSubscribe(e, User && User.userInfo.email)}
                 className="bg-subMain2 text-white rounded-md border-2 border-subMain transi mt-3 hover:bg-main p-2 animate-bounce hover:animate-none "
               >
-                Subscribe
-              </Link>
+                {User ? "Subscribe" : "Login"}
+              </button>
             </div>
           </div>
         ) : (

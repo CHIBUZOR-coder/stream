@@ -48,7 +48,7 @@ const Login = lazy(() => import("./pages/Login"));
 const Register = lazy(() => import("./pages/Register"));
 const FavouritePage = lazy(() => import("./pages/FavouritePage.jsx"));
 const ResetPassword = lazy(() => import("./pages/ResetPassword.jsx"));
-
+const Thankyou = lazy(() => import("./pages/Thankyou.jsx"));
 
 // function generateRandomString(length) {
 //   const chars =
@@ -124,6 +124,10 @@ const router = createBrowserRouter([
       {
         path: "resetPassword/:token",
         element: <ResetPassword />,
+      },
+      {
+        path: "thankyou",
+        element: <Thankyou />,
       },
       {
         path: "*",
