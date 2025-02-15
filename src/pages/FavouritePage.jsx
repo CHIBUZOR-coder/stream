@@ -7,7 +7,7 @@ import { FaCloudDownloadAlt } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 
 const FavouritePage = () => {
-  const { id } = useParams();
+  const { name } = useParams();
   const {
     Movies,
     setFavouriteCartMovies,
@@ -17,7 +17,7 @@ const FavouritePage = () => {
   } = useContext(MovieContext);
   const GetFavouriteCart = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/getfacouriteCart/${id}`, {
+      const res = await fetch(`http://localhost:5000/getfacouriteCart/${name}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -37,6 +37,7 @@ const FavouritePage = () => {
         JSON.stringify(data.data.favouriteCartMovies)
       );
       setFavouriteCartMovies(data.data.favouriteCartMovies); // Correct way to set state
+      
     } catch (error) {
       console.log("Fetch error:", error.message);
     }

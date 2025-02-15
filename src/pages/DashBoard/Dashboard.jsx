@@ -41,7 +41,7 @@ const Dashboard = () => {
     HandleGetCategories,
     HandleGetMovies,
     setResult,
-    User
+    User,
   } = useContext(MovieContext);
 
   // console.log("all", allProductes);
@@ -52,9 +52,7 @@ const Dashboard = () => {
   const [fetchId, setFetchId] = useState(null);
 
   // const User = JSON.parse(localStorage.getItem("UserInfo")) || null;
-  
-  
-  
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -322,6 +320,7 @@ const Dashboard = () => {
           setIsLoading={setIsLoading}
           setLoadDiaplay={setLoadDiaplay}
           Handlegeneral={Handlegeneral}
+          setModalDisplay={setModalDisplay}
         />
       );
     } else {
@@ -332,7 +331,7 @@ const Dashboard = () => {
   return (
     <Layout>
       {User && User.role ? (
-        <div className="flex lg:flex-row flex-col min-h-screen bg-main cursor-pointer relative py-3 px-5 gap-10 md:gap-8 lg:px-10 ">
+        <div className="flex lg:flex-row flex-col min-h-screen bg-main  relative py-3 px-5 gap-10 md:gap-8 lg:px-10 ">
           <div
             className={`${
               issLoading ? "" : "hidden"

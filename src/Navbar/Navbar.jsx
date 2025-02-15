@@ -21,7 +21,7 @@ const Navbar = ({ HandleInputChange, Text }) => {
   let dash;
   let fav;
   if (!userData) {
-    console.log("No user info yet");
+    // console.log("No user info yet");
     dash = "/stream/login";
   } else {
     dash =

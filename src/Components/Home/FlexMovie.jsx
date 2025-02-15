@@ -16,11 +16,11 @@ const FlexMovie = React.memo(
         </div>
         <div className="flex justify-center items-center gap-1">
           <FaRegCalendarAlt className="text-subMain" />
-          <span className="names">{movie.year}</span>
+          <span className="names">{movie?.year}</span>
         </div>
         <div className="flex justify-center items-center gap-1">
           <BiTime className={`${text ? "text-subMain" : "text-white"}`} />
-          <span className="names">{movie.time}</span>
+          <span className="names">{movie?.time}</span>
         </div>
       </div>
     );
@@ -28,9 +28,9 @@ const FlexMovie = React.memo(
   (prevProps, nextProps) => {
     // Custom comparison function to avoid unnecessary re-renders
     return (
-      prevProps.movie.category === nextProps.movie.category &&
-      prevProps.movie.year === nextProps.movie.year &&
-      prevProps.movie.time === nextProps.movie.time
+      prevProps.movie.category === nextProps.movie?.category &&
+      prevProps.movie.year === nextProps.movie?.year &&
+      prevProps.movie.time === nextProps.movie?.time
     );
   }
 );

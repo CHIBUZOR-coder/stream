@@ -33,6 +33,8 @@ const MovieProvider = ({ children }) => {
   const [unAuthorizedUser, setunAuthorizedUser] = useState(null);
   const [unAuthorizedADmin, setunAuthorizedADmin] = useState(null);
   const [orderId, setOrderId] = useState(null);
+  const [Reviewed, setReviwed] = useState([]);
+  const [Ratingss, setRatings] = useState([]);
 
   const [autoRender, setAutornder] = useState(false);
 
@@ -65,17 +67,35 @@ const MovieProvider = ({ children }) => {
         },
         // body: JSON.stringify({ id }),
       });
-      let data;
-      if (res.ok) {
-        console.log("Movies fetched successfully");
-
-        data = await res.json();
-        setFetchedMovies(data.data);
+      const data = await res.json();
+      if (!res.ok) {
+        console.log(data);
       }
+      // console.log(data);
+
+      console.log("Movies fetched successfully");
+      setFetchedMovies(data.data);
     } catch (error) {
       console.log(error.message);
     }
   };
+
+  // const HandleGetReviews = async () => {
+  //   try {
+  //     const res = await fetch("http://localhost:5000/getReviews", {
+  //       method: "GET",
+  //     });
+
+  //     const data = await res.json();
+  //     if (!res.ok) {
+  //       console.log(data);
+  //     }
+  //     setReviwes(data.data);
+  //     console.log(data);
+  //   } catch (error) {
+  //     console.log(error.messag);
+  //   }
+  // };
 
   const [IdUpdate, setIdUpdate] = useState();
   const HandleGetCategories = async () => {
@@ -89,14 +109,81 @@ const MovieProvider = ({ children }) => {
       });
       let data;
       if (res.ok) {
-        console.log("Categories fetched successfully");
+        // console.log("Categories fetched successfully");
 
         data = await res.json();
         setFetchedCategories(data.data);
-        console.log(data);
+        // console.log(data);
       }
     } catch (error) {
       console.log(error.message);
+    }
+  };
+
+  //Veryfy token
+  const Autentification = async () => {
+    try {
+      const res = await fetch("http://localhost:5000/api/protectedRoute", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json", // Optional, depending on your API
+        },
+        credentials: "include", // Include cookies in the request
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        const errorData = data;
+        throw new Error(errorData.message || "Authorization failed");
+      }
+
+      if (isLogin) {
+        localStorage.setItem("userInfo", JSON.stringify(data.userInfo));
+      }
+
+      console.log(data);
+
+      // Assuming setUserRole is defined
+      // Assuming setUserDetails is defined
+    } catch (error) {
+      console.error("Error in Authentification:", error.message);
+    }
+  };
+
+  // Ensures it runs only once on mount
+
+  //Veryfy SAubscription
+  const VeryfySubscriptoin = async () => {
+    try {
+      const res = await fetch("http://localhost:5000/subscriptionCheck", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json", // Optional, depending on your API
+        },
+        credentials: "include", // Include cookies in the request
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        const errorData = data;
+        throw new Error(errorData.message || "Authorization failed");
+      }
+      console.log(data);
+      if (isLogin) {
+        localStorage.setItem(
+          "subscription",
+          JSON.stringify(data.remainingDays)
+        );
+
+        JSON.stringify(
+          localStorage.setItem("favouriteCart", JSON.stringify(data.cart))
+        );
+      }
+
+      // Assuming setUserRole is defined
+      // Assuming setUserDetails is defined
+    } catch (error) {
+      console.error("Error in Authentification:", error.message);
     }
   };
 
@@ -105,6 +192,9 @@ const MovieProvider = ({ children }) => {
   useEffect(() => {
     HandleGetMovies();
     HandleGetCategories();
+    Autentification();
+    VeryfySubscriptoin();
+    // HandleGetReviews();
   }, []);
 
   const AllMovies = FetchedMovies;
@@ -360,36 +450,6 @@ const MovieProvider = ({ children }) => {
     }
   };
 
-  //Veryfy token
-  const Autentification = async () => {
-    try {
-      const res = await fetch("http://localhost:5000/api/protectedRoute", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json", // Optional, depending on your API
-        },
-        credentials: "include", // Include cookies in the request
-      });
-      const data = await res.json();
-
-      if (!res.ok) {
-        const errorData = data;
-        throw new Error(errorData.message || "Authorization failed");
-      }
-
-      if (isLogin) {
-        localStorage.setItem("userInfo", JSON.stringify(data.userInfo));
-      }
-
-      // console.log(data);
-
-      // Assuming setUserRole is defined
-      // Assuming setUserDetails is defined
-    } catch (error) {
-      console.error("Error in Authentification:", error.message);
-    }
-  };
-
   useEffect(() => {
     if (isLogin) {
       console.log("calling Authentification");
@@ -499,7 +559,7 @@ const MovieProvider = ({ children }) => {
         setTimeout(() => {
           navigate("/stream/login");
         }, 500);
-
+        localStorage.clear();
         console.log(data);
       } else {
         console.log("Failed to clear cookies. Server returned an error.", data);
@@ -726,6 +786,10 @@ const MovieProvider = ({ children }) => {
         index,
         HandleTypewrite,
         setOrderId,
+        // HandleGetReviews,
+
+        Ratingss,
+        setRatings,
       }}
     >
       {children}

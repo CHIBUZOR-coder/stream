@@ -20,27 +20,32 @@ import { useNavigate } from "react-router-dom";
 
 const SingleMovie = () => {
   const { id } = useParams();
-  const { Casts, User, FetchedMovies, Alert, Result, setResult, setOrderId } =
+  // console.log("id:", id);
+  const User = JSON.parse(localStorage.getItem("userInfo"));
+  const { Casts, FetchedMovies, Alert, Result, setResult, setOrderId } =
     useContext(MovieContext);
   const [shareOpen, setShareOpen] = useState(false);
   const [movie, setMovie] = useState([]);
   const [Relatedmovie, setRelatedMovie] = useState([]);
   const navigate = useNavigate();
 
-  console.log(id);
-
   const HandleSubscribe = async (e, email) => {
     e.preventDefault();
-    if (User && User.userInfo.subscription === "SUBSCRIBED") {
-      console.log("User is already subscribed!");
-      setResult(Alert(true, "You are lready subscribed!"));
-      return;
-    } else if (!User || !User.role) {
+
+    // console.log("User:", User);
+    if (!User) {
       console.log("Not a user!");
       navigate("/stream/login");
       return;
+    } else if (User.subscription === "SUBSCRIBED") {
+      console.log("User is already subscribed!");
+      setResult(Alert(true, "You are lready subscribed!"));
+      navigate("/stream/");
+      return;
+    } else {
+      console.log("Please Sunscribe to enjoy our services");
     }
-    const planId = 72352;
+    const planId = 72443;
     try {
       const res = await fetch("http://localhost:5000/initiate_payment", {
         method: "POST",
@@ -57,33 +62,57 @@ const SingleMovie = () => {
       console.log("trueSub:", data);
       localStorage.setItem("orderId", data.orderId);
 
-      
-       window.location = data.payment_link;
+      window.location = data.payment_link;
     } catch (error) {
       console.log(error);
     }
   };
 
+  // useEffect(() => {
+  //   if (FetchedMovies) {
+  //     const moviee = FetchedMovies.find((movie) => movie.id === parseInt(id));
+
+  //     // console.log("moviee:", FetchedMovies);
+
+  //     setMovie(moviee);
+  //     const relatedMovies = FetchedMovies && FetchedMovies.filter(
+  //       (movi) => movi?.category.tittle === moviee.category
+  //     );
+  //     setRelatedMovie(relatedMovies);
+  //   }
+  // }, [FetchedMovies]);
+
   useEffect(() => {
     if (FetchedMovies) {
       const moviee = FetchedMovies.find((movie) => movie.id === parseInt(id));
-      setMovie(moviee);
-      const relatedMovies = FetchedMovies.filter(
-        (movi) => movi.category.tittle === movie.category
-      );
-      setRelatedMovie(relatedMovies);
+
+      // console.log("Selected Movie:", moviee);
+
+      if (moviee) {
+        setMovie(moviee);
+        if (FetchedMovies) {
+          const relatedMovies = FetchedMovies.filter(
+            (movi) => movi?.category?.tittle === moviee?.category?.tittle
+          );
+              setRelatedMovie(relatedMovies);
+        }
+
+    
+      }
     }
   }, [FetchedMovies]);
 
+  let url;
   useEffect(() => {
-    console.log("movieee:", movie);
+    // console.log("movieee:", movie);
     if (movie) {
     }
-
-    console.log("rela:", Relatedmovie);
+    url = `${window.location.protocol}//${window.location.host}/stream/movie/${
+      movie && movie?.id
+    }`;
+    // console.log("rela:", Relatedmovie);
   }, [movie, Relatedmovie]);
 
-  const url = `${window.location.protocol}//${window.location.host}/stream/movie/${movie.id}`;
   const socials = [
     {
       path: `https://wa.me/?text=${encodeURIComponent(url)}`,
@@ -112,7 +141,7 @@ const SingleMovie = () => {
   return (
     <div>
       <Layout>
-        {!User || User.role ? (
+        {!User || !User.role ? (
           <div
             className={` ${
               shareOpen ? "" : "hidden"
@@ -132,13 +161,13 @@ const SingleMovie = () => {
               <p className="font-semibold text-text subscribe">
                 Only a valid and subscribed user can stream live. Signup or
                 login if you are already a user.
-                <p className="font-semibold text-text text-center">
+                <span className="font-semibold text-text text-center">
                   Please subscribe to enjoy our services.
-                </p>
+                </span>
               </p>
 
               <button
-                onClick={(e) => HandleSubscribe(e, User && User.userInfo.email)}
+                onClick={(e) => HandleSubscribe(e, User && User.email)}
                 className="bg-subMain2 text-white rounded-md border-2 border-subMain transi mt-3 hover:bg-main p-2 animate-bounce hover:animate-none "
               >
                 {User ? "Subscribe" : "Login"}
@@ -174,9 +203,9 @@ const SingleMovie = () => {
 
         <MovieInfo movie={movie} setShareOpen={setShareOpen} url={url} />
         <div className="container mx-auto px-2 my-6 min-h-screen  ">
-          <MovieCasts movieId={movie.id} />
+          <MovieCasts movieId={movie?.id} />
 
-          <MovieRates movie={movie} />
+          <MovieRates movie={movie && movie} />
 
           <div className="my-16">
             <div className="flex items-center gap-8 md:gap-4">
@@ -196,7 +225,7 @@ const SingleMovie = () => {
                     }}
                   >
                     <div className="absolute flex  justify-between items-center left-0 bottom-0 bg-main2 w-full text-white px-4 py-3">
-                      <h3 className="font-semibold truncate">{movie.name}</h3>
+                      <h3 className="font-semibold truncate">{movie?.name}</h3>
                       <button className="h-8 w-8 text-sm flexCol transi hover:bg-transparent border-subMain bg-subMain2 border-2 rounded-md text-white ">
                         <FaHeart />
                       </button>

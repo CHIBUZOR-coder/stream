@@ -102,7 +102,7 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "favouritpage/:id",
+        path: "favouritpage/:name",
         element: <FavouritePage />,
       },
       {

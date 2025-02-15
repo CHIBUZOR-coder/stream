@@ -13,7 +13,7 @@ const MovieCasts = ({ movieId }) => {
     "hover:bg-dry transi text-sm rounded w-8 h-8 flex flex-col justify-center items-center bg-subMain text-white";
 
   const selected = Casts.filter((item) => item.movieId === parseInt(movieId));
-  console.log(selected);
+  // console.log(selected);
 
   return (
     <div className="px-3 w-full">

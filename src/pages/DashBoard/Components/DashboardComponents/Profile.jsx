@@ -3,36 +3,47 @@ import MovieContext from "../../../../Context/MovieContext";
 import { useContext, useEffect, useMemo, useState } from "react";
 import { HiViewGridAdd } from "react-icons/hi";
 import Table from "../../../../Custom/Table";
-import { MdWatchLater } from "react-icons/md";
+import { MdCancel, MdWatchLater } from "react-icons/md";
 import { MdUnsubscribe } from "react-icons/md";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-const Profile = ({ Handlegeneral, HandleDeleteMovie }) => {
+const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
   const {
     Movies,
     AllMovies,
     setRoleCheck,
-
     setunAuthorizedUser,
-
     setunAuthorizedADmin,
+    Result,
+    setResult,
+    Alert,
+    setIsLoading,
   } = useContext(MovieContext);
+  const Head = "text-xs text-left text-main font-semibold px-4 py-2 uppercase ";
+  const Text = "text-sm  leading-6 whitespace-nowrap px-5 py-3";
   const { name } = useParams();
   const userData = JSON.parse(localStorage.getItem("UserInfo")) || null;
+  const User = JSON.parse(localStorage.getItem("userInfo"));
+  const favouriteCart = JSON.parse(localStorage.getItem("favouriteCart"));
+  // console.log("favouriteCart:", favouriteCart.favouriteCartMovies.length);
 
-  console.log("userData:", userData.role);
+  const days = localStorage.getItem("subscription");
+
+  // console.log("userData:", userData.role);
 
   // const selected = AllMovies.slice(0, 10);
   const [singleUser, SetSingleUser] = useState(null);
+  const [shareOpen, setShareOpen] = useState(false);
   const navigate = useNavigate();
   const [MovieList, setMovieList] = useState(null);
   const [page, setPage] = useState(1);
+  const [Reciept, setReciept] = useState([]);
   const itemsPerPage = 10;
   const totalPages = AllMovies && Math.ceil(AllMovies.length / itemsPerPage);
   let UserLink;
   if (userData) {
-    console.log("userData.role:", userData.role);
+    // console.log("userData.role:", userData.role);
 
     if (userData.role === "ADMIN") {
       UserLink = `http://localhost:5000/getAdmin/${name}`;
@@ -42,7 +53,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie }) => {
       UserLink = "nothing";
     }
   }
-  console.log("UserLink", UserLink);
+  // console.log("UserLink", UserLink);
 
   // Paginated movies for the current page
   const paginatedMovies = useMemo(() => {
@@ -59,17 +70,17 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie }) => {
   const HandleGetUser = async () => {
     if (UserLink.includes("getAdmin")) {
       console.log("This is an ADMIN link");
-      if (name.slice(-3) !== userData.userInfo.name.slice(-3)) {
+      if (name.slice(-3) !== User.name.slice(-3)) {
         setunAuthorizedADmin("You are not authorized to acces this route!");
-     setTimeout(() => {
-       navigate("*");
-     }, 100);
+        setTimeout(() => {
+          navigate("*");
+        }, 100);
 
         return;
       }
     } else if (UserLink.includes("getUser")) {
       console.log("This is a USER link");
-      if (name.slice(-3) !== userData.userInfo.name.slice(-3)) {
+      if (name.slice(-3) !== User.name.slice(-3)) {
         setunAuthorizedUser("You must be a registerd user to acces route");
         setTimeout(() => {
           navigate("*");
@@ -106,9 +117,72 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie }) => {
     }
   };
 
+  const HandleGeTSubscription = async () => {
+    try {
+      const res = await fetch(
+        `http://localhost:5000/subscriptionDetails/${name}`,
+        {
+          method: "GET",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        console.log(data);
+      }
+
+      setReciept(data.data);
+      console.log(data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const HandeleUnsubscribe = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    const email = User.email;
+
+    try {
+      const res = await fetch("http://localhost:5000/Unsubscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        console.log(data);
+        setIsLoading(false);
+        setResult(Alert(false, data.message));
+      }
+      console.log(data);
+      setIsLoading(false);
+      setResult(Alert(false, data.message));
+    } catch (error) {
+      console.log(error.message);
+    } finally {
+      setTimeout(() => {
+        setResult(null);
+      }, 3000);
+    }
+  };
+
   useEffect(() => {
     HandleGetUser();
+    HandleGeTSubscription();
   }, []);
+
+  useEffect(() => {
+    console.log("Reciept:", Reciept);
+  }, [Reciept]);
 
   // useEffect(() => {
   //   console.log("User", Userr);
@@ -143,7 +217,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie }) => {
       bg: "bg-orange-600",
       icon: <FaRegListAlt />,
       tittle: "Total Favourites",
-      text: Movies.length,
+      text: (favouriteCart && favouriteCart.favouriteCartMovies.length) || 0,
       style: false,
     },
     {
@@ -151,6 +225,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie }) => {
       icon: <MdUnsubscribe />,
       tittle: "Subscription Details",
       text: 6,
+      status: User.subscription || "UNSUBSCRIBED",
       style: false,
     },
     {
@@ -163,10 +238,82 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie }) => {
   ];
   return (
     <div className="flex flex-col gap-4 ">
+      <div
+        className={` ${
+          Result ? "Animate" : "hidden"
+        } fixed Alert  left-0 w-full z-40 flex justify-center items-center `}
+      >
+        <div className=" bg-text text-dry w-1/2 rounded-md border-[3px] border-subMain flex justify-center items-center p-4">
+          {Result && <p>{Result}</p>}
+        </div>
+      </div>
+      <div
+        className={` ${
+          shareOpen ? "" : "hidden"
+        }  absolute  top-0 left-0 z-50   w-full h-full bg-main2 flex justify-center items-center  px-4`}
+      >
+        <span
+          onClick={() => setShareOpen((prev) => !prev)}
+          className="rounded-full fixed top-[30%]  md:right-[25%] lg:right-[20%] right-[8%] border-2 h-14 w-14 border-subMain hover:text-subMain text-white transi hover:border-white hover:rotate-180 flex justify-center items-center"
+        >
+          <MdCancel className="h-12 w-12" />
+        </span>
+
+        <div className="overflow-x-scroll  fixed top-[45%] md:top-[45%] w-[75%] md:w-[60%]">
+          <table className="table-auto w-full text-white border  border-border  divide-border">
+            <thead>
+              <tr className="bg-dryGray">
+                <th scope="col" className={`${Head}`}>
+                  Name
+                </th>
+                <th scope="col" className={`${Head}`}>
+                  Transaction_id
+                </th>
+                <th scope="col" className={`${Head}`}>
+                  Status
+                </th>
+
+                <th scope="col" className={`${Head}`}>
+                  Amount
+                </th>
+                <th scope="col" className={`${Head} `}>
+                  Days left
+                </th>
+                <th scope="col" className={`${Head} `}>
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody className=" bg-main divide-y divide-gray-800">
+              <tr>
+                <td className={`${Text}`}>{Reciept && Reciept.name}</td>
+                <td className={`${Text}`}>
+                  {Reciept && Reciept.transactionId}
+                </td>
+                <td className={`${Text}`}>{Reciept && Reciept.status}</td>
+                <td className={`${Text}`}>{Reciept && Reciept.amount}$</td>
+                <td className={`${Text}`}>{days && days} Days</td>
+                <td className={`${Text}`}>
+                  <button
+                    onClick={(e) => HandeleUnsubscribe(e)}
+                    className="bg-dry border border-border flexRow gap-2 text-border px-2 py-1 rounded"
+                  >
+                    Unsubscribe
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          {/* <p className="text-white text-xs w-full text-center">← Scroll to see more details →</p> */}
+        </div>
+      </div>
+
+      {/* ********************************************* */}
+
       <h2 className="md:text-xl text-lg text-white  font-bold">Profile</h2>
 
       <div className="w-full flex justify-center">
-        <div className=" md:w-1/2 w-[80%] flex flex-col justify-center items-center gap-3 p-5 rounded bg-main border border-border">
+        <div className=" md:w-1/2 w-[80%] flex flex-col justify-center items-center gap-3 p-5 rounded bg-main border border-border cursor-default">
           <div className="flex justify-center items-center">
             <img
               src={`${singleUser && singleUser.image}`}
@@ -196,7 +343,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie }) => {
           ? ProfileData.map((item, index) => (
               <div
                 key={index}
-                className={`rounded bg-main border border-border grid grid-cols-4 gap-2 p-4`}
+                className={`rounded bg-main border border-border grid grid-cols-4 gap-2 p-4 `}
               >
                 <div
                   className={`col-span-1 rounded-full h-12 w-12 flexCol ${item.bg} `}
@@ -217,12 +364,23 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie }) => {
                   item.style === true
                     ? "flex flex-col justify-center items-center "
                     : " grid grid-cols-4 "
+                }${
+                  item.tittle === "Subscription Details" ? `cursor-default` : ``
                 }  gap-2 rounded bg-main border border-border p-4 `}
               >
                 <div
+                  onClick={(e) => {
+                    if (item.tittle === "Subscription Details") {
+                      setShareOpen((prev) => !prev);
+                    }
+                  }}
                   className={` ${
-                    item.style === true ? "" : `${item.bg} h-12 w-12`
-                  }   col-span-1 rounded-full flexCol  `}
+                    item.style === true ? "" : `${item.bg} h-12 w-12 `
+                  } ${
+                    item.tittle === "Subscription Details"
+                      ? `cursor-pointer`
+                      : ``
+                  }   col-span-1 rounded-full flexCol cursor-default  `}
                 >
                   {item.icon}
                 </div>
@@ -236,8 +394,18 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie }) => {
                         : "font-bold"
                     } mt-2 `}
                   >
-                    {item.text}
+                    {item.tittle === "Subscription Details" ? "" : item.text}
                   </p>
+
+                  {item.tittle === "Subscription Details" && (
+                    <p
+                      className={`${
+                        item.style ? "text-small text-dryGray" : "font-bold"
+                      } mt-2`}
+                    >
+                      {item.status}
+                    </p>
+                  )}
                 </div>
               </div>
             ))}

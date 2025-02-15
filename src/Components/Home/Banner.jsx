@@ -8,12 +8,13 @@ import MovieContext from "../../Context/MovieContext";
 import FlexMovie from "./FlexMovie";
 // import { Movies } from "../../Data/MovieData";
 
-const Banner = React.memo(() => {
+const Banner = React.memo(({ setShareOpen }) => {
   const { Movies, AddToCart, AllMovies } = useContext(MovieContext);
   // Utility function to shuffle an array
   const shuffleArray = (array) => {
     return [...array].sort(() => Math.random() - 0.5); // Fisher-Yates shuffle
   };
+    const User = JSON.parse(localStorage.getItem("userInfo"));
 
   // console.log("mov:", AllMovies);
 

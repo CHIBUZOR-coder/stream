@@ -81,23 +81,25 @@
 
 // export default Thankyou;
 
-
 import { useSearchParams } from "react-router-dom";
 import Layout from "../Layout/Layout";
 import { useContext, useEffect, useState } from "react";
 import MovieContext from "../Context/MovieContext";
+import { useNavigate } from "react-router-dom";
 
 const Thankyou = () => {
-  const { Result, setResult, Alert, User } = useContext(MovieContext);
+  const { Result, setResult, Alert, User, Autentification } =
+    useContext(MovieContext);
   const [searchParams] = useSearchParams();
   const [transactionId, setTransaction] = useState(
     searchParams.get("transaction_id")
   );
   const [isLoading, setIsLoading] = useState(true);
-  const [status, setStatus] = useState(null);
+  const [status, setStatus] = useState("");
   const orderId = localStorage.getItem("orderId");
   const email = User ? User.userInfo.email : "unavailable email";
   const [emojis, setEmojis] = useState([]); // Store emoji objects
+  const navigate = useNavigate();
 
   useEffect(() => {
     console.log("status:", status);
@@ -105,7 +107,7 @@ const Thankyou = () => {
 
   const createReciept = async (transaction_id, orderId) => {
     try {
-      const response = await fetch("http://localhost:5000/verify-payment", {
+      const response = await fetch("http://localhost:5000/verify", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -120,6 +122,10 @@ const Thankyou = () => {
         setIsLoading(false);
         localStorage.removeItem("orderId");
         setStatus(data.data.status);
+        Autentification();
+        setTimeout(() => {
+          navigate("/stream/");
+        }, 4000);
       } else {
         setResult(Alert(false, data.message) || "Order failed");
       }
@@ -133,7 +139,9 @@ const Thankyou = () => {
   };
 
   useEffect(() => {
-    createReciept(transactionId, orderId);
+    if (transactionId) {
+      createReciept(transactionId, orderId);
+    }
   }, [transactionId]);
 
   // Generate animated 🎉 emojis if payment is successful
@@ -151,7 +159,7 @@ const Thankyou = () => {
         ]);
       }, 300);
 
-      setTimeout(() => clearInterval(interval), 3000); // Stop adding after 3s
+      setTimeout(() => clearInterval(interval), 4000); // Stop adding after 3s
 
       return () => clearInterval(interval);
     }
@@ -159,16 +167,16 @@ const Thankyou = () => {
 
   return (
     <Layout>
-      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 relative overflow-hidden">
+      <div className="flex flex-col items-center justify-center min-h-screen bg-main px-10 gap-10 relative overflow-hidden">
         {isLoading ? (
-          <div className="bg-white flex justify-center items-center shadow-lg max-w-md text-center rounded-full p-2 h-48 w-48 relative">
+          <div className="bg-white flex justify-center items-center ringg shadow-lg max-w-md text-center rounded-full p-2 h-48 w-48 relative">
             <div className="text-subMain font-semibold animate-pulse">
               Verifying Payment...
             </div>
           </div>
         ) : status && status === "COMPLETED" ? (
           <div>
-            <h2 className="text-2xl font-bold text-green-500 text-center">
+            <h2 className="text-2xl font-bold text-white text-center">
               Payment Successful! <br />
               Thank you for subscribing to our service!
             </h2>
@@ -177,12 +185,26 @@ const Thankyou = () => {
           <h2 className="text-2xl font-bold text-red-500">Payment Failed!</h2>
         )}
 
+        {status === "COMPLETED" ? (
+          <div className=" bg-dry rounded p-8  border-2  border-border flexCol gap-5">
+            <p className="font-semibold text-2xl text-white">
+              You will be redirected to the home page.
+            </p>
+            <p className="font-semibold text-2xl text-white">Happy viewing</p>
+            <p className="font-semibold text-4xl text-white animate-bounce">
+              🤗
+            </p>
+          </div>
+        ) : (
+          ""
+        )}
+
         {/* Animated Party Emojis 🎉 */}
         {status === "COMPLETED" &&
           emojis.map((emoji) => (
             <span
               key={emoji.id}
-              className="absolute text-3xl animate-fall"
+              className="absolute text-4xl animate-fall"
               style={{
                 left: emoji.left,
                 animationDuration: emoji.animationDuration,
