@@ -4,6 +4,14 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
 import Dashboard from "./pages/DashBoard/Dashboard";
+
+import Romance from "./pages/FilteredMovies/Romance.jsx";
+import Dramma from "./pages/FilteredMovies/Dramm.jsx";
+import Tech from "./pages/FilteredMovies/Tech.jsx";
+import Action from "./pages/FilteredMovies/Action.jsx";
+// import FilteredDrammaMovies from "./pages/FilteredDrammaMovies.jsx";
+// import FilteredActionMovies from "./pages/FilteredActionMovies.jsx";
+// import FilteredMovies from "./pages/FilteredMovies.jsx";
 // import ResetPassword from "./pages/ResetPassword.jsx";
 // import AccountRecovery from "./pages/AccountRecovery.jsx";
 
@@ -62,6 +70,10 @@ const Thankyou = lazy(() => import("./pages/Thankyou.jsx"));
 
 // console.log(generateRandomString(10)); // Example output: "A1bC2dE3Fg"
 // const result = generateRandomString(8);
+
+const actionn = "Action";
+const romance = "Romance";
+const dramma = "Dramma";
 
 const router = createBrowserRouter([
   {
@@ -125,6 +137,25 @@ const router = createBrowserRouter([
         path: "resetPassword/:token",
         element: <ResetPassword />,
       },
+
+      {
+        path: "action",
+        element: <Action />,
+      },
+
+      {
+        path: "romance",
+        element: <Romance />,
+      },
+      {
+        path: "dramma",
+        element: <Dramma />,
+      },
+      {
+        path: "tech",
+        element: <Tech />,
+      },
+
       {
         path: "thankyou",
         element: <Thankyou />,

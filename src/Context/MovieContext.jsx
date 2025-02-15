@@ -71,7 +71,7 @@ const MovieProvider = ({ children }) => {
       if (!res.ok) {
         console.log(data);
       }
-      // console.log(data);
+      console.log(data);
 
       console.log("Movies fetched successfully");
       setFetchedMovies(data.data);
@@ -220,6 +220,44 @@ const MovieProvider = ({ children }) => {
     return () => clearTimeout(timeout);
   };
 
+  const HandleSubscribe = async (e, email) => {
+    e.preventDefault();
+
+    // console.log("User:", User);
+    if (!User) {
+      console.log("Not a user!");
+      navigate("/stream/login");
+      return;
+    } else if (User.subscription === "SUBSCRIBED") {
+      console.log("User is already subscribed!");
+      setResult(Alert(true, "You are lready subscribed!"));
+      navigate("/stream/");
+      return;
+    } else {
+      console.log("Please Sunscribe to enjoy our services");
+    }
+    const planId = 72443;
+    try {
+      const res = await fetch("http://localhost:5000/initiate_payment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, plan_id: planId }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        console.log("false", data);
+      }
+      console.log("trueSub:", data);
+      localStorage.setItem("orderId", data.orderId);
+
+      window.location = data.payment_link;
+    } catch (error) {
+      console.log(error);
+    }
+  };
   //id retrival for update
   const IdRetrival = (id, setter) => {
     setter(parseInt(id));
@@ -786,8 +824,7 @@ const MovieProvider = ({ children }) => {
         index,
         HandleTypewrite,
         setOrderId,
-        // HandleGetReviews,
-
+        HandleSubscribe,
         Ratingss,
         setRatings,
       }}

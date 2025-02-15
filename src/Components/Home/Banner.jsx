@@ -9,15 +9,24 @@ import FlexMovie from "./FlexMovie";
 // import { Movies } from "../../Data/MovieData";
 
 const Banner = React.memo(({ setShareOpen }) => {
-  const { Movies, AddToCart, AllMovies } = useContext(MovieContext);
+  const { Movies, AddToCart, FetchedMovies } = useContext(MovieContext);
   // Utility function to shuffle an array
   const shuffleArray = (array) => {
     return [...array].sort(() => Math.random() - 0.5); // Fisher-Yates shuffle
   };
-    const User = JSON.parse(localStorage.getItem("userInfo"));
+  const User = JSON.parse(localStorage.getItem("userInfo"));
 
   // console.log("mov:", AllMovies);
+  const HandleUserCheck = (e) => {
+    e.preventDefault();
 
+    if (User.subscription !== "SUBSCRIBED") {
+      setShareOpen((prev) => !prev);
+    } else {
+      navigate(`/stream/watch/${movie.name}`);
+      // console.log("User already Subscribed!");
+    }
+  };
   const randomMovies = shuffleArray(Movies);
 
   return (
@@ -41,8 +50,8 @@ const Banner = React.memo(({ setShareOpen }) => {
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         className="w-full h-72  lg:h-72 xl:h-96 bg-dry"
       >
-        {AllMovies &&
-          AllMovies.map((movie) => (
+        {FetchedMovies &&
+          FetchedMovies.map((movie) => (
             <SwiperSlide
               key={movie.id}
               loading="lazy"
@@ -62,13 +71,18 @@ const Banner = React.memo(({ setShareOpen }) => {
 
                   <div className=" flex items-center gap-4 mt-4">
                     <Link
+                      onClick={(e) => HandleUserCheck(e)}
                       className="bg-subMain hover:text-main transi hover:bg-white text-white px-8 py-3 rounded font-medium names"
-                      to={`/stream/watch/${movie.name}`}
+                      to={`${
+                        User && User.subscription === "SUBSCRIBED"
+                          ? `/stream/watch/${movie.name}`
+                          : ``
+                      }`}
                     >
                       watch
                     </Link>
                     <span
-                      onClick={() => AddToCart(movie, movie.price)}
+                      onClick={() => AddToCart(movie, movie.id)}
                       className="bg-white flex justify-center cursor-pointer items-center hover:text-subMain transi text-white px-3 py-3 rounded bg-opacity-30 "
                     >
                       <FaHeart />

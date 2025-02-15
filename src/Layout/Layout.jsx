@@ -23,20 +23,21 @@ const Layout = ({ children }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchResult, setSearchResult] = useState([]);
   const [Height, setHeight] = useState(null);
-    const [Text, setText] = useState("");
+  const [Text, setText] = useState("");
   const hover = "hover:text-subMain transi text-white relative";
   const Hover = ({ isActive }) => (isActive ? "text-subMain" : hover);
   const textArray = useMemo(() => ["Search Movie Name Here"], []);
-
+  const User = JSON.parse(localStorage.getItem("userInfo"));
   const { typingSpeed, charIndex, index, HandleTypewrite } =
     useContext(MovieContext);
-
+  let fav;
   
-
- useEffect(() => {
-   const cleanup = HandleTypewrite(textArray, setText);
-   return cleanup;
- }, [charIndex, index, textArray, typingSpeed, HandleTypewrite]);
+ 
+  fav = User ? `/stream/favouritpage/${User.name}` : "";
+  useEffect(() => {
+    const cleanup = HandleTypewrite(textArray, setText);
+    return cleanup;
+  }, [charIndex, index, textArray, typingSpeed, HandleTypewrite]);
 
   // console.log(!!"hello"); // true (non-empty string)
   // console.log(!!"");
@@ -224,7 +225,7 @@ const Layout = ({ children }) => {
                       : "hover:text-subMain hover:bg-white  transi text-white relative"
                   }  hov2   p-2 py-3 flex items-center `
                 }
-                to={`/stream/favouritpage`}
+                to={`${fav}`}
               >
                 <FaHeartCircleCheck className="w-6 h-6" />
                 <p className="w-4 h-4 flexCol_mdRow rounded-full  hova2 text-xs bg-white text-main absolute top-[3px] left-[30px]">

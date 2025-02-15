@@ -2,13 +2,28 @@ import { BsCollection, BsCollectionFill } from "react-icons/bs";
 import { Movies } from "../../Data/MovieData";
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
-import { useContext } from "react";
+import { useContext, useMemo, useState } from "react";
 import MovieContext from "../../Context/MovieContext";
 
 const PopularMovies = () => {
-  const { AddToCart, AllMovies } = useContext(MovieContext);
+  const { AddToCart, FetchedMovies } = useContext(MovieContext);
 
-  const selected = (AllMovies || []).filter((movie) => movie.popular === true);
+  const selected = (FetchedMovies || []).filter(
+    (movie) => movie.popular === true
+  );
+
+  const [page, setPage] = useState(1);
+  const itemsPerPage = 10;
+  const totalPages =
+    FetchedMovies && Math.ceil(FetchedMovies.length / itemsPerPage);
+
+  // Paginated movies for the current page
+  const paginatedMovies = useMemo(() => {
+    return (FetchedMovies || []).slice(
+      (page - 1) * itemsPerPage,
+      page * itemsPerPage
+    );
+  }, [FetchedMovies, page]);
 
   // console.log("selected", selected);
 
@@ -20,7 +35,7 @@ const PopularMovies = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  xl:grid-cols-4  w-full gap-8">
-        {selected.map((movie) => (
+        {paginatedMovies.map((movie) => (
           <div
             className="border-2 relative border-border rounded bg-center bg-cover transi hover:scale-95 w-full flex flex-col "
             key={`${movie.id}`}
@@ -51,6 +66,29 @@ const PopularMovies = () => {
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="flex justify-center gap-2 my-10">
+        <button
+          disabled={page === 1}
+          onClick={() => setPage((prev) => prev - 1)}
+          className={`px-4 py-2 rounded ${
+            page === 1 ? "bg-gray-400 text-white" : "bg-subMain text-white"
+          }`}
+        >
+          Previous
+        </button>
+        <button
+          disabled={page === totalPages}
+          onClick={() => setPage((prev) => prev + 1)}
+          className={`px-4 py-2 rounded ${
+            page === totalPages
+              ? "bg-gray-400 text-white"
+              : "bg-subMain text-white"
+          }`}
+        >
+          Next
+        </button>
       </div>
     </div>
   );

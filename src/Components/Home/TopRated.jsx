@@ -20,7 +20,8 @@ import MovieContext from "../../Context/MovieContext";
 const TopRated = () => {
   const [nextEl, setNext] = useState(null);
   const [prevEl, setPrev] = useState(null);
-  const { Ratingss, FetchedMovies } = useContext(MovieContext);
+  const { Ratingss, FetchedMovies, AddToCart } = useContext(MovieContext);
+
   let averageRating;
   const className =
     "hover:bg-dry transi text-sm rounded w-8 h-8 flex flex-col justify-center items-center bg-subMain text-white";
@@ -73,7 +74,13 @@ const TopRated = () => {
                   />
                   <div className=" gap-6 hovered   absolute bg-blacktrans h-full w-full   left-0 right-0 bottom-0">
                     <div className="w-full hovers  bg-black bg-opacity-60 object-cover  flex flex-col relative justify-center gap-5 items-center h-full">
-                      <button className="w-12 h-12 flex  justify-center items-center transi hover:bg-subMain rounded-full bg-white bg-opacity-30  text-white">
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          AddToCart(movie, movie.id);
+                        }}
+                        className="w-12 h-12 flex  justify-center items-center transi hover:bg-subMain rounded-full bg-white bg-opacity-30  text-white"
+                      >
                         <FaHeart />
                       </button>
                       <Link
@@ -84,7 +91,6 @@ const TopRated = () => {
                       </Link>
 
                       <div className="flex  gap-2 text-star ">
-                      
                         <Star value={movie?.rating} />
                       </div>
                     </div>

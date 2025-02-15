@@ -6,11 +6,28 @@ import { FaHeartCircleCheck } from "react-icons/fa6";
 import { Link, NavLink } from "react-router-dom";
 
 import MovieContext from "../Context/MovieContext";
+import { TbTableDashed } from "react-icons/tb";
 
 const MobileFooter = ({ setMenuOpen }) => {
+  const User = JSON.parse(localStorage.getItem("userInfo"));
   const hover = "hover:text-subMain transi text-white relative";
   const Hover = ({ isActive }) => (isActive ? "text-subMain  " : hover);
   const { FavouriteCount } = useContext(MovieContext);
+  let dash;
+  let fav;
+  if (!User) {
+    // console.log("No user info yet");
+    dash = "/stream/login";
+  } else {
+    dash =
+      User.role === "ADMIN"
+        ? `/stream/dash/ad/${User.name}`
+        : User.role === "USER"
+        ? `/stream/dash/us/${User.name}`
+        : "NOT";
+
+    fav = `/stream/favouritpage/${User.name}`;
+  }
 
   return (
     <>
@@ -39,7 +56,7 @@ const MobileFooter = ({ setMenuOpen }) => {
                       : "hover:text-main hover:bg-white  transi text-white relative"
                   } hov   px-4 py-3 flex justify-center items-center rounded-md`
                 }
-                to={`/stream/favouritpage`}
+                to={`${fav}`}
               >
                 <FaHeartCircleCheck className="w-6 h-6" />
                 <p className="w-4 h-4 flexCol_mdRow rounded-full hova text-xs bg-white text-main absolute top-[0.6px] -right-[-9px]">
@@ -54,9 +71,9 @@ const MobileFooter = ({ setMenuOpen }) => {
                       : "hover:text-main hover:bg-white transi text-white relative"
                   } hov  px-4 py-3 flex justify-center items-center rounded-md`
                 }
-                to={`/stream/login`}
+                to={`${dash}`}
               >
-                <FaUserCircle className="w-6 h-6" />
+                {User ? <TbTableDashed /> : <FaUserCircle />}
               </NavLink>
 
               <button

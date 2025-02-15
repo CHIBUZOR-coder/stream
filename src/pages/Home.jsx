@@ -1,14 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Banner from "../Components/Home/Banner";
 import PopularMovies from "../Components/Home/PopularMovies";
 import Promos from "../Components/Home/Promos";
 import TopRated from "../Components/Home/TopRated";
 import Layout from "../Layout/Layout";
 import { MdCancel } from "react-icons/md";
+import MovieContext from "../Context/MovieContext";
 
 const Home = () => {
   const [shareOpen, setShareOpen] = useState(false);
+  const { HandleSubscribe } = useContext(MovieContext);
   const User = JSON.parse(localStorage.getItem("userInfo"));
+
   return (
     <div>
       <Layout>
