@@ -64,10 +64,6 @@ const MovieProvider = ({ children }) => {
         "https://streambackend-ngow.onrender.com/api/getMovies",
         {
           method: "GET",
-          credentials: "include", // ✅ Important if using cookies
-          headers: {
-            "Content-Type": "application/json", // ✅ Correct header format
-          },
         }
       );
 
@@ -107,10 +103,8 @@ const MovieProvider = ({ children }) => {
         "https://streambackend-ngow.onrender.com/api/getCategory",
         {
           method: "GET",
-          credentials: "include", // ✅ Important if using cookies
-          headers: {
-            "Content-Type": "application/json", // ✅ Correct header format
-          },
+         
+         
         }
       );
 
