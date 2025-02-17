@@ -69,7 +69,7 @@ const SingleMovie = () => {
     // console.log("movieee:", movie);
     if (movie) {
     }
-    url = `${window.location.protocol}//${window.location.host}/stream/movie/${
+    url = `${window.location.protocol}//${window.location.host}/movie/${
       movie && movie?.id
     }`;
     // console.log("rela:", Relatedmovie);
@@ -179,7 +179,7 @@ const SingleMovie = () => {
               {Relatedmovie &&
                 Relatedmovie.map((movie, index) => (
                   <Link
-                    to={`/stream/movie/${movie.id}`}
+                    to={`/movie/${movie.id}`}
                     key={`${movie.id}`}
                     className="border h-64 border-border rounded bg-center bg-cover transi hover:scale-95 w-full relative"
                     style={{

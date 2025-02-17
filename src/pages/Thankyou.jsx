@@ -124,7 +124,7 @@ const Thankyou = () => {
         setStatus(data.data.status);
         Autentification();
         setTimeout(() => {
-          navigate("/stream/");
+          navigate("/");
         }, 4000);
       } else {
         setResult(Alert(false, data.message) || "Order failed");

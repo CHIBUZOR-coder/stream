@@ -22,16 +22,16 @@ const Navbar = ({ HandleInputChange, Text }) => {
   let fav;
   if (!userData) {
     // console.log("No user info yet");
-    dash = "/stream/login";
+    dash = "/login";
   } else {
     dash =
       userData.role === "ADMIN"
-        ? `/stream/dash/ad/${userData.userInfo.name}`
+        ? `/dash/ad/${userData.userInfo.name}`
         : userData.role === "USER"
-        ? `/stream/dash/us/${userData.userInfo.name}`
+        ? `/dash/us/${userData.userInfo.name}`
         : "NOT";
 
-    fav = `/stream/favouritpage/${userData.userInfo.name}`;
+    fav = `/favouritpage/${userData.userInfo.name}`;
   }
 
   // console.log("dash:", dash);
@@ -45,7 +45,7 @@ const Navbar = ({ HandleInputChange, Text }) => {
         <div className="container  px-5 py-4  lg:grid gap-10 grid-cols-7 justify-between items-center">
           <div className="col-span-1 lg:block hidden ">
             <div className="flex justify-center items-center">
-              <Link to={`/stream/`}>
+              <Link to={`/`}>
                 <img
                   className="h-20 w-20 rounded-full"
                   src="https://res.cloudinary.com/dtjgj2odu/image/upload/v1739151976/logoround_awixqx.png"
@@ -89,7 +89,7 @@ const Navbar = ({ HandleInputChange, Text }) => {
                     : "hover:text-main hover:bg-white transi text-white relative"
                 } hov p-2 flex justify-center gap-2 items-center rounded-md`
               }
-              to={`/stream/movies`}
+              to={`/movies`}
             >
               Movies
               <BsCollectionPlayFill />
@@ -103,7 +103,7 @@ const Navbar = ({ HandleInputChange, Text }) => {
                     : "hover:text-main hover:bg-white transi text-white relative"
                 } hov p-2 flex justify-center gap-2 items-center rounded-md`
               }
-              to={`/stream/about`}
+              to={`/about`}
             >
               About
               <FaInfoCircle />
@@ -117,7 +117,7 @@ const Navbar = ({ HandleInputChange, Text }) => {
                     : "hover:text-main hover:bg-white transi text-white relative"
                 } hov p-2 flex justify-center gap-2 items-center rounded-md`
               }
-              to={`/stream/contact`}
+              to={`/contact`}
             >
               Contact
               <TiContacts />

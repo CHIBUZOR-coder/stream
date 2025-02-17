@@ -93,7 +93,7 @@ const router = createBrowserRouter([
         element: <MoviesPage />,
       },
       {
-        path: "/stream/user",
+        path: "/user",
         element: <User />,
       },
       {
@@ -122,11 +122,11 @@ const router = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: `/stream/dash/us/:name`,
+        path: `/dash/us/:name`,
         element: <Dashboard />,
       },
       {
-        path: "/stream/dash/ad/:name",
+        path: "/dash/ad/:name",
         element: <Dashboard />,
       },
       {

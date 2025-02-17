@@ -75,7 +75,7 @@ const Banner = React.memo(({ setShareOpen }) => {
                       className="bg-subMain hover:text-main transi hover:bg-white text-white px-8 py-3 rounded font-medium names"
                       to={`${
                         User && User.subscription === "SUBSCRIBED"
-                          ? `/stream/watch/${movie.name}`
+                          ? `/watch/${movie.name}`
                           : ``
                       }`}
                     >

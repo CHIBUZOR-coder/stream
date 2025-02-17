@@ -31,9 +31,8 @@ const Layout = ({ children }) => {
   const { typingSpeed, charIndex, index, HandleTypewrite } =
     useContext(MovieContext);
   let fav;
-  
- 
-  fav = User ? `/stream/favouritpage/${User.name}` : "";
+
+  fav = User ? `/favouritpage/${User.name}` : "";
   useEffect(() => {
     const cleanup = HandleTypewrite(textArray, setText);
     return cleanup;
@@ -145,7 +144,7 @@ const Layout = ({ children }) => {
           >
             <div className="flex justify-between bg-dry w-full p-4 ">
               <div>
-                <Link to={`/stream/`}>
+                <Link onClick={() => setMenuOpen((prev) => !prev)} to={`/`}>
                   <img
                     className="h-20 w-20 rounded-full"
                     src="https://res.cloudinary.com/dtjgj2odu/image/upload/v1739151976/logoround_awixqx.png"
@@ -171,7 +170,7 @@ const Layout = ({ children }) => {
                       : "hover:text-subMain hover:bg-white transi text-white relative"
                   } hov p-2 flex  gap-2 items-center `
                 }
-                to={`/stream/movies`}
+                to={`/movies`}
               >
                 Movies
                 <BsCollectionPlayFill />
@@ -185,7 +184,7 @@ const Layout = ({ children }) => {
                       : "hover:text-subMain hover:bg-white transi text-white relative"
                   } hov p-2 flex  gap-2 items-center `
                 }
-                to={`/stream/about`}
+                to={`/about`}
               >
                 About
                 <FaInfoCircle />
@@ -199,7 +198,7 @@ const Layout = ({ children }) => {
                       : "hover:text-subMain hover:bg-white transi text-white relative"
                   } hov p-2 flex  gap-2 items-center `
                 }
-                to={`/stream/contact`}
+                to={`/contact`}
               >
                 Contact
                 <TiContacts />
@@ -213,7 +212,7 @@ const Layout = ({ children }) => {
                       : "hover:text-subMain hover:bg-white transi text-white relative"
                   } hov  p-2 flex  items-center`
                 }
-                to={`/stream/login`}
+                to={`/login`}
               >
                 <FaUserCircle />
               </NavLink>
@@ -223,7 +222,7 @@ const Layout = ({ children }) => {
                     isActive
                       ? "text-main bg-white"
                       : "hover:text-subMain hover:bg-white  transi text-white relative"
-                  }  hov2   p-2 py-3 flex items-center `
+                  }  hov2   p-2 py-3 flex items-center relative `
                 }
                 to={`${fav}`}
               >
@@ -263,7 +262,7 @@ const Layout = ({ children }) => {
         >
           {searchResult &&
             searchResult.map((movie, i) => (
-              <Link to={`/stream/movie/${movie.id}`} className="font-semibold">
+              <Link to={`/movie/${movie.id}`} className="font-semibold">
                 {movie.name}
               </Link>
             ))}

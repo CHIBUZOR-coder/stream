@@ -30,7 +30,7 @@ const Watch = () => {
       <div className="container  bg-dry md:min-h-screen p-6 mb-12">
         <div className="flexBtn w-full justify-between flex-wrap mb-6 gap-2 bg-main text-white p-6 rounded border border-gray-800">
           <Link
-            to={`/stream/movie/${movie?.id}`}
+            to={`/movie/${movie?.id}`}
             className="btn md:text-xl w-[20%] text-sm flex gap-3 items-center font-bold text-dryGray"
           >
             <BiArrowBack /> {movie && movie?.name}

@@ -116,7 +116,7 @@ const Login = () => {
       if (data.success === true) {
         localStorage.setItem("IsLogin", true);
         setTimeout(() => {
-          navigate("/stream/");
+          navigate("/");
         }, 500);
       }
       setEmail("");
@@ -211,7 +211,7 @@ const Login = () => {
             <p className="text-center text-border">
               Don't have an account?
               <Link
-                to="/stream/register"
+                to="/register"
                 className="text-dryGray transi hover:text-subMain font-semibold"
               >
                 {" "}
@@ -221,7 +221,7 @@ const Login = () => {
 
             <p className="text-center text-border">
               <Link
-                to="/stream/recovery"
+                to="/recovery"
                 className="text-dryGray transi hover:text-subMain font-semibold"
               >
                 Forgot your password?

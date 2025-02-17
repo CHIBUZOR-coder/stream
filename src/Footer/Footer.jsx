@@ -6,16 +6,16 @@ const Footer = () => {
   let fav;
   if (!User) {
     // console.log("No user info yet");
-    dash = "/stream/login";
+    dash = "/login";
   } else {
     dash =
       User.role === "ADMIN"
-        ? `/stream/dash/ad/${User.name}`
+        ? `/dash/ad/${User.name}`
         : User.role === "USER"
-        ? `/stream/dash/us/${User.name}`
+        ? `/dash/us/${User.name}`
         : "NOT";
 
-    fav = `/stream/favouritpage/${User.name}`;
+    fav = `/favouritpage/${User.name}`;
   }
 
   const action = "Action";
@@ -73,7 +73,7 @@ const Footer = () => {
             <div className="flex flex-col gap-4 justify-start items-start w-full md:w-auto">
               {link.links.map((item, index) => (
                 <Link
-                  to={item.path ? `/stream/${item.path}` : "/stream"}
+                  to={item.path ? `/${item.path}` : "/"}
                   key={index}
                   className="text-border transi hover:text-subMain cursor-pointer  "
                 >

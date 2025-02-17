@@ -48,7 +48,7 @@ const ResetPassword = () => {
       if (data.success === true) {
         localStorage.setItem("IsLogin", true);
         setTimeout(() => {
-          navigate("/stream/login");
+          navigate("/login");
         }, 3200);
       }
       setPassword("");

@@ -55,7 +55,7 @@ const Register = () => {
       setResult(Alert(true, data.message));
       setIsLoading(false);
        setTimeout(() => {
-         navigate("/stream/login");
+         navigate("/login");
        }, 3000);
       setName("");
       setEmail("");
@@ -210,7 +210,7 @@ const Register = () => {
             <p className="text-center text-border">
               Already have an account?
               <Link
-                to="/stream/login"
+                to="/login"
                 className="text-dryGray transi hover:text-subMain font-semibold"
               >
                 {" "}

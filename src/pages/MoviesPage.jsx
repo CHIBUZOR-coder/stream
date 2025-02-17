@@ -102,7 +102,7 @@ const MoviesPage = () => {
               key={`${movie.id}`}
             >
               <Link
-                to={`/stream/movie/${movie.id}`}
+                to={`/movie/${movie.id}`}
                 className=" h-64  bg-center bg-cover "
               >
                 <img

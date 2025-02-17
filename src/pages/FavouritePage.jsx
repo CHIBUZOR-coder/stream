@@ -133,7 +133,7 @@ const FavouritePage = () => {
                       Download <FaCloudDownloadAlt />
                     </button>
                     <Link
-                      to={`/stream/watch/${movie.id}`}
+                      to={`/watch/${movie.id}`}
                       className="bg-subMain text-white  hover:bg-main transi border border-subMain rounded flexCol w-6 h-6 "
                     >
                       <GoEye />

@@ -47,7 +47,7 @@ const NotUser = () => {
           <div>{defaultt}</div>
 
           <Link
-            to={"/stream/register"}
+            to={"/register"}
             className="bg-subMain text-white flexRow gap-3 font-medium py-2 px-4 rounded-md hover:bg-dry transi hover:text-gray-500"
           >
             <FiLogIn /> Signup

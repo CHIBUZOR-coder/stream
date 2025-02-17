@@ -17,16 +17,16 @@ const MobileFooter = ({ setMenuOpen }) => {
   let fav;
   if (!User) {
     // console.log("No user info yet");
-    dash = "/stream/login";
+    dash = "/login";
   } else {
     dash =
       User.role === "ADMIN"
-        ? `/stream/dash/ad/${User.name}`
+        ? `/dash/ad/${User.name}`
         : User.role === "USER"
-        ? `/stream/dash/us/${User.name}`
+        ? `/dash/us/${User.name}`
         : "NOT";
 
-    fav = `/stream/favouritpage/${User.name}`;
+    fav = `/favouritpage/${User.name}`;
   }
 
   return (
@@ -43,7 +43,7 @@ const MobileFooter = ({ setMenuOpen }) => {
                       : "hover:text-main hover:bg-white transi text-white relative"
                   } hov px-4 py-3 flex justify-center items-center rounded-md`
                 }
-                to={`/stream/movies`}
+                to={`/movies`}
               >
                 <BsCollectionPlayFill className="w-6 h-6" />
               </NavLink>
