@@ -64,20 +64,18 @@ const MovieProvider = ({ children }) => {
         "https://streambackend-ngow.onrender.com/api/getMovies",
         {
           method: "GET",
+          credentials: "include", // ✅ Important if using cookies
           headers: {
-            headers: {
-              "Content-Type": "application/json", // Correct header
-            },
+            "Content-Type": "application/json", // ✅ Correct header format
           },
-          // body: JSON.stringify({ id }),
         }
       );
+
       const data = await res.json();
       if (!res.ok) {
         console.log(data);
       }
       console.log(data);
-
       console.log("Movies fetched successfully");
       setFetchedMovies(data.data);
     } catch (error) {
@@ -109,22 +107,19 @@ const MovieProvider = ({ children }) => {
         "https://streambackend-ngow.onrender.com/api/getCategory",
         {
           method: "GET",
+          credentials: "include", // ✅ Important if using cookies
           headers: {
-            headers: {
-              "Content-Type": "application/json", // Correct header
-            },
+            "Content-Type": "application/json", // ✅ Correct header format
           },
-          // body: JSON.stringify({ id }),
         }
       );
-      let data;
-      if (res.ok) {
-        // console.log("Categories fetched successfully");
 
-        data = await res.json();
-        setFetchedCategories(data.data);
-        // console.log(data);
+      if (!res.ok) {
+        throw new Error("Failed to fetch categories");
       }
+
+      const data = await res.json();
+      setFetchedCategories(data.data);
     } catch (error) {
       console.log(error.message);
     }
@@ -137,12 +132,12 @@ const MovieProvider = ({ children }) => {
         "https://streambackend-ngow.onrender.com/api/protectedRoute",
         {
           method: "GET",
+
           headers: {
-            headers: {
-              "Content-Type": "application/json", // Correct header
-            },
-            // Optional, depending on your API
+            "Content-Type": "application/json", // Correct header
           },
+          // Optional, depending on your API
+
           credentials: "include", // Include cookies in the request
         }
       );
@@ -175,12 +170,12 @@ const MovieProvider = ({ children }) => {
         "https://streambackend-ngow.onrender.com/subscriptionCheck",
         {
           method: "GET",
+
           headers: {
-            headers: {
-              "Content-Type": "application/json", // Correct header
-            },
-            // Optional, depending on your API
+            "Content-Type": "application/json", // Correct header
           },
+          // Optional, depending on your API
+
           credentials: "include", // Include cookies in the request
         }
       );
@@ -264,11 +259,11 @@ const MovieProvider = ({ children }) => {
         "https://streambackend-ngow.onrender.com/initiate_payment",
         {
           method: "POST",
+
           headers: {
-            headers: {
-              "Content-Type": "application/json", // Correct header
-            },
+            "Content-Type": "application/json", // Correct header
           },
+
           body: JSON.stringify({ email, plan_id: planId }),
         }
       );
@@ -552,11 +547,11 @@ const MovieProvider = ({ children }) => {
           "https://streambackend-ngow.onrender.com/clear-cookies",
           {
             method: "POST",
+
             headers: {
-              headers: {
-                "Content-Type": "application/json", // Correct header
-              },
+              "Content-Type": "application/json", // Correct header
             },
+
             credentials: "include",
           }
         );
@@ -618,14 +613,11 @@ const MovieProvider = ({ children }) => {
         "https://streambackend-ngow.onrender.com/clear-cookies",
         {
           method: "POST",
+
           headers: {
-            headers: {
-              headers: {
-                "Content-Type": "application/json",
-              },
-         
-            },
+            "Content-Type": "application/json",
           },
+
           credentials: "include",
         }
       );
@@ -724,11 +716,11 @@ const MovieProvider = ({ children }) => {
           "https://streambackend-ngow.onrender.com/addfavourite",
           {
             method: "POST",
+
             headers: {
-              headers: {
-                "Content-Type": "application/json", // Correct header
-              },
+              "Content-Type": "application/json", // Correct header
             },
+
             body: JSON.stringify({ movieId, Id }),
           }
         );
