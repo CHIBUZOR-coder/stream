@@ -149,13 +149,18 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
     const email = User.email;
 
     try {
-      const res = await fetch("https://streambackend-v5u9.onrender.com/Unsubscribe", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
+      const res = await fetch(
+        "https://streambackend-v5u9.onrender.com/Unsubscribe",
+        {
+          method: "POST",
+          headers: {
+            headers: {
+              "Content-Type": "application/json", 
+            },
+          },
+          body: JSON.stringify({ email }),
+        }
+      );
 
       const data = await res.json();
       if (!res.ok) {
