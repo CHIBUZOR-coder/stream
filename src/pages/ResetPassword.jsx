@@ -21,17 +21,20 @@ const ResetPassword = () => {
     setLoadDiaplay("Updating  password...");
 
     try {
-      const res = await fetch(`http://localhost:5000/resetPassword/${token}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify({
-          newPassword: Password,
-          confirmPassword: ConfirmPassword,
-        }),
-      });
+      const res = await fetch(
+        `https://streambackend-v5u9.onrender.com/resetPassword/${token}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify({
+            newPassword: Password,
+            confirmPassword: ConfirmPassword,
+          }),
+        }
+      );
       const data = await res.json();
 
       if (!res.ok) {

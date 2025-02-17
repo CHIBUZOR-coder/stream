@@ -60,7 +60,7 @@ const MovieProvider = ({ children }) => {
   const [Result, setResult] = useState();
   const HandleGetMovies = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/getMovies", {
+      const res = await fetch("https://streambackend-v5u9.onrender.com/api/getMovies", {
         method: "GET",
         headers: {
           "Content-Type": "Application/Json",
@@ -82,7 +82,7 @@ const MovieProvider = ({ children }) => {
 
   // const HandleGetReviews = async () => {
   //   try {
-  //     const res = await fetch("http://localhost:5000/getReviews", {
+  //     const res = await fetch("https://streambackend-v5u9.onrender.com/getReviews", {
   //       method: "GET",
   //     });
 
@@ -100,7 +100,7 @@ const MovieProvider = ({ children }) => {
   const [IdUpdate, setIdUpdate] = useState();
   const HandleGetCategories = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/getCategory", {
+      const res = await fetch("https://streambackend-v5u9.onrender.com/api/getCategory", {
         method: "GET",
         headers: {
           "Content-Type": "Application/Json",
@@ -123,7 +123,7 @@ const MovieProvider = ({ children }) => {
   //Veryfy token
   const Autentification = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/protectedRoute", {
+      const res = await fetch("https://streambackend-v5u9.onrender.com/api/protectedRoute", {
         method: "GET",
         headers: {
           "Content-Type": "application/json", // Optional, depending on your API
@@ -155,7 +155,7 @@ const MovieProvider = ({ children }) => {
   //Veryfy SAubscription
   const VeryfySubscriptoin = async () => {
     try {
-      const res = await fetch("http://localhost:5000/subscriptionCheck", {
+      const res = await fetch("https://streambackend-v5u9.onrender.com/subscriptionCheck", {
         method: "GET",
         headers: {
           "Content-Type": "application/json", // Optional, depending on your API
@@ -238,7 +238,7 @@ const MovieProvider = ({ children }) => {
     }
     const planId = 72443;
     try {
-      const res = await fetch("http://localhost:5000/initiate_payment", {
+      const res = await fetch("https://streambackend-v5u9.onrender.com/initiate_payment", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -521,7 +521,7 @@ const MovieProvider = ({ children }) => {
 
         localStorage.clear();
         // Send a request to the backend to clear the HTTP-only cookie
-        const res = await fetch("http://localhost:5000/clear-cookies", {
+        const res = await fetch("https://streambackend-v5u9.onrender.com/clear-cookies", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -582,7 +582,7 @@ const MovieProvider = ({ children }) => {
     console.log("Logging out due to inactivity...");
     try {
       localStorage.clear();
-      const res = await fetch("http://localhost:5000/clear-cookies", {
+      const res = await fetch("https://streambackend-v5u9.onrender.com/clear-cookies", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -680,7 +680,7 @@ const MovieProvider = ({ children }) => {
         Id = user.id;
         let StoredFavouriteCart =
           JSON.parse(localStorage.getItem("FavouriteCart")) || [];
-        const res = await fetch("http://localhost:5000/addfavourite", {
+        const res = await fetch("https://streambackend-v5u9.onrender.com/addfavourite", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

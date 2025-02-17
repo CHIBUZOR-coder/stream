@@ -21,16 +21,19 @@ const AccountRecovery = () => {
     setLoadDiaplay("Sending recovery link to your mail...");
 
     try {
-      const res = await fetch("http://localhost:5000/accountRecovery", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify({
-          email: Email,
-        }),
-      });
+      const res = await fetch(
+        "https://streambackend-v5u9.onrender.com/accountRecovery",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify({
+            email: Email,
+          }),
+        }
+      );
       const data = await res.json();
 
       if (!res.ok) {

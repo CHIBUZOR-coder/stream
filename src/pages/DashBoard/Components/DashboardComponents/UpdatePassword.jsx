@@ -19,18 +19,21 @@ const UpdatePassword = ({ setIsLoading, setResult, setLoadDiaplay }) => {
     setLoadDiaplay("Updating password...");
 
     try {
-      const res = await fetch("http://localhost:5000/updatepassword", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: Email,
-          password: prevPassword,
-          newPassword: newPassword,
-          confirmpassword: confirmPassword,
-        }),
-      });
+      const res = await fetch(
+        "https://streambackend-v5u9.onrender.com/updatepassword",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: Email,
+            password: prevPassword,
+            newPassword: newPassword,
+            confirmpassword: confirmPassword,
+          }),
+        }
+      );
 
       const data = await res.json();
       if (!res.ok) {

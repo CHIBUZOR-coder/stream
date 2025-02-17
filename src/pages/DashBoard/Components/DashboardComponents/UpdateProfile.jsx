@@ -38,10 +38,13 @@ const UpdateProfile = ({ Forr }) => {
 
     try {
       setIsLoading(true);
-      const res = await fetch("http://localhost:5000/updateProfile", {
-        method: "PUT",
-        body: formData,
-      });
+      const res = await fetch(
+        "https://streambackend-v5u9.onrender.com/updateProfile",
+        {
+          method: "PUT",
+          body: formData,
+        }
+      );
 
       const data = await res.json();
       if (!res.ok) throw new Error(data.message);

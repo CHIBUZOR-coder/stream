@@ -46,7 +46,7 @@ const Login = () => {
     setLoadDiaplay("Logging in...");
 
     try {
-      const res = await fetch("http://localhost:5000/login", {
+      const res = await fetch("https://streambackend-v5u9.onrender.com/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -86,7 +86,7 @@ const Login = () => {
           await Promise.all(
             favouriteCart.map(async (movie) => {
               const response = await fetch(
-                "http://localhost:5000/addfavourite",
+                "https://streambackend-v5u9.onrender.com/addfavourite",
                 {
                   method: "POST",
                   headers: {

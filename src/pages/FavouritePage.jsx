@@ -17,12 +17,15 @@ const FavouritePage = () => {
   } = useContext(MovieContext);
   const GetFavouriteCart = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/getfacouriteCart/${name}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const res = await fetch(
+        `https://streambackend-v5u9.onrender.com/getfacouriteCart/${name}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       const data = await res.json();
 

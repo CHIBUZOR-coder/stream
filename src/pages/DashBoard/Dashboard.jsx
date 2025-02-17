@@ -120,7 +120,7 @@ const Dashboard = () => {
 
     try {
       let data;
-      const res = await fetch("http://localhost:5000/api/updateMovie", {
+      const res = await fetch("https://streambackend-v5u9.onrender.com/api/updateMovie", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -158,7 +158,7 @@ const Dashboard = () => {
 
     try {
       let data;
-      const res = await fetch("http://localhost:5000/api/deletSingleMovie", {
+      const res = await fetch("https://streambackend-v5u9.onrender.com/api/deletSingleMovie", {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -196,7 +196,7 @@ const Dashboard = () => {
     setIsLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/api/createCartegory", {
+      const res = await fetch("https://streambackend-v5u9.onrender.com/api/createCartegory", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -231,7 +231,7 @@ const Dashboard = () => {
 
     // e.preventDefault();
     try {
-      const res = await fetch("http://localhost:5000/api/updateCategory", {
+      const res = await fetch("https://streambackend-v5u9.onrender.com/api/updateCategory", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

@@ -33,7 +33,7 @@ const Users = () => {
 
   const HandleGetAllUsers = async () => {
     try {
-      const res = await fetch("http://localhost:5000/getAllUser", {
+      const res = await fetch("https://streambackend-v5u9.onrender.com/getAllUser", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -63,7 +63,7 @@ const Users = () => {
 
   const HandeleDeleteUser = async (userId) => {
     try {
-      const res = await fetch("http://localhost:5000/deleteUser", {
+      const res = await fetch("https://streambackend-v5u9.onrender.com/deleteUser", {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

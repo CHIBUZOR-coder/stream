@@ -43,13 +43,16 @@ const MovieList = ({
       setIsLoading(true);
 
       try {
-        const res = await fetch("http://localhost:5000/api/deletAllMovie", {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer your-auth-token",
-          },
-        });
+        const res = await fetch(
+          "https://streambackend-v5u9.onrender.com/api/deletAllMovie",
+          {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer your-auth-token",
+            },
+          }
+        );
 
         let data;
         if (!res.ok) {

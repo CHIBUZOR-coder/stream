@@ -36,10 +36,13 @@ const Register = () => {
     formData.append("image", userImage);
 
     try {
-      const res = await fetch("http://localhost:5000/api/register", {
-        method: "POST",
-        body: formData,
-      });
+      const res = await fetch(
+        "https://streambackend-v5u9.onrender.com/api/register",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
       const data = await res.json();
 

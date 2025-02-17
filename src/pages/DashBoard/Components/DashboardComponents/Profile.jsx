@@ -46,9 +46,9 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
     // console.log("userData.role:", userData.role);
 
     if (userData.role === "ADMIN") {
-      UserLink = `http://localhost:5000/getAdmin/${name}`;
+      UserLink = `https://streambackend-v5u9.onrender.com/getAdmin/${name}`;
     } else if (userData.role === "USER") {
-      UserLink = `http://localhost:5000/getUser/${name}`;
+      UserLink = `https://streambackend-v5u9.onrender.com/getUser/${name}`;
     } else {
       UserLink = "nothing";
     }
@@ -120,7 +120,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
   const HandleGeTSubscription = async () => {
     try {
       const res = await fetch(
-        `http://localhost:5000/subscriptionDetails/${name}`,
+        `https://streambackend-v5u9.onrender.com/subscriptionDetails/${name}`,
         {
           method: "GET",
           credentials: "include",
@@ -149,7 +149,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
     const email = User.email;
 
     try {
-      const res = await fetch("http://localhost:5000/Unsubscribe", {
+      const res = await fetch("https://streambackend-v5u9.onrender.com/Unsubscribe", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

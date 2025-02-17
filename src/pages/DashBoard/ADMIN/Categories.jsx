@@ -24,7 +24,7 @@ const Categories = ({ IdRetrival, setter, setResult }) => {
 
     // e.preventDefault();
     try {
-      const res = await fetch("http://localhost:5000/api/updateCategory", {
+      const res = await fetch("https://streambackend-v5u9.onrender.com/api/updateCategory", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -58,7 +58,7 @@ const Categories = ({ IdRetrival, setter, setResult }) => {
   const HandeleDelete = async (e, id) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:5000/api/deleteCategory", {
+      const res = await fetch("https://streambackend-v5u9.onrender.com/api/deleteCategory", {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

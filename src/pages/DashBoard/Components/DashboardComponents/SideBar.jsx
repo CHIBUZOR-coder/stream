@@ -17,13 +17,16 @@ const SideBar = () => {
     try {
       localStorage.clear();
       // Send a request to the backend to clear the HTTP-only cookie
-      const res = await fetch("http://localhost:5000/clear-cookies", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      });
+      const res = await fetch(
+        "https://streambackend-v5u9.onrender.com/clear-cookies",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+        }
+      );
 
       const data = await res.json();
 
