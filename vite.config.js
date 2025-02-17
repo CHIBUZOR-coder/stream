@@ -9,15 +9,16 @@
 // })
 
 
-import { defineConfig, loadEnv } from "vite";
+import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import { viteStaticCopy } from "vite-plugin-static-copy";
 
-export default defineConfig(({ mode }) => {
-  // Load the correct environment file
-  const env = loadEnv(mode, process.cwd(), "VITE");
-
-  return {
-    plugins: [react()],
-    base: env.VITE_BASE_URL || "/", // Use the correct base path
-  };
+export default defineConfig({
+  plugins: [
+    react(),
+    viteStaticCopy({
+      targets: [{ src: "404.html", dest: "" }],
+    }),
+  ],
+  base: "/stream/", // Change this if deploying to GitHub Pages
 });
