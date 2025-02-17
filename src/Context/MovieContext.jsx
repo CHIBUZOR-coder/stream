@@ -114,6 +114,8 @@ const MovieProvider = ({ children }) => {
 
       const data = await res.json();
       setFetchedCategories(data.data);
+      console.log(data);
+      
     } catch (error) {
       console.log(error.message);
     }
