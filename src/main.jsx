@@ -77,7 +77,7 @@ const dramma = "Dramma";
 
 const router = createBrowserRouter([
   {
-    path: "/stream/",
+    path: "/",
     element: <App />,
     children: [
       {

@@ -1,12 +1,8 @@
 {
     "rewrites": [
         {
-            "source": "/stream/(.*)",
-            "destination": "/index.html"
-        },
-        {
             "source": "/(.*)",
-            "destination": "/index.html"
+            "destination": "/"
         }
     ]
 }
