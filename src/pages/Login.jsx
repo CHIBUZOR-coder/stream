@@ -46,17 +46,20 @@ const Login = () => {
     setLoadDiaplay("Logging in...");
 
     try {
-      const res = await fetch("https://streambackend-v5u9.onrender.com/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify({
-          email: Email,
-          password: Password,
-        }),
-      });
+      const res = await fetch(
+        "https://streambackend-ngow.onrender.com.com/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify({
+            email: Email,
+            password: Password,
+          }),
+        }
+      );
       const data = await res.json();
 
       if (!res.ok) {
@@ -86,7 +89,7 @@ const Login = () => {
           await Promise.all(
             favouriteCart.map(async (movie) => {
               const response = await fetch(
-                "https://streambackend-v5u9.onrender.com/addfavourite",
+                "https://streambackend-ngow.onrender.com/addfavourite",
                 {
                   method: "POST",
                   headers: {
