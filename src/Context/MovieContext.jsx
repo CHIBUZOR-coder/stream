@@ -61,7 +61,7 @@ const MovieProvider = ({ children }) => {
   const HandleGetMovies = async () => {
     try {
       const res = await fetch(
-        "https://streambackend-uagf.onrender.com/api/getMovies",
+        "https://streambackend-hx8z.onrender.com/api/getMovies",
         {
           method: "GET",
           headers: {
@@ -87,7 +87,7 @@ const MovieProvider = ({ children }) => {
 
   // const HandleGetReviews = async () => {
   //   try {
-  //     const res = await fetch("https://streambackend-uagf.onrender.com/getReviews", {
+  //     const res = await fetch("https://streambackend-hx8z.onrender.com/getReviews", {
   //       method: "GET",
   //     });
 
@@ -106,7 +106,7 @@ const MovieProvider = ({ children }) => {
   const HandleGetCategories = async () => {
     try {
       const res = await fetch(
-        "https://streambackend-uagf.onrender.com/api/getCategory",
+        "https://streambackend-hx8z.onrender.com/api/getCategory",
         {
           method: "GET",
           headers: {
@@ -134,7 +134,7 @@ const MovieProvider = ({ children }) => {
   const Autentification = async () => {
     try {
       const res = await fetch(
-        "https://streambackend-uagf.onrender.com/api/protectedRoute",
+        "https://streambackend-hx8z.onrender.com/api/protectedRoute",
         {
           method: "GET",
           headers: {
@@ -172,7 +172,7 @@ const MovieProvider = ({ children }) => {
   const VeryfySubscriptoin = async () => {
     try {
       const res = await fetch(
-        "https://streambackend-uagf.onrender.com/subscriptionCheck",
+        "https://streambackend-hx8z.onrender.com/subscriptionCheck",
         {
           method: "GET",
           headers: {
@@ -261,7 +261,7 @@ const MovieProvider = ({ children }) => {
     const planId = 72443;
     try {
       const res = await fetch(
-        "https://streambackend-uagf.onrender.com/initiate_payment",
+        "https://streambackend-hx8z.onrender.com/initiate_payment",
         {
           method: "POST",
           headers: {
@@ -549,7 +549,7 @@ const MovieProvider = ({ children }) => {
         localStorage.clear();
         // Send a request to the backend to clear the HTTP-only cookie
         const res = await fetch(
-          "https://streambackend-uagf.onrender.com/clear-cookies",
+          "https://streambackend-hx8z.onrender.com/clear-cookies",
           {
             method: "POST",
             headers: {
@@ -615,7 +615,7 @@ const MovieProvider = ({ children }) => {
     try {
       localStorage.clear();
       const res = await fetch(
-        "https://streambackend-uagf.onrender.com/clear-cookies",
+        "https://streambackend-hx8z.onrender.com/clear-cookies",
         {
           method: "POST",
           headers: {
@@ -721,7 +721,7 @@ const MovieProvider = ({ children }) => {
         let StoredFavouriteCart =
           JSON.parse(localStorage.getItem("FavouriteCart")) || [];
         const res = await fetch(
-          "https://streambackend-uagf.onrender.com/addfavourite",
+          "https://streambackend-hx8z.onrender.com/addfavourite",
           {
             method: "POST",
             headers: {
