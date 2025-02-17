@@ -60,13 +60,18 @@ const MovieProvider = ({ children }) => {
   const [Result, setResult] = useState();
   const HandleGetMovies = async () => {
     try {
-      const res = await fetch("https://streambackend-v5u9.onrender.com/api/getMovies", {
-        method: "GET",
-        headers: {
-          "Content-Type": "Application/Json",
-        },
-        // body: JSON.stringify({ id }),
-      });
+      const res = await fetch(
+        "https://streambackend-v5u9.onrender.com/api/getMovies",
+        {
+          method: "GET",
+          headers: {
+            headers: {
+              "Content-Type": "application/json", // Correct header
+            },
+          },
+          // body: JSON.stringify({ id }),
+        }
+      );
       const data = await res.json();
       if (!res.ok) {
         console.log(data);
@@ -100,13 +105,18 @@ const MovieProvider = ({ children }) => {
   const [IdUpdate, setIdUpdate] = useState();
   const HandleGetCategories = async () => {
     try {
-      const res = await fetch("https://streambackend-v5u9.onrender.com/api/getCategory", {
-        method: "GET",
-        headers: {
-          "Content-Type": "Application/Json",
-        },
-        // body: JSON.stringify({ id }),
-      });
+      const res = await fetch(
+        "https://streambackend-v5u9.onrender.com/api/getCategory",
+        {
+          method: "GET",
+          headers: {
+            headers: {
+              "Content-Type": "application/json", // Correct header
+            },
+          },
+          // body: JSON.stringify({ id }),
+        }
+      );
       let data;
       if (res.ok) {
         // console.log("Categories fetched successfully");
@@ -123,13 +133,19 @@ const MovieProvider = ({ children }) => {
   //Veryfy token
   const Autentification = async () => {
     try {
-      const res = await fetch("https://streambackend-v5u9.onrender.com/api/protectedRoute", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json", // Optional, depending on your API
-        },
-        credentials: "include", // Include cookies in the request
-      });
+      const res = await fetch(
+        "https://streambackend-v5u9.onrender.com/api/protectedRoute",
+        {
+          method: "GET",
+          headers: {
+            headers: {
+              "Content-Type": "application/json", // Correct header
+            },
+            // Optional, depending on your API
+          },
+          credentials: "include", // Include cookies in the request
+        }
+      );
       const data = await res.json();
 
       if (!res.ok) {
@@ -155,13 +171,19 @@ const MovieProvider = ({ children }) => {
   //Veryfy SAubscription
   const VeryfySubscriptoin = async () => {
     try {
-      const res = await fetch("https://streambackend-v5u9.onrender.com/subscriptionCheck", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json", // Optional, depending on your API
-        },
-        credentials: "include", // Include cookies in the request
-      });
+      const res = await fetch(
+        "https://streambackend-v5u9.onrender.com/subscriptionCheck",
+        {
+          method: "GET",
+          headers: {
+            headers: {
+              "Content-Type": "application/json", // Correct header
+            },
+            // Optional, depending on your API
+          },
+          credentials: "include", // Include cookies in the request
+        }
+      );
       const data = await res.json();
 
       if (!res.ok) {
@@ -238,13 +260,18 @@ const MovieProvider = ({ children }) => {
     }
     const planId = 72443;
     try {
-      const res = await fetch("https://streambackend-v5u9.onrender.com/initiate_payment", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, plan_id: planId }),
-      });
+      const res = await fetch(
+        "https://streambackend-v5u9.onrender.com/initiate_payment",
+        {
+          method: "POST",
+          headers: {
+            headers: {
+              "Content-Type": "application/json", // Correct header
+            },
+          },
+          body: JSON.stringify({ email, plan_id: planId }),
+        }
+      );
 
       const data = await res.json();
       if (!res.ok) {
@@ -521,13 +548,18 @@ const MovieProvider = ({ children }) => {
 
         localStorage.clear();
         // Send a request to the backend to clear the HTTP-only cookie
-        const res = await fetch("https://streambackend-v5u9.onrender.com/clear-cookies", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-        });
+        const res = await fetch(
+          "https://streambackend-v5u9.onrender.com/clear-cookies",
+          {
+            method: "POST",
+            headers: {
+              headers: {
+                "Content-Type": "application/json", // Correct header
+              },
+            },
+            credentials: "include",
+          }
+        );
 
         const data = await res.json();
 
@@ -582,13 +614,21 @@ const MovieProvider = ({ children }) => {
     console.log("Logging out due to inactivity...");
     try {
       localStorage.clear();
-      const res = await fetch("https://streambackend-v5u9.onrender.com/clear-cookies", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      });
+      const res = await fetch(
+        "https://streambackend-v5u9.onrender.com/clear-cookies",
+        {
+          method: "POST",
+          headers: {
+            headers: {
+              headers: {
+                "Content-Type": "application/json", // Correct header
+              },
+              // Correct header
+            },
+          },
+          credentials: "include",
+        }
+      );
 
       const data = await res.json();
 
@@ -680,13 +720,18 @@ const MovieProvider = ({ children }) => {
         Id = user.id;
         let StoredFavouriteCart =
           JSON.parse(localStorage.getItem("FavouriteCart")) || [];
-        const res = await fetch("https://streambackend-v5u9.onrender.com/addfavourite", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ movieId, Id }),
-        });
+        const res = await fetch(
+          "https://streambackend-v5u9.onrender.com/addfavourite",
+          {
+            method: "POST",
+            headers: {
+              headers: {
+                "Content-Type": "application/json", // Correct header
+              },
+            },
+            body: JSON.stringify({ movieId, Id }),
+          }
+        );
         const data = await res.json();
         if (!res.ok) {
           console.log(data);
