@@ -47,7 +47,7 @@ const Login = () => {
 
     try {
       const res = await fetch(
-        "https://streambackend-ngow.onrender.com.com/login",
+        "https://streambackend-ngow.onrender.com/login",
         {
           method: "POST",
           headers: {
