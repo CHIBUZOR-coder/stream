@@ -42,7 +42,7 @@ const Register = () => {
           method: "POST",
           headers:{
           "content-Type":"application/json"
-          }
+          },
           body: formData,
         }
       );
