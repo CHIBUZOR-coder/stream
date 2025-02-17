@@ -40,6 +40,9 @@ const Register = () => {
         "https://streambackend-ngow.onrender.com/api/register",
         {
           method: "POST",
+          headers:{
+          "content-Type":"application/json"
+          }
           body: formData,
         }
       );
