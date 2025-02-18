@@ -30,7 +30,7 @@ const Categories = ({ IdRetrival, setter, setResult }) => {
     // e.preventDefault();
     try {
       const res = await fetch(
-        "https://streambackend-v5u9.onrender.com/api/updateCategory",
+        "https://streambackend-ngow.onrender.com/api/updateCategory",
         {
           method: "PUT",
           headers: {
@@ -67,7 +67,7 @@ const Categories = ({ IdRetrival, setter, setResult }) => {
     e.preventDefault();
     try {
       const res = await fetch(
-        "https://streambackend-v5u9.onrender.com/api/deleteCategory",
+        "https://streambackend-ngow.onrender.com/api/deleteCategory",
         {
           method: "DELETE",
           headers: {

@@ -39,7 +39,7 @@ const UpdateProfile = ({ Forr }) => {
     try {
       setIsLoading(true);
       const res = await fetch(
-        "https://streambackend-v5u9.onrender.com/updateProfile",
+        "https://streambackend-ngow.onrender.com/updateProfile",
         {
           method: "PUT",
           body: formData,

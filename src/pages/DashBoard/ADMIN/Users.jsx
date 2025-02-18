@@ -33,12 +33,15 @@ const Users = () => {
 
   const HandleGetAllUsers = async () => {
     try {
-      const res = await fetch("https://streambackend-v5u9.onrender.com/getAllUser", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const res = await fetch(
+        "https://streambackend-ngow.onrender.com/getAllUser",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       const data = await res.json();
 
@@ -63,13 +66,16 @@ const Users = () => {
 
   const HandeleDeleteUser = async (userId) => {
     try {
-      const res = await fetch("https://streambackend-v5u9.onrender.com/deleteUser", {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ userId }),
-      });
+      const res = await fetch(
+        "https://streambackend-ngow.onrender.com/deleteUser",
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ userId }),
+        }
+      );
 
       const data = await res.json();
       if (!res.ok) {

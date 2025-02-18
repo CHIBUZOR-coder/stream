@@ -47,12 +47,13 @@ const Layout = ({ children }) => {
       return;
     }
     try {
-      const res = await fetch("http://localhost:5000/api/getMovies", {
-        method: "GET",
-        headers: {
-          "Content-Type": "Application/Json",
-        },
-      });
+      const res = await fetch(
+        "https://streambackend-ngow.onrender.com/api/getMovies",
+        {
+          method: "GET",
+        
+        }
+      );
       const data = await res.json();
 
       if (!res.ok) {

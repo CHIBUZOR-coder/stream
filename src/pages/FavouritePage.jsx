@@ -18,12 +18,9 @@ const FavouritePage = () => {
   const GetFavouriteCart = async () => {
     try {
       const res = await fetch(
-        `https://streambackend-v5u9.onrender.com/getfacouriteCart/${name}`,
+        `https://streambackend-ngow.onrender.com/getfacouriteCart/${name}`,
         {
           method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
         }
       );
 
