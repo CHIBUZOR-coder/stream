@@ -64,7 +64,7 @@ const MovieCasts = ({ movieId, movie }) => {
             },
           }}
         >
-          {selected &&
+          {
             selected.map((item) => (
               <SwiperSlide key={item?.id} className="w-full p-4 ">
                 <div className="flexCol gap-2  italic w-[100%] text-xs text-text rounded bg-dry border pb-2 ">
