@@ -161,13 +161,16 @@ const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
     formData.append("video", MovieVideo);
 
     try {
-      const res = await fetch("https://streambackend-ngow.onrender.com/api/createMovies", {
-        method: "POST",
-        headers: {
-          Authorization: "Bearer your-auth-token",
-        },
-        body: formData,
-      });
+      const res = await fetch(
+        "https://streambackend-ngow.onrender.com/api/createMovies",
+        {
+          method: "POST",
+          headers: {
+            Authorization: "Bearer your-auth-token",
+          },
+          body: formData,
+        }
+      );
       const data = await res.json();
 
       if (!res.ok) {
