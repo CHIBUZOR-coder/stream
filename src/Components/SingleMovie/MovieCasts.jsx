@@ -21,9 +21,9 @@ const MovieCasts = ({ movieId, movie }) => {
     }
   }, [movie]);
 
-  // useEffect(() => {
-  //   console.log("casts", Casts);
-  // }, [casts]);
+  useEffect(() => {
+    console.log("casts", casts);
+  }, [casts]);
 
   // const selected =
   //   casts && casts.filter((item) => item.movieId === parseInt(movieId));
