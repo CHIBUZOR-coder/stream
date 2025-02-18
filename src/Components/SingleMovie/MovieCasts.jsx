@@ -16,8 +16,8 @@ const MovieCasts = ({ movieId, movie }) => {
 
   useEffect(() => {
     if (movie) {
-      setCasts(movie?.casts);
-      console.log("moviieeee:",movie?.casts);
+      setCasts(movie.casts);
+      console.log("moviieeee:", movie.casts);
     }
   }, [movie]);
 
@@ -27,7 +27,7 @@ const MovieCasts = ({ movieId, movie }) => {
 
   const selected =
     casts && casts.filter((item) => item.movieId === parseInt(movieId));
-  // console.log(selected);
+  console.log("selected:", selected);
 
   return (
     <div className="px-3 w-full">
@@ -64,22 +64,23 @@ const MovieCasts = ({ movieId, movie }) => {
             },
           }}
         >
-          {selected && selected.map((item) => (
-            <SwiperSlide key={item?.id} className="w-full p-4 ">
-              <div className="flexCol gap-2  italic w-[100%] text-xs text-text rounded bg-dry border pb-2 ">
-                <div className="h-[300px] md:h-[250px] border-gray-800 w-full  bg-cover bg-center">
-                  <img
-                    className="h-full w-full object-cover"
-                    src={`${item?.image}.jpg`}
-                    alt=""
-                  />
-                </div>
+          {selected &&
+            selected.map((item) => (
+              <SwiperSlide key={item?.id} className="w-full p-4 ">
+                <div className="flexCol gap-2  italic w-[100%] text-xs text-text rounded bg-dry border pb-2 ">
+                  <div className="h-[300px] md:h-[250px] border-gray-800 w-full  bg-cover bg-center">
+                    <img
+                      className="h-full w-full object-cover"
+                      src={`${item?.image}`}
+                      alt=""
+                    />
+                  </div>
 
-                <p>{item?.name}</p>
-                <p>Role : {item?.role}</p>
-              </div>
-            </SwiperSlide>
-          ))}
+                  <p>{item?.name}</p>
+                  <p>Role : {item?.role}</p>
+                </div>
+              </SwiperSlide>
+            ))}
         </Swiper>
 
         <div className="w-full px-1 flex gap-6 pt-12 justify-center">
