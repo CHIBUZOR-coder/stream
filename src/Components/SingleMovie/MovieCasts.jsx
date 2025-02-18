@@ -8,7 +8,7 @@ import { BsCaretLeftFill, BsCaretRightFill } from "react-icons/bs";
 const MovieCasts = ({ movieId, movie }) => {
   const [nextEl, setNext] = useState(null);
   const [prevEl, setPrev] = useState(null);
-  const { Casts } = useContext(MovieContext);
+  // const { Casts } = useContext(MovieContext);
   const [casts, setCasts] = useState([]);
 
   const className =
@@ -25,7 +25,8 @@ const MovieCasts = ({ movieId, movie }) => {
   //   console.log("casts", Casts);
   // }, [casts]);
 
-  const selected = Casts.filter((item) => item.movieId === parseInt(movieId));
+  const selected =
+    casts && casts.filter((item) => item.movieId === parseInt(movieId));
   // console.log(selected);
 
   return (
