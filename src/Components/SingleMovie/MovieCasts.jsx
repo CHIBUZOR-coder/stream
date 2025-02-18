@@ -19,7 +19,7 @@ const MovieCasts = ({ movieId, movie }) => {
       // setCasts(movie?.casts);
       console.log("moviieeee:",movie?.casts);
     }
-  }, []);
+  }, [movie]);
 
   // useEffect(() => {
   //   console.log("casts", Casts);
