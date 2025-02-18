@@ -25,9 +25,9 @@ const MovieCasts = ({ movieId, movie }) => {
   //   console.log("casts", Casts);
   // }, [casts]);
 
-  const selected =
-    casts && casts.filter((item) => item.movieId === parseInt(movieId));
-  console.log("selected:", selected);
+  // const selected =
+  //   casts && casts.filter((item) => item.movieId === parseInt(movieId));
+  // console.log("selected:", selected);
 
   return (
     <div className="px-3 w-full">
@@ -64,8 +64,7 @@ const MovieCasts = ({ movieId, movie }) => {
             },
           }}
         >
-          {selected &&
-            selected.map((item) => (
+          {casts && casts.map((item) => (
               <SwiperSlide key={item?.id} className="w-full p-4 ">
                 <div className="flexCol gap-2  italic w-[100%] text-xs text-text rounded bg-dry border pb-2 ">
                   <div className="h-[300px] md:h-[250px] border-gray-800 w-full  bg-cover bg-center">
