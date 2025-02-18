@@ -71,7 +71,7 @@ const MovieCasts = ({ movieId, movie }) => {
                   <div className="h-[300px] md:h-[250px] border-gray-800 w-full  bg-cover bg-center">
                     <img
                       className="h-full w-full object-cover"
-                      src={`${item?.image}`}
+                      src={`${item.image}`}
                       alt=""
                     />
                   </div>
