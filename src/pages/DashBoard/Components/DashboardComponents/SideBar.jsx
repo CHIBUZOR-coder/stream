@@ -18,7 +18,7 @@ const SideBar = () => {
       localStorage.clear();
       // Send a request to the backend to clear the HTTP-only cookie
       const res = await fetch(
-        "https://streambackend-v5u9.onrender.com/clear-cookies",
+        "https://streambackend-ngow.onrender.com/clear-cookies",
         {
           method: "POST",
           headers: {

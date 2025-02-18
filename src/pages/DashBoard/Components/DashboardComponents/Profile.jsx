@@ -32,7 +32,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
 
 
 
-   console.log("userData:", User.role);
+   console.log("userData:", User);
 
   // const selected = AllMovies.slice(0, 10);
   const [singleUser, SetSingleUser] = useState(null);
