@@ -17,6 +17,10 @@ const Categories = ({ IdRetrival, setter, setResult }) => {
 
   // const [rerender, setRerender] = useState(false);
 
+  useEffect(() => {
+    console.log("reslt:", Result);
+  }, [Result]);
+
   //update Category
   //*************Update  Category*******************
   const HandeleUpdateCategory = async () => {

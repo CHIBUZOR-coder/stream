@@ -161,7 +161,7 @@ const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
     formData.append("video", MovieVideo);
 
     try {
-      const res = await fetch("https://streambackend-v5u9.onrender.com/api/createMovies", {
+      const res = await fetch("https://streambackend-ngow.onrender.com/api/createMovies", {
         method: "POST",
         headers: {
           Authorization: "Bearer your-auth-token",
@@ -219,7 +219,7 @@ const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
     });
 
     try {
-      const res = await fetch("https://streambackend-v5u9.onrender.com/api/addCast", {
+      const res = await fetch("https://streambackend-ngow.onrender.com/api/addCast", {
         method: "POST",
         body: formData,
       });
