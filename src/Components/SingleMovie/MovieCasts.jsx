@@ -16,7 +16,7 @@ const MovieCasts = ({ movieId, movie }) => {
 
   useEffect(() => {
     if (movie) {
-      // setCasts(movie?.casts);
+      setCasts(movie?.casts);
       console.log("moviieeee:",movie?.casts);
     }
   }, [movie]);
