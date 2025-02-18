@@ -16,13 +16,14 @@ const MovieCasts = ({ movieId, movie }) => {
 
   useEffect(() => {
     if (movie) {
-      setCasts(movie?.casts);
+      // setCasts(movie?.casts);
+      console.log(":",movie);
     }
   }, []);
 
-  useEffect(() => {
-    console.log("casts", Casts);
-  }, [casts]);
+  // useEffect(() => {
+  //   console.log("casts", Casts);
+  // }, [casts]);
 
   const selected = Casts.filter((item) => item.movieId === parseInt(movieId));
   // console.log(selected);
