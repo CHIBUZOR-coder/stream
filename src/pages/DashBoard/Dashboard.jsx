@@ -120,14 +120,17 @@ const Dashboard = () => {
 
     try {
       let data;
-      const res = await fetch("https://streambackend-v5u9.onrender.com/api/updateMovie", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer your-auth-token",
-        },
-        body: JSON.stringify(updatedMovie),
-      });
+      const res = await fetch(
+        "https://streambackend-v5u9.onrender.com/api/updateMovie",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer your-auth-token",
+          },
+          body: JSON.stringify(updatedMovie),
+        }
+      );
 
       if (!res.ok) {
         data = await res.json();
@@ -158,14 +161,17 @@ const Dashboard = () => {
 
     try {
       let data;
-      const res = await fetch("https://streambackend-v5u9.onrender.com/api/deletSingleMovie", {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer your-auth-token",
-        },
-        body: JSON.stringify({ id }),
-      });
+      const res = await fetch(
+        "https://streambackend-v5u9.onrender.com/api/deletSingleMovie",
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer your-auth-token",
+          },
+          body: JSON.stringify({ id }),
+        }
+      );
 
       if (!res.ok) {
         data = await res.json();
@@ -207,17 +213,17 @@ const Dashboard = () => {
           body: JSON.stringify(tittle),
         }
       );
-      let data;
+      const data = await res.json();
       if (!res) {
         setIsLoading(false);
-        data = await res.json();
+
         setResult(Alert(false, data.message));
+      } else {
+        setIsLoading(false);
+         setResult(Alert(true, "Category added successfully"));
+        HandleGetCategories();
+        console.log(data);
       }
-      data = await res.json();
-      setIsLoading(false);
-      HandleGetCategories();
-      setResult(Alert(true, "Category added successfully"));
-      console.log(data);
     } catch (error) {
       console.log(error.message);
     } finally {
@@ -234,14 +240,17 @@ const Dashboard = () => {
 
     // e.preventDefault();
     try {
-      const res = await fetch("https://streambackend-v5u9.onrender.com/api/updateCategory", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer your-auth-token",
-        },
-        body: JSON.stringify(updatCategory),
-      });
+      const res = await fetch(
+        "https://streambackend-v5u9.onrender.com/api/updateCategory",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer your-auth-token",
+          },
+          body: JSON.stringify(updatCategory),
+        }
+      );
       let data;
       if (!res.ok) {
         data = await res.json();

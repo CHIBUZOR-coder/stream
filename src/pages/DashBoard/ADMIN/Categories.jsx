@@ -12,6 +12,7 @@ const Categories = ({ IdRetrival, setter, setResult }) => {
     setCurrentModal,
     categoryDataa,
     HandleGetCategories,
+    Result,
   } = useContext(MovieContext);
 
   // const [rerender, setRerender] = useState(false);
@@ -24,14 +25,17 @@ const Categories = ({ IdRetrival, setter, setResult }) => {
 
     // e.preventDefault();
     try {
-      const res = await fetch("https://streambackend-v5u9.onrender.com/api/updateCategory", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer your-auth-token",
-        },
-        body: JSON.stringify(updatCategory),
-      });
+      const res = await fetch(
+        "https://streambackend-v5u9.onrender.com/api/updateCategory",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer your-auth-token",
+          },
+          body: JSON.stringify(updatCategory),
+        }
+      );
       let data;
       if (!res.ok) {
         data = await res.json();
@@ -58,14 +62,17 @@ const Categories = ({ IdRetrival, setter, setResult }) => {
   const HandeleDelete = async (e, id) => {
     e.preventDefault();
     try {
-      const res = await fetch("https://streambackend-v5u9.onrender.com/api/deleteCategory", {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer your-auth-token",
-        },
-        body: JSON.stringify({ id }),
-      });
+      const res = await fetch(
+        "https://streambackend-v5u9.onrender.com/api/deleteCategory",
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer your-auth-token",
+          },
+          body: JSON.stringify({ id }),
+        }
+      );
 
       const data = await res.json();
       console.log(data);
@@ -107,6 +114,16 @@ const Categories = ({ IdRetrival, setter, setResult }) => {
         >
           <HiPlusCircle /> Create
         </button>
+      </div>
+
+      <div
+        className={` ${
+          Result ? "Animate" : "hidden"
+        } fixed Alert  left-0 w-full z-40 flex justify-center items-center `}
+      >
+        <div className=" bg-text text-dry w-1/2 rounded-md border-[3px] border-subMain flex justify-center items-center p-4">
+          {Result && <p>{Result}</p>}
+        </div>
       </div>
       <Table2
         data={categoryDataa}
