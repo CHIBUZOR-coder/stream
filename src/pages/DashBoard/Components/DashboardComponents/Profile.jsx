@@ -46,9 +46,9 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
     // console.log("userData.role:", userData.role);
 
     if (userData.role === "ADMIN") {
-      UserLink = `https://streambackend-v5u9.onrender.com/getAdmin/${name}`;
+      UserLink = `https://streambackend-ngow.onrender.com.com/getAdmin/${name}`;
     } else if (userData.role === "USER") {
-      UserLink = `https://streambackend-v5u9.onrender.com/getUser/${name}`;
+      UserLink = `https://streambackend-ngow.onrender.com/getUser/${name}`;
     } else {
       UserLink = "nothing";
     }
