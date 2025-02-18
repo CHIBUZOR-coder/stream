@@ -189,10 +189,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
     console.log("Reciept:", Reciept);
   }, [Reciept]);
 
-  // useEffect(() => {
-  //   console.log("User", Userr);
-  // });
-
+ 
   const ProfileData = [
     {
       bg: "bg-orange-600",
