@@ -120,7 +120,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
   const HandleGeTSubscription = async () => {
     try {
       const res = await fetch(
-        `https://streambackend-v5u9.onrender.com/subscriptionDetails/${name}`,
+        `https://streambackend-ngow.onrender.com/subscriptionDetails/${name}`,
         {
           method: "GET",
           credentials: "include",
@@ -150,12 +150,12 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
 
     try {
       const res = await fetch(
-        "https://streambackend-v5u9.onrender.com/Unsubscribe",
+        "https://streambackend-ngow.onrender.com/Unsubscribe",
         {
           method: "POST",
           headers: {
             headers: {
-              "Content-Type": "application/json", 
+              "Content-Type": "application/json",
             },
           },
           body: JSON.stringify({ email }),

@@ -222,10 +222,13 @@ const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
     });
 
     try {
-      const res = await fetch("https://streambackend-ngow.onrender.com/api/addCast", {
-        method: "POST",
-        body: formData,
-      });
+      const res = await fetch(
+        "https://streambackend-ngow.onrender.com/api/addCast",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
       const data = await res.json();
       if (!res.ok) {
