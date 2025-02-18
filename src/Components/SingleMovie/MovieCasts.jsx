@@ -64,14 +64,14 @@ const MovieCasts = ({ movieId, movie }) => {
             },
           }}
         >
-          {
+          {selected &&
             selected.map((item) => (
               <SwiperSlide key={item?.id} className="w-full p-4 ">
                 <div className="flexCol gap-2  italic w-[100%] text-xs text-text rounded bg-dry border pb-2 ">
                   <div className="h-[300px] md:h-[250px] border-gray-800 w-full  bg-cover bg-center">
                     <img
                       className="h-full w-full object-cover"
-                      src={`${item.image}`}
+                      src={`${item?.image}`}
                       alt=""
                     />
                   </div>
