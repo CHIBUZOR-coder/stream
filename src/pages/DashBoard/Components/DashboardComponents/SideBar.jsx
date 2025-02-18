@@ -32,7 +32,7 @@ const SideBar = () => {
 
       if (res.ok) {
         // Make sure to wait for the response
-        nabvigate("/stream/login");
+        nabvigate("/login");
         console.log(data);
       } else {
         console.log("Failed to clear cookies. Server returned an error.");
