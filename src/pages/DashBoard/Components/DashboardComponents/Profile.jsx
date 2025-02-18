@@ -30,7 +30,9 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
 
   const days = localStorage.getItem("subscription");
 
-  // console.log("userData:", userData.role);
+
+
+   console.log("userData:", User.role);
 
   // const selected = AllMovies.slice(0, 10);
   const [singleUser, SetSingleUser] = useState(null);
