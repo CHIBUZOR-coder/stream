@@ -33,7 +33,7 @@ const MovieCasts = ({ movieId, movie }) => {
     <div className="px-3 w-full">
       <div className="flex items-center gap-8 md:gap-4">
         <FaUserFriends className="w-6 h-6 md:w-4 md:h-4 text-subMain" />
-        <h2 className="sm:text-xl font-bold text-lg">Cast</h2>
+        <h2 className="sm:text-xl font-bold text-lg">Castt</h2>
       </div>
 
       <div className="mt-10">
@@ -64,8 +64,8 @@ const MovieCasts = ({ movieId, movie }) => {
             },
           }}
         >
-          {selected.map((item) => (
-            <SwiperSlide key={item.id} className="w-full p-4 ">
+          {selected && selected.map((item) => (
+            <SwiperSlide key={item?.id} className="w-full p-4 ">
               <div className="flexCol gap-2  italic w-[100%] text-xs text-text rounded bg-dry border pb-2 ">
                 <div className="h-[300px] md:h-[250px] border-gray-800 w-full  bg-cover bg-center">
                   <img
@@ -75,8 +75,8 @@ const MovieCasts = ({ movieId, movie }) => {
                   />
                 </div>
 
-                <p>{item.name}</p>
-                <p>Role : {item.role}</p>
+                <p>{item?.name}</p>
+                <p>Role : {item?.role}</p>
               </div>
             </SwiperSlide>
           ))}
