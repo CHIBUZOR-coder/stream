@@ -22,13 +22,12 @@ const SingleMovie = () => {
   const { id } = useParams();
   // console.log("id:", id);
   const User = JSON.parse(localStorage.getItem("userInfo"));
-  const { Casts, FetchedMovies,  HandleSubscribe, setResult, setOrderId } =
+  const { Casts, FetchedMovies, HandleSubscribe, setResult, setOrderId } =
     useContext(MovieContext);
   const [shareOpen, setShareOpen] = useState(false);
   const [movie, setMovie] = useState([]);
   const [Relatedmovie, setRelatedMovie] = useState([]);
   const navigate = useNavigate();
-
 
   // useEffect(() => {
   //   if (FetchedMovies) {
@@ -56,10 +55,8 @@ const SingleMovie = () => {
           const relatedMovies = FetchedMovies.filter(
             (movi) => movi?.category?.tittle === moviee?.category?.tittle
           );
-              setRelatedMovie(relatedMovies);
+          setRelatedMovie(relatedMovies);
         }
-
-    
       }
     }
   }, [FetchedMovies]);
@@ -165,7 +162,7 @@ const SingleMovie = () => {
 
         <MovieInfo movie={movie} setShareOpen={setShareOpen} url={url} />
         <div className="container mx-auto px-2 my-6 min-h-screen  ">
-          <MovieCasts movieId={movie?.id} />
+          <MovieCasts movieId={movie?.id} movie={movie} />
 
           <MovieRates movie={movie && movie} />
 

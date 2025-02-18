@@ -2,15 +2,27 @@ import { useContext, useState, useEffect } from "react";
 import { FaUserFriends } from "react-icons/fa";
 import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import  MovieContext  from "../../Context/MovieContext";
+import MovieContext from "../../Context/MovieContext";
 import { BsCaretLeftFill, BsCaretRightFill } from "react-icons/bs";
 
-const MovieCasts = ({ movieId }) => {
+const MovieCasts = ({ movieId, movie }) => {
   const [nextEl, setNext] = useState(null);
   const [prevEl, setPrev] = useState(null);
   const { Casts } = useContext(MovieContext);
+  const [casts, setCasts] = useState([]);
+
   const className =
     "hover:bg-dry transi text-sm rounded w-8 h-8 flex flex-col justify-center items-center bg-subMain text-white";
+
+  useEffect(() => {
+    if (movie) {
+      setCasts(movie?.casts);
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log("casts", Casts);
+  }, [casts]);
 
   const selected = Casts.filter((item) => item.movieId === parseInt(movieId));
   // console.log(selected);
