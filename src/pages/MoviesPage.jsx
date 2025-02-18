@@ -68,17 +68,7 @@ const MoviesPage = () => {
     }
   };
 
-  // useEffect(() => {
-  //   console.log("page", page);
-  // }, [page]);
 
-  // useEffect(() => {
-  //   console.log("filtered", filteredMovies.length);
-  // }, [filterMovies]);
-
-  // useEffect(() => {
-  //   console.log("max", maxDisplay);
-  // }, [maxDisplay]);
 
   return (
     <Layout>
@@ -106,7 +96,7 @@ const MoviesPage = () => {
                 className=" h-64  bg-center bg-cover "
               >
                 <img
-                  src={`${movie.image}`}
+                  src={`${movie?.image}`}
                   loading="lazy"
                   className="w-full h-full object-cover"
                   alt=""
@@ -114,7 +104,7 @@ const MoviesPage = () => {
               </Link>
 
               <div className="flex absolute bottom-0  justify-between items-center  bg-trans2 w-full text-white px-4 py-3">
-                <h3 className="font-semibold truncate">{movie.name}</h3>
+                <h3 className="font-semibold truncate">{movie?.name}</h3>
                 <button
                   onClick={() => AddToCart(movie, movie.id)}
                   className="h-8 w-8 text-sm flexCol transi hover:bg-transparent border-subMain bg-subMain2 border-2 rounded-md text-white "

@@ -239,12 +239,12 @@ const MovieProvider = ({ children }) => {
     // console.log("User:", User);
     if (!User) {
       console.log("Not a user!");
-      navigate("/stream/login");
+      navigate("/login");
       return;
     } else if (User.subscription === "SUBSCRIBED") {
       console.log("User is already subscribed!");
       setResult(Alert(true, "You are lready subscribed!"));
-      navigate("/stream/");
+      navigate("/");
       return;
     } else {
       console.log("Please Sunscribe to enjoy our services");
@@ -623,7 +623,7 @@ const MovieProvider = ({ children }) => {
       if (res.ok) {
         localStorage.setItem("InactiveLogout", "true");
         setTimeout(() => {
-          navigate("/stream/login");
+          navigate("/login");
         }, 500);
         localStorage.clear();
         console.log(data);

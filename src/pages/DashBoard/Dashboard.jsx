@@ -196,14 +196,17 @@ const Dashboard = () => {
     setIsLoading(true);
 
     try {
-      const res = await fetch("https://streambackend-v5u9.onrender.com/api/createCartegory", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer your-auth-token",
-        },
-        body: JSON.stringify(tittle),
-      });
+      const res = await fetch(
+        "https://streambackend-ngow.onrender.com/api/createCartegory",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer your-auth-token",
+          },
+          body: JSON.stringify(tittle),
+        }
+      );
       let data;
       if (!res) {
         setIsLoading(false);
