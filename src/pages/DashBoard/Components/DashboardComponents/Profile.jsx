@@ -32,7 +32,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
 
 
 
-   console.log("userData:", User);
+  //  console.log("userData:", User);
 
   // const selected = AllMovies.slice(0, 10);
   const [singleUser, SetSingleUser] = useState(null);
@@ -107,6 +107,8 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
       const contentType = res.headers.get("content-type");
       if (!res.ok) {
         throw new Error(`HTTP error! Status: ${res.status}`);
+        console.log("somthing went wrong");
+        
       }
       const data = await res.json();
       console.log("Userdataaaaa:", data);
@@ -327,9 +329,9 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
           </div>
 
           <div className="text-center">
-            <p className="font-semibold">{singleUser && singleUser.name}</p>
+            <p className="font-semibold">{singleUser && singleUser?.name}</p>
             <p className="text-sm text-dryGray">
-              {singleUser && singleUser.email}
+              {singleUser && singleUser?.email}
             </p>
             <p className="text-sm text-dryGray flex items-center justify-center gap-2">
               <FaPhoneAlt className="text-dryGray" />
