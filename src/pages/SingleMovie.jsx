@@ -28,6 +28,7 @@ const SingleMovie = () => {
   const [SubOpen, setSubOpen] = useState(false);
   const [movie, setMovie] = useState([]);
   const [Relatedmovie, setRelatedMovie] = useState([]);
+  const [reload, setReload] = useState(false);
   const navigate = useNavigate();
 
   // useEffect(() => {
@@ -184,6 +185,9 @@ const SingleMovie = () => {
               {Relatedmovie &&
                 Relatedmovie.map((movie, index) => (
                   <Link
+                    onClick={() => {
+                      setReload((prev) => !prev);
+                    }}
                     to={`/movie/${movie?.id}`}
                     key={`${movie.id}`}
                     className="border h-64 border-border rounded bg-center bg-cover transi hover:scale-95 w-full relative"

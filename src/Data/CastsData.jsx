@@ -1460,7 +1460,7 @@ export const Casts = [
     movieId: 17,
     name: "Bianca Bosch",
     image: "BiancaBosch",
-    role: "Mr. Flynn",
+    role: "Olivia",
   },
   {
     id: 218,
