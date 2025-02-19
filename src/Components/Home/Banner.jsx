@@ -38,61 +38,65 @@ const Banner = React.memo(({ setShareOpen }) => {
         lorem20
       </div> */}
 
-      <Swiper
-        direction="vertical"
-        spaceBetween={0}
-        slidesPerView={1}
-        slidesPerGroup={1}
-        lazy="true"
-        loop={true}
-        speed={1000}
-        modules={[Autoplay]}
-        autoplay={{ delay: 5000, disableOnInteraction: false }}
-        className="w-full h-72  lg:h-72 xl:h-96 bg-dry"
-      >
-        {FetchedMovies &&
-          FetchedMovies.map((movie) => (
-            <SwiperSlide
-              key={movie.id}
-              loading="lazy"
-              className="bg-center  bg-cover relative overflow-hidden rounded"
-            >
-              <img
-                src={`${movie.image}`}
-                className="w-full h-full object-cover"
-                alt=""
-              />
-              <div className="absolute w-full h-full linearbg top-0 ">
-                <div className="absolute top-[45%] md:top-[20%] left-[5%] flex flex-col gap-2">
-                  <h1 className="xl:text-4xl truncate names capitalize font-sans sm:text-2xl text-xl font-bold">
-                    {movie.name}
-                  </h1>
-                  <FlexMovie movie={movie} />
+      {FetchedMovies && FetchedMovies.lenggth > 0 ? (
+        <Swiper
+          direction="vertical"
+          spaceBetween={0}
+          slidesPerView={1}
+          slidesPerGroup={1}
+          lazy="true"
+          loop={true}
+          speed={1000}
+          modules={[Autoplay]}
+          autoplay={{ delay: 5000, disableOnInteraction: false }}
+          className="w-full h-72  lg:h-72 xl:h-96 bg-dry"
+        >
+          {FetchedMovies &&
+            FetchedMovies.map((movie) => (
+              <SwiperSlide
+                key={movie.id}
+                loading="lazy"
+                className="bg-center  bg-cover relative overflow-hidden rounded"
+              >
+                <img
+                  src={`${movie.image}`}
+                  className="w-full h-full object-cover"
+                  alt=""
+                />
+                <div className="absolute w-full h-full linearbg top-0 ">
+                  <div className="absolute top-[45%] md:top-[20%] left-[5%] flex flex-col gap-2">
+                    <h1 className="xl:text-4xl truncate names capitalize font-sans sm:text-2xl text-xl font-bold">
+                      {movie.name}
+                    </h1>
+                    <FlexMovie movie={movie} />
 
-                  <div className=" flex items-center gap-4 mt-4">
-                    <Link
-                      onClick={(e) => HandleUserCheck(e)}
-                      className="bg-subMain hover:text-main transi hover:bg-white text-white px-8 py-3 rounded font-medium names"
-                      to={`${
-                        User && User.subscription === "SUBSCRIBED"
-                          ? `/watch/${movie.name}`
-                          : ``
-                      }`}
-                    >
-                      watch
-                    </Link>
-                    <span
-                      onClick={() => AddToCart(movie, movie.id)}
-                      className="bg-white flex justify-center cursor-pointer items-center hover:text-subMain transi text-white px-3 py-3 rounded bg-opacity-30 "
-                    >
-                      <FaHeart />
-                    </span>
+                    <div className=" flex items-center gap-4 mt-4">
+                      <Link
+                        onClick={(e) => HandleUserCheck(e)}
+                        className="bg-subMain hover:text-main transi hover:bg-white text-white px-8 py-3 rounded font-medium names"
+                        to={`${
+                          User && User.subscription === "SUBSCRIBED"
+                            ? `/watch/${movie.name}`
+                            : ``
+                        }`}
+                      >
+                        watch
+                      </Link>
+                      <span
+                        onClick={() => AddToCart(movie, movie.id)}
+                        className="bg-white flex justify-center cursor-pointer items-center hover:text-subMain transi text-white px-3 py-3 rounded bg-opacity-30 "
+                      >
+                        <FaHeart />
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </SwiperSlide>
-          ))}
-      </Swiper>
+              </SwiperSlide>
+            ))}
+        </Swiper>
+      ) : (
+        ""
+      )}
     </div>
   );
 });
