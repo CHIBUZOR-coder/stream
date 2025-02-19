@@ -2302,7 +2302,7 @@ export const Casts = [
     movieId: 32,
     name: "Dafne Keen",
     image: "DafneKeen",
-    role: "Elektra",
+    role: "Laura",
   },
   {
     id: 347,
