@@ -12,6 +12,16 @@ const PopularMovies = () => {
     (movie) => movie.popular === true
   );
 
+  const HandelLoadQuantity = (val) => {
+    if (val === "next") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (val === "prev") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      console.log("error");
+    }
+  };
+
   const [page, setPage] = useState(1);
   const itemsPerPage = 10;
   const totalPages =
@@ -71,7 +81,10 @@ const PopularMovies = () => {
       <div className="flex justify-center gap-2 my-10">
         <button
           disabled={page === 1}
-          onClick={() => setPage((prev) => prev - 1)}
+          onClick={() => {
+            setPage((prev) => prev - 1);
+            HandelLoadQuantity("prev");
+          }}
           className={`px-4 py-2 rounded ${
             page === 1 ? "bg-gray-400 text-white" : "bg-subMain text-white"
           }`}
@@ -80,7 +93,10 @@ const PopularMovies = () => {
         </button>
         <button
           disabled={page === totalPages}
-          onClick={() => setPage((prev) => prev + 1)}
+          onClick={() => {
+            setPage((prev) => prev + 1);
+            HandelLoadQuantity("next");
+          }}
           className={`px-4 py-2 rounded ${
             page === totalPages
               ? "bg-gray-400 text-white"
