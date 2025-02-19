@@ -38,7 +38,7 @@ const Banner = React.memo(({ setShareOpen }) => {
         lorem20
       </div> */}
 
-      {FetchedMovies && FetchedMovies.lenggth > 0 ? (
+      {FetchedMovies && FetchedMovies.length > 0 ? (
         <Swiper
           direction="vertical"
           spaceBetween={0}
