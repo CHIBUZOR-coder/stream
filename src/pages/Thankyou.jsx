@@ -111,11 +111,11 @@ const Thankyou = () => {
         "https://streambackend-ngow.onrender.com/verify",
         {
           method: "POST",
+
           headers: {
-            headers: {
-              "Content-Type": "application/json",
-            },
+            "Content-Type": "application/json",
           },
+
           body: JSON.stringify({ transaction_id, orderId, email }),
         }
       );
