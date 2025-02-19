@@ -559,7 +559,7 @@ const MovieProvider = ({ children }) => {
           localStorage.setItem("relogin", "true");
 
           setTimeout(() => {
-            navigate("/stream/login");
+            navigate("/login");
           }, 500);
 
           console.log(data);
