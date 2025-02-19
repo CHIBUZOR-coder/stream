@@ -2,23 +2,28 @@ import { BsCollection, BsCollectionFill } from "react-icons/bs";
 import { Movies } from "../../Data/MovieData";
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
-import { useContext, useMemo, useState } from "react";
+import { useContext, useMemo, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import MovieContext from "../../Context/MovieContext";
 
 const PopularMovies = () => {
   const { AddToCart, FetchedMovies } = useContext(MovieContext);
-
+  const navigate = useNavigate();
   const selected = (FetchedMovies || []).filter(
     (movie) => movie.popular === true
   );
 
+  const listRef = useRef(null);
+
   const HandelLoadQuantity = (val) => {
-    if (val === "next") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } else if (val === "prev") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    if (val === "next" || val === "prev") {
+      if (listRef.current) {
+        listRef.current.scrollIntoView({ behavior: "smooth" });
+      } else {
+        console.log("Element not found");
+      }
     } else {
-      console.log("error");
+      console.log("Error: Invalid value");
     }
   };
 
@@ -44,7 +49,11 @@ const PopularMovies = () => {
         <h2 className="sm-text-xl text-lg font-bold">Popular Movies</h2>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  xl:grid-cols-4  w-full gap-8">
+      <div
+        id="top"
+        ref={listRef}
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  xl:grid-cols-4  w-full gap-8"
+      >
         {paginatedMovies.map((movie) => (
           <div
             className="border-2 relative border-border rounded bg-center bg-cover transi hover:scale-95 w-full flex flex-col "
