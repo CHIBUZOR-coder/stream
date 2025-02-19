@@ -43,17 +43,13 @@ const PopularMovies = () => {
   // console.log("selected", selected);
 
   return (
-    <div>
+    <div id="top" ref={listRef}>
       <div className="flex w-full sm:gap-5 gap-4 items-center my-14">
         <BsCollectionFill className="sm-h-6  sm-w-6 h-4 w-4  text-subMain" />
         <h2 className="sm-text-xl text-lg font-bold">Popular Movies</h2>
       </div>
 
-      <div
-        id="top"
-        ref={listRef}
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  xl:grid-cols-4  w-full gap-8"
-      >
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  xl:grid-cols-4  w-full gap-8">
         {paginatedMovies.map((movie) => (
           <div
             className="border-2 relative border-border rounded bg-center bg-cover transi hover:scale-95 w-full flex flex-col "
