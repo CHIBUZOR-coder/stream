@@ -26,7 +26,7 @@ const MovieRates = ({ movie }) => {
     const userId = User && User.id;
     console.log("userId", userId);
 
-    const res = await fetch("http://localhost:5000/reviews", {
+    const res = await fetch("https://streambackend-ngow.onrender.com/reviews", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
