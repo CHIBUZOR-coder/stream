@@ -171,17 +171,17 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Suspense
-      fallback={
-        <div className="w-full h-[100vh] bg-main flex justify-center items-center">
-          <div className="w-[150px] h-[150px] rounded-full  border border-border animate-bounce">
-            <img
-              className="h-full w-full rounded-full"
-              src="https://res.cloudinary.com/dtjgj2odu/image/upload/v1739151976/logoround_awixqx.png"
-              alt=""
-            />
-          </div>
-        </div>
-      }
+      // fallback={
+      //   <div className="w-full h-[100vh] bg-main flex justify-center items-center">
+      //     <div className="w-[150px] h-[150px] rounded-full  border border-border animate-bounce">
+      //       <img
+      //         className="h-full w-full rounded-full"
+      //         src="https://res.cloudinary.com/dtjgj2odu/image/upload/v1739151976/logoround_awixqx.png"
+      //         alt=""
+      //       />
+      //     </div>
+      //   </div>
+      // }
     >
       <RouterProvider router={router} />
     </Suspense>
