@@ -271,7 +271,7 @@ const Layout = ({ children }) => {
 
         <div
           className={` ${
-            searchResult && searchResult.length > 0 ? "" : ""
+            searchResult && searchResult.length > 0 ? "" : "hidden"
           } fixed w-full top-26 z-50 left-0 flex flex-col gap-5 bg-drkb text-white p-5  overflow-y-auto`}
         >
           {searchResult &&
