@@ -51,7 +51,6 @@ const Layout = ({ children }) => {
         "https://streambackend-ngow.onrender.com/api/getMovies",
         {
           method: "GET",
-        
         }
       );
       const data = await res.json();
@@ -259,7 +258,7 @@ const Layout = ({ children }) => {
         <div
           className={` ${
             searchResult && searchResult.length > 0 ? "" : "hidden"
-          } absolute w-full top-20 md:top-28 z-50 left-0 flex flex-col gap-5 bg-drkb text-white p-5 h-[300px] md:h-[400px] overflow-y-auto`}
+          } fixed w-full top-20 md:top-28 z-50 left-0 flex flex-col gap-5 bg-drkb text-white p-5 h-[300px] md:h-[400px] overflow-y-auto`}
         >
           {searchResult &&
             searchResult.map((movie, i) => (
