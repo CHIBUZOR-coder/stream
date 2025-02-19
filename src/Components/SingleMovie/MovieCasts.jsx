@@ -37,7 +37,7 @@ const MovieCasts = ({ movieId, movie }) => {
       </div>
 
       <div className="mt-10">
-        {cast && casts.length > 0 ? (
+        {casts && casts.length > 0 ? (
           <Swiper
             navigation={{ nextEl, prevEl }}
             slidesPerView={4}
