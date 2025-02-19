@@ -28,11 +28,24 @@ const Layout = ({ children }) => {
   const Hover = ({ isActive }) => (isActive ? "text-subMain" : hover);
   const textArray = useMemo(() => ["Search Movie Name Here"], []);
   const User = JSON.parse(localStorage.getItem("userInfo"));
+  
   const { typingSpeed, charIndex, index, HandleTypewrite } =
     useContext(MovieContext);
+  let dash;
   let fav;
+  if (!User) {
+    // console.log("No user info yet");
+    dash = "/login";
+  } else {
+    dash =
+      User.role === "ADMIN"
+        ? `/dash/ad/${User.name}`
+        : User.role === "USER"
+        ? `/dash/us/${User.name}`
+        : "NOT";
 
-  fav = User ? `/favouritpage/${User.name}` : "";
+    fav = `/favouritpage/${User.name}`;
+  }
   useEffect(() => {
     const cleanup = HandleTypewrite(textArray, setText);
     return cleanup;
@@ -212,9 +225,9 @@ const Layout = ({ children }) => {
                       : "hover:text-subMain hover:bg-white transi text-white relative"
                   } hov  p-2 flex  items-center`
                 }
-                to={`/login`}
+                to={`${dash}`}
               >
-                <FaUserCircle />
+                {User ? <TbTableDashed /> : <FaUserCircle />}
               </NavLink>
               <NavLink
                 className={({ isActive }) =>
