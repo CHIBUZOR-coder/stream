@@ -241,7 +241,7 @@ const Dashboard = () => {
     // e.preventDefault();
     try {
       const res = await fetch(
-        "https://streambackend-v5u9.onrender.com/api/updateCategory",
+        "https://streambackend-ngow.onrender.com/api/updateCategory",
         {
           method: "PUT",
           headers: {
