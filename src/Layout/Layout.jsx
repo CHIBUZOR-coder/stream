@@ -17,6 +17,7 @@ import {
 } from "react-icons/fa";
 import { FaHeartCircleCheck, FaXTwitter } from "react-icons/fa6";
 import MovieContext from "../Context/MovieContext";
+import { TbTableDashed } from "react-icons/tb";
 
 const Layout = ({ children }) => {
   const { FavouriteCount } = useContext(MovieContext);
