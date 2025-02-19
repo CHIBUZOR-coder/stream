@@ -9,6 +9,7 @@ import Romance from "./pages/FilteredMovies/Romance.jsx";
 import Dramma from "./pages/FilteredMovies/Dramm.jsx";
 import Tech from "./pages/FilteredMovies/Tech.jsx";
 import Action from "./pages/FilteredMovies/Action.jsx";
+import { MovieProvider } from "./Context/MovieContext.jsx";
 // import FilteredDrammaMovies from "./pages/FilteredDrammaMovies.jsx";
 // import FilteredActionMovies from "./pages/FilteredActionMovies.jsx";
 // import FilteredMovies from "./pages/FilteredMovies.jsx";
