@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 // import { Helment } from "react-helmet-async";
 
 import MovieContext from "../../Context/MovieContext";
-const MovieInfo = ({ movie, setShareOpen, url }) => {
+const MovieInfo = ({ movie, setShareOpen, setSubOpen, url }) => {
   // console.log("movie",movie);
   // const { User } = useContext(MovieContext);
   const User = JSON.parse(localStorage.getItem("userInfo"));
@@ -18,9 +18,10 @@ const MovieInfo = ({ movie, setShareOpen, url }) => {
   const navigate = useNavigate();
   const HandleUserCheck = (e) => {
     e.preventDefault();
-
-    if (User.subscription !== "SUBSCRIBED") {
-      setShareOpen((prev) => !prev);
+    if (!User) {
+      setSubOpen((prev) => !prev);
+    } else if (User && User.subscription !== "SUBSCRIBED") {
+      setSubOpen((prev) => !prev);
     } else {
       navigate(`/watch/${movie.name}`);
       // console.log("User already Subscribed!");

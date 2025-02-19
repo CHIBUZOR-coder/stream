@@ -235,7 +235,7 @@ export const Movies = [
     approxiR: "2 Star",
     language: "English",
     description:
-      "Fueled by his restored faith in humanity and inspired by Superman's selfless act, Bruce Wayne enlists the help of his new-found ally, Diana Prince, to face an even greater enemy.",
+      "",
     price: 150,
     trailer: "https://www.youtube.com/embed/3cxixDgHUYw",
   },

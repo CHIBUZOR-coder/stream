@@ -25,6 +25,7 @@ const SingleMovie = () => {
   const { Casts, FetchedMovies, HandleSubscribe, setResult, setOrderId } =
     useContext(MovieContext);
   const [shareOpen, setShareOpen] = useState(false);
+  const [SubOpen, setSubOpen] = useState(false);
   const [movie, setMovie] = useState([]);
   const [Relatedmovie, setRelatedMovie] = useState([]);
   const navigate = useNavigate();
@@ -100,14 +101,14 @@ const SingleMovie = () => {
   return (
     <div>
       <Layout>
-        {!User || !User.role ? (
+        {!User || User.subscription !== "SUBSCRIBED" ? (
           <div
             className={` ${
-              shareOpen ? "" : "hidden"
+              SubOpen ? "" : "hidden"
             }  absolute  top-0 left-0 z-50   w-full h-full bg-main2 flex justify-center items-center `}
           >
             <span
-              onClick={() => setShareOpen((prev) => !prev)}
+              onClick={() => setSubOpen((prev) => !prev)}
               className="rounded-full fixed top-[25%]  md:right-[25%] lg:right-[20%] right-[8%] border-2 h-14 w-14 border-subMain hover:text-subMain text-white transi hover:border-white hover:rotate-180 flex justify-center items-center"
             >
               <MdCancel className="h-12 w-12" />
@@ -134,33 +135,40 @@ const SingleMovie = () => {
             </div>
           </div>
         ) : (
-          <div
-            className={` ${
-              shareOpen ? "" : "hidden"
-            }  absolute  top-0 left-0 z-50   w-full h-full bg-main2 flex justify-center items-center `}
-          >
-            <span
-              onClick={() => setShareOpen((prev) => !prev)}
-              className="rounded-full fixed top-[30%]  md:right-[25%] lg:right-[20%] right-[8%] border-2 h-14 w-14 border-subMain hover:text-subMain text-white transi hover:border-white hover:rotate-180 flex justify-center items-center"
-            >
-              <MdCancel className="h-12 w-12" />
-            </span>
-
-            <div className="  fixed top-[40%]  py-10  px-4 bg-main rounded-md grid md:grid-cols-5 grid-cols-3 justify-center gap-8 md:gap-10 lg:gap-20 border border-border ">
-              {socials.map((social, i) => (
-                <a
-                  key={i}
-                  href={social.path}
-                  className="bg-border  p-2 rounded-md transi flex justify-center items-center hover:bg-white hover:text-border"
-                >
-                  {social.icon}
-                </a>
-              ))}
-            </div>
-          </div>
+          ""
         )}
 
-        <MovieInfo movie={movie} setShareOpen={setShareOpen} url={url} />
+        <div
+          className={` ${
+            shareOpen ? "" : "hidden"
+          }  absolute  top-0 left-0 z-50   w-full h-full bg-main2 flex justify-center items-center `}
+        >
+          <span
+            onClick={() => setShareOpen((prev) => !prev)}
+            className="rounded-full fixed top-[30%]  md:right-[25%] lg:right-[20%] right-[8%] border-2 h-14 w-14 border-subMain hover:text-subMain text-white transi hover:border-white hover:rotate-180 flex justify-center items-center"
+          >
+            <MdCancel className="h-12 w-12" />
+          </span>
+
+          <div className="  fixed top-[40%]  py-10  px-4 bg-main rounded-md grid md:grid-cols-5 grid-cols-3 justify-center gap-8 md:gap-10 lg:gap-20 border border-border ">
+            {socials.map((social, i) => (
+              <a
+                key={i}
+                href={social.path}
+                className="bg-border  p-2 rounded-md transi flex justify-center items-center hover:bg-white hover:text-border"
+              >
+                {social.icon}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <MovieInfo
+          movie={movie}
+          setShareOpen={setShareOpen}
+          setSubOpen={setSubOpen}
+          url={url}
+        />
         <div className="container mx-auto px-2 my-6 min-h-screen  ">
           <MovieCasts movieId={movie?.id} movie={movie} />
 
