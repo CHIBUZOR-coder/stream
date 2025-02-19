@@ -80,6 +80,7 @@ const Categories = ({ IdRetrival, setter, setResult }) => {
 
       const data = await res.json();
       console.log(data);
+      HandleGetCategories();
     } catch (error) {
       console.log(error.message);
     }
