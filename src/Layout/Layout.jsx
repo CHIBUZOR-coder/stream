@@ -28,7 +28,7 @@ const Layout = ({ children }) => {
   const Hover = ({ isActive }) => (isActive ? "text-subMain" : hover);
   const textArray = useMemo(() => ["Search Movie Name Here"], []);
   const User = JSON.parse(localStorage.getItem("userInfo"));
-  
+
   const { typingSpeed, charIndex, index, HandleTypewrite } =
     useContext(MovieContext);
   let dash;
@@ -270,8 +270,8 @@ const Layout = ({ children }) => {
 
         <div
           className={` ${
-            searchResult && searchResult.length > 0 ? "" : "hidden"
-          } fixed w-full top-20 md:top-28 z-50 left-0 flex flex-col gap-5 bg-drkb text-white p-5 h-[300px] md:h-[400px] overflow-y-auto`}
+            searchResult && searchResult.length > 0 ? "" : ""
+          } fixed w-full top-20 md:top-28 z-50 left-0 flex flex-col gap-5 bg-drkb text-white p-5  overflow-y-auto`}
         >
           {searchResult &&
             searchResult.map((movie, i) => (
@@ -279,6 +279,7 @@ const Layout = ({ children }) => {
                 {movie.name}
               </Link>
             ))}
+          {/* <p className="text-subMain font-semibold text-2xl">Testing</p> */}
         </div>
         {children}
 
