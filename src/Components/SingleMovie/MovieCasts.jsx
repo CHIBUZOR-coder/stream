@@ -8,7 +8,7 @@ import { BsCaretLeftFill, BsCaretRightFill } from "react-icons/bs";
 const MovieCasts = ({ movieId, movie }) => {
   const [nextEl, setNext] = useState(null);
   const [prevEl, setPrev] = useState(null);
-  // const { Casts } = useContext(MovieContext);
+ const { FetchedMovies } = useContext(MovieContext);
   const [casts, setCasts] = useState([]);
 
   const className =
@@ -84,7 +84,7 @@ const MovieCasts = ({ movieId, movie }) => {
               ))}
           </Swiper>
         ) : (
-          ""
+          <div className="w-full h-full   bg-dry shimmer"></div>
         )}
 
         <div className="w-full px-1 flex gap-6 pt-12 justify-center">
