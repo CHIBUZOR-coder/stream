@@ -58,9 +58,7 @@ const Register = () => {
       // Parse JSON only if the response is valid
       setResult(Alert(true, data.message));
       setIsLoading(false);
-       setTimeout(() => {
-         navigate("/login");
-       }, 3000);
+     
       setName("");
       setEmail("");
       setPhone("");
@@ -77,7 +75,7 @@ const Register = () => {
     } finally {
       setTimeout(() => {
         setResult(null);
-      }, 2000);
+      }, 4000);
 
      
     }
