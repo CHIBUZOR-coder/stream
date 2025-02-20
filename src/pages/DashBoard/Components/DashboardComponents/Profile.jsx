@@ -27,6 +27,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
   const User = JSON.parse(localStorage.getItem("userInfo"));
   const favouriteCart = JSON.parse(localStorage.getItem("favouriteCart"));
   // console.log("favouriteCart:", favouriteCart.favouriteCartMovies.length);
+  const [bgColor, setBgColor] = useState("");
 
   const days = localStorage.getItem("subscription");
 
@@ -239,6 +240,12 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
       style: false,
     },
   ];
+
+  useEffect(() => {
+    // Generate a random background color on mount
+    const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+    setBgColor(randomColor);
+  }, []);
   return (
     <div className="flex flex-col gap-4 ">
       <div
@@ -319,8 +326,22 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
         <div className="w-full flex justify-center">
           <div className=" md:w-1/2 w-[80%] flex flex-col justify-center items-center gap-3 p-5 rounded bg-main border border-border cursor-default">
             <div className="flex justify-center items-center">
+              {singleUser ? (
+                <img
+                  src={`${singleUser && singleUser?.image}`}
+                  alt="user"
+                  className="w-20 h-20 rounded-full object-cover"
+                ></img>
+              ) : (
+                <div
+                  className="w-12 h-12 rounded-full flex items-center justify-center text-white text-lg font-bold uppercase"
+                  style={{ backgroundColor: bgColor }}
+                >
+                  {name ? name.charAt(0).toUpperCase() : "?"}
+                </div>
+              )}
               <img
-                src={`${singleUser && singleUser.image}`}
+                src={`${singleUser && singleUser?.image}`}
                 alt="user"
                 className="w-20 h-20 rounded-full object-cover"
               ></img>
