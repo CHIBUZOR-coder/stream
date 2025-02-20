@@ -65,7 +65,7 @@ const MovieInfo = ({ movie, setShareOpen, setSubOpen, url }) => {
                   className=" w-[80%] h-head bg-dry border border-dry rounded-lg bg-cover bg-center"
                 ></div>
               ) : (
-                <div className="w-full h-72  lg:h-72 xl:h-96 bg-dry shimmer"></div>
+                <div className="w-full h-head  shimmer"></div>
               )}
             </div>
             {/* ****** */}
