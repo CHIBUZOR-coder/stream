@@ -155,7 +155,7 @@ const MovieRates = ({ movie }) => {
         <div className="col-span-3 flex flex-col gap-6">
           <p className="text-xl text-text font-semibold">Reviews (56)</p>
           <div className="w-full flex flex-col bg-main gap-6 rounded-lg md:p-12 p-6 h-[550px] overflow-y-scroll ">
-            {starUsers ? (
+            {starUsers && starUsers.length > 0 ? (
               <>
                 {starUsers &&
                   starUsers.map((user, i) => (
