@@ -95,7 +95,9 @@ const Banner = React.memo(({ setShareOpen }) => {
             ))}
         </Swiper>
       ) : (
-        ""
+        <div className="w-full h-72  lg:h-72 xl:h-96 bg-dry shimmer">
+          
+        </div>
       )}
     </div>
   );
