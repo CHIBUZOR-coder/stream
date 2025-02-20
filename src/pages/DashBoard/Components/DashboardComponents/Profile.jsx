@@ -19,7 +19,6 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
     setResult,
     Alert,
     setIsLoading,
-    getUser,
   } = useContext(MovieContext);
   const Head = "text-xs text-left text-main font-semibold px-4 py-2 uppercase ";
   const Text = "text-sm  leading-6 whitespace-nowrap px-5 py-3";
@@ -35,7 +34,6 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
 
   // const selected = AllMovies.slice(0, 10);
   const [singleUser, SetSingleUser] = useState(null);
-  const singleuSer = JSON.parse(localStorage.getItem("profile"));
   const [shareOpen, setShareOpen] = useState(false);
   const navigate = useNavigate();
   const [MovieList, setMovieList] = useState(null);
@@ -113,7 +111,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
       console.log("Userdataaaaa:", data);
 
       SetSingleUser(data.data);
-      localStorage.setItem("profile", data.data);
+
       setRoleCheck(true);
       localStorage.setItem("role", data.data.role);
     } catch (error) {
@@ -185,18 +183,9 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
   };
 
   useEffect(() => {
-    // if (getUser === true) {
-    //   HandleGetUser();
-    // }
-
+    HandleGetUser();
     HandleGeTSubscription();
   }, []);
-
-  useEffect(() => {
-    if (getUser === true) {
-      HandleGetUser();
-    }
-  }, [getUser]);
 
   useEffect(() => {
     console.log("Reciept:", Reciept);
@@ -326,25 +315,25 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
 
       <h2 className="md:text-xl text-lg text-white  font-bold">Profile</h2>
 
-      {singleuSer ? (
+      {singleUser ? (
         <div className="w-full flex justify-center">
           <div className=" md:w-1/2 w-[80%] flex flex-col justify-center items-center gap-3 p-5 rounded bg-main border border-border cursor-default">
             <div className="flex justify-center items-center">
               <img
-                src={`${singleuSer && singleuSer.image}`}
+                src={`${singleUser && singleUser.image}`}
                 alt="user"
                 className="w-20 h-20 rounded-full object-cover"
               ></img>
             </div>
 
             <div className="text-center">
-              <p className="font-semibold">{singleuSer && singleuSer?.name}</p>
+              <p className="font-semibold">{singleUser && singleUser?.name}</p>
               <p className="text-sm text-dryGray">
-                {singleuSer && singleuSer?.email}
+                {singleUser && singleUser?.email}
               </p>
               <p className="text-sm text-dryGray flex items-center justify-center gap-2">
                 <FaPhoneAlt className="text-dryGray" />
-                {singleuSer && singleuSer.phone}
+                {singleUser && singleUser.phone}
               </p>
             </div>
           </div>
@@ -353,9 +342,9 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
         <div className="w-full h-72  lg:h-72 xl:h-96 bg-dry shimmer"></div>
       )}
 
-      {singleuSer ? (
+      {singleUser ? (
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
-          {singleuSer && singleuSer.role === "ADMIN"
+          {singleUser && singleUser.role === "ADMIN"
             ? ProfileData.map((item, index) => (
                 <div
                   key={index}
@@ -435,7 +424,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
 
       <Table
         data={paginatedMovies}
-        User={singleuSer}
+        User={singleUser}
         For={"dash"}
         Handlegeneral={Handlegeneral}
         HandleDeleteMovie={HandleDeleteMovie}
