@@ -4,10 +4,10 @@ import MovieContext from "../Context/MovieContext";
 import Layout from "../Layout/Layout";
 
 const VerifyEmail = () => {
-
   const [searchParams] = useSearchParams();
   const [status, setStatus] = useState(false);
   const [token, setToken] = useState(searchParams.get("token"));
+  const [isLoading, setIsLoading] = useState(true);
   const { Result, setResult, Alert, User, Autentification } =
     useContext(MovieContext);
   const Email = User ? User.userInfo.email : "unavailable email";
