@@ -10,7 +10,7 @@ const VerifyEmail = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { Result, setResult, Alert, User, Autentification } =
     useContext(MovieContext);
-  const Email = User ? User.userInfo.email : "unavailable email";
+
   const [emojis, setEmojis] = useState([]); // Store emoji objects
   const navigate = useNavigate();
 
@@ -25,7 +25,7 @@ const VerifyEmail = () => {
             "Content-Type": "application/json",
           },
 
-          body: JSON.stringify({ token, email }),
+          body: JSON.stringify({ token}),
         }
       );
       const data = await response.json();
@@ -54,7 +54,7 @@ const VerifyEmail = () => {
 
   useEffect(() => {
     if (token) {
-      verifyEmail(token, Email);
+      verifyEmail(token);
     }
   }, [token]);
 
