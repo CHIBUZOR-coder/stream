@@ -45,7 +45,7 @@ const MovieInfo = ({ movie, setShareOpen, setSubOpen, url }) => {
         loading="lazy"
         className="bg-center w-full md:min-h-screen  bg-cover  overflow-hidden rounded "
         style={{
-          backgroundImage: `url('${movie?.image}.jpg')`,
+          backgroundImage: `url('${movie?.image}')`,
         }}
       >
         <div className="bg-main3  w-full flexCol ">
