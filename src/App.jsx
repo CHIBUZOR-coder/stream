@@ -9,7 +9,7 @@ import MovieContext, { MovieProvider } from "./Context/MovieContext";
 import { useContext } from "react";
 
 function App() {
-   const { movies } = useContext(MovieContext);
+   const { FetchedMovies } = useContext(MovieContext);
   return (
     <>
       <MovieProvider>
