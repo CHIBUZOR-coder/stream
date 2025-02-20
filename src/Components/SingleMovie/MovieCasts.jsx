@@ -84,7 +84,7 @@ const MovieCasts = ({ movieId, movie }) => {
               ))}
           </Swiper>
         ) : (
-          <div className="w-full h-full   bg-dry shimmer"></div>
+          <div className="w-full h-[300px] md:h-[250px]    bg-dry shimmer"></div>
         )}
 
         <div className="w-full px-1 flex gap-6 pt-12 justify-center">
