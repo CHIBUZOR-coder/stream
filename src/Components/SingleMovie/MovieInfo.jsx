@@ -56,7 +56,7 @@ const MovieInfo = ({ movie, setShareOpen, setSubOpen, url }) => {
 
           <div className="w-full mx-auto px-3  xl:px-5 lg:grid grid-cols-3   flexCol gap-14  py-6 lg:py-4 xl:gap-6 ">
             {/* child */}
-            <div className="xl:col-span-1 flex justify-center lg:justify-start items-start w-full  h-full">
+            <div className="xl:col-span-1 flex justify-center lg:justify-start relative items-start w-full  h-full">
               {FetchedMovies ? (
                 <div
                   style={{
