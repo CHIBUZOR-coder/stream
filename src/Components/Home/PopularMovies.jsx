@@ -50,37 +50,44 @@ const PopularMovies = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  xl:grid-cols-4  w-full gap-8">
-        {paginatedMovies.map((movie) => (
-          <div
-            className="border-2 relative border-border rounded bg-center bg-cover transi hover:scale-95 w-full flex flex-col "
-            key={`${movie.id}`}
-          >
-            <Link
-              to={`/movie/${movie.id}`}
-              className=" h-64  bg-center bg-cover "
-            >
-              <img
-                src={`${movie.image}`}
-                loading="lazy"
-                className="w-full h-full object-cover"
-                alt=""
-              />
-            </Link>
-
-            <div className="flex absolute bottom-0  justify-between items-center  bg-trans2 w-full text-white px-4 py-3">
-              <h3 className="font-semibold truncate">{movie.name}</h3>
-              <button
-                onClick={() => {
-                  console.log("cartt", movie.id);
-                  AddToCart(movie, movie.id);
-                }}
-                className="h-8 w-8 text-sm flexCol transi hover:bg-transparent border-subMain bg-subMain2 border-2 rounded-md text-white "
+        {paginatedMovies && paginatedMovies.length > 0 ? (
+          <>
+            {" "}
+            {paginatedMovies.map((movie) => (
+              <div
+                className="border-2 relative border-border rounded bg-center bg-cover transi hover:scale-95 w-full flex flex-col "
+                key={`${movie.id}`}
               >
-                <FaHeart />
-              </button>
-            </div>
-          </div>
-        ))}
+                <Link
+                  to={`/movie/${movie.id}`}
+                  className=" h-64  bg-center bg-cover "
+                >
+                  <img
+                    src={`${movie.image}`}
+                    loading="lazy"
+                    className="w-full h-full object-cover"
+                    alt=""
+                  />
+                </Link>
+
+                <div className="flex absolute bottom-0  justify-between items-center  bg-trans2 w-full text-white px-4 py-3">
+                  <h3 className="font-semibold truncate">{movie.name}</h3>
+                  <button
+                    onClick={() => {
+                      console.log("cartt", movie.id);
+                      AddToCart(movie, movie.id);
+                    }}
+                    className="h-8 w-8 text-sm flexCol transi hover:bg-transparent border-subMain bg-subMain2 border-2 rounded-md text-white "
+                  >
+                    <FaHeart />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </>
+        ) : (
+          <div className="w-full h-72  lg:h-72 xl:h-96 bg-dry shimmer"></div>
+        )}
       </div>
 
       <div className="flex justify-center gap-2 my-10">
