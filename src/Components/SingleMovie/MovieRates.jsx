@@ -155,35 +155,43 @@ const MovieRates = ({ movie }) => {
         <div className="col-span-3 flex flex-col gap-6">
           <p className="text-xl text-text font-semibold">Reviews (56)</p>
           <div className="w-full flex flex-col bg-main gap-6 rounded-lg md:p-12 p-6 h-[550px] overflow-y-scroll ">
-            {starUsers &&
-              starUsers.map((user, i) => (
-                <div
-                  key={i}
-                  className="md:grid   flex flex-col w-full grid-cols-12 gap-5  bg-dry p-4 border border-x-gray-800  rounded-lg"
-                >
-                  <div className="col-span-2 ">
-                    <img
-                      className="w-full  object-cover"
-                      src={`${user?.user?.image}`}
-                      alt=""
-                    />
-                  </div>
-                  <div className="col-span-7 flex flex-col gap-2">
-                    <p>{user?.user?.name}</p>
-                    <p className="text-xs leading-6 font-medium text-text">
-                      {user?.userReview}
-                    </p>
-                    {/* rates */}
-                  </div>
-                  <div className="col-span-3 flexRow  border-l border-border text-xs gap-1 text-star">
-                    <div className="flex my-2  gap-2 text-star ">
-                      {console.log("use:", user?.userRating)}
+            {starUsers ? (
+              <>
+                {starUsers &&
+                  starUsers.map((user, i) => (
+                    <div
+                      key={i}
+                      className="md:grid   flex flex-col w-full grid-cols-12 gap-5  bg-dry p-4 border border-x-gray-800  rounded-lg"
+                    >
+                      <div className="col-span-2 ">
+                        <img
+                          className="w-full  object-cover"
+                          src={`${user?.user?.image}`}
+                          alt=""
+                        />
+                      </div>
+                      <div className="col-span-7 flex flex-col gap-2">
+                        <p>{user?.user?.name}</p>
+                        <p className="text-xs leading-6 font-medium text-text">
+                          {user?.userReview}
+                        </p>
+                        {/* rates */}
+                      </div>
+                      <div className="col-span-3 flexRow  border-l border-border text-xs gap-1 text-star">
+                        <div className="flex my-2  gap-2 text-star ">
+                          {console.log("use:", user?.userRating)}
 
-                      <Star value={user?.userRating} />
+                          <Star value={user?.userRating} />
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              ))}
+                  ))}
+              </>
+            ) : (
+              <div className=" flex flex-col w-full grid-cols-12 gap-5  bg-dry p-4 border border-x-gray-800  rounded-lg">
+                <p className="font-semibold text-white">No user revie</p>
+              </div>
+            )}
           </div>
         </div>
       </div>
