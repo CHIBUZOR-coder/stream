@@ -82,39 +82,45 @@ const MoviesPage = () => {
           </span>
         </p>
 
-        <div
-          id="#top"
-          className="grid sm:mt-10 mt-6 xl:grid-cols-4 2xl:grid-cols-5 lg:grid-cols-3 sm:grid-cols-1 gap-6"
-        >
-          {filteredMovies.slice(page, page + maxDisplay).map((movie, index) => (
-            <div
-              className="border-2 border-border rounded bg-center bg-cover relative transi hover:scale-95 w-full flex flex-col "
-              key={`${movie.id}`}
-            >
-              <Link
-                to={`/movie/${movie.id}`}
-                className=" h-64  bg-center bg-cover "
-              >
-                <img
-                  src={`${movie?.image}`}
-                  loading="lazy"
-                  className="w-full h-full object-cover"
-                  alt=""
-                />
-              </Link>
-
-              <div className="flex absolute bottom-0  justify-between items-center  bg-trans2 w-full text-white px-4 py-3">
-                <h3 className="font-semibold truncate">{movie?.name}</h3>
-                <button
-                  onClick={() => AddToCart(movie, movie.id)}
-                  className="h-8 w-8 text-sm flexCol transi hover:bg-transparent border-subMain bg-subMain2 border-2 rounded-md text-white "
+        {FetchedMovies ? (
+          <div
+            id="#top"
+            className="grid sm:mt-10 mt-6 xl:grid-cols-4 2xl:grid-cols-5 lg:grid-cols-3 sm:grid-cols-1 gap-6"
+          >
+            {filteredMovies
+              .slice(page, page + maxDisplay)
+              .map((movie, index) => (
+                <div
+                  className="border-2 border-border rounded bg-center bg-cover relative transi hover:scale-95 w-full flex flex-col "
+                  key={`${movie.id}`}
                 >
-                  <FaHeart />
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
+                  <Link
+                    to={`/movie/${movie.id}`}
+                    className=" h-64  bg-center bg-cover "
+                  >
+                    <img
+                      src={`${movie?.image}`}
+                      loading="lazy"
+                      className="w-full h-full object-cover"
+                      alt=""
+                    />
+                  </Link>
+
+                  <div className="flex absolute bottom-0  justify-between items-center  bg-trans2 w-full text-white px-4 py-3">
+                    <h3 className="font-semibold truncate">{movie?.name}</h3>
+                    <button
+                      onClick={() => AddToCart(movie, movie.id)}
+                      className="h-8 w-8 text-sm flexCol transi hover:bg-transparent border-subMain bg-subMain2 border-2 rounded-md text-white "
+                    >
+                      <FaHeart />
+                    </button>
+                  </div>
+                </div>
+              ))}
+          </div>
+        ) : (
+          <div className="w-full h-72  lg:h-72 xl:h-96 bg-dry shimmer"></div>
+        )}
 
         <div className=" my-10 md:my-16 flex justify-center gap-5 items-center w-full">
           <span
