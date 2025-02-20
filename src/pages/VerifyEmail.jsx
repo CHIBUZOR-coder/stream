@@ -25,12 +25,12 @@ const VerifyEmail = () => {
             "Content-Type": "application/json",
           },
 
-          body: JSON.stringify({ token}),
+          body: JSON.stringify({ token }),
         }
       );
       const data = await response.json();
       if (response.ok) {
-        status(true);
+        setStatus(true);
         console.log(data);
         setResult(
           Alert(true, data.message) || "Email Verification Successfull"
