@@ -344,78 +344,84 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
       text: User.userInfo.email,
       style: true,  */}
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
-        {singleUser && singleUser.role === "ADMIN"
-          ? ProfileData.map((item, index) => (
-              <div
-                key={index}
-                className={`rounded bg-main border border-border grid grid-cols-4 gap-2 p-4 `}
-              >
+      {singleUser ? (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
+          {singleUser && singleUser.role === "ADMIN"
+            ? ProfileData.map((item, index) => (
                 <div
-                  className={`col-span-1 rounded-full h-12 w-12 flexCol ${item.bg} `}
+                  key={index}
+                  className={`rounded bg-main border border-border grid grid-cols-4 gap-2 p-4 `}
                 >
-                  {item.icon}
-                </div>
-
-                <div className="col-span-3">
-                  <h2>{item.tittle}</h2>
-                  <p className=" mt-2 font-bold">{item.text}</p>
-                </div>
-              </div>
-            ))
-          : ProfileDataUser.map((item, index) => (
-              <div
-                key={index}
-                className={`${
-                  item.style === true
-                    ? "flex flex-col justify-center items-center "
-                    : " grid grid-cols-4 "
-                }${
-                  item.tittle === "Subscription Details" ? `cursor-default` : ``
-                }  gap-2 rounded bg-main border border-border p-4 `}
-              >
-                <div
-                  onClick={(e) => {
-                    if (item.tittle === "Subscription Details") {
-                      setShareOpen((prev) => !prev);
-                    }
-                  }}
-                  className={` ${
-                    item.style === true ? "" : `${item.bg} h-12 w-12 `
-                  } ${
-                    item.tittle === "Subscription Details"
-                      ? `cursor-pointer`
-                      : ``
-                  }   col-span-1 rounded-full flexCol cursor-default  `}
-                >
-                  {item.icon}
-                </div>
-
-                <div className="col-span-3  ">
-                  <p className={`font-bold`}>{item.tittle}</p>
-                  <p
-                    className={`${
-                      item.style === true
-                        ? "text-small text-dryGray"
-                        : "font-bold"
-                    } mt-2 `}
+                  <div
+                    className={`col-span-1 rounded-full h-12 w-12 flexCol ${item.bg} `}
                   >
-                    {item.tittle === "Subscription Details" ? "" : item.text}
-                  </p>
+                    {item.icon}
+                  </div>
 
-                  {item.tittle === "Subscription Details" && (
+                  <div className="col-span-3">
+                    <h2>{item.tittle}</h2>
+                    <p className=" mt-2 font-bold">{item.text}</p>
+                  </div>
+                </div>
+              ))
+            : ProfileDataUser.map((item, index) => (
+                <div
+                  key={index}
+                  className={`${
+                    item.style === true
+                      ? "flex flex-col justify-center items-center "
+                      : " grid grid-cols-4 "
+                  }${
+                    item.tittle === "Subscription Details"
+                      ? `cursor-default`
+                      : ``
+                  }  gap-2 rounded bg-main border border-border p-4 `}
+                >
+                  <div
+                    onClick={(e) => {
+                      if (item.tittle === "Subscription Details") {
+                        setShareOpen((prev) => !prev);
+                      }
+                    }}
+                    className={` ${
+                      item.style === true ? "" : `${item.bg} h-12 w-12 `
+                    } ${
+                      item.tittle === "Subscription Details"
+                        ? `cursor-pointer`
+                        : ``
+                    }   col-span-1 rounded-full flexCol cursor-default  `}
+                  >
+                    {item.icon}
+                  </div>
+
+                  <div className="col-span-3  ">
+                    <p className={`font-bold`}>{item.tittle}</p>
                     <p
                       className={`${
-                        item.style ? "text-small text-dryGray" : "font-bold"
-                      } mt-2`}
+                        item.style === true
+                          ? "text-small text-dryGray"
+                          : "font-bold"
+                      } mt-2 `}
                     >
-                      {item.status}
+                      {item.tittle === "Subscription Details" ? "" : item.text}
                     </p>
-                  )}
+
+                    {item.tittle === "Subscription Details" && (
+                      <p
+                        className={`${
+                          item.style ? "text-small text-dryGray" : "font-bold"
+                        } mt-2`}
+                      >
+                        {item.status}
+                      </p>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
-      </div>
+              ))}
+        </div>
+      ) : (
+        <div className="w-full h-72  lg:h-72 xl:h-96 bg-dry shimmer"></div>
+      )}
       <h3 className="font-medium my-4 text-border">Latest Movies</h3>
 
       <Table
