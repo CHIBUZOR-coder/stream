@@ -57,7 +57,7 @@ const Banner = React.memo(({ setShareOpen }) => {
                 <div className="absolute w-full h-full linearbg top-0 ">
                   <div className="absolute top-[45%] md:top-[20%] left-[5%] flex flex-col gap-2">
                     <h1 className="xl:text-4xl truncate names capitalize font-sans sm:text-2xl text-xl font-bold">
-                      {movie.name}
+                      {movie?.name}
                     </h1>
                     <FlexMovie movie={movie} />
 
