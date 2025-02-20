@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import MovieContext from "../Context/MovieContext";
+import Layout from "../Layout/Layout";
 
 const VerifyEmail = () => {
 
