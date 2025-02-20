@@ -35,6 +35,7 @@ const MovieProvider = ({ children }) => {
   const [orderId, setOrderId] = useState(null);
   const [Reviewed, setReviwed] = useState([]);
   const [Ratingss, setRatings] = useState([]);
+  const [getUser, setGetUser] = useState(false);
 
   const [autoRender, setAutornder] = useState(false);
 
@@ -103,8 +104,6 @@ const MovieProvider = ({ children }) => {
         "https://streambackend-ngow.onrender.com/api/getCategory",
         {
           method: "GET",
-         
-         
         }
       );
 
@@ -115,7 +114,6 @@ const MovieProvider = ({ children }) => {
       const data = await res.json();
       setFetchedCategories(data.data);
       console.log(data);
-      
     } catch (error) {
       console.log(error.message);
     }
@@ -208,6 +206,10 @@ const MovieProvider = ({ children }) => {
     Autentification();
     VeryfySubscriptoin();
     // HandleGetReviews();
+
+    if (isLogin) {
+      setGetUser(true);
+    }
   }, []);
 
   const AllMovies = FetchedMovies;
@@ -836,6 +838,8 @@ const MovieProvider = ({ children }) => {
         setAutornder,
         Result,
         setResult,
+        getUser,
+
         IdUpdate,
         roleCheck,
         setRoleCheck,
@@ -854,6 +858,7 @@ const MovieProvider = ({ children }) => {
         typingSpeed,
         Text,
         charIndex,
+        isLogin,
         index,
         HandleTypewrite,
         setOrderId,

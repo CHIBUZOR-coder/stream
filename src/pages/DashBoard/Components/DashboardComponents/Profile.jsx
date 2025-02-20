@@ -19,6 +19,8 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
     setResult,
     Alert,
     setIsLoading,
+    getUser,
+    isLogin,
   } = useContext(MovieContext);
   const Head = "text-xs text-left text-main font-semibold px-4 py-2 uppercase ";
   const Text = "text-sm  leading-6 whitespace-nowrap px-5 py-3";
@@ -29,8 +31,6 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
   // console.log("favouriteCart:", favouriteCart.favouriteCartMovies.length);
 
   const days = localStorage.getItem("subscription");
-
-
 
   //  console.log("userData:", User);
 
@@ -108,7 +108,6 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
       if (!res.ok) {
         throw new Error(`HTTP error! Status: ${res.status}`);
         console.log("somthing went wrong");
-        
       }
       const data = await res.json();
       console.log("Userdataaaaa:", data);
@@ -185,15 +184,24 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
   };
 
   useEffect(() => {
-    HandleGetUser();
-    HandleGeTSubscription();
+    // HandleGetUser();
+    if (isLogin === true) {
+      HandleGeTSubscription();
+    }
   }, []);
+
+  useEffect(() => {
+    if (getUser === true) {
+      HandleGetUser();
+    }
+
+    // HandleGeTSubscription();
+  }, [getUser]);
 
   useEffect(() => {
     console.log("Reciept:", Reciept);
   }, [Reciept]);
 
- 
   const ProfileData = [
     {
       bg: "bg-orange-600",
