@@ -35,7 +35,6 @@ const MovieProvider = ({ children }) => {
   const [orderId, setOrderId] = useState(null);
   const [Reviewed, setReviwed] = useState([]);
   const [Ratingss, setRatings] = useState([]);
-  const [getUser, setGetUser] = useState(false);
 
   const [autoRender, setAutornder] = useState(false);
 
@@ -43,6 +42,7 @@ const MovieProvider = ({ children }) => {
   const [InactiveStart, setStart] = useState("stop");
   const [FavouriteCartMovies, setFavouriteCartMovies] = useState([]);
   const [roleCheck, setRoleCheck] = useState(false);
+  const [getUser, setGetUser] = useState(false);
 
   const [index, setIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -205,11 +205,11 @@ const MovieProvider = ({ children }) => {
     HandleGetCategories();
     Autentification();
     VeryfySubscriptoin();
-    // HandleGetReviews();
 
-    if (isLogin) {
+    if (isLogin === true) {
       setGetUser(true);
     }
+    // HandleGetReviews();
   }, []);
 
   const AllMovies = FetchedMovies;
@@ -838,8 +838,6 @@ const MovieProvider = ({ children }) => {
         setAutornder,
         Result,
         setResult,
-        getUser,
-
         IdUpdate,
         roleCheck,
         setRoleCheck,
@@ -858,7 +856,6 @@ const MovieProvider = ({ children }) => {
         typingSpeed,
         Text,
         charIndex,
-        isLogin,
         index,
         HandleTypewrite,
         setOrderId,
