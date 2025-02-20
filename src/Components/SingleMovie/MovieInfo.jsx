@@ -65,7 +65,7 @@ const MovieInfo = ({ movie, setShareOpen, setSubOpen, url }) => {
                   className=" w-[80%] h-head bg-dry border border-dry rounded-lg bg-cover bg-center"
                 ></div>
               ) : (
-                <div className="w-full h-64  shimmer"></div>
+                <div className="w-full h-72  lg:h-72 xl:h-96 bg-dry shimmer"></div>
               )}
             </div>
             {/* ****** */}
@@ -86,7 +86,7 @@ const MovieInfo = ({ movie, setShareOpen, setSubOpen, url }) => {
                       allowFullScreen
                     ></iframe>
                   ) : (
-                    <div className="w-full h-[300px] md:h-[340px] shimmer"></div>
+                    <div className="w-full h-[250px] md:h-[340px] shimmer"></div>
                   )}
                 </div>
 
