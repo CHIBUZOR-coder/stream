@@ -318,31 +318,32 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
 
       <h2 className="md:text-xl text-lg text-white  font-bold">Profile</h2>
 
-      <div className="w-full flex justify-center">
-        <div className=" md:w-1/2 w-[80%] flex flex-col justify-center items-center gap-3 p-5 rounded bg-main border border-border cursor-default">
-          <div className="flex justify-center items-center">
-            <img
-              src={`${singleUser && singleUser.image}`}
-              alt="user"
-              className="w-20 h-20 rounded-full object-cover"
-            ></img>
-          </div>
+      {singleUser ? (
+        <div className="w-full flex justify-center">
+          <div className=" md:w-1/2 w-[80%] flex flex-col justify-center items-center gap-3 p-5 rounded bg-main border border-border cursor-default">
+            <div className="flex justify-center items-center">
+              <img
+                src={`${singleUser && singleUser.image}`}
+                alt="user"
+                className="w-20 h-20 rounded-full object-cover"
+              ></img>
+            </div>
 
-          <div className="text-center">
-            <p className="font-semibold">{singleUser && singleUser?.name}</p>
-            <p className="text-sm text-dryGray">
-              {singleUser && singleUser?.email}
-            </p>
-            <p className="text-sm text-dryGray flex items-center justify-center gap-2">
-              <FaPhoneAlt className="text-dryGray" />
-              {singleUser && singleUser.phone}
-            </p>
+            <div className="text-center">
+              <p className="font-semibold">{singleUser && singleUser?.name}</p>
+              <p className="text-sm text-dryGray">
+                {singleUser && singleUser?.email}
+              </p>
+              <p className="text-sm text-dryGray flex items-center justify-center gap-2">
+                <FaPhoneAlt className="text-dryGray" />
+                {singleUser && singleUser.phone}
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-      {/* tittle: User.userInfo.name,
-      text: User.userInfo.email,
-      style: true,  */}
+      ) : (
+        <div className="w-full h-72  lg:h-72 xl:h-96 bg-dry shimmer"></div>
+      )}
 
       {singleUser ? (
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
