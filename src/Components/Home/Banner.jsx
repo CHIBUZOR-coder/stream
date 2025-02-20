@@ -17,13 +17,13 @@ const Banner = React.memo(({ setShareOpen }) => {
   const User = JSON.parse(localStorage.getItem("userInfo"));
 
   // console.log("mov:", AllMovies);
-  const HandleUserCheck = (e) => {
+  const HandleUserCheck = (e, name) => {
     e.preventDefault();
 
     if (User.subscription !== "SUBSCRIBED") {
       setShareOpen((prev) => !prev);
     } else {
-      navigate(`/stream/watch/${movie.name}`);
+      navigate(`/stream/watch/${name}`);
       // console.log("User already Subscribed!");
     }
   };
@@ -54,12 +54,12 @@ const Banner = React.memo(({ setShareOpen }) => {
           {FetchedMovies &&
             FetchedMovies.map((movie) => (
               <SwiperSlide
-                key={movie.id}
+                key={movie?.id}
                 loading="lazy"
                 className="bg-center  bg-cover relative overflow-hidden rounded"
               >
                 <img
-                  src={`${movie.image}`}
+                  src={`${movie?.image}`}
                   className="w-full h-full object-cover"
                   alt=""
                 />
@@ -72,11 +72,11 @@ const Banner = React.memo(({ setShareOpen }) => {
 
                     <div className=" flex items-center gap-4 mt-4">
                       <Link
-                        onClick={(e) => HandleUserCheck(e)}
+                        onClick={(e) => HandleUserCheck(e, movie?.name)}
                         className="bg-subMain hover:text-main transi hover:bg-white text-white px-8 py-3 rounded font-medium names"
                         to={`${
                           User && User.subscription === "SUBSCRIBED"
-                            ? `/watch/${movie.name}`
+                            ? `/watch/${movie?.name}`
                             : ``
                         }`}
                       >

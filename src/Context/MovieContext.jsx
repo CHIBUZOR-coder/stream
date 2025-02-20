@@ -249,7 +249,7 @@ const MovieProvider = ({ children }) => {
     } else {
       console.log("Please Sunscribe to enjoy our services");
     }
-    const planId = 72443;
+    const planId = 72442;
     try {
       const res = await fetch(
         "https://streambackend-ngow.onrender.com/initiate_payment",
