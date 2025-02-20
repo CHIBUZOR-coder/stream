@@ -31,7 +31,7 @@ export default {
       colors: {
         main: "rgba(8, 10, 26, 1)",
         main2: "rgba(8, 10, 26, 0.5)",
-        main3: "rgba(8, 10, 26, 0.85)",
+        main3: "rgba(8, 10, 26, 0.82)",
         main4: "rgb(16, 19, 40, 1)",
         modal: "rgba(8, 10, 26, 0.85)",
         blacktrans: "rgba(0, 0, 0, 0.2)",
