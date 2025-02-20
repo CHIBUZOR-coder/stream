@@ -84,7 +84,7 @@ const VerifyEmail = () => {
         {isLoading ? (
           <div className="bg-white flex justify-center items-center ringg shadow-lg max-w-md text-center rounded-full p-2 h-48 w-48 relative">
             <div className="text-subMain font-semibold animate-pulse">
-              Verifying Payment...
+              Verifying Email...
             </div>
           </div>
         ) : status && status === true ? (
