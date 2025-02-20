@@ -143,9 +143,12 @@ const Register = () => {
               labelFor={"email"}
               indicator={"Email"}
             />
+
+            {/* gg */}
             <Input
               label={"Phone"}
-              placeholder={"Optional"}
+              placeholder={"O9074639302"}
+              required={true}
               type={"text"}
               setter={setPhone}
               setInputVal={setInputVal}

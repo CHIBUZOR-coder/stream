@@ -5,9 +5,11 @@ import "swiper/css/navigation";
 import "aos";
 import "aos/dist/aos.css";
 import Navbar from "./Navbar/Navbar";
-import { MovieProvider } from "./Context/MovieContext";
+import MovieContext, { MovieProvider } from "./Context/MovieContext";
+import { useContext } from "react";
 
 function App() {
+   const { movies } = useContext(MovieContext);
   return (
     <>
       <MovieProvider>

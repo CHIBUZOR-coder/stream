@@ -10,7 +10,6 @@ export const Input = ({
   mainVal,
   indicator,
   lablFor,
-
 }) => {
   return (
     <div className="text-sm w-full">
@@ -25,6 +24,7 @@ export const Input = ({
         className={`w-full mt-2 px-6 p-4 text-white border border-border rounded ${
           bg ? "bg-main" : "bg-dry"
         }`}
+        required={false}
       />
     </div>
   );
