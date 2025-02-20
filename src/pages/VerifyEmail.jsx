@@ -14,7 +14,7 @@ const VerifyEmail = () => {
   const [emojis, setEmojis] = useState([]); // Store emoji objects
   const navigate = useNavigate();
 
-  const verifyEmail = async (token, email) => {
+  const verifyEmail = async (token) => {
     try {
       const response = await fetch(
         "https://streambackend-ngow.onrender.com/verifyEmail",
