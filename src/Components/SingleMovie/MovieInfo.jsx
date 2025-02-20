@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import MovieContext from "../../Context/MovieContext";
 const MovieInfo = ({ movie, setShareOpen, setSubOpen, url }) => {
   // console.log("movie",movie);
-  // const { User } = useContext(MovieContext);
+   const { FetchedMovies } = useContext(MovieContext);
   const User = JSON.parse(localStorage.getItem("userInfo"));
   // console.log("Duser:", User);
   const navigate = useNavigate();
@@ -48,7 +48,7 @@ const MovieInfo = ({ movie, setShareOpen, setSubOpen, url }) => {
           backgroundImage: `url('${movie?.image}')`,
         }}
       >
-        {movie ? (
+        {FetchedMovies ? (
           <>
             {" "}
             <div className="bg-main3  w-full flexCol ">
