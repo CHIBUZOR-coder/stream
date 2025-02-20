@@ -86,7 +86,7 @@ const MovieInfo = ({ movie, setShareOpen, setSubOpen, url }) => {
                       allowFullScreen
                     ></iframe>
                   ) : (
-                    <div className="w-full h-[250px] md:h-[340px] shimmer"></div>
+                    <div className="w-full h-[300px] md:h-[340px] shimmer"></div>
                   )}
                 </div>
 
