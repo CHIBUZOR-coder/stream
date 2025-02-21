@@ -18,7 +18,7 @@ const Login = () => {
   const logAgain = localStorage.getItem("relogin") || null;
   const InactiveLogout = localStorage.getItem("InactiveLogout") || null;
   useEffect(() => {
-    if (InactiveLogout === "true") {
+    if (InactiveLogout === true) {
       setResult(
         Alert(
           false,
@@ -29,7 +29,7 @@ const Login = () => {
         setResult(null);
         localStorage.removeItem("InactiveLogout");
       }, 6000);
-    } else if (logAgain === "true") {
+    } else if (logAgain === true) {
       setResult(Alert(false, "Your session has expired. Please login again"));
       setTimeout(() => {
         setResult(null);

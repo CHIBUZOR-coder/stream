@@ -558,7 +558,7 @@ const MovieProvider = ({ children }) => {
 
         if (res.ok) {
           // Make sure to wait for the response
-          localStorage.setItem("relogin", "true");
+          localStorage.setItem("relogin", true);
 
           setTimeout(() => {
             navigate("/login");
@@ -623,7 +623,7 @@ const MovieProvider = ({ children }) => {
       const data = await res.json();
 
       if (res.ok) {
-        localStorage.setItem("InactiveLogout", "true");
+        localStorage.setItem("InactiveLogout", true);
         setTimeout(() => {
           navigate("/login");
         }, 500);
@@ -666,7 +666,6 @@ const MovieProvider = ({ children }) => {
       const monitorInactivity = setInterval(() => {
         if (activityStatus === false) {
           console.log("Inactive status detected. Triggering logout...");
-          InactiveLogOut();
         } else {
           setActivityStatus(false);
           console.log("active Statua false");

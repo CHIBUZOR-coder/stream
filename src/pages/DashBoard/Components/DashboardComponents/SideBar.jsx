@@ -31,8 +31,9 @@ const SideBar = () => {
       const data = await res.json();
 
       if (res.ok) {
+        localStorage.clear();
         // Make sure to wait for the response
-        // nabvigate("/");
+        nabvigate("/");
         console.log(data);
       } else {
         console.log("Failed to clear cookies. Server returned an error.");
