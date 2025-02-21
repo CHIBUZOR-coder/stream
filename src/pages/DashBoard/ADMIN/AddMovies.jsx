@@ -303,12 +303,14 @@ const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
         Idvalue =
           FetchedMovies &&
           FetchedMovies.find((movie) => movie.name === MovieName);
+        console.log("idval:", Idvalue);
+
+        setMovieId(Idvalue.id);
       }
 
       console.log("IdVal", Idvalue);
 
       if (Idvalue) {
-        setMovieId(Idvalue.id);
       }
     }
   }, [MovieName, FetchedMovies]);
