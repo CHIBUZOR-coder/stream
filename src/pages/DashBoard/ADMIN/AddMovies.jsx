@@ -294,7 +294,7 @@ const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
     setCasts([]);
   };
 
-  console.log("AllM", AllMovies);
+
   useEffect(() => {
     if (MovieName) {
       const Idvalue = FetchedMovies && FetchedMovies.find((movie) => movie.name === MovieName);
