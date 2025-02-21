@@ -21,7 +21,7 @@ const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
     categoryData,
     CategoryId,
     Alert,
-     FetchedMovies,
+    FetchedMovies,
     Result,
   } = useContext(MovieContext);
   const [check, setCheck] = useState(false);
@@ -294,10 +294,17 @@ const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
     setCasts([]);
   };
 
-
+  let Idvalue;
   useEffect(() => {
     if (MovieName) {
-      const Idvalue = FetchedMovies && FetchedMovies.find((movie) => movie.name === MovieName);
+      if (FetchedMovies) {
+        console.log("fetched:", FetchedMovies);
+
+        Idvalue =
+          FetchedMovies &&
+          FetchedMovies.find((movie) => movie.name === MovieName);
+      }
+
       console.log("IdVal", Idvalue);
 
       if (Idvalue) {
