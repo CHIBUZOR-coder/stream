@@ -55,6 +55,58 @@ const Layout = ({ children }) => {
   // console.log(!!"hello"); // true (non-empty string)
   // console.log(!!"");
 
+  // const HandleFetchStart = async (value) => {
+  //   if (!value.trim()) {
+  //     setSearchResult([]); // Clear results if input is empty
+  //     return;
+  //   }
+  //   try {
+  //     const res = await fetch(
+  //       "https://streambackend-ngow.onrender.com/api/getMovies",
+  //       {
+  //         method: "GET",
+  //       }
+  //     );
+  //     const data = await res.json();
+
+  //     if (!res.ok) {
+  //       console.log(data);
+  //       throw new Error("Failed to fetch search results");
+  //     }
+
+  //     // setSearchResult(
+  //     //   data.filter((movie) => {
+  //     //     return (
+  //     //       value &&
+  //     //       movie &&
+  //     //       movie.name &&
+  //     //       movie.name.toLowerCase().includes(value)
+  //     //     );
+  //     //   })
+  //     // );
+  //     console.log("Fetched data:", data);
+
+  //     setSearchResult(
+  //       data.data.filter((movie) =>
+  //         movie?.name?.toLowerCase().includes(value.toLowerCase())
+  //       ) ||
+  //         data.data.filter((movie) =>
+  //           movie?.cast
+  //             ?.filter((item) => item?.cast?.name)
+  //             .toLowerCase()
+  //             .includes(value.toLowerCase())
+  //         )
+  //     );
+  //     // toLowerCase().includes(value.toLowerCase());
+  //     // console.log(result);
+  //   } catch (error) {
+  //     console.error("Error fetching search results:", error.message);
+  //     setError("Failed to fetch search results. Please try again.");
+  //   }
+  // };
+
+
+
   const HandleFetchStart = async (value) => {
     if (!value.trim()) {
       setSearchResult([]); // Clear results if input is empty
@@ -74,30 +126,28 @@ const Layout = ({ children }) => {
         throw new Error("Failed to fetch search results");
       }
 
-      // setSearchResult(
-      //   data.filter((movie) => {
-      //     return (
-      //       value &&
-      //       movie &&
-      //       movie.name &&
-      //       movie.name.toLowerCase().includes(value)
-      //     );
-      //   })
-      // );
-      console.log("Fetched data:", data);
+      const lowerValue = value.toLowerCase();
+      // Filter movies where the movie name or any cast member's name includes the search term
+      const filteredResults = data.data.filter((movie) => {
+        const nameMatch = movie?.name?.toLowerCase().includes(lowerValue);
 
-      setSearchResult(
-        data.data.filter((movie) =>
-          movie?.name?.toLowerCase().includes(value.toLowerCase())
-        )
-      );
+        const castMatch =
+          movie?.casts &&
+          movie.casts.some((item) =>
+            item?.cast?.name?.toLowerCase().includes(lowerValue)
+          );
 
-      // console.log(result);
+        return nameMatch || castMatch;
+      });
+
+      setSearchResult(filteredResults);
+      console.log("Filtered search results:", filteredResults);
     } catch (error) {
       console.error("Error fetching search results:", error.message);
-      setError("Failed to fetch search results. Please try again.");
+      // Optionally, set an error state if needed
     }
   };
+
 
   const HandleInputChange = (e) => {
     e.preventDefault();
