@@ -21,13 +21,13 @@ const MobileFooter = ({ setMenuOpen }) => {
     dash = "/login";
   } else {
     dash =
-      userData.role === "ADMIN"
-        ? `/dash/ad/${userData.userInfo.name}`
-        : userData.role === "USER"
-        ? `/dash/us/${userData.userInfo.name}`
+      User.role === "ADMIN"
+        ? `/dash/ad/${User.name}`
+        : User.role === "USER"
+        ? `/dash/us/${User.name}`
         : "NOT";
 
-    fav = `/favouritpage/${userData.userInfo.name}`;
+    fav = `/favouritpage/${User.name}`;
   }
   return (
     <>
