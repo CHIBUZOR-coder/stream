@@ -162,7 +162,7 @@ const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
 
     try {
       const res = await fetch(
-        "https://streambackend-ngow.onrender.com/api/createMovies",
+        "https://streambackend-nbbc.onrender.com/api/createMovies",
         {
           method: "POST",
           headers: {
@@ -195,14 +195,14 @@ const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
       }, 5000);
 
       setMovieTitle("");
-      setMovieHour("");
-      setDuration("");
+      // setMovieHour("");
+      // setDuration("");
       setPopularr();
-      setMovieYear("");
-      YearDuration("");
+      // setMovieYear("");
+      // YearDuration("");
       setRatingRange("");
       setDescription("");
-      setPrice("");
+      // setPrice("");
       setTrailer("");
       setMovieCategoryId("");
     }
@@ -223,7 +223,7 @@ const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
 
     try {
       const res = await fetch(
-        "https://streambackend-ngow.onrender.com/api/addCast",
+        "https://streambackend-nbbc.onrender.com/api/addCast",
         {
           method: "POST",
           body: formData,
