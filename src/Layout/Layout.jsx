@@ -105,8 +105,6 @@ const Layout = ({ children }) => {
   //   }
   // };
 
-
-
   const HandleFetchStart = async (value) => {
     if (!value.trim()) {
       setSearchResult([]); // Clear results if input is empty
@@ -133,9 +131,11 @@ const Layout = ({ children }) => {
 
         const castMatch =
           movie?.casts &&
-          movie.casts.some((item) =>
-            item?.cast?.name?.toLowerCase().includes(lowerValue)
-          );
+          movie.casts.some((item) => {
+            console.log("Checking Cast Item:", item);
+            console.log("Cast Name:", item?.cast?.name);
+            return item?.cast?.name?.toLowerCase().includes(lowerValue);
+          });
 
         return nameMatch || castMatch;
       });
@@ -147,7 +147,6 @@ const Layout = ({ children }) => {
       // Optionally, set an error state if needed
     }
   };
-
 
   const HandleInputChange = (e) => {
     e.preventDefault();
