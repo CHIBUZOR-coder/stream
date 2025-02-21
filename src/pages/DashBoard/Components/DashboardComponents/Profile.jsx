@@ -47,9 +47,9 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
     // console.log("userData.role:", userData.role);
 
     if (userData.role === "ADMIN") {
-      UserLink = `https://streambackend-ngow.onrender.com/getAdmin/${name}`;
+      UserLink = `https://streambackend-nbbc.onrender.com/getAdmin/${name}`;
     } else if (userData.role === "USER") {
-      UserLink = `https://streambackend-ngow.onrender.com/getUser/${name}`;
+      UserLink = `https://streambackend-nbbc.onrender.com/getUser/${name}`;
     } else {
       UserLink = "nothing";
     }
@@ -153,7 +153,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
 
     try {
       const res = await fetch(
-        "https://streambackend-ngow.onrender.com/Unsubscribe",
+        "https://streambackend-nbbc.onrender.com/Unsubscribe",
         {
           method: "POST",
           headers: {
