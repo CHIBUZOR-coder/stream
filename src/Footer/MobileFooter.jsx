@@ -16,7 +16,7 @@ const MobileFooter = ({ setMenuOpen }) => {
   let dash;
   let fav;
 
-  if (!userData) {
+  if (!User) {
     // console.log("No user info yet");
     dash = "/login";
   } else {
