@@ -337,7 +337,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
                   className="w-12 h-12 rounded-full flex items-center justify-center text-white text-lg font-bold uppercase"
                   style={{ backgroundColor: bgColor }}
                 >
-                  {name ? name.charAt(0).toUpperCase() : "?"}
+                  {singleUser ? singleUser?.name.charAt(0).toUpperCase() : "?"}E
                 </div>
               )}
 
