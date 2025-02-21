@@ -62,7 +62,7 @@ const MovieProvider = ({ children }) => {
   const HandleGetMovies = async () => {
     try {
       const res = await fetch(
-        "https://streambackend-ngow.onrender.com/api/getMovies",
+        "https://streambackend-nbbc.onrender.com/api/getMovies",
         {
           method: "GET",
         }
@@ -101,7 +101,7 @@ const MovieProvider = ({ children }) => {
   const HandleGetCategories = async () => {
     try {
       const res = await fetch(
-        "https://streambackend-ngow.onrender.com/api/getCategory",
+        "https://streambackend-nbbc.onrender.com/api/getCategory",
         {
           method: "GET",
         }
@@ -123,7 +123,7 @@ const MovieProvider = ({ children }) => {
   const Autentification = async () => {
     try {
       const res = await fetch(
-        "https://streambackend-ngow.onrender.com/api/protectedRoute",
+        "https://streambackend-nbbc.onrender.com/api/protectedRoute",
         {
           method: "GET",
 
@@ -161,7 +161,7 @@ const MovieProvider = ({ children }) => {
   const VeryfySubscriptoin = async () => {
     try {
       const res = await fetch(
-        "https://streambackend-ngow.onrender.com/subscriptionCheck",
+        "https://streambackend-nbbc.onrender.com/subscriptionCheck",
         {
           method: "GET",
 
@@ -254,7 +254,7 @@ const MovieProvider = ({ children }) => {
     const planId = 72442;
     try {
       const res = await fetch(
-        "https://streambackend-ngow.onrender.com/initiate_payment",
+        "https://streambackend-nbbc.onrender.com/initiate_payment",
         {
           method: "POST",
 

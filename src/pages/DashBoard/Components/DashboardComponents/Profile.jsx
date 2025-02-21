@@ -123,7 +123,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
   const HandleGeTSubscription = async () => {
     try {
       const res = await fetch(
-        `https://streambackend-ngow.onrender.com/subscriptionDetails/${name}`,
+        `https://streambackend-nbbc.onrender.com/subscriptionDetails/${name}`,
         {
           method: "GET",
           credentials: "include",

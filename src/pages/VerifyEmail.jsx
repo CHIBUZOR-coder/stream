@@ -17,7 +17,7 @@ const VerifyEmail = () => {
   const verifyEmail = async (token) => {
     try {
       const response = await fetch(
-        "https://streambackend-ngow.onrender.com/verifyEmail",
+        "https://streambackend-nbbc.onrender.com/verifyEmail",
         {
           method: "POST",
 

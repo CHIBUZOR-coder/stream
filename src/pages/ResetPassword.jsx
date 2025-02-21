@@ -22,7 +22,7 @@ const ResetPassword = () => {
 
     try {
       const res = await fetch(
-        `https://streambackend-ngow.onrender.com/resetPassword/${token}`,
+        `https://streambackend-nbbc.onrender.com/resetPassword/${token}`,
         {
           method: "POST",
           headers: {

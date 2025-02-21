@@ -108,7 +108,7 @@ const Thankyou = () => {
   const createReciept = async (transaction_id, orderId) => {
     try {
       const response = await fetch(
-        "https://streambackend-ngow.onrender.com/verify",
+        "https://streambackend-nbbc.onrender.com/verify",
         {
           method: "POST",
 

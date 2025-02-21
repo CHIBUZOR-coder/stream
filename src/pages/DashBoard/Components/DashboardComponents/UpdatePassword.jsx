@@ -20,7 +20,7 @@ const UpdatePassword = ({ setIsLoading, setResult, setLoadDiaplay }) => {
 
     try {
       const res = await fetch(
-        "https://streambackend-ngow.onrender.com/updatepassword",
+        "https://streambackend-nbbc.onrender.com/updatepassword",
         {
           method: "PUT",
           headers: {

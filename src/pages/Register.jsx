@@ -37,10 +37,10 @@ const Register = () => {
 
     try {
       const res = await fetch(
-        "https://streambackend-ngow.onrender.com/api/register",
+        "https://streambackend-nbbc.onrender.com/api/register",
         {
           method: "POST",
-        
+
           body: formData,
         }
       );

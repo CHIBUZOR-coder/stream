@@ -121,7 +121,7 @@ const Dashboard = () => {
     try {
       let data;
       const res = await fetch(
-        "https://streambackend-v5u9.onrender.com/api/updateMovie",
+        "https://streambackend-nbbc.onrender.com/api/updateMovie",
         {
           method: "PUT",
           headers: {
@@ -162,7 +162,7 @@ const Dashboard = () => {
     try {
       let data;
       const res = await fetch(
-        "https://streambackend-v5u9.onrender.com/api/deletSingleMovie",
+        "https://streambackend-nbbc.onrender.com/api/deletSingleMovie",
         {
           method: "DELETE",
           headers: {
@@ -203,7 +203,7 @@ const Dashboard = () => {
 
     try {
       const res = await fetch(
-        "https://streambackend-ngow.onrender.com/api/createCartegory",
+        "https://streambackend-nbbc.onrender.com/api/createCartegory",
         {
           method: "POST",
           headers: {
@@ -241,7 +241,7 @@ const Dashboard = () => {
     // e.preventDefault();
     try {
       const res = await fetch(
-        "https://streambackend-ngow.onrender.com/api/updateCategory",
+        "https://streambackend-nbbc.onrender.com/api/updateCategory",
         {
           method: "PUT",
           headers: {

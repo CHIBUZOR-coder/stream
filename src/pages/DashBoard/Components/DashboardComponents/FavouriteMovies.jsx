@@ -29,7 +29,7 @@ const Favourite = ({ Handlegeneral }) => {
   const GetFavouriteCart = async () => {
     try {
       const res = await fetch(
-        `https://streambackend-v5u9.onrender.com/getfacouriteCart/${id}`,
+        `https://streambackend-nbbc.onrender.com/getfacouriteCart/${id}`,
         {
           method: "GET",
           headers: {

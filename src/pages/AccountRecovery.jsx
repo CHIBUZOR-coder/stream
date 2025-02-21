@@ -22,7 +22,7 @@ const AccountRecovery = () => {
 
     try {
       const res = await fetch(
-        "https://streambackend-ngow.onrender.com/accountRecovery",
+        "https://streambackend-nbbc.onrender.com/accountRecovery",
         {
           method: "POST",
           headers: {
