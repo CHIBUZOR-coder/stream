@@ -156,7 +156,7 @@ const MovieRates = ({ movie }) => {
           <p className="text-xl text-text font-semibold">Reviews (56)</p>
           <div
             className={`w-full flex flex-col bg-main gap-6 rounded-lg md:p-12 p-6  ${
-              starUsers ? " h-[550px]" : ""
+              starUsers ? "h-[550px]" : "h-auto"
             } overflow-y-scroll `}
           >
             {starUsers && starUsers.length > 0 ? (
