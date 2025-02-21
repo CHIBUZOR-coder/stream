@@ -193,7 +193,7 @@ const MovieRates = ({ movie }) => {
               </>
             ) : (
               <div className=" flex flex-col w-full grid-cols-12 gap-5  bg-dry p-4 border border-x-gray-800  rounded-lg">
-                <p className="font-semibold text-white">No user revie</p>
+                <p className="font-semibold text-white">No user review</p>
               </div>
             )}
           </div>
