@@ -294,28 +294,19 @@ const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
     setCasts([]);
   };
 
-  let Idvalue;
-  useEffect(() => {
-    if (MovieName) {
-      if (FetchedMovies) {
-        console.log("mname:", MovieName);
+ useEffect(() => {
+   if (MovieName && FetchedMovies?.length) {
+     const Idvalue = FetchedMovies.find((movie) => movie?.name === MovieName);
+     console.log("idval:", Idvalue);
 
-        console.log("fetched:", FetchedMovies);
+     if (Idvalue) {
+       setMovieId(Idvalue.id);
+     } else {
+       console.warn("Movie not found in fetched data!");
+     }
+   }
+ }, [MovieName, FetchedMovies]);
 
-        Idvalue =
-          FetchedMovies &&
-          FetchedMovies.find((movie) => movie?.name === MovieName);
-        console.log("idval:", Idvalue);
-
-        setMovieId(Idvalue && Idvalue.id);
-      }
-
-      console.log("IdVal", Idvalue);
-
-      if (Idvalue) {
-      }
-    }
-  }, [MovieName, FetchedMovies]);
 
   useEffect(() => {
     console.log("movieName", MovieName);
