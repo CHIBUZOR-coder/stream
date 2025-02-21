@@ -15,20 +15,20 @@ const MobileFooter = ({ setMenuOpen }) => {
   const { FavouriteCount } = useContext(MovieContext);
   let dash;
   let fav;
-  if (!User) {
+
+  if (!userData) {
     // console.log("No user info yet");
     dash = "/login";
   } else {
     dash =
-      User.role === "ADMIN"
-        ? `/dash/ad/${User.name}`
-        : User.role === "USER"
-        ? `/dash/us/${User.name}`
+      userData.role === "ADMIN"
+        ? `/dash/ad/${userData.userInfo.name}`
+        : userData.role === "USER"
+        ? `/dash/us/${userData.userInfo.name}`
         : "NOT";
 
-    fav = `/favouritpage/${User.name}`;
+    fav = `/favouritpage/${userData.userInfo.name}`;
   }
-
   return (
     <>
       <div className="flex-btn   ">
@@ -73,7 +73,7 @@ const MobileFooter = ({ setMenuOpen }) => {
                 }
                 to={`${dash}`}
               >
-                {User ? <TbTableDashed /> : <FaUserCircle />}
+                {User && User.role ? <TbTableDashed /> : <FaUserCircle />}
               </NavLink>
 
               <button
