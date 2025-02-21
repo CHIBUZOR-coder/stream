@@ -298,11 +298,13 @@ const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
   useEffect(() => {
     if (MovieName) {
       if (FetchedMovies) {
+        console.log("mname:", MovieName);
+
         console.log("fetched:", FetchedMovies);
 
         Idvalue =
           FetchedMovies &&
-          FetchedMovies.find((movie) => movie.name === MovieName);
+          FetchedMovies.find((movie) => movie?.name === MovieName);
         console.log("idval:", Idvalue);
 
         setMovieId(Idvalue && Idvalue.id);
