@@ -346,8 +346,6 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
                 alt="user"
                 className="w-20 h-20 rounded-full object-cover"
               ></img> */}
-
-              
             </div>
 
             <div className="text-center">
