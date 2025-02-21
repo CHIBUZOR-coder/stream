@@ -154,11 +154,7 @@ const MovieRates = ({ movie }) => {
         {/* Review */}
         <div className="col-span-3 flex flex-col gap-6">
           <p className="text-xl text-text font-semibold">Reviews (56)</p>
-          <div
-            className={`w-full flex flex-col bg-main gap-6 rounded-lg md:p-12 p-6  ${
-              starUsers ? "h-[550px]" : "h-auto"
-            } overflow-y-scroll `}
-          >
+          <div className={`w-full flex flex-col bg-main gap-6 rounded-lg md:p-12 p-2   h-[550px] overflow-y-scroll `}>
             {starUsers && starUsers.length > 0 ? (
               <>
                 {starUsers &&
@@ -193,7 +189,7 @@ const MovieRates = ({ movie }) => {
               </>
             ) : (
               <div className=" flex flex-col w-full grid-cols-12 gap-5  bg-dry p-4 border border-x-gray-800  rounded-lg">
-                <p className="font-semibold text-white">No user review</p>
+                <p className="font-semibold text-white">No user revie</p>
               </div>
             )}
           </div>
