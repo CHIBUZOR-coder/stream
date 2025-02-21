@@ -326,7 +326,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
         <div className="w-full flex justify-center">
           <div className=" md:w-1/2 w-[80%] flex flex-col justify-center items-center gap-3 p-5 rounded bg-main border border-border cursor-default">
             <div className="flex justify-center items-center">
-              {singleUser && !singleUser?.image ? (
+              {singleUser && singleUser?.image === "" ? (
                 <img
                   src={`${singleUser && singleUser?.image}`}
                   alt="user"
