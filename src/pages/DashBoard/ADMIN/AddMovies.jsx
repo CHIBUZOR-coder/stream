@@ -135,7 +135,7 @@ const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
   //Add Movie
   const HandeleAddMovie = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
+    // setIsLoading(true);
     setLoadDiaplay("Creating Movies...");
     const formData = new FormData();
 
