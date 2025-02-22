@@ -540,7 +540,7 @@ const MovieProvider = ({ children }) => {
       const expTime = decodedToken.exp * 1000; // Convert fromconds
       let currentTime = Date.now(); // Get current time in milliseconds
 
-      // Check if the token is expired
+      // Check if the token is expireddd
       if (expTime < currentTime) {
         console.log(
           "Token has expired. Token has expired. Logging out user..."
