@@ -17,7 +17,7 @@ const Navbar = ({ HandleInputChange, Text }) => {
   // console.log(userData.userInfo);
   //
   // const dash = userData ? `/stream/dash/${userData.usrid}` : "/stream/login";
-  const logStatus = localStorage.getItem("IsLogin");
+ 
   let dash;
   let fav;
   if (!userData) {

@@ -13,21 +13,28 @@ const MobileFooter = ({ setMenuOpen }) => {
   const hover = "hover:text-subMain transi text-white relative";
   const Hover = ({ isActive }) => (isActive ? "text-subMain  " : hover);
   const { FavouriteCount } = useContext(MovieContext);
+  
+
+
+  const userData = JSON.parse(localStorage.getItem("UserInfo")) || null;
+  // console.log(userData.userInfo);
+  //
+  // const dash = userData ? `/stream/dash/${userData.usrid}` : "/stream/login";
+
   let dash;
   let fav;
-
-  if (!User) {
+  if (!userData) {
     // console.log("No user info yet");
     dash = "/login";
   } else {
     dash =
-      User.role === "ADMIN"
-        ? `/dash/ad/${User.name}`
-        : User.role === "USER"
-        ? `/dash/us/${User.name}`
+      userData.role === "ADMIN"
+        ? `/dash/ad/${userData.userInfo.name}`
+        : userData.role === "USER"
+        ? `/dash/us/${userData.userInfo.name}`
         : "NOT";
 
-    fav = `/favouritpage/${User.name}`;
+    fav = `/favouritpage/${userData.userInfo.name}`;
   }
   return (
     <>
