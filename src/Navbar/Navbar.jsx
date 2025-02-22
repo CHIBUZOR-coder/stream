@@ -47,7 +47,7 @@ const Navbar = ({ HandleInputChange, Text }) => {
 
       fav = userData ? `/favouritpage/${userData.userInfo.name}` : "/login";
     }
-  }, [userData]);
+  }, [userData, logDetail]);
   // console.log("dash:", dash);
   useEffect(() => {
     console.log("logDetail has changed", logDetail);
