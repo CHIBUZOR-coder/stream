@@ -84,7 +84,7 @@ const Login = () => {
         localStorage.setItem("relogin", false);
         Autentification();
         setTimeout(() => {
-          AutentificationII();
+          // AutentificationII();
 
           navigate("/");
         }, 500);
@@ -138,7 +138,7 @@ const Login = () => {
         localStorage.setItem("IsLogin", true);
 
         setTimeout(() => {
-          AutentificationII();
+          // AutentificationII();
           navigate("/");
         }, 500);
       }
@@ -164,7 +164,6 @@ const Login = () => {
 
     if (logDetail === true) {
       AutentificationII();
-      Autentification();
     }
   }, [logDetail]);
 

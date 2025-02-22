@@ -20,7 +20,7 @@ const MobileFooter = ({ setMenuOpen }) => {
   // const dash = userData ? `/stream/dash/${userData.usrid}` : "/stream/login";
 
   useEffect(() => {
-    console.log("logDetail after", logDetail);
+    console.log("logDetail changed in footer", logDetail);
   }, [logDetail]);
 
   let dash;
