@@ -13,26 +13,48 @@ const Navbar = ({ HandleInputChange, Text }) => {
   const { FavouriteCount, logDetail } = useContext(MovieContext);
   // console.log("favaCount",FavouriteCount);
   const [access, setAccess] = useState(false);
-  const userData = JSON.parse(localStorage.getItem("UserInfo")) || null;
+  // const userData = JSON.parse(localStorage.getItem("UserInfo")) || null;
   // console.log(userData.userInfo);
 
   // const dash = userData ? `/stream/dash/${userData.usrid}` : "/stream/login";
 
-  let dash;
-  let fav;
-  if (!userData) {
-    // console.log("No user info yet");
-    dash = "/login";
-  } else {
-    dash =
-      userData.role === "ADMIN"
-        ? `/dash/ad/${userData.userInfo.name}`
-        : userData.role === "USER"
-        ? `/dash/us/${userData.userInfo.name}`
-        : "NOT";
+  // let dash;
+  // let fav;
+  // if (!userData) {
+  //   // console.log("No user info yet");
+  //   dash = "/login";
+  // } else {
+  //   dash =
+  //     userData.role === "ADMIN"
+  //       ? `/dash/ad/${userData.userInfo.name}`
+  //       : userData.role === "USER"
+  //       ? `/dash/us/${userData.userInfo.name}`
+  //       : "NOT";
 
-    fav = `/favouritpage/${userData.userInfo.name}`;
-  }
+  //   fav = `/favouritpage/${userData.userInfo.name}`;
+  // }
+  const [userData, setUserData] = useState(
+    JSON.parse(localStorage.getItem("UserInfo")) || null
+  );
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setUserData(JSON.parse(localStorage.getItem("UserInfo")) || null);
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+    return () => window.removeEventListener("storage", handleStorageChange);
+  }, [logDetail]);
+
+  let dash = userData
+    ? userData.role === "ADMIN"
+      ? `/dash/ad/${userData.userInfo.name}`
+      : userData.role === "USER"
+      ? `/dash/us/${userData.userInfo.name}`
+      : "NOT"
+    : "/login";
+
+  let fav = userData ? `/favouritpage/${userData.userInfo.name}` : "/login";
 
   useEffect(() => {
     console.log("logDetail has changed", logDetail);
