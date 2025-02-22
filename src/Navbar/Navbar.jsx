@@ -37,9 +37,7 @@ const Navbar = ({ HandleInputChange, Text }) => {
     }
   }
 
-  useEffect(() => {
-    console.log("logDetail has changed", logDetail);
-  }, [logDetail]);
+
   // console.log("dash:", dash);
 
   const hover = "hover:text-subMain transi text-white relative";
