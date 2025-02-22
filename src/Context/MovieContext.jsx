@@ -155,40 +155,40 @@ const MovieProvider = ({ children }) => {
     }
   };
 
-   const AutentificationToken = async () => {
-     try {
-       const res = await fetch(
-         "https://streambackend-nbbc.onrender.com/api/protectedRouteToken",
-         {
-           method: "GET",
+  const AutentificationToken = async () => {
+    try {
+      const res = await fetch(
+        "https://streambackend-nbbc.onrender.com/api/protectedRouteToken",
+        {
+          method: "GET",
 
-           headers: {
-             "Content-Type": "application/json", // Correct header
-           },
-           // Optional, depending on your API
+          headers: {
+            "Content-Type": "application/json", // Correct header
+          },
+          // Optional, depending on your API
 
-           credentials: "include", // Include cookies in the request
-         }
-       );
-       const data = await res.json();
+          credentials: "include", // Include cookies in the request
+        }
+      );
+      const data = await res.json();
 
-       if (!res.ok) {
-         const errorData = data;
-         throw new Error(errorData.message || "Authorization failed");
-       }
+      if (!res.ok) {
+        const errorData = data;
+        throw new Error(errorData.message || "Authorization failed");
+      }
 
-       if (isLogin) {
-         localStorage.setItem("Token", JSON.stringify(data.userInfoII));
-       }
+      if (isLogin) {
+        localStorage.setItem("Token", JSON.stringify(data.userInfoII));
+      }
 
-       console.log(data);
+      console.log(data);
 
-       // Assuming setUserRole is defined
-       // Assuming setUserDetails is defined
-     } catch (error) {
-       console.error("Error in Authentification:", error.message);
-     }
-   };
+      // Assuming setUserRole is defined
+      // Assuming setUserDetails is defined
+    } catch (error) {
+      console.error("Error in Authentification:", error.message);
+    }
+  };
 
   // Ensures it runs only once on mount
 
@@ -240,6 +240,7 @@ const MovieProvider = ({ children }) => {
     HandleGetCategories();
     // Autentification();
     VeryfySubscriptoin();
+      //  AutentificationToken();
 
     if (isLogin === true) {
       setGetUser(true);
@@ -547,6 +548,7 @@ const MovieProvider = ({ children }) => {
     if (isLogin) {
       console.log("calling Authentification");
       Autentification();
+      AutentificationToken();
     }
   }, [isLogin]);
 

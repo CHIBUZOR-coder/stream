@@ -120,7 +120,7 @@ const Login = () => {
       console.log(data);
 
       setTimeout(() => {
-        AutentificationToken();
+     
         navigate("/");
       }, 500);
 
