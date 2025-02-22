@@ -20,6 +20,7 @@ const Login = () => {
     Alert,
     AutentificationII,
     Autentification,
+    logDetail,
   } = useContext(MovieContext);
 
   const logAgain = localStorage.getItem("relogin") || null;
