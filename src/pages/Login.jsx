@@ -19,14 +19,31 @@ const Login = () => {
     Alert,
     Autentification,
     AutentificationToken,
-    
   } = useContext(MovieContext);
 
   const logAgain = localStorage.getItem("relogin") || null;
-  console.log("logAgain", logAgain);
-  
   const InactiveLogout = localStorage.getItem("InactiveLogout") || null;
+  if (logAgain === true) {
+    setResult(Alert(false, "Your session has expired. Please login again"));
+    setTimeout(() => {
+      setResult(null);
+      localStorage.removeItem("relogin");
+    }, 6000);
+  } else if (InactiveLogout === true) {
+    setResult(
+      Alert(
+        false,
+        "You have been logged out due to inactivity. Please login again"
+      )
+    );
+    setTimeout(() => {
+      setResult(null);
+      localStorage.removeItem("InactiveLogout");
+    }, 6000);
+  }
+
   useEffect(() => {
+    console.log("logAgain from effect", logAgain);
     if (InactiveLogout === true) {
       setResult(
         Alert(
@@ -123,7 +140,6 @@ const Login = () => {
       console.log(data);
 
       setTimeout(() => {
-     
         navigate("/");
       }, 500);
 
