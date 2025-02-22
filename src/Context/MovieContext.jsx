@@ -598,8 +598,8 @@ const MovieProvider = ({ children }) => {
           localStorage.setItem("relogin", true);
 
           setTimeout(() => {
-            // window.location.href = "/";
-            navigate("/")
+             window.location.href = "/login";
+         
           }, 500);
 
           console.log(data);
@@ -665,7 +665,7 @@ const MovieProvider = ({ children }) => {
         localStorage.clear();
         console.log(data);
         setTimeout(() => {
-          window.location.href = "/";
+          window.location.href = "/login";
         }, 500);
       } else {
         console.log("Failed to clear cookies. Server returned an error.", data);
