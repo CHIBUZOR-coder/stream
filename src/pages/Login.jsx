@@ -89,7 +89,7 @@ const Login = () => {
           navigate("/");
         }, 500);
       }
-      Autentification();
+
       console.log(data);
 
       const favouriteCart = JSON.parse(localStorage.getItem("FavouriteCart"));
