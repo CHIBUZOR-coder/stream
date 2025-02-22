@@ -10,48 +10,38 @@ import { TbTableDashed } from "react-icons/tb";
 import { use } from "react";
 
 const Navbar = ({ HandleInputChange, Text }) => {
-  const { FavouriteCount, logDetail, userData } = useContext(MovieContext);
+  const { FavouriteCount } = useContext(MovieContext);
   // console.log("favaCount",FavouriteCount);
+  const logStatus = localStorage.getItem("IsLogin") || null;
   const [access, setAccess] = useState(false);
-  // const userData = JSON.parse(localStorage.getItem("UserInfo")) || null;
-  // console.log(userData.userInfo);
+  const userData = JSON.parse(localStorage.getItem("UserInfo")) || null;
+  console.log(userData.userInfo);
 
-  // const dash = userData ? `/stream/dash/${userData.usrid}` : "/stream/login";
+  let dash = userData ? `/stream/dash/${userData.usrid}` : "/stream/login";
 
-  // let dash;
-  // let fav;
-  // if (!userData) {
-  //   // console.log("No user info yet");
-  //   dash = "/login";
-  // } else {
-  //   dash =
-  //     userData.role === "ADMIN"
-  //       ? `/dash/ad/${userData.userInfo.name}`
-  //       : userData.role === "USER"
-  //       ? `/dash/us/${userData.userInfo.name}`
-  //       : "NOT";
-
-  //   fav = `/favouritpage/${userData.userInfo.name}`;
-  // }
-  let dash;
   let fav;
-  useEffect(() => {
-    if (userData) {
-      dash = userData
-        ? userData.role === "ADMIN"
+  if (!userData) {
+    // console.log("No user info yet");
+    dash = "/login";
+  } else {
+    const logStatus = localStorage.getItem("IsLogin") || null;
+    if (logStatus === true) {
+      dash =
+        userData && userData.role === "ADMIN"
           ? `/dash/ad/${userData.userInfo.name}`
           : userData.role === "USER"
           ? `/dash/us/${userData.userInfo.name}`
-          : "NOT"
-        : "/login";
+          : "NOT";
 
-      fav = userData ? `/favouritpage/${userData.userInfo.name}` : "/login";
+      fav = `/favouritpage/${userData.userInfo.name}`;
     }
-  }, [userData, logDetail]);
-  // console.log("dash:", dash);
+  }
+
   useEffect(() => {
     console.log("logDetail has changed", logDetail);
   }, [logDetail]);
+  // console.log("dash:", dash);
+
   const hover = "hover:text-subMain transi text-white relative";
   const Hover = ({ isActive }) => (isActive ? "text-subMain" : hover);
   return (
