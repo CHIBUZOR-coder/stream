@@ -579,7 +579,7 @@ const MovieProvider = ({ children }) => {
         localStorage.clear();
         // Send a request to the backend to clear the HTTP-only cookie
         const res = await fetch(
-          "https://streambackend-ngow.onrender.com/clear-cookies",
+          "https://streambackend-nbbc.onrender.com/clear-cookies",
           {
             method: "POST",
 
@@ -645,7 +645,7 @@ const MovieProvider = ({ children }) => {
     try {
       localStorage.clear();
       const res = await fetch(
-        "https://streambackend-ngow.onrender.com/clear-cookies",
+        "https://streambackend-nbbc.onrender.com/clear-cookies",
         {
           method: "POST",
 
@@ -748,7 +748,7 @@ const MovieProvider = ({ children }) => {
         let StoredFavouriteCart =
           JSON.parse(localStorage.getItem("FavouriteCart")) || [];
         const res = await fetch(
-          "https://streambackend-ngow.onrender.com/addfavourite",
+          "https://streambackend-nbbc.onrender.com/addfavourite",
           {
             method: "POST",
 
