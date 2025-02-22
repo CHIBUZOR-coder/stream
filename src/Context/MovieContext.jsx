@@ -203,7 +203,7 @@ const MovieProvider = ({ children }) => {
   useEffect(() => {
     HandleGetMovies();
     HandleGetCategories();
-    Autentification();
+    // Autentification();
     VeryfySubscriptoin();
 
     if (isLogin === true) {
