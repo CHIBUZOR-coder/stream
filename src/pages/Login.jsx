@@ -73,11 +73,12 @@ const Login = () => {
         setResult(Alert(false, data.message));
         console.log(data);
       } else {
+         localStorage.setItem("IsLogin", true);
         setResult(Alert(true, data.message));
         setIsLoading(false);
+        console.log("logDetail before:", logDetail);
         setLogDetail(true);
         localStorage.setItem("UserInfo", JSON.stringify(data));
-        localStorage.setItem("IsLogin", true);
         localStorage.setItem("relogin", false);
 
         setTimeout(() => {
@@ -157,6 +158,8 @@ const Login = () => {
   }, [Email]);
 
   useEffect(() => {
+    console.log("logDetail after:", logDetail);
+
     if (logDetail === true) {
       AutentificationII();
       Autentification();

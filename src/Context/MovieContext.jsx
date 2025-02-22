@@ -37,7 +37,6 @@ const MovieProvider = ({ children }) => {
   const [Reviewed, setReviwed] = useState([]);
   const [Ratingss, setRatings] = useState([]);
 
-
   const [autoRender, setAutornder] = useState(false);
 
   const [activityStatus, setActivityStatus] = useState(false);
@@ -182,6 +181,7 @@ const MovieProvider = ({ children }) => {
 
       if (isLogin) {
         localStorage.setItem("userInfoII", JSON.stringify(data.userInfoII));
+    
       }
 
       console.log(data);
