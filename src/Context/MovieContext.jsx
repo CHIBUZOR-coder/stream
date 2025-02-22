@@ -243,7 +243,7 @@ const MovieProvider = ({ children }) => {
     HandleGetMovies();
     HandleGetCategories();
     Autentification();
-    AutentificationE();
+
     VeryfySubscriptoin();
     checkTokenExpiry();
 
@@ -883,7 +883,7 @@ const MovieProvider = ({ children }) => {
         HandleGetCategories,
         HandleGetMovies,
         Autentification,
-        AutentificationII,
+   
         autoRender,
         setAutornder,
         Result,
