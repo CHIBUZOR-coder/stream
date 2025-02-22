@@ -70,7 +70,12 @@ const Login = () => {
         setIsLoading(false);
         localStorage.setItem("UserInfo", JSON.stringify(data));
         localStorage.setItem("IsLogin", true);
+        localStorage.setItem("relogin", false);
         setLogDetails(true);
+        setTimeout(() => {
+         AutentificationII();
+          navigate("/");
+        }, 500);
       }
 
       console.log(data);

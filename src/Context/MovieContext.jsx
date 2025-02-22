@@ -171,8 +171,7 @@ const MovieProvider = ({ children }) => {
         }
       );
       const data = await res.json();
-      console.log("II:",data);
-      
+      console.log("II:", data);
 
       if (!res.ok) {
         const errorData = data;
@@ -668,8 +667,10 @@ const MovieProvider = ({ children }) => {
         localStorage.setItem("InactiveLogout", true);
         setTimeout(() => {
           navigate("/login");
+          localStorage.clear();
         }, 500);
-        localStorage.clear();
+
+        localStorage.setItem("InactiveLogout", true);
         console.log(data);
       } else {
         console.log("Failed to clear cookies. Server returned an error.", data);
