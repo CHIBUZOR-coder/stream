@@ -7,23 +7,14 @@ import MovieContext from "../Context/MovieContext";
 import { RiLoader2Fill } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 const Login = () => {
+  const { setInputVal } = useContext(MovieContext);
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [Result, setResult] = useState();
   const [loadDisplay, setLoadDiaplay] = useState("");
-
   const navigate = useNavigate();
-  const {
-    issLoading,
-    setInputVal,
-    setIsLoading,
-    Alert,
-    AutentificationII,
-    Autentification,
-    logDetail,
-    setLogDetail,
-    setUserData,
-  } = useContext(MovieContext);
+  const { issLoading, setIsLoading, Alert, Autentification } =
+    useContext(MovieContext);
 
   const logAgain = localStorage.getItem("relogin") || null;
   const InactiveLogout = localStorage.getItem("InactiveLogout") || null;
@@ -68,26 +59,17 @@ const Login = () => {
         }),
       });
       const data = await res.json();
-      console.log("logDetail before:", logDetail);
+
       if (!res.ok) {
         setIsLoading(false);
         setResult(Alert(false, data.message));
         console.log(data);
       } else {
-        setLogDetail(true);
-        localStorage.setItem("IsLogin", true);
         setResult(Alert(true, data.message));
         setIsLoading(false);
-        Autentification();
-        setUserData(JSON.parse(localStorage.getItem("UserInfo")) || null);
         localStorage.setItem("UserInfo", JSON.stringify(data));
-        localStorage.setItem("relogin", false);
+        localStorage.setItem("IsLogin", true);
         Autentification();
-        setTimeout(() => {
-          // AutentificationII();
-
-          navigate("/");
-        }, 500);
       }
 
       console.log(data);
@@ -136,9 +118,7 @@ const Login = () => {
 
       if (data.success === true) {
         localStorage.setItem("IsLogin", true);
-
         setTimeout(() => {
-          // AutentificationII();
           navigate("/");
         }, 500);
       }
