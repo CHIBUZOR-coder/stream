@@ -17,21 +17,25 @@ const Navbar = ({ HandleInputChange, Text }) => {
   // console.log(userData.userInfo);
 
   // const dash = userData ? `/stream/dash/${userData.usrid}` : "/stream/login";
-
+  const logStatus = localStorage.getItem("IsLogin");
   let dash;
   let fav;
   if (!userData) {
     // console.log("No user info yet");
     dash = "/login";
   } else {
-    dash =
-      userData.role === "ADMIN"
-        ? `/dash/ad/${userData.userInfo.name}`
-        : userData.role === "USER"
-        ? `/dash/us/${userData.userInfo.name}`
-        : "NOT";
+    if (logStatus === true) {
+      dash =
+        userData.role === "ADMIN"
+          ? `/dash/ad/${userData.userInfo.name}`
+          : userData.role === "USER"
+          ? `/dash/us/${userData.userInfo.name}`
+          : "NOT";
 
-    fav = `/favouritpage/${userData.userInfo.name}`;
+      fav = `/favouritpage/${userData.userInfo.name}`;
+    } else {
+      dash = "/login";
+    }
   }
 
   // console.log("dash:", dash);
