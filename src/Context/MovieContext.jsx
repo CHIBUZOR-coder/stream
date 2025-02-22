@@ -553,7 +553,7 @@ const MovieProvider = ({ children }) => {
   }, [isLogin]);
 
   const Time = 1 * 60 * 1000;
-  const InactiveTime = 20 * 60 * 1000;
+  const InactiveTime = 2 * 60 * 1000;
   let activityEvents = ["mousemove", "keydown", "mousedown", "touchstart"];
   //Logout
   const checkTokenExpiry = async () => {
