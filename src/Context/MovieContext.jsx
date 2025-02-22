@@ -174,7 +174,6 @@ const MovieProvider = ({ children }) => {
         }
       );
       const data = await res.json();
-      console.log("II:", data);
 
       if (!res.ok) {
         const errorData = data;
@@ -182,10 +181,9 @@ const MovieProvider = ({ children }) => {
       }
 
       if (isLogin) {
-        localStorage.setItem("userInfoII", JSON.stringify(data.userInfoII));
+        localStorage.setItem("Info", JSON.stringify(data.userInfoII));
       }
-
-      console.log(data);
+      console.log("II:", data);
 
       // Assuming setUserRole is defined
       // Assuming setUserDetails is defined
@@ -243,7 +241,6 @@ const MovieProvider = ({ children }) => {
     HandleGetMovies();
     HandleGetCategories();
     Autentification();
-    AutentificationII();
     VeryfySubscriptoin();
     checkTokenExpiry();
 
@@ -252,6 +249,10 @@ const MovieProvider = ({ children }) => {
     }
     // HandleGetReviews();
   }, []);
+
+  useEffect(() => {
+    AutentificationII();
+  }, [logDetail]);
 
   const AllMovies = FetchedMovies;
   const categoryDataa = FetchedCategories;
