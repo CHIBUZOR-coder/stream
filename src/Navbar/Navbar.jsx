@@ -10,33 +10,46 @@ import { TbTableDashed } from "react-icons/tb";
 import { use } from "react";
 
 const Navbar = ({ HandleInputChange, Text }) => {
-  const { FavouriteCount, logDetail } = useContext(MovieContext);
+  const { FavouriteCount, logDetail, userData } = useContext(MovieContext);
   // console.log("favaCount",FavouriteCount);
   const [access, setAccess] = useState(false);
-  const userData = JSON.parse(localStorage.getItem("UserInfo")) || null;
+  // const userData = JSON.parse(localStorage.getItem("UserInfo")) || null;
   // console.log(userData.userInfo);
 
   // const dash = userData ? `/stream/dash/${userData.usrid}` : "/stream/login";
 
+  // let dash;
+  // let fav;
+  // if (!userData) {
+  //   // console.log("No user info yet");
+  //   dash = "/login";
+  // } else {
+  //   dash =
+  //     userData.role === "ADMIN"
+  //       ? `/dash/ad/${userData.userInfo.name}`
+  //       : userData.role === "USER"
+  //       ? `/dash/us/${userData.userInfo.name}`
+  //       : "NOT";
+
+  //   fav = `/favouritpage/${userData.userInfo.name}`;
+  // }
   let dash;
   let fav;
-  if (!userData) {
-    // console.log("No user info yet");
-    dash = "/login";
-  } else {
-    dash =
-      userData.role === "ADMIN"
+  useEffect(() => {
+    dash = userData
+      ? userData.role === "ADMIN"
         ? `/dash/ad/${userData.userInfo.name}`
         : userData.role === "USER"
         ? `/dash/us/${userData.userInfo.name}`
-        : "NOT";
+        : "NOT"
+      : "/login";
 
-    fav = `/favouritpage/${userData.userInfo.name}`;
-  }
+    fav = userData ? `/favouritpage/${userData.userInfo.name}` : "/login";
 
-  useEffect(() => {
-    console.log("logDetail has changed", logDetail);
-  }, [logDetail]);
+    useEffect(() => {
+      console.log("logDetail has changed", logDetail);
+    }, [logDetail]);
+  }, [userData]);
   // console.log("dash:", dash);
 
   const hover = "hover:text-subMain transi text-white relative";
@@ -137,7 +150,7 @@ const Navbar = ({ HandleInputChange, Text }) => {
               to={`${dash}`}
             >
               {/* <FaUserCircle /> */}
-              {userData  ? <TbTableDashed /> : <FaUserCircle />}
+              {userData && userData.role ? <TbTableDashed /> : <FaUserCircle />}
             </NavLink>
             <NavLink
               className={({ isActive }) =>

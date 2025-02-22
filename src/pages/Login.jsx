@@ -22,6 +22,7 @@ const Login = () => {
     Autentification,
     logDetail,
     setLogDetail,
+    setUserData,
   } = useContext(MovieContext);
 
   const logAgain = localStorage.getItem("relogin") || null;
@@ -73,11 +74,12 @@ const Login = () => {
         setResult(Alert(false, data.message));
         console.log(data);
       } else {
-         localStorage.setItem("IsLogin", true);
+        localStorage.setItem("IsLogin", true);
         setResult(Alert(true, data.message));
         setIsLoading(false);
         console.log("logDetail before:", logDetail);
         setLogDetail(true);
+        setUserData(JSON.parse(localStorage.getItem("UserInfo")) || null);
         localStorage.setItem("UserInfo", JSON.stringify(data));
         localStorage.setItem("relogin", false);
 

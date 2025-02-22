@@ -22,7 +22,7 @@ const MovieContext = createContext();
 
 const MovieProvider = ({ children }) => {
   // fetchied
-  const staticUsers = userData;
+
   const [CategoryId, setCategoryId] = useState(null);
   const [FetchedMovies, setFetchedMovies] = useState(null);
   const [FetchedCategories, setFetchedCategories] = useState(null);
@@ -36,6 +36,8 @@ const MovieProvider = ({ children }) => {
   const [orderId, setOrderId] = useState(null);
   const [Reviewed, setReviwed] = useState([]);
   const [Ratingss, setRatings] = useState([]);
+  const [userData, setUserData] = useState(null);
+  // JSON.parse(localStorage.getItem("UserInfo")) || null;
 
   const [autoRender, setAutornder] = useState(false);
 
@@ -181,7 +183,6 @@ const MovieProvider = ({ children }) => {
 
       if (isLogin) {
         localStorage.setItem("userInfoII", JSON.stringify(data.userInfoII));
-    
       }
 
       console.log(data);
@@ -855,7 +856,7 @@ const MovieProvider = ({ children }) => {
         HandleActiveChange,
         display,
         setDisplay,
-        Users,
+
         // Userr,
         currentModal,
         setCurrentModal,
@@ -877,7 +878,7 @@ const MovieProvider = ({ children }) => {
         issLoading,
         setIsLoading,
         checkTokenExpiry,
-        staticUsers,
+        setUserData,
         HandleGetCategories,
         HandleGetMovies,
         Autentification,
@@ -912,6 +913,7 @@ const MovieProvider = ({ children }) => {
         setRatings,
         logDetail,
         setLogDetail,
+        userData,
       }}
     >
       {children}
