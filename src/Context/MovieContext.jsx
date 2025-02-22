@@ -205,6 +205,7 @@ const MovieProvider = ({ children }) => {
     HandleGetCategories();
     Autentification();
     VeryfySubscriptoin();
+    checkTokenExpiry();
 
     if (isLogin === true) {
       setGetUser(true);
