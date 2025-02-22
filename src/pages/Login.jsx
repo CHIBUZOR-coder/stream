@@ -78,7 +78,7 @@ const Login = () => {
         localStorage.setItem("IsLogin", true);
         setResult(Alert(true, data.message));
         setIsLoading(false);
-
+        Autentification();
         setUserData(JSON.parse(localStorage.getItem("UserInfo")) || null);
         localStorage.setItem("UserInfo", JSON.stringify(data));
         localStorage.setItem("relogin", false);
@@ -158,8 +158,6 @@ const Login = () => {
   useEffect(() => {
     console.log("email", Email);
   }, [Email]);
-
- 
 
   useEffect(() => {
     console.log("pass", Password);
