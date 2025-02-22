@@ -22,12 +22,11 @@ const MovieContext = createContext();
 
 const MovieProvider = ({ children }) => {
   // fetchied
-
+  const staticUsers = userData;
   const [CategoryId, setCategoryId] = useState(null);
   const [FetchedMovies, setFetchedMovies] = useState(null);
   const [FetchedCategories, setFetchedCategories] = useState(null);
   const [issLoading, setIsLoading] = useState(false);
-  const [logDetail, setLogDetail] = useState(false);
   const isLogin = localStorage.getItem("IsLogin") || false;
   const Users = userData;
   const User = JSON.parse(localStorage.getItem("UserInfo")) || null;
@@ -36,8 +35,6 @@ const MovieProvider = ({ children }) => {
   const [orderId, setOrderId] = useState(null);
   const [Reviewed, setReviwed] = useState([]);
   const [Ratingss, setRatings] = useState([]);
-  const [userData, setUserData] = useState(null);
-  // JSON.parse(localStorage.getItem("UserInfo")) || null;
 
   const [autoRender, setAutornder] = useState(false);
 
@@ -158,40 +155,6 @@ const MovieProvider = ({ children }) => {
     }
   };
 
-  const AutentificationII = async () => {
-    try {
-      const res = await fetch(
-        "https://streambackend-nbbc.onrender.com/api/protectedRouteII",
-        {
-          method: "GET",
-
-          headers: {
-            "Content-Type": "application/json", // Correct header
-          },
-          // Optional, depending on your API
-
-          credentials: "include", // Include cookies in the request
-        }
-      );
-      const data = await res.json();
-
-      if (!res.ok) {
-        const errorData = data;
-        throw new Error(errorData.message || "Authorization failed");
-      }
-
-      if (isLogin) {
-        localStorage.setItem("Info", JSON.stringify(data.userInfoII));
-      }
-      console.log("II:", data);
-
-      // Assuming setUserRole is defined
-      // Assuming setUserDetails is defined
-    } catch (error) {
-      console.error("Error in Authentification:", error.message);
-    }
-  };
-
   // Ensures it runs only once on mount
 
   //Veryfy SAubscription
@@ -242,17 +205,12 @@ const MovieProvider = ({ children }) => {
     HandleGetCategories();
     Autentification();
     VeryfySubscriptoin();
-    checkTokenExpiry();
 
     if (isLogin === true) {
       setGetUser(true);
     }
     // HandleGetReviews();
   }, []);
-
-  useEffect(() => {
-    AutentificationII();
-  }, [logDetail]);
 
   const AllMovies = FetchedMovies;
   const categoryDataa = FetchedCategories;
@@ -565,14 +523,12 @@ const MovieProvider = ({ children }) => {
     console.log("starting Logout...");
 
     try {
-      const userInfo = JSON.parse(localStorage.getItem("userInfoII")); // Get userInfo from localStorage
+      const userInfo = JSON.parse(localStorage.getItem("userInfo")); // Get userInfo from localStorage
       if (!userInfo) {
         console.log("userInfo not found");
-        localStorage.removeItem("userInfo");
+        localStorage.clear();
         return;
       }
-
-      console.log("userInfo not found");
 
       const expTime = userInfo.exp * 1000; // Convert exp from seconds to milliseconds
       let currentTime = Date.now(); // Get current time in milliseconds
@@ -583,9 +539,10 @@ const MovieProvider = ({ children }) => {
           "Token has expired. Token has expired. Logging out user..."
         );
 
+        localStorage.clear();
         // Send a request to the backend to clear the HTTP-only cookie
         const res = await fetch(
-          "https://streambackend-nbbc.onrender.com/clear-cookies",
+          "https://streambackend-ngow.onrender.com/clear-cookies",
           {
             method: "POST",
 
@@ -601,7 +558,6 @@ const MovieProvider = ({ children }) => {
 
         if (res.ok) {
           // Make sure to wait for the response
-          localStorage.clear(); // Clear all localStorage items
           localStorage.setItem("relogin", true);
 
           setTimeout(() => {
@@ -652,7 +608,7 @@ const MovieProvider = ({ children }) => {
     try {
       localStorage.clear();
       const res = await fetch(
-        "https://streambackend-nbbc.onrender.com/clear-cookies",
+        "https://streambackend-ngow.onrender.com/clear-cookies",
         {
           method: "POST",
 
@@ -667,15 +623,11 @@ const MovieProvider = ({ children }) => {
       const data = await res.json();
 
       if (res.ok) {
-        localStorage.clear();
         localStorage.setItem("InactiveLogout", true);
-        localStorage.removeItem("relogin");
         setTimeout(() => {
           navigate("/login");
-          localStorage.clear();
         }, 500);
-
-        localStorage.setItem("InactiveLogout", true);
+        localStorage.clear();
         console.log(data);
       } else {
         console.log("Failed to clear cookies. Server returned an error.", data);
@@ -714,8 +666,6 @@ const MovieProvider = ({ children }) => {
       const monitorInactivity = setInterval(() => {
         if (activityStatus === false) {
           console.log("Inactive status detected. Triggering logout...");
-          InactiveLogOut();
-          console.log("active Statua false");
         } else {
           setActivityStatus(false);
           console.log("active Statua false");
@@ -857,7 +807,7 @@ const MovieProvider = ({ children }) => {
         HandleActiveChange,
         display,
         setDisplay,
-
+        Users,
         // Userr,
         currentModal,
         setCurrentModal,
@@ -879,11 +829,10 @@ const MovieProvider = ({ children }) => {
         issLoading,
         setIsLoading,
         checkTokenExpiry,
-        setUserData,
+        staticUsers,
         HandleGetCategories,
         HandleGetMovies,
         Autentification,
-        AutentificationII,
         autoRender,
         setAutornder,
         Result,
@@ -912,9 +861,6 @@ const MovieProvider = ({ children }) => {
         HandleSubscribe,
         Ratingss,
         setRatings,
-        logDetail,
-        setLogDetail,
-        userData,
       }}
     >
       {children}
