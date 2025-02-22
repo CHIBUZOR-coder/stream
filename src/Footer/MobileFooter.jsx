@@ -80,7 +80,7 @@ const MobileFooter = ({ setMenuOpen }) => {
                 }
                 to={`${dash}`}
               >
-                {User && User.role ? <TbTableDashed /> : <FaUserCircle />}
+                {userData ? <TbTableDashed /> : <FaUserCircle />}
               </NavLink>
 
               <button
