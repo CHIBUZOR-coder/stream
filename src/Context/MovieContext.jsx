@@ -531,6 +531,8 @@ const MovieProvider = ({ children }) => {
         return;
       }
 
+      console.log("userInfo found");
+      localStorage.clear();
       const expTime = userInfo.exp * 1000; // Convert exp from seconds to milliseconds
       let currentTime = Date.now(); // Get current time in milliseconds
 
@@ -539,7 +541,6 @@ const MovieProvider = ({ children }) => {
         console.log(
           "Token has expired. Token has expired. Logging out user..."
         );
-
 
         // Send a request to the backend to clear the HTTP-only cookie
         const res = await fetch(
@@ -558,7 +559,6 @@ const MovieProvider = ({ children }) => {
         const data = await res.json();
 
         if (res.ok) {
-                  localStorage.clear();
           // Make sure to wait for the response
           localStorage.setItem("relogin", true);
 
