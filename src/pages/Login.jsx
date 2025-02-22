@@ -46,6 +46,11 @@ const Login = () => {
     }
   }, []);
 
+  console.log("Result:", Result);
+  use(() => {
+    console.log("Result:", Result);
+  }, [Result]);
+
   const HandleLogin = async (e) => {
     e.preventDefault();
 
