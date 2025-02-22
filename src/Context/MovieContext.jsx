@@ -611,7 +611,7 @@ const MovieProvider = ({ children }) => {
     try {
       localStorage.clear();
       const res = await fetch(
-        "https://streambackend-ngow.onrender.com/clear-cookies",
+        "https://streambackend-nbbc.onrender.com/clear-cookies",
         {
           method: "POST",
 
@@ -626,6 +626,7 @@ const MovieProvider = ({ children }) => {
       const data = await res.json();
 
       if (res.ok) {
+        localStorage.clear();
         localStorage.setItem("InactiveLogout", true);
         setTimeout(() => {
           navigate("/login");
