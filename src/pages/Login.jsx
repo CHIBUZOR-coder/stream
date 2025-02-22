@@ -68,7 +68,7 @@ const Login = () => {
         }),
       });
       const data = await res.json();
-    console.log("logDetail before:", logDetail);
+      console.log("logDetail before:", logDetail);
       if (!res.ok) {
         setIsLoading(false);
         setResult(Alert(false, data.message));
@@ -82,7 +82,7 @@ const Login = () => {
         setUserData(JSON.parse(localStorage.getItem("UserInfo")) || null);
         localStorage.setItem("UserInfo", JSON.stringify(data));
         localStorage.setItem("relogin", false);
-
+        Autentification();
         setTimeout(() => {
           AutentificationII();
 
