@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BsCollectionPlayFill, BsFillSearchHeartFill } from "react-icons/bs";
 import { FaUserCircle } from "react-icons/fa";
 import { FaHeartCircleCheck } from "react-icons/fa6";
@@ -10,7 +10,7 @@ import { TbTableDashed } from "react-icons/tb";
 import { use } from "react";
 
 const Navbar = ({ HandleInputChange, Text }) => {
-  const { FavouriteCount } = useContext(MovieContext);
+  const { FavouriteCount, logDetails } = useContext(MovieContext);
   // console.log("favaCount",FavouriteCount);
   const [access, setAccess] = useState(false);
   const userData = JSON.parse(localStorage.getItem("UserInfo")) || null;
@@ -20,19 +20,23 @@ const Navbar = ({ HandleInputChange, Text }) => {
 
   let dash;
   let fav;
-  if (!userData) {
-    // console.log("No user info yet");
-    dash = "/login";
-  } else {
-    dash =
-      userData.role === "ADMIN"
-        ? `/dash/ad/${userData.userInfo.name}`
-        : userData.role === "USER"
-        ? `/dash/us/${userData.userInfo.name}`
-        : "NOT";
+  useEffect(() => {
+    if (logDetails === true) {
+      if (!userData) {
+        // console.log("No user info yet");
+        dash = "/login";
+      } else {
+        dash =
+          userData.role === "ADMIN"
+            ? `/dash/ad/${userData.userInfo.name}`
+            : userData.role === "USER"
+            ? `/dash/us/${userData.userInfo.name}`
+            : "NOT";
 
-    fav = `/favouritpage/${userData.userInfo.name}`;
-  }
+        fav = `/favouritpage/${userData.userInfo.name}`;
+      }
+    }
+  }, [logDetails]);
 
   // console.log("dash:", dash);
 

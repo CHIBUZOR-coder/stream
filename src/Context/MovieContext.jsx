@@ -27,6 +27,7 @@ const MovieProvider = ({ children }) => {
   const [FetchedMovies, setFetchedMovies] = useState(null);
   const [FetchedCategories, setFetchedCategories] = useState(null);
   const [issLoading, setIsLoading] = useState(false);
+  const [logDetails, setLogDetails] = useState(false);
   const isLogin = localStorage.getItem("IsLogin") || false;
   const Users = userData;
   const User = JSON.parse(localStorage.getItem("UserInfo")) || null;
@@ -171,8 +172,7 @@ const MovieProvider = ({ children }) => {
         }
       );
       const data = await res.json();
-      console.log("II:",data);
-      
+      console.log("II:", data);
 
       if (!res.ok) {
         const errorData = data;
@@ -666,12 +666,13 @@ const MovieProvider = ({ children }) => {
       if (res.ok) {
         localStorage.clear();
         localStorage.setItem("InactiveLogout", true);
+        localStorage.removeItem("relogin");
         setTimeout(() => {
           navigate("/login");
-                localStorage.clear();
+          localStorage.clear();
         }, 500);
-  
-         localStorage.setItem("InactiveLogout", true);
+
+        localStorage.setItem("InactiveLogout", true);
         console.log(data);
       } else {
         console.log("Failed to clear cookies. Server returned an error.", data);
@@ -908,6 +909,7 @@ const MovieProvider = ({ children }) => {
         HandleSubscribe,
         Ratingss,
         setRatings,
+        logDetails,
       }}
     >
       {children}

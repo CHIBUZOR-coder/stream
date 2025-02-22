@@ -7,15 +7,20 @@ import MovieContext from "../Context/MovieContext";
 import { RiLoader2Fill } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 const Login = () => {
-  const { setInputVal } = useContext(MovieContext);
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [Result, setResult] = useState();
   const [loadDisplay, setLoadDiaplay] = useState("");
-  const [logDetails, setLogDetails] = useState(false);
+
   const navigate = useNavigate();
-  const { issLoading, setIsLoading, Alert, AutentificationII } =
-    useContext(MovieContext);
+  const {
+    issLoading,
+    setInputVal,
+    setIsLoading,
+    Alert,
+    AutentificationII,
+    Autentification,
+  } = useContext(MovieContext);
 
   const logAgain = localStorage.getItem("relogin") || null;
   const InactiveLogout = localStorage.getItem("InactiveLogout") || null;
@@ -74,10 +79,11 @@ const Login = () => {
         setLogDetails(true);
         setTimeout(() => {
           AutentificationII();
+
           navigate("/");
         }, 500);
       }
-
+      Autentification();
       console.log(data);
 
       const favouriteCart = JSON.parse(localStorage.getItem("FavouriteCart"));
@@ -150,6 +156,7 @@ const Login = () => {
   useEffect(() => {
     if (logDetails === true) {
       AutentificationII();
+      Autentification();
     }
   }, [logDetails]);
 
