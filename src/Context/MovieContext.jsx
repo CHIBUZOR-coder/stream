@@ -171,6 +171,8 @@ const MovieProvider = ({ children }) => {
         }
       );
       const data = await res.json();
+      console.log("II:",data);
+      
 
       if (!res.ok) {
         const errorData = data;
@@ -178,7 +180,7 @@ const MovieProvider = ({ children }) => {
       }
 
       if (isLogin) {
-        localStorage.setItem("userInfoII", JSON.stringify(data.userInfo));
+        localStorage.setItem("userInfoII", JSON.stringify(data.userInfoII));
       }
 
       console.log(data);
