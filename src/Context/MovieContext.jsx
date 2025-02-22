@@ -699,15 +699,15 @@ const MovieProvider = ({ children }) => {
       }
 
       // Check inactivity and log out if `activityStatus` becomes false
-      console.log(" Detecting inactive status or trying to set active status to false");
+      console.log(
+        " Detecting inactive status or trying to set active status to false"
+      );
       const monitorInactivity = setInterval(() => {
         if (activityStatus === false) {
           console.log("Inactive status detected. Triggering logout...");
-           InactiveLogOut(); 
+          InactiveLogOut();
         } else {
-          setActivityStatus(false);
-          console.log("active Statua false");
-          console.log("activ", activityStatus);
+          console.log("User is active");
         }
       }, InactiveTime); // Check every 1 second
 
