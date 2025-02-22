@@ -116,10 +116,11 @@ const Login = () => {
       localStorage.setItem("UserInfo", JSON.stringify(data));
       localStorage.setItem("IsLogin", true);
       Autentification();
-      AutentificationToken();
+
       console.log(data);
 
       setTimeout(() => {
+        AutentificationToken();
         navigate("/");
       }, 500);
 
