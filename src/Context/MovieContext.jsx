@@ -155,6 +155,41 @@ const MovieProvider = ({ children }) => {
     }
   };
 
+  const AutentificationII = async () => {
+    try {
+      const res = await fetch(
+        "https://streambackend-nbbc.onrender.com/api/protectedRouteII",
+        {
+          method: "GET",
+
+          headers: {
+            "Content-Type": "application/json", // Correct header
+          },
+          // Optional, depending on your API
+
+          credentials: "include", // Include cookies in the request
+        }
+      );
+      const data = await res.json();
+
+      if (!res.ok) {
+        const errorData = data;
+        throw new Error(errorData.message || "Authorization failed");
+      }
+
+      if (isLogin) {
+        localStorage.setItem("userInfoII", JSON.stringify(data.userInfo));
+      }
+
+      console.log(data);
+
+      // Assuming setUserRole is defined
+      // Assuming setUserDetails is defined
+    } catch (error) {
+      console.error("Error in Authentification:", error.message);
+    }
+  };
+
   // Ensures it runs only once on mount
 
   //Veryfy SAubscription
@@ -204,6 +239,7 @@ const MovieProvider = ({ children }) => {
     HandleGetMovies();
     HandleGetCategories();
     Autentification();
+    AutentificationII();
     VeryfySubscriptoin();
     checkTokenExpiry();
 
@@ -524,7 +560,7 @@ const MovieProvider = ({ children }) => {
     console.log("starting Logout...");
 
     try {
-      const userInfo = JSON.parse(localStorage.getItem("userInfo")); // Get userInfo from localStorage
+      const userInfo = JSON.parse(localStorage.getItem("userInfoII")); // Get userInfo from localStorage
       if (!userInfo) {
         console.log("userInfo not found");
         localStorage.removeItem("userInfo");
@@ -670,6 +706,8 @@ const MovieProvider = ({ children }) => {
       const monitorInactivity = setInterval(() => {
         if (activityStatus === false) {
           console.log("Inactive status detected. Triggering logout...");
+          InactiveLogOut();
+          console.log("active Statua false");
         } else {
           setActivityStatus(false);
           console.log("active Statua false");
@@ -837,6 +875,7 @@ const MovieProvider = ({ children }) => {
         HandleGetCategories,
         HandleGetMovies,
         Autentification,
+        AutentificationII,
         autoRender,
         setAutornder,
         Result,

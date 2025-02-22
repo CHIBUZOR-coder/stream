@@ -13,7 +13,7 @@ const Login = () => {
   const [Result, setResult] = useState();
   const [loadDisplay, setLoadDiaplay] = useState("");
   const navigate = useNavigate();
-  const { issLoading, setIsLoading, Alert,  Autentification } =
+  const { issLoading, setIsLoading, Alert, AutentificationII } =
     useContext(MovieContext);
 
   const logAgain = localStorage.getItem("relogin") || null;
@@ -69,7 +69,7 @@ const Login = () => {
         setIsLoading(false);
         localStorage.setItem("UserInfo", JSON.stringify(data));
         localStorage.setItem("IsLogin", true);
-        Autentification();
+        AutentificationII();
       }
 
       console.log(data);
