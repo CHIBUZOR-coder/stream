@@ -598,8 +598,7 @@ const MovieProvider = ({ children }) => {
           localStorage.setItem("relogin", true);
 
           setTimeout(() => {
-             window.location.href = "/login";
-         
+            window.location.href = "/login";
           }, 500);
 
           console.log(data);
@@ -661,8 +660,8 @@ const MovieProvider = ({ children }) => {
       const data = await res.json();
 
       if (res.ok) {
-        localStorage.setItem("InactiveLogout", true);
         localStorage.clear();
+        localStorage.setItem("InactiveLogout", true);
         console.log(data);
         setTimeout(() => {
           window.location.href = "/login";
