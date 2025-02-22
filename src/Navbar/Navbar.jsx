@@ -20,22 +20,22 @@ const Navbar = ({ HandleInputChange, Text }) => {
 
   let dash;
   let fav;
-  if (!userData) {
-    // console.log("No user info yet");
-    dash = "/login";
-  } else {
-    dash =
-      userData.role === "ADMIN"
-        ? `/dash/ad/${userData.userInfo.name}`
-        : userData.role === "USER"
-        ? `/dash/us/${userData.userInfo.name}`
-        : "NOT";
-
-    fav = `/favouritpage/${userData.userInfo.name}`;
-  }
 
   useEffect(() => {
     console.log("logDetail has changed", logDetail);
+    if (!userData) {
+      // console.log("No user info yet");
+      dash = "/login";
+    } else {
+      dash =
+        userData.role === "ADMIN"
+          ? `/dash/ad/${userData.userInfo.name}`
+          : userData.role === "USER"
+          ? `/dash/us/${userData.userInfo.name}`
+          : "NOT";
+
+      fav = `/favouritpage/${userData.userInfo.name}`;
+    }
   }, [logDetail]);
   // console.log("dash:", dash);
 
