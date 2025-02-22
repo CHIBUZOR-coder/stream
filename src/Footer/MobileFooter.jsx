@@ -12,14 +12,16 @@ const MobileFooter = ({ setMenuOpen }) => {
   const User = JSON.parse(localStorage.getItem("userInfo"));
   const hover = "hover:text-subMain transi text-white relative";
   const Hover = ({ isActive }) => (isActive ? "text-subMain  " : hover);
-  const { FavouriteCount } = useContext(MovieContext);
-  
-
+  const { FavouriteCount, logDetail } = useContext(MovieContext);
 
   const userData = JSON.parse(localStorage.getItem("UserInfo")) || null;
   // console.log(userData.userInfo);
   //
   // const dash = userData ? `/stream/dash/${userData.usrid}` : "/stream/login";
+
+  useEffect(() => {
+    console.log("logDetail after", logDetail);
+  }, [logDetail]);
 
   let dash;
   let fav;

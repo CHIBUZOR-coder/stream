@@ -68,7 +68,7 @@ const Login = () => {
         }),
       });
       const data = await res.json();
-
+    console.log("logDetail before:", logDetail);
       if (!res.ok) {
         setIsLoading(false);
         setResult(Alert(false, data.message));
@@ -78,7 +78,6 @@ const Login = () => {
         localStorage.setItem("IsLogin", true);
         setResult(Alert(true, data.message));
         setIsLoading(false);
-        console.log("logDetail before:", logDetail);
 
         setUserData(JSON.parse(localStorage.getItem("UserInfo")) || null);
         localStorage.setItem("UserInfo", JSON.stringify(data));

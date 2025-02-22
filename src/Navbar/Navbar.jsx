@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BsCollectionPlayFill, BsFillSearchHeartFill } from "react-icons/bs";
 import { FaUserCircle } from "react-icons/fa";
 import { FaHeartCircleCheck } from "react-icons/fa6";
@@ -17,7 +17,9 @@ const Navbar = ({ HandleInputChange, Text }) => {
   // console.log(userData.userInfo);
   //
   // const dash = userData ? `/stream/dash/${userData.usrid}` : "/stream/login";
- 
+  // useEffect(() => {
+  //   console.log("logDetails after", logDetail);
+  // }, [logDetail]);
   let dash;
   let fav;
   if (!userData) {
