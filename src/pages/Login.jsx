@@ -20,7 +20,7 @@ const Login = () => {
     Autentification,
     AutentificationToken,
   } = useContext(MovieContext);
-  const logged = localStorage.getItem("userInfo") || null;
+
   const logAgain = localStorage.getItem("relogin") || null;
   const InactiveLogout = localStorage.getItem("InactiveLogout") || null;
   useEffect(() => {

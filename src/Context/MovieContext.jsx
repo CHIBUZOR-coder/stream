@@ -240,7 +240,7 @@ const MovieProvider = ({ children }) => {
     HandleGetCategories();
     // Autentification();
     VeryfySubscriptoin();
-      //  AutentificationToken();
+    //  AutentificationToken();
 
     if (isLogin === true) {
       setGetUser(true);
@@ -560,7 +560,7 @@ const MovieProvider = ({ children }) => {
     console.log("starting Logout...");
 
     try {
-      const userInfo = JSON.parse(localStorage.getItem("userInfo")); // Get userInfo from localStorage
+      const userInfo = JSON.parse(localStorage.getItem("Token")); // Get userInfo from localStorage
       if (!userInfo) {
         console.log("userInfo not found");
         localStorage.clear();
@@ -598,7 +598,7 @@ const MovieProvider = ({ children }) => {
           localStorage.setItem("relogin", true);
 
           setTimeout(() => {
-            navigate("/login");
+            window.location.href = "/";
           }, 500);
 
           console.log(data);
@@ -661,11 +661,11 @@ const MovieProvider = ({ children }) => {
 
       if (res.ok) {
         localStorage.setItem("InactiveLogout", true);
-        setTimeout(() => {
-          navigate("/login");
-        }, 500);
         localStorage.clear();
         console.log(data);
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 500);
       } else {
         console.log("Failed to clear cookies. Server returned an error.", data);
       }
@@ -699,10 +699,11 @@ const MovieProvider = ({ children }) => {
       }
 
       // Check inactivity and log out if `activityStatus` becomes false
-      console.log(" Logging out inactive or setting active status to false");
+      console.log(" Detecting inactive status or trying to set active status to false");
       const monitorInactivity = setInterval(() => {
         if (activityStatus === false) {
           console.log("Inactive status detected. Triggering logout...");
+           InactiveLogOut(); 
         } else {
           setActivityStatus(false);
           console.log("active Statua false");
