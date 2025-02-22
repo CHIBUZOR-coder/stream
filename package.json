@@ -36,6 +36,8 @@
 
     "js-cookie": "^3.0.5",
 
+    "jwt-decode": "^4.0.0",
+
     "rc-drawer": "^7.2.0",
 
     "react": "^18.3.1",

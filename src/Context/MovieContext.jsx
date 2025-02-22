@@ -11,7 +11,8 @@ import { HiViewColumns } from "react-icons/hi2";
 import { FiSettings } from "react-icons/fi";
 import Profile from "../pages/DashBoard/Components/DashboardComponents/Profile";
 import { userData } from "../Data/UserData";
-import DataResolve from "../DataFetching/DataResolve";
+
+import jwtDecode from "jwt-decode";
 
 import { IoLogOut } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
@@ -532,8 +533,11 @@ const MovieProvider = ({ children }) => {
       }
 
       console.log("userInfo not found");
+      // Decode the token to get expiration time
+      const decodedToken = jwtDecode(userInfo.token);
+      console.log("Decoded Token:", decodedToken); // Debugging
 
-      const expTime = userInfo.exp * 1000; // Convert exp from seconds to milliseconds
+      const expTime = decodedToken.exp * 1000; // Convert fromconds
       let currentTime = Date.now(); // Get current time in milliseconds
 
       // Check if the token is expired
