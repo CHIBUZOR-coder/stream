@@ -24,23 +24,16 @@ const Navbar = ({ HandleInputChange, Text }) => {
     // console.log("No user info yet");
     dash = "/login";
   } else {
-    if (logStatus === true) {
-      dash =
-        userData.role === "ADMIN"
-          ? `/dash/ad/${userData.userInfo.name}`
-          : userData.role === "USER"
-          ? `/dash/us/${userData.userInfo.name}`
-          : "NOT";
+    dash =
+      userData.role === "ADMIN"
+        ? `/dash/ad/${userData.userInfo.name}`
+        : userData.role === "USER"
+        ? `/dash/us/${userData.userInfo.name}`
+        : "NOT";
 
-      fav = `/favouritpage/${userData.userInfo.name}`;
-    } else {
-      dash = "/login";
-    }
+    fav = `/favouritpage/${userData.userInfo.name}`;
   }
 
-  useEffect(() => {
-    AutentificationII();
-  }, [logDetail]);
   // console.log("dash:", dash);
 
   const hover = "hover:text-subMain transi text-white relative";
