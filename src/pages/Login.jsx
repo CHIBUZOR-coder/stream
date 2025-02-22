@@ -69,7 +69,9 @@ const Login = () => {
         setIsLoading(false);
         localStorage.setItem("UserInfo", JSON.stringify(data));
         localStorage.setItem("IsLogin", true);
-        AutentificationII();
+        setTimeout(() => {
+          AutentificationII();
+        }, 500);
       }
 
       console.log(data);
