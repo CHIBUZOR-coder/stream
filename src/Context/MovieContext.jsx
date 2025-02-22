@@ -155,6 +155,41 @@ const MovieProvider = ({ children }) => {
     }
   };
 
+   const AutentificationToken = async () => {
+     try {
+       const res = await fetch(
+         "https://streambackend-nbbc.onrender.com/api/protectedRouteToken",
+         {
+           method: "GET",
+
+           headers: {
+             "Content-Type": "application/json", // Correct header
+           },
+           // Optional, depending on your API
+
+           credentials: "include", // Include cookies in the request
+         }
+       );
+       const data = await res.json();
+
+       if (!res.ok) {
+         const errorData = data;
+         throw new Error(errorData.message || "Authorization failed");
+       }
+
+       if (isLogin) {
+         localStorage.setItem("userInfo", JSON.stringify(data.userInfo));
+       }
+
+       console.log(data);
+
+       // Assuming setUserRole is defined
+       // Assuming setUserDetails is defined
+     } catch (error) {
+       console.error("Error in Authentification:", error.message);
+     }
+   };
+
   // Ensures it runs only once on mount
 
   //Veryfy SAubscription
@@ -861,6 +896,7 @@ const MovieProvider = ({ children }) => {
         HandleSubscribe,
         Ratingss,
         setRatings,
+        AutentificationToken,
       }}
     >
       {children}
