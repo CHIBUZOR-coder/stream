@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { BsCollectionPlayFill, BsFillSearchHeartFill } from "react-icons/bs";
 import { FaUserCircle } from "react-icons/fa";
 import { FaHeartCircleCheck } from "react-icons/fa6";
@@ -12,31 +12,27 @@ import { use } from "react";
 const Navbar = ({ HandleInputChange, Text }) => {
   const { FavouriteCount } = useContext(MovieContext);
   // console.log("favaCount",FavouriteCount);
-  const logStatus = localStorage.getItem("IsLogin") || null;
   const [access, setAccess] = useState(false);
   const userData = JSON.parse(localStorage.getItem("UserInfo")) || null;
-  console.log(userData.userInfo);
+  // console.log(userData.userInfo);
 
-  let dash = userData ? `/stream/dash/${userData.usrid}` : "/stream/login";
+  // const dash = userData ? `/stream/dash/${userData.usrid}` : "/stream/login";
 
+  let dash;
   let fav;
   if (!userData) {
     // console.log("No user info yet");
     dash = "/login";
   } else {
-    const logStatus = localStorage.getItem("IsLogin") || null;
-    if (logStatus === true) {
-      dash =
-        userData && userData.role === "ADMIN"
-          ? `/dash/ad/${userData.userInfo.name}`
-          : userData.role === "USER"
-          ? `/dash/us/${userData.userInfo.name}`
-          : "NOT";
+    dash =
+      userData.role === "ADMIN"
+        ? `/dash/ad/${userData.userInfo.name}`
+        : userData.role === "USER"
+        ? `/dash/us/${userData.userInfo.name}`
+        : "NOT";
 
-      fav = `/favouritpage/${userData.userInfo.name}`;
-    }
+    fav = `/favouritpage/${userData.userInfo.name}`;
   }
-
 
   // console.log("dash:", dash);
 
@@ -138,7 +134,7 @@ const Navbar = ({ HandleInputChange, Text }) => {
               to={`${dash}`}
             >
               {/* <FaUserCircle /> */}
-              {userData && userData.role ? <TbTableDashed /> : <FaUserCircle />}
+              {userData ? <TbTableDashed /> : <FaUserCircle />}
             </NavLink>
             <NavLink
               className={({ isActive }) =>
