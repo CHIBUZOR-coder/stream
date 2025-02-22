@@ -41,44 +41,9 @@ const Login = () => {
     }
   }, []);
 
-  const HandleLogout = async (e) => {
-    e.preventDefault();
-
-    try {
-      localStorage.clear();
-      // Send a request to the backend to clear the HTTP-only cookie
-      const res = await fetch(
-        "https://streambackend-nbbc.onrender.com/clear-cookies",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-        }
-      );
-
-      const data = await res.json();
-
-      if (res.ok) {
-        localStorage.clear();
-        // Make sure to wait for the response
-        nabvigate("/");
-        console.log(data);
-      } else {
-        console.log("Failed to clear cookies. Server returned an error.");
-      }
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
   const HandleLogin = async (e) => {
     e.preventDefault();
 
-    if (logged) {
-      HandleLogout();
-      rturn;
-    }
     setIsLoading(true);
     setLoadDiaplay("Logging in...");
 
@@ -101,15 +66,6 @@ const Login = () => {
         setResult(Alert(false, data.message));
         console.log(data);
       }
-      setResult(Alert(true, data.message));
-      setIsLoading(false);
-      localStorage.setItem("UserInfo", JSON.stringify(data));
-      localStorage.setItem("IsLogin", true);
-      Autentification();
-
-      console.log(data);
-
-      const favouriteCart = JSON.parse(localStorage.getItem("FavouriteCart"));
 
       if (favouriteCart) {
         try {
@@ -150,13 +106,17 @@ const Login = () => {
           console.error("Error in Promise.all:", error.message);
         }
       }
+      setResult(Alert(true, data.message));
+      setIsLoading(false);
+      localStorage.setItem("UserInfo", JSON.stringify(data));
+      localStorage.setItem("IsLogin", true);
+      Autentification();
+      console.log(data);
+      const favouriteCart = JSON.parse(localStorage.getItem("FavouriteCart"));
+      setTimeout(() => {
+        navigate("/");
+      }, 500);
 
-      if (data.success === true) {
-        localStorage.setItem("IsLogin", true);
-        setTimeout(() => {
-          navigate("/");
-        }, 500);
-      }
       setEmail("");
       setPassword("");
     } catch (error) {
