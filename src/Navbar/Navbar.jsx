@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BsCollectionPlayFill, BsFillSearchHeartFill } from "react-icons/bs";
 import { FaUserCircle } from "react-icons/fa";
 import { FaHeartCircleCheck } from "react-icons/fa6";
@@ -34,6 +34,9 @@ const Navbar = ({ HandleInputChange, Text }) => {
     fav = `/favouritpage/${userData.userInfo.name}`;
   }
 
+  useEffect(() => {
+    console.log("logDetail has changed", logDetail);
+  }, [logDetail]);
   // console.log("dash:", dash);
 
   const hover = "hover:text-subMain transi text-white relative";
