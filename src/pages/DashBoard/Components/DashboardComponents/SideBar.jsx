@@ -33,7 +33,7 @@ const SideBar = () => {
       if (res.ok) {
         localStorage.clear();
         // Make sure to wait for the response
-        nabvigate("/");
+        window.location.href = "/";
         console.log(data);
       } else {
         console.log("Failed to clear cookies. Server returned an error.");
