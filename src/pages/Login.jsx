@@ -12,6 +12,7 @@ const Login = () => {
   const [Password, setPassword] = useState("");
   const [Result, setResult] = useState();
   const [loadDisplay, setLoadDiaplay] = useState("");
+  const [logDetails, setLogDetails] = useState(false);
   const navigate = useNavigate();
   const { issLoading, setIsLoading, Alert, AutentificationII } =
     useContext(MovieContext);
@@ -69,9 +70,7 @@ const Login = () => {
         setIsLoading(false);
         localStorage.setItem("UserInfo", JSON.stringify(data));
         localStorage.setItem("IsLogin", true);
-        setTimeout(() => {
-          AutentificationII();
-        }, 500);
+        setLogDetails(true);
       }
 
       console.log(data);
@@ -120,7 +119,9 @@ const Login = () => {
 
       if (data.success === true) {
         localStorage.setItem("IsLogin", true);
+
         setTimeout(() => {
+          AutentificationII();
           navigate("/");
         }, 500);
       }
@@ -140,6 +141,12 @@ const Login = () => {
   useEffect(() => {
     console.log("email", Email);
   }, [Email]);
+
+  useEffect(() => {
+    if (logDetails === true) {
+      AutentificationII();
+    }
+  }, [logDetails]);
 
   useEffect(() => {
     console.log("pass", Password);
