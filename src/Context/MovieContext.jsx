@@ -527,7 +527,7 @@ const MovieProvider = ({ children }) => {
       const userInfo = JSON.parse(localStorage.getItem("userInfo")); // Get userInfo from localStorage
       if (!userInfo) {
         console.log("userInfo not found");
-        localStorage.clear();
+        localStorage.removeItem("userInfo");
         return;
       }
 
