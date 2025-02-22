@@ -137,7 +137,7 @@ const Navbar = ({ HandleInputChange, Text }) => {
               to={`${dash}`}
             >
               {/* <FaUserCircle /> */}
-              {userData && userData ? <TbTableDashed /> : <FaUserCircle />}
+              {userData && userData.role ? <TbTableDashed /> : <FaUserCircle />}
             </NavLink>
             <NavLink
               className={({ isActive }) =>
