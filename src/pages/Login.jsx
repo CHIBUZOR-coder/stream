@@ -27,18 +27,16 @@ const Login = () => {
   useEffect(() => {
     console.log("logAgain from effect", logAgain);
     if (logAgain === true) {
-      setResult(Alert(false, "Your session has expired. Please login again"));
+      setResult("Your session has expired. Please login again");
       setTimeout(() => {
         setResult(null);
         localStorage.removeItem("relogin");
       }, 6000);
     } else if (InactiveLogout === true) {
       setResult(
-        Alert(
-          false,
-          "You have been logged out due to inactivity. Please login again"
-        )
+        "You have been logged out due to inactivity. Please login again"
       );
+
       setTimeout(() => {
         setResult(null);
         localStorage.removeItem("InactiveLogout");
