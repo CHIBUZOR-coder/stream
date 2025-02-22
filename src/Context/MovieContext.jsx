@@ -598,7 +598,8 @@ const MovieProvider = ({ children }) => {
           localStorage.setItem("relogin", true);
 
           setTimeout(() => {
-            window.location.href = "/";
+            // window.location.href = "/";
+            navigate("/")
           }, 500);
 
           console.log(data);
