@@ -23,6 +23,8 @@ const Login = () => {
   } = useContext(MovieContext);
 
   const logAgain = localStorage.getItem("relogin") || null;
+  console.log("logAgain", logAgain);
+  
   const InactiveLogout = localStorage.getItem("InactiveLogout") || null;
   useEffect(() => {
     if (InactiveLogout === true) {
