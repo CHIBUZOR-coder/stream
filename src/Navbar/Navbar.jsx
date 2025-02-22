@@ -36,22 +36,22 @@ const Navbar = ({ HandleInputChange, Text }) => {
   let dash;
   let fav;
   useEffect(() => {
-    dash = userData
-      ? userData.role === "ADMIN"
-        ? `/dash/ad/${userData.userInfo.name}`
-        : userData.role === "USER"
-        ? `/dash/us/${userData.userInfo.name}`
-        : "NOT"
-      : "/login";
+    if (userData) {
+      dash = userData
+        ? userData.role === "ADMIN"
+          ? `/dash/ad/${userData.userInfo.name}`
+          : userData.role === "USER"
+          ? `/dash/us/${userData.userInfo.name}`
+          : "NOT"
+        : "/login";
 
-    fav = userData ? `/favouritpage/${userData.userInfo.name}` : "/login";
-
-   
+      fav = userData ? `/favouritpage/${userData.userInfo.name}` : "/login";
+    }
   }, [userData]);
   // console.log("dash:", dash);
- useEffect(() => {
-   console.log("logDetail has changed", logDetail);
- }, [logDetail]);
+  useEffect(() => {
+    console.log("logDetail has changed", logDetail);
+  }, [logDetail]);
   const hover = "hover:text-subMain transi text-white relative";
   const Hover = ({ isActive }) => (isActive ? "text-subMain" : hover);
   return (
