@@ -911,6 +911,7 @@ const MovieProvider = ({ children }) => {
         Ratingss,
         setRatings,
         logDetail,
+        setLogDetail,
       }}
     >
       {children}

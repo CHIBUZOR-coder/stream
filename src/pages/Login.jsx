@@ -21,6 +21,7 @@ const Login = () => {
     AutentificationII,
     Autentification,
     logDetail,
+    setLogDetail,
   } = useContext(MovieContext);
 
   const logAgain = localStorage.getItem("relogin") || null;
@@ -74,10 +75,11 @@ const Login = () => {
       } else {
         setResult(Alert(true, data.message));
         setIsLoading(false);
+        setLogDetail(true);
         localStorage.setItem("UserInfo", JSON.stringify(data));
         localStorage.setItem("IsLogin", true);
         localStorage.setItem("relogin", false);
- 
+
         setTimeout(() => {
           AutentificationII();
 
