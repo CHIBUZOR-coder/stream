@@ -47,7 +47,7 @@ const Login = () => {
   }, []);
 
   console.log("Result:", Result);
-  use(() => {
+  useEffect(() => {
     console.log("Result:", Result);
   }, [Result]);
 
