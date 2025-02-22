@@ -66,7 +66,7 @@ const Login = () => {
         setResult(Alert(false, data.message));
         console.log(data);
       }
-
+      const favouriteCart = JSON.parse(localStorage.getItem("FavouriteCart"));
       if (favouriteCart) {
         try {
           const user = JSON.parse(localStorage.getItem("UserInfo"));
@@ -112,7 +112,7 @@ const Login = () => {
       localStorage.setItem("IsLogin", true);
       Autentification();
       console.log(data);
-      const favouriteCart = JSON.parse(localStorage.getItem("FavouriteCart"));
+
       setTimeout(() => {
         navigate("/");
       }, 500);
