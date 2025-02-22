@@ -46,12 +46,12 @@ const Navbar = ({ HandleInputChange, Text }) => {
 
     fav = userData ? `/favouritpage/${userData.userInfo.name}` : "/login";
 
-    useEffect(() => {
-      console.log("logDetail has changed", logDetail);
-    }, [logDetail]);
+   
   }, [userData]);
   // console.log("dash:", dash);
-
+ useEffect(() => {
+   console.log("logDetail has changed", logDetail);
+ }, [logDetail]);
   const hover = "hover:text-subMain transi text-white relative";
   const Hover = ({ isActive }) => (isActive ? "text-subMain" : hover);
   return (
