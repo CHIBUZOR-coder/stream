@@ -23,28 +23,16 @@ const Login = () => {
 
   const logAgain = localStorage.getItem("relogin") || null;
   const InactiveLogout = localStorage.getItem("InactiveLogout") || null;
-  if (logAgain === true) {
-    setResult(Alert(false, "Your session has expired. Please login again"));
-    setTimeout(() => {
-      setResult(null);
-      localStorage.removeItem("relogin");
-    }, 6000);
-  } else if (InactiveLogout === true) {
-    setResult(
-      Alert(
-        false,
-        "You have been logged out due to inactivity. Please login again"
-      )
-    );
-    setTimeout(() => {
-      setResult(null);
-      localStorage.removeItem("InactiveLogout");
-    }, 6000);
-  }
 
   useEffect(() => {
     console.log("logAgain from effect", logAgain);
-    if (InactiveLogout === true) {
+    if (logAgain === true) {
+      setResult(Alert(false, "Your session has expired. Please login again"));
+      setTimeout(() => {
+        setResult(null);
+        localStorage.removeItem("relogin");
+      }, 6000);
+    } else if (InactiveLogout === true) {
       setResult(
         Alert(
           false,
@@ -55,14 +43,6 @@ const Login = () => {
         setResult(null);
         localStorage.removeItem("InactiveLogout");
       }, 6000);
-    } else if (logAgain === true) {
-      setResult(Alert(false, "Your session has expired. Please login again"));
-      setTimeout(() => {
-        setResult(null);
-        localStorage.removeItem("relogin");
-      }, 6000);
-    } else {
-      console.log("no action");
     }
   }, []);
 
