@@ -74,11 +74,12 @@ const Login = () => {
         setResult(Alert(false, data.message));
         console.log(data);
       } else {
+        setLogDetail(true);
         localStorage.setItem("IsLogin", true);
         setResult(Alert(true, data.message));
         setIsLoading(false);
         console.log("logDetail before:", logDetail);
-        setLogDetail(true);
+
         setUserData(JSON.parse(localStorage.getItem("UserInfo")) || null);
         localStorage.setItem("UserInfo", JSON.stringify(data));
         localStorage.setItem("relogin", false);

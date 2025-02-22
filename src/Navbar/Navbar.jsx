@@ -10,12 +10,12 @@ import { TbTableDashed } from "react-icons/tb";
 import { use } from "react";
 
 const Navbar = ({ HandleInputChange, Text }) => {
-  const { FavouriteCount } = useContext(MovieContext);
+  const { FavouriteCount, logDetail } = useContext(MovieContext);
   // console.log("favaCount",FavouriteCount);
   const [access, setAccess] = useState(false);
   const userData = JSON.parse(localStorage.getItem("UserInfo")) || null;
   // console.log(userData.userInfo);
-
+  //
   // const dash = userData ? `/stream/dash/${userData.usrid}` : "/stream/login";
   const logStatus = localStorage.getItem("IsLogin");
   let dash;
@@ -38,6 +38,9 @@ const Navbar = ({ HandleInputChange, Text }) => {
     }
   }
 
+  useEffect(() => {
+    AutentificationII();
+  }, [logDetail]);
   // console.log("dash:", dash);
 
   const hover = "hover:text-subMain transi text-white relative";
