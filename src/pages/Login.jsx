@@ -17,29 +17,29 @@ const Login = () => {
     useContext(MovieContext);
 
   const logAgain = localStorage.getItem("relogin") || null;
-  // const InactiveLogout = localStorage.getItem("InactiveLogout") || null;
-  // useEffect(() => {
-  //   if (InactiveLogout === true) {
-  //     setResult(
-  //       Alert(
-  //         false,
-  //         "You have been logged out due to inactivity. Please login again"
-  //       )
-  //     );
-  //     setTimeout(() => {
-  //       setResult(null);
-  //       localStorage.removeItem("InactiveLogout");
-  //     }, 6000);
-  //   } else if (logAgain === true) {
-  //     setResult(Alert(false, "Your session has expired. Please login again"));
-  //     setTimeout(() => {
-  //       setResult(null);
-  //       localStorage.removeItem("relogin");
-  //     }, 6000);
-  //   } else {
-  //     console.log("no action");
-  //   }
-  // }, []);
+  const InactiveLogout = localStorage.getItem("InactiveLogout") || null;
+  useEffect(() => {
+    if (InactiveLogout === true) {
+      setResult(
+        Alert(
+          false,
+          "You have been logged out due to inactivity. Please login again"
+        )
+      );
+      setTimeout(() => {
+        setResult(null);
+        localStorage.removeItem("InactiveLogout");
+      }, 6000);
+    } else if (logAgain === true) {
+      setResult(Alert(false, "Your session has expired. Please login again"));
+      setTimeout(() => {
+        setResult(null);
+        localStorage.removeItem("relogin");
+      }, 6000);
+    } else {
+      console.log("no action");
+    }
+  }, []);
 
   const HandleLogin = async (e) => {
     e.preventDefault();
@@ -64,13 +64,13 @@ const Login = () => {
         setIsLoading(false);
         setResult(Alert(false, data.message));
         console.log(data);
-      } else {
+      }
         setResult(Alert(true, data.message));
         setIsLoading(false);
         localStorage.setItem("UserInfo", JSON.stringify(data));
         localStorage.setItem("IsLogin", true);
         Autentification();
-      }
+    
 
       console.log(data);
 
