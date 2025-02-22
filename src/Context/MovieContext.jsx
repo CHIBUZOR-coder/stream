@@ -540,10 +540,10 @@ const MovieProvider = ({ children }) => {
           "Token has expired. Token has expired. Logging out user..."
         );
 
-        localStorage.clear();
+
         // Send a request to the backend to clear the HTTP-only cookie
         const res = await fetch(
-          "https://streambackend-ngow.onrender.com/clear-cookies",
+          "https://streambackend-nbbc.onrender.com/clear-cookies",
           {
             method: "POST",
 
@@ -558,6 +558,7 @@ const MovieProvider = ({ children }) => {
         const data = await res.json();
 
         if (res.ok) {
+                  localStorage.clear();
           // Make sure to wait for the response
           localStorage.setItem("relogin", true);
 
