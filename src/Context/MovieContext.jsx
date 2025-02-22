@@ -121,9 +121,6 @@ const MovieProvider = ({ children }) => {
 
   //Veryfy token
   const Autentification = async () => {
-    if (isLogin === false) {
-      return;
-    }
     try {
       const res = await fetch(
         "https://streambackend-nbbc.onrender.com/api/protectedRoute",
@@ -158,7 +155,7 @@ const MovieProvider = ({ children }) => {
     }
   };
 
-  const AutentificationE = async () => {
+  const AutentificationII = async () => {
     try {
       const res = await fetch(
         "https://streambackend-nbbc.onrender.com/api/protectedRouteII",
@@ -174,7 +171,8 @@ const MovieProvider = ({ children }) => {
         }
       );
       const data = await res.json();
-      console.log("II:", data);
+      console.log("II:",data);
+      
 
       if (!res.ok) {
         const errorData = data;
@@ -243,16 +241,14 @@ const MovieProvider = ({ children }) => {
     HandleGetMovies();
     HandleGetCategories();
     Autentification();
-
+    AutentificationII();
     VeryfySubscriptoin();
     checkTokenExpiry();
 
     if (isLogin === true) {
       setGetUser(true);
-      AutentificationE();
     }
-
-   
+    // HandleGetReviews();
   }, []);
 
   const AllMovies = FetchedMovies;
@@ -672,10 +668,10 @@ const MovieProvider = ({ children }) => {
         localStorage.setItem("InactiveLogout", true);
         setTimeout(() => {
           navigate("/login");
-          localStorage.clear();
+                localStorage.clear();
         }, 500);
-
-        localStorage.setItem("InactiveLogout", true);
+  
+         localStorage.setItem("InactiveLogout", true);
         console.log(data);
       } else {
         console.log("Failed to clear cookies. Server returned an error.", data);
@@ -883,7 +879,7 @@ const MovieProvider = ({ children }) => {
         HandleGetCategories,
         HandleGetMovies,
         Autentification,
-   
+        AutentificationII,
         autoRender,
         setAutornder,
         Result,
