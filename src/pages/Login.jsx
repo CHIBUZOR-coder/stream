@@ -14,7 +14,7 @@ const Login = () => {
   const [loadDisplay, setLoadDiaplay] = useState("");
   const [logDetails, setLogDetails] = useState(false);
   const navigate = useNavigate();
-  const { issLoading, setIsLoading, Alert, AutentificationII } =
+  const { issLoading, setIsLoading, Alert,  } =
     useContext(MovieContext);
 
   const logAgain = localStorage.getItem("relogin") || null;
@@ -73,7 +73,7 @@ const Login = () => {
         localStorage.setItem("relogin", false);
         setLogDetails(true);
         setTimeout(() => {
-         AutentificationII();
+
           navigate("/");
         }, 500);
       }
@@ -126,7 +126,7 @@ const Login = () => {
         localStorage.setItem("IsLogin", true);
 
         setTimeout(() => {
-          AutentificationII();
+
           navigate("/");
         }, 500);
       }
@@ -147,11 +147,7 @@ const Login = () => {
     console.log("email", Email);
   }, [Email]);
 
-  useEffect(() => {
-    if (logDetails === true) {
-      AutentificationII();
-    }
-  }, [logDetails]);
+
 
   useEffect(() => {
     console.log("pass", Password);

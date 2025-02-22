@@ -121,6 +121,9 @@ const MovieProvider = ({ children }) => {
 
   //Veryfy token
   const Autentification = async () => {
+    if (isLogin === false) {
+      return;
+    }
     try {
       const res = await fetch(
         "https://streambackend-nbbc.onrender.com/api/protectedRoute",
@@ -155,7 +158,7 @@ const MovieProvider = ({ children }) => {
     }
   };
 
-  const AutentificationII = async () => {
+  const AutentificationE = async () => {
     try {
       const res = await fetch(
         "https://streambackend-nbbc.onrender.com/api/protectedRouteII",
@@ -240,14 +243,16 @@ const MovieProvider = ({ children }) => {
     HandleGetMovies();
     HandleGetCategories();
     Autentification();
-    AutentificationII();
+    AutentificationE();
     VeryfySubscriptoin();
     checkTokenExpiry();
 
     if (isLogin === true) {
       setGetUser(true);
+      AutentificationE();
     }
-    // HandleGetReviews();
+
+   
   }, []);
 
   const AllMovies = FetchedMovies;
