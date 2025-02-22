@@ -154,11 +154,11 @@ const Login = () => {
   }, [Email]);
 
   useEffect(() => {
-    if (logDetails === true) {
+    if (logDetail === true) {
       AutentificationII();
       Autentification();
     }
-  }, [logDetails]);
+  }, [logDetail]);
 
   useEffect(() => {
     console.log("pass", Password);
