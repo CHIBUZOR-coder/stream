@@ -10,7 +10,7 @@ import { TbTableDashed } from "react-icons/tb";
 import { use } from "react";
 
 const Navbar = ({ HandleInputChange, Text }) => {
-  const { FavouriteCount } = useContext(MovieContext);
+  const { FavouriteCount, logDetail } = useContext(MovieContext);
   // console.log("favaCount",FavouriteCount);
   const [access, setAccess] = useState(false);
   const userData = JSON.parse(localStorage.getItem("UserInfo")) || null;

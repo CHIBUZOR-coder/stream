@@ -27,7 +27,7 @@ const MovieProvider = ({ children }) => {
   const [FetchedMovies, setFetchedMovies] = useState(null);
   const [FetchedCategories, setFetchedCategories] = useState(null);
   const [issLoading, setIsLoading] = useState(false);
-  const [logDetails, setLogDetails] = useState(false);
+  const [logDetail, setLogDetail] = useState(false);
   const isLogin = localStorage.getItem("IsLogin") || false;
   const Users = userData;
   const User = JSON.parse(localStorage.getItem("UserInfo")) || null;
@@ -36,6 +36,7 @@ const MovieProvider = ({ children }) => {
   const [orderId, setOrderId] = useState(null);
   const [Reviewed, setReviwed] = useState([]);
   const [Ratingss, setRatings] = useState([]);
+
 
   const [autoRender, setAutornder] = useState(false);
 
@@ -909,7 +910,7 @@ const MovieProvider = ({ children }) => {
         HandleSubscribe,
         Ratingss,
         setRatings,
-        logDetails,
+        logDetail,
       }}
     >
       {children}
