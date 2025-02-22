@@ -28,7 +28,6 @@ const MovieProvider = ({ children }) => {
   const [FetchedCategories, setFetchedCategories] = useState(null);
   const [issLoading, setIsLoading] = useState(false);
   const isLogin = localStorage.getItem("IsLogin") || false;
-  const [IsLogin, setIsLogin] = useState(false);
   const Users = userData;
   const User = JSON.parse(localStorage.getItem("UserInfo")) || null;
   const [unAuthorizedUser, setunAuthorizedUser] = useState(null);
@@ -676,7 +675,7 @@ const MovieProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    if (isLogin === true) {
+    if (isLogin) {
       console.log("User is logged in. Setting up activity listeners...");
 
       // console.log("is:", isLogin);
@@ -700,13 +699,11 @@ const MovieProvider = ({ children }) => {
       }
 
       // Check inactivity and log out if `activityStatus` becomes false
-      console.log(
-        " Detecting inactive status or trying to set active status to false"
-      );
+      console.log(" Detecting inactive status or trying to set active status to false");
       const monitorInactivity = setInterval(() => {
         if (activityStatus === false) {
           console.log("Inactive status detected. Triggering logout...");
-          InactiveLogOut();
+           InactiveLogOut(); 
         } else {
           setActivityStatus(false);
           console.log("active Statua false");
@@ -725,7 +722,7 @@ const MovieProvider = ({ children }) => {
     } else {
       console.log("not a user");
     }
-  }, [IsLogin, activityStatus]);
+  }, [isLogin, activityStatus]);
 
   useEffect(() => {
     const favouriteCount = FavouriteCart.reduce((acc, curr) => {
@@ -903,7 +900,6 @@ const MovieProvider = ({ children }) => {
         Ratingss,
         setRatings,
         AutentificationToken,
-        setIsLogin,
       }}
     >
       {children}
