@@ -159,13 +159,7 @@ const Login = () => {
     console.log("email", Email);
   }, [Email]);
 
-  useEffect(() => {
-    console.log("logDetail after:", logDetail);
-
-    if (logDetail === true) {
-      AutentificationII();
-    }
-  }, [logDetail]);
+ 
 
   useEffect(() => {
     console.log("pass", Password);
