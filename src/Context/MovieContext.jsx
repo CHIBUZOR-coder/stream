@@ -531,8 +531,8 @@ const MovieProvider = ({ children }) => {
         return;
       }
 
-      console.log("userInfo found");
-      localStorage.clear();
+      console.log("userInfo not found");
+
       const expTime = userInfo.exp * 1000; // Convert exp from seconds to milliseconds
       let currentTime = Date.now(); // Get current time in milliseconds
 
@@ -560,6 +560,7 @@ const MovieProvider = ({ children }) => {
 
         if (res.ok) {
           // Make sure to wait for the response
+          localStorage.clear(); // Clear all localStorage items
           localStorage.setItem("relogin", true);
 
           setTimeout(() => {
