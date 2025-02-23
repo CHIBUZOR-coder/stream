@@ -78,7 +78,7 @@ const MovieCasts = ({ movieId, movie }) => {
                     </div>
 
                     <p>{item?.cast.name}</p>
-                    <p>Role : {movie?.casts.role || item?.cast.name}</p>
+                    <p>Role : {movie?.casts.role || item?.cast.role}</p>
                   </div>
                 </SwiperSlide>
               ))}
