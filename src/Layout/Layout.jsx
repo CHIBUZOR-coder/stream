@@ -112,7 +112,7 @@ const Layout = ({ children }) => {
     }
     try {
       const res = await fetch(
-        "https://streambackend-ngow.onrender.com/api/getMovies",
+        "https://streambackend-nbbc.onrender.com/api/getMovies",
         {
           method: "GET",
         }
