@@ -610,7 +610,6 @@ const MovieProvider = ({ children }) => {
         }
       } else {
         console.log("Token has not yet expired");
-  
         setTimeout(() => {
           logoutUser();
         }, Time);
@@ -634,9 +633,8 @@ const MovieProvider = ({ children }) => {
     clearTimeout(inactivityTimer);
 
     console.log("setting active to true");
-
+    
     setActivityStatus(true);
-    console.log("active:", activityStatus);
 
     // Automatically set `activeStatus` to false after inactivity threshold
     inactivityTimer = setTimeout(() => {
@@ -701,9 +699,6 @@ const MovieProvider = ({ children }) => {
         console.log("active:", activityStatus);
         logoutUser();
         // InactivieLogoutCall();
-      } else {
-        // InactivieLogoutCall();
-        InactiveLogOut();
       }
 
       // Check inactivity and log out if `activityStatus` becomes false
