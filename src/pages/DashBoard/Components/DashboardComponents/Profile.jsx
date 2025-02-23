@@ -326,20 +326,20 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
         <div className="w-full flex justify-center">
           <div className=" md:w-1/2 w-[80%] flex flex-col justify-center items-center gap-3 p-5 rounded bg-main border border-border cursor-default">
             <div className="flex justify-center items-center">
-              {singleUser && singleUser?.image !== "" ? (
-                <img
-                  src={`${singleUser && singleUser?.image}`}
-                  alt="user"
-                  className="w-20 h-20 rounded-full object-cover"
-                ></img>
-              ) : (
-                <div
-                  className="w-12 h-12 rounded-full flex items-center justify-center text-white text-lg font-bold uppercase"
-                  style={{ backgroundColor: bgColor }}
-                >
-                  {singleUser && singleUser.name.charAt(0).toUpperCase()}
-                </div>
-              )}
+              <div
+                className="relative w-20 h-20 rounded-full overflow-hidden flex items-center justify-center bg-gray-300 text-white text-3xl font-semibold"
+                style={{ backgroundColor: bgColor }}
+              >
+                {singleUser?.image ? (
+                  <img
+                    src={singleUser.image}
+                    alt="User"
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  singleUser?.name?.charAt(0).toUpperCase()
+                )}
+              </div>
 
               {/* <img
                 src={`${singleUser && singleUser?.image}`}
