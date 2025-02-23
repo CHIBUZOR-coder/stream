@@ -76,6 +76,9 @@ const Login = () => {
         setIsLoading(false);
         setResult(Alert(false, data.message));
         console.log(data);
+        setTimeout(() => {
+          setResult(null);
+        }, 7000);
         return;
       }
       const favouriteCart = JSON.parse(localStorage.getItem("FavouriteCart"));

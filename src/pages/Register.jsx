@@ -75,7 +75,7 @@ const Register = () => {
     } finally {
       setTimeout(() => {
         setResult(null);
-      }, 4000);
+      }, 7000);
 
      
     }
