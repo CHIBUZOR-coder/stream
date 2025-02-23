@@ -637,6 +637,8 @@ const MovieProvider = ({ children }) => {
     setActivityStatus(true);
 
     // Automatically set `activeStatus` to false after inactivity threshold
+    console.log("Setting active to false");
+    
     inactivityTimer = setTimeout(() => {
       console.log("No activity detected. Setting activeStatus to false...");
       setActivityStatus(false);

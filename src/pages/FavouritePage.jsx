@@ -18,7 +18,7 @@ const FavouritePage = () => {
   const GetFavouriteCart = async () => {
     try {
       const res = await fetch(
-        `https://streambackend-ngow.onrender.com/getfacouriteCart/${name}`,
+        `https://streambackend-nbbc.onrender.com/getfacouriteCart/${name}`,
         {
           method: "GET",
         }

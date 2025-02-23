@@ -44,7 +44,7 @@ const MovieList = ({
 
       try {
         const res = await fetch(
-          "https://streambackend-ngow.onrender.com/api/deletAllMovie",
+          "https://streambackend-nbbc.onrender.com/api/deletAllMovie",
           {
             method: "DELETE",
             headers: {
