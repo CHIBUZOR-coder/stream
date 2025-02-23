@@ -9,30 +9,32 @@ const MovieList = ({
   setIsLoading,
   setLoadDiaplay,
 }) => {
-  const { Movies, User, AllMovies, Alert } = useContext(MovieContext);
+  const { Movies, User, AllMovies, Alert, FetchedMovies } =
+    useContext(MovieContext);
   const [dataId, setDataId] = useState(null);
   const [MovieList, setMovieList] = useState(null);
   // let selected;
 
   useEffect(() => {
-    if (AllMovies && AllMovies.length > 0) {
-      const selected = AllMovies.slice(0, 10);
+    if (FetchedMovies && FetchedMovies.length > 0) {
+      const selected = FetchedMovies.slice(0, 10);
       setMovieList(selected); // Update MovieList with a subset of AllMovies
       // console.log("from List", AllMovies); // Debug log
     }
-  }, [AllMovies]);
+  }, [FetchedMovies]);
 
   const [page, setPage] = useState(1);
   const itemsPerPage = 10;
-   const totalPages = AllMovies && Math.ceil(AllMovies.length / itemsPerPage);
+   const totalPages =
+     FetchedMovies && Math.ceil(FetchedMovies.length / itemsPerPage);
 
   // Paginated movies for the current page
   const paginatedMovies = useMemo(() => {
-    return (AllMovies || []).slice(
+    return (FetchedMovies || []).slice(
       (page - 1) * itemsPerPage,
       page * itemsPerPage
     );
-  }, [AllMovies, page]);
+  }, [FetchedMovies, page]);
 
   const HandelDeleteAll = async () => {
     const userConfirmed = window.confirm(
