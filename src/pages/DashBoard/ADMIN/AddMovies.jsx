@@ -195,14 +195,14 @@ const AddMovie = ({ setIsLoading, setResult, setLoadDiaplay }) => {
       }, 5000);
 
       setMovieTitle("");
-      // setMovieHour("");
-      // setDuration("");
+      setMovieHour("");
+      setDuration("");
       setPopularr();
-      // setMovieYear("");
-      // YearDuration("");
+      setMovieYear("");
+      YearDuration("");
       setRatingRange("");
       setDescription("");
-      // setPrice("");
+      setPrice("");
       setTrailer("");
       setMovieCategoryId("");
     }
