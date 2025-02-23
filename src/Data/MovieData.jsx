@@ -234,8 +234,7 @@ export const Movies = [
     rating: 2.5,
     approxiR: "2 Star",
     language: "English",
-    description:
-      "",
+    description:"After Superman's death, Batman and Wonder Woman form the Justice League with Aquaman, Cyborg, and The Flash to stop Steppenwolf from uniting the Mother Boxes and conquering Earth. Struggling without Superman, they resurrect him, and he helps turn the tide. Together, they defeat Steppenwolf, saving the world. ",
     price: 150,
     trailer: "https://www.youtube.com/embed/3cxixDgHUYw",
   },

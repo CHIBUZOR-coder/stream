@@ -67,7 +67,7 @@ const Users = () => {
   const HandeleDeleteUser = async (userId) => {
     try {
       const res = await fetch(
-        "https://streambackend-ngow.onrender.com/deleteUser",
+        "https://streambackend-nbbc.onrender.com/deleteUser",
         {
           method: "DELETE",
           headers: {
