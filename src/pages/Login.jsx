@@ -21,31 +21,31 @@ const Login = () => {
     AutentificationToken,
   } = useContext(MovieContext);
 
- const logAgain = JSON.parse(localStorage.getItem("relogin")) || false;
- const InactiveLogout =
-   JSON.parse(localStorage.getItem("InactiveLogout")) || false;
+  const logAgain = JSON.parse(localStorage.getItem("relogin")) || false;
+  const InactiveLogout =
+    JSON.parse(localStorage.getItem("InactiveLogout")) || false;
 
-useEffect(() => {
-  console.log("logAgain from effect", logAgain);
-  if (logAgain) {
-    setResult(Alert(false, "Your session has expired. Please login again"));
-    setTimeout(() => {
-      setResult(null);
-      localStorage.removeItem("relogin");
-    }, 6000);
-  } else if (InactiveLogout) {
-    setResult(
-      Alert(
-        false,
-        "You have been logged out due to inactivity. Please login again"
-      )
-    );
-    setTimeout(() => {
-      setResult(null);
-      localStorage.removeItem("InactiveLogout");
-    }, 6000);
-  }
-}, []);
+  useEffect(() => {
+    console.log("logAgain from effect", logAgain);
+    if (logAgain) {
+      setResult(Alert(false, "Your session has expired. Please login again"));
+      setTimeout(() => {
+        setResult(null);
+        localStorage.removeItem("relogin");
+      }, 6000);
+    } else if (InactiveLogout) {
+      setResult(
+        Alert(
+          false,
+          "You have been logged out due to inactivity. Please login again"
+        )
+      );
+      setTimeout(() => {
+        setResult(null);
+        localStorage.removeItem("InactiveLogout");
+      }, 6000);
+    }
+  }, []);
 
   console.log("Result:", Result);
   useEffect(() => {
@@ -76,6 +76,7 @@ useEffect(() => {
         setIsLoading(false);
         setResult(Alert(false, data.message));
         console.log(data);
+        return;
       }
       const favouriteCart = JSON.parse(localStorage.getItem("FavouriteCart"));
       if (favouriteCart) {
