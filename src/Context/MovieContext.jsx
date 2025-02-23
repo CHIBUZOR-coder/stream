@@ -610,7 +610,7 @@ const MovieProvider = ({ children }) => {
         }
       } else {
         console.log("Token has not yet expired");
-        setActivityStatus(false);
+  
         setTimeout(() => {
           logoutUser();
         }, Time);
