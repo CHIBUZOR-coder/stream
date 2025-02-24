@@ -95,7 +95,7 @@ const Table2 = ({
                     <td className={`${Text}`}>
                       <div
                         style={{ backgroundColor: bgColor }}
-                        className="w-12 bg-dry borer border-border rounded h-12 overflow-hidden "
+                        className="w-12 bg-dry borer border-border flex justify-center items-center text-2xl font-semibold rounded h-12 overflow-hidden "
                       >
                         {user.image ? (
                           <img
