@@ -13,10 +13,9 @@ const Table = ({
   Handlegeneral,
   setdeletedMovieId,
   HandleDeleteMovie,
-  setShareOpen
 }) => {
   // console.log("user", User);
-  //  const User = JSON.parse(localStorage.getItem("userInfo"));
+
   if (For === "movie") {
     if (!data || data.role) {
       return (
@@ -27,7 +26,6 @@ const Table = ({
     }
   }
 
- 
   // console.log("T2", data);
 
   // useEffect(() => {
@@ -38,9 +36,6 @@ const Table = ({
   const Text = "text-sm text-left leading-6 whitespace-nowrap px-5 py-3";
   return (
     <div className="overflow-x-scroll overflow-hidden relative w-full">
-
-
-
       <table className="table-auto w-full text-white border  border-border divide-y divide-border">
         <thead>
           <tr className="bg-dryGray">
@@ -102,20 +97,8 @@ const Table = ({
                         Download <FaCloudDownloadAlt />
                       </button>
                       <Link
-                        onClick={(e) => {
-                          if (User.subscription !== "SUBSCRIBED") {
-                            setShareOpen((prev) => !prev);
-                          } else {
-                            navigate(`/stream/watch/${movie.movie?.name}`);
-                            // console.log("User already Subscribed!");
-                          }
-                        }}
-                        to={`${
-                          User && User.subscription === "SUBSCRIBED"
-                            ? `/watch/${movie?.movie.name}`
-                            : ``
-                        }`}
-                        className="bg-subMain text-white  hover:bg-main transi border border-subMain rounded flexCol w-6 h-6 "
+                        to={`/stream/watch/${movie.id}`}
+                        className="bg-subMain text-white rounded flexCol w-6 h-6 "
                       >
                         <GoEye />
                       </Link>

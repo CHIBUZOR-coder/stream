@@ -843,9 +843,7 @@ const MovieProvider = ({ children }) => {
         RatesData,
         TimesData,
         YearData,
-        
-        
-        leGetSelected,
+        HandleGetSelected,
         userChoice,
         Movies,
         Casts,
