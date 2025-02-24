@@ -65,7 +65,8 @@ const FavouritePage = () => {
   }, [FavouriteCartMovies, page]);
 
   // Total pages for pagination
-  const totalPages = Math.ceil(Movies.length / itemsPerPage);
+const totalPages = Math.ceil((FavouriteCartMovies?.length || 0) / itemsPerPage);
+
   const Head = "text-xs text-left text-main font-semibold px-6 py-2 uppercase ";
   const Text = "text-sm text-left leading-6 whitespace-nowrap px-5 py-3 ";
 
@@ -105,6 +106,7 @@ const FavouritePage = () => {
               </tr>
             </thead>
             <tbody className=" bg-main divide-y divide-gray-800">
+              
               {paginatedMovies.map((movie, i) => (
                 <tr key={i}>
                   <td className={`${Text}`}>
