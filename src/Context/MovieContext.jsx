@@ -563,12 +563,14 @@ const MovieProvider = ({ children }) => {
       const userInfo = JSON.parse(localStorage.getItem("Token")); // Get userInfo from localStorage
       if (!userInfo) {
         console.log("userInfo not found");
-        localStorage.clear();
+
         return;
       }
 
       const expTime = userInfo.exp * 1000; // Convert exp from seconds to milliseconds
       let currentTime = Date.now(); // Get current time in milliseconds
+      console.log("expTime:", expTime);
+      console.log("currentTime:", currentTime);
 
       // Check if the token is expired
       if (expTime < currentTime) {
