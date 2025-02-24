@@ -24,6 +24,13 @@ const Table2 = ({
 
   // console.log("Userss",data);
 
+  const [bgColor, setBgColor] = useState("");
+  useEffect(() => {
+    // Generate a random background color on mount
+    const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+    setBgColor(randomColor);
+  }, []);
+
   return (
     <div className="overflow-x-scroll overflow-hidden relative w-full">
       <table className="table-auto w-full text-white border  border-border divide-y divide-border">
@@ -86,12 +93,19 @@ const Table2 = ({
                 data.map((user, i) => (
                   <tr key={i}>
                     <td className={`${Text}`}>
-                      <div className="w-12 bg-dry borer border-border rounded h-12 overflow-hidden ">
-                        <img
-                          src={`${user.image}`}
-                          alt={user.image}
-                          className="w-full h-full object-cover rounded-md"
-                        />
+                      <div
+                        style={{ backgroundColor: bgColor }}
+                        className="w-12 bg-dry borer border-border rounded h-12 overflow-hidden "
+                      >
+                        {user.image ? (
+                          <img
+                            src={`${user.image}`}
+                            alt={user.image}
+                            className="w-full h-full object-cover rounded-md"
+                          />
+                        ) : (
+                          user.name?.charAt(0).toUpperCase()
+                        )}
                       </div>
                     </td>
                     <td className={`${Text}`}>

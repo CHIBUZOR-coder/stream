@@ -23,6 +23,7 @@ const Users = () => {
   const itemsPerPage = 10;
   const totalPages = AllUsers && Math.ceil(AllUsers.length / itemsPerPage);
 
+
   useEffect(() => {
     if (AllUsers) {
       console.log("AllUsers", AllUsers);
@@ -30,6 +31,8 @@ const Users = () => {
       selected = AllUsers;
     }
   }, [AllUsers]);
+
+  
 
   const HandleGetAllUsers = async () => {
     try {
