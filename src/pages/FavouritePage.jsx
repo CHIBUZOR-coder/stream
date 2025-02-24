@@ -212,7 +212,7 @@ const FavouritePage = () => {
                       }}
                       to={`${
                         User && User.subscription === "SUBSCRIBED"
-                          ? `/watch/${movie?.name}`
+                          ? `/watch/${movie?.movie.name}`
                           : ``
                       }`}
                       className="bg-subMain text-white  hover:bg-main transi border border-subMain rounded flexCol w-6 h-6 "
