@@ -643,7 +643,7 @@ const MovieProvider = ({ children }) => {
       // Check if the token is expired
       if (expTime < currentTime) {
         console.log(
-          "Token has expired. Token has expired. Logging out user..."
+          "Token has expired. Token has expired. Logging out user...PPP"
         );
 
         localStorage.clear();
