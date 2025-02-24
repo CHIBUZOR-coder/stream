@@ -241,7 +241,7 @@ const MovieProvider = ({ children }) => {
     // Autentification();
     VeryfySubscriptoin();
     //  AutentificationToken();
-
+    checkTokenExpiry();
     if (isLogin === true) {
       setGetUser(true);
     }
@@ -563,12 +563,13 @@ const MovieProvider = ({ children }) => {
       const userInfo = JSON.parse(localStorage.getItem("Token")); // Get userInfo from localStorage
       if (!userInfo) {
         console.log("userInfo not found");
-        // localStorage.clear();
+        localStorage.clear();
         return;
       }
 
-      console.log("userInfo:", userInfo);
 
+      console.log("userInfo:", userInfo);
+      
       const expTime = userInfo.exp * 1000; // Convert exp from seconds to milliseconds
       let currentTime = Date.now(); // Get current time in milliseconds
 
@@ -620,77 +621,6 @@ const MovieProvider = ({ children }) => {
       console.error("An error occurred:", error);
     }
   };
-
-  const checkTokenExpiryOnPageload = async () => {
-    const userInfo = JSON.parse(localStorage.getItem("Token"));
-    console.log(" starting OnpageLoad Logout...");
-
-    try {
-      // Get userInfo from localStorage
-      if (!userInfo) {
-        console.log("userInfo not found");
-
-        return;
-      }
-
-      console.log("userInfo:", userInfo);
-
-
-
-      const expTime = userInfo.exp * 1000; // Convert exp from seconds to milliseconds
-      let currentTime = Date.now(); // Get current time in milliseconds
-
-      // Check if the token is expired
-      if (expTime < currentTime) {
-        console.log(
-          "Token has expired. Token has expired. Logging out user...PPP"
-        );
-
-        localStorage.clear();
-        // Send a request to the backend to clear the HTTP-only cookie
-        const res = await fetch(
-          "https://streambackend-nbbc.onrender.com/clear-cookies",
-          {
-            method: "POST",
-
-            headers: {
-              "Content-Type": "application/json", // Correct header
-            },
-
-            credentials: "include",
-          }
-        );
-
-        const data = await res.json();
-
-        if (res.ok) {
-          // Make sure to wait for the response
-          localStorage.setItem("relogin", true);
-
-          setTimeout(() => {
-            window.location.href = "/login";
-          }, 500);
-
-          console.log(data);
-        } else {
-          console.log(
-            "Failed to clear cookies. Server returned an error.",
-            data
-          );
-        }
-      } else {
-        console.log("Token has not yet expired");
-        setTimeout(() => {
-          logoutUser();
-        }, Time);
-      }
-    } catch (error) {
-      console.error("An error occurred:", error);
-    }
-  };
-  useEffect(() => {
-    checkTokenExpiryOnPageload();
-  }, []);
 
   // Function to log the user out and clean up
   const logoutUser = () => {
