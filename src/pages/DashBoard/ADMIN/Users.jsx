@@ -34,7 +34,7 @@ const Users = () => {
   const HandleGetAllUsers = async () => {
     try {
       const res = await fetch(
-        "https://streambackend-ngow.onrender.com/getAllUser",
+        "https://streambackend-nbbc.onrender.com/getAllUser",
         {
           method: "GET",
           headers: {
