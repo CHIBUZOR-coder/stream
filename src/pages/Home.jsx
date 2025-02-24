@@ -34,10 +34,8 @@ const Home = () => {
               </div>
               <p className="font-semibold text-text subscribe">
                 Only a valid and subscribed user can stream live. Signup or
-                login if you are already a user.
-                <span className="font-semibold text-text text-center">
-                  Please subscribe to enjoy our services.
-                </span>
+                login. If you already have an account, please subscribe to enjoy
+                our services.
               </p>
 
               <button
