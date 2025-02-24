@@ -50,27 +50,29 @@ const FavouritePage = () => {
 
   const HandleDeleteMovie = async (e, id) => {
     e.preventDefault();
-    try {
-      const res = await fetch(
-        "https://streambackend-nbbc.onrender.com/api/deletSingleMovie",
-        {
-          method: "DELETE",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify({ id }),
-        }
-      );
+    console.log("id:", id);
+    
+    // try {
+    //   const res = await fetch(
+    //     "https://streambackend-nbbc.onrender.com/api/deletSingleMovie",
+    //     {
+    //       method: "DELETE",
+    //       headers: {
+    //         "content-type": "application/json",
+    //       },
+    //       body: JSON.stringify({ id }),
+    //     }
+    //   );
 
-      const data = await res.json();
-      if (!res.ok) {
-        setResult(Alert(false, data.message));
-      } else {
-        setResult(Alert(true, data.message));
-      }
-    } catch (error) {
-      console.log(error.message);
-    }
+    //   const data = await res.json();
+    //   if (!res.ok) {
+    //     setResult(Alert(false, data.message));
+    //   } else {
+    //     setResult(Alert(true, data.message));
+    //   }
+    // } catch (error) {
+    //   console.log(error.message);
+    // }
   };
 
   useEffect(() => {
@@ -234,7 +236,11 @@ const FavouritePage = () => {
                   ))}
                 </>
               ) : (
-                ""
+                <div className=" flex flex-col w-full grid-cols-12 gap-5  bg-dry p-4 border border-x-gray-800  rounded-lg">
+                  <p className="font-semibold text-white">
+                    You have not added any favourite movie yet.
+                  </p>
+                </div>
               )}
             </tbody>
           </table>
