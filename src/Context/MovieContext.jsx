@@ -556,6 +556,8 @@ const MovieProvider = ({ children }) => {
   const InactiveTime = 20 * 60 * 1000;
   let activityEvents = ["mousemove", "keydown", "mousedown", "touchstart"];
   //Logout
+
+
   const checkTokenExpiry = async () => {
     console.log("starting Logout...");
 
@@ -567,9 +569,6 @@ const MovieProvider = ({ children }) => {
         return;
       }
 
-
-      console.log("userInfo:", userInfo);
-      
       const expTime = userInfo.exp * 1000; // Convert exp from seconds to milliseconds
       let currentTime = Date.now(); // Get current time in milliseconds
 
@@ -621,6 +620,71 @@ const MovieProvider = ({ children }) => {
       console.error("An error occurred:", error);
     }
   };
+
+
+
+  // const checkTokenExpiry = async () => {
+  //   console.log("starting Logout...");
+
+  //   try {
+  //     const userInfo = JSON.parse(localStorage.getItem("Token")); // Get userInfo from localStorage
+  //     if (!userInfo) {
+  //       console.log("userInfo not found");
+  //       localStorage.clear();
+  //       return;
+  //     }
+
+  //     const expTime = userInfo.exp * 1000; // Convert exp from seconds to milliseconds
+  //     let currentTime = Date.now(); // Get current time in milliseconds
+
+  //     // Check if the token is expired
+  //     if (expTime < currentTime) {
+  //       console.log(
+  //         "Token has expired. Token has expired. Logging out user..."
+  //       );
+
+  //       localStorage.clear();
+  //       // Send a request to the backend to clear the HTTP-only cookie
+  //       const res = await fetch(
+  //         "https://streambackend-nbbc.onrender.com/clear-cookies",
+  //         {
+  //           method: "POST",
+
+  //           headers: {
+  //             "Content-Type": "application/json", // Correct header
+  //           },
+
+  //           credentials: "include",
+  //         }
+  //       );
+
+  //       const data = await res.json();
+
+  //       if (res.ok) {
+  //         // Make sure to wait for the response
+  //         localStorage.setItem("relogin", true);
+
+  //         setTimeout(() => {
+  //           window.location.href = "/login";
+  //         }, 500);
+
+  //         console.log(data);
+  //       } else {
+  //         console.log(
+  //           "Failed to clear cookies. Server returned an error.",
+  //           data
+  //         );
+  //       }
+  //     } else {
+  //       console.log("Token has not yet expired");
+  //       setTimeout(() => {
+  //         logoutUser();
+  //       }, Time);
+  //     }
+  //   } catch (error) {
+  //     console.error("An error occurred:", error);
+  //   }
+  // };
 
   // Function to log the user out and clean up
   const logoutUser = () => {
