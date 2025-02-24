@@ -8,10 +8,12 @@ import { MdCancel, MdDelete } from "react-icons/md";
 
 const FavouritePage = () => {
   const { name } = useParams();
+  const [Result, setResult] = useState(null);
   const {
-    Movies,
     setFavouriteCartMovies,
     FavouriteCartMovies,
+
+    Alert,
     favCartAlert,
     setFavCartAlert,
   } = useContext(MovieContext);
@@ -43,6 +45,31 @@ const FavouritePage = () => {
       setFavouriteCartMovies(data.data.favouriteCartMovies); // Correct way to set state
     } catch (error) {
       console.log("Fetch error:", error.message);
+    }
+  };
+
+  const HandleDeleteMovie = async (e, id) => {
+    e.preventDefault();
+    try {
+      const res = await fetch(
+        "https://streambackend-nbbc.onrender.com/api/deletSingleMovie",
+        {
+          method: "DELETE",
+          headers: {
+            "content-type": "application/json",
+            body: JSON.stringify({ id }),
+          },
+        }
+      );
+
+      const data = await res.json();
+      if (!res.ok) {
+        setResult(Alert(false, data.message));
+      } else {
+        setResult(Alert(true, data.message));
+      }
+    } catch (error) {
+      console.log(error.message);
     }
   };
 
@@ -104,8 +131,8 @@ const FavouritePage = () => {
               </div>
               <p className="font-semibold text-text subscribe">
                 Only a valid and subscribed user can stream live. Signup or
-                login. If you already have an account, please subscribe to enjoy our
-                services.
+                login. If you already have an account, please subscribe to enjoy
+                our services.
               </p>
 
               <button
@@ -190,7 +217,7 @@ const FavouritePage = () => {
 
                     <button
                       onClick={(e) => {
-                        HandleDeleteMovie(e, movie.id);
+                        HandleDeleteMovie(e, movie?.id);
                       }}
                       className="bg-subMain text-white rounded flexCol w-6 h-6  hover:bg-main transi border border-subMain delete  "
                     >
