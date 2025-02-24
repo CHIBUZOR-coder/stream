@@ -57,8 +57,8 @@ const FavouritePage = () => {
           method: "DELETE",
           headers: {
             "content-type": "application/json",
-            body: JSON.stringify({ id }),
           },
+          body: JSON.stringify({ id }),
         }
       );
 
@@ -93,11 +93,10 @@ const FavouritePage = () => {
       page * itemsPerPage
     );
 
-    console.log("pag:",paginatedMovies);
-    
+    console.log("pag:", paginatedMovies);
   }, [FavouriteCartMovies, page]);
 
-      console.log("pagg:", paginatedMovies);
+  console.log("pagg:", paginatedMovies);
 
   // Total pages for pagination
   const totalPages = Math.ceil(
