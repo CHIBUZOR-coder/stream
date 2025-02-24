@@ -13,6 +13,7 @@ const Table = ({
   Handlegeneral,
   setdeletedMovieId,
   HandleDeleteMovie,
+  setShareOpen,
 }) => {
   // console.log("user", User);
 
@@ -97,8 +98,20 @@ const Table = ({
                         Download <FaCloudDownloadAlt />
                       </button>
                       <Link
-                        to={`/stream/watch/${movie.id}`}
-                        className="bg-subMain text-white rounded flexCol w-6 h-6 "
+                        onClick={(e) => {
+                          if (User.subscription !== "SUBSCRIBED") {
+                            setShareOpen((prev) => !prev);
+                          } else {
+                            navigate(`/stream/watch/${movie.movie?.name}`);
+                            // console.log("User already Subscribed!");
+                          }
+                        }}
+                        to={`${
+                          User && User.subscription === "SUBSCRIBED"
+                            ? `/watch/${movie?.movie.name}`
+                            : ``
+                        }`}
+                        className="bg-subMain text-white  hover:bg-main transi border border-subMain rounded flexCol w-6 h-6 "
                       >
                         <GoEye />
                       </Link>
