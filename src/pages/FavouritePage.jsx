@@ -225,7 +225,7 @@ const FavouritePage = () => {
 
                         <button
                           onClick={(e) => {
-                            HandleDeleteMovie(e, movie?.id);
+                            HandleDeleteMovie(e, movie?.movie.id);
                           }}
                           className="bg-subMain text-white rounded flexCol w-6 h-6  hover:bg-main transi border border-subMain delete  "
                         >
