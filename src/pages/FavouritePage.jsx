@@ -92,7 +92,12 @@ const FavouritePage = () => {
       (page - 1) * itemsPerPage,
       page * itemsPerPage
     );
+
+    console.log("pag:",paginatedMovies);
+    
   }, [FavouriteCartMovies, page]);
+
+      console.log("pagg:", paginatedMovies);
 
   // Total pages for pagination
   const totalPages = Math.ceil(
