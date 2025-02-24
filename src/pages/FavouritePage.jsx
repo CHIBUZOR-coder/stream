@@ -201,7 +201,7 @@ const FavouritePage = () => {
                         if (User.subscription !== "SUBSCRIBED") {
                           setShareOpen((prev) => !prev);
                         } else {
-                          navigate(`/stream/watch/${movie?.name}`);
+                          navigate(`/stream/watch/${movie.movie?.name}`);
                           // console.log("User already Subscribed!");
                         }
                       }}
