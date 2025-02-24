@@ -557,7 +557,6 @@ const MovieProvider = ({ children }) => {
   let activityEvents = ["mousemove", "keydown", "mousedown", "touchstart"];
   //Logout
 
-
   const checkTokenExpiry = async () => {
     console.log("starting Logout...");
 
@@ -577,6 +576,15 @@ const MovieProvider = ({ children }) => {
         console.log(
           "Token has expired. Token has expired. Logging out user..."
         );
+
+        console.log("Retrieved userInfo:", userInfo);
+        console.log("Token Expiry Timestamp:", userInfo.exp);
+        console.log(
+          "Token Expiry Time (converted):",
+          new Date(userInfo.exp * 1000).toLocaleString()
+        );
+        console.log("Current Time:", new Date(Date.now()).toLocaleString());
+        console.log("Time Difference (ms):", userInfo.exp * 1000 - Date.now());
 
         localStorage.clear();
         // Send a request to the backend to clear the HTTP-only cookie
@@ -620,8 +628,6 @@ const MovieProvider = ({ children }) => {
       console.error("An error occurred:", error);
     }
   };
-
-
 
   // const checkTokenExpiry = async () => {
   //   console.log("starting Logout...");
