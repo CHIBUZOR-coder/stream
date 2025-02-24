@@ -241,11 +241,15 @@ const MovieProvider = ({ children }) => {
     // Autentification();
     VeryfySubscriptoin();
     //  AutentificationToken();
-    checkTokenExpiry();
+
     if (isLogin === true) {
       setGetUser(true);
     }
     // HandleGetReviews();
+
+    if (isLogin) {
+      checkTokenExpiry();
+    }
   }, []);
 
   const AllMovies = FetchedMovies;
@@ -567,9 +571,8 @@ const MovieProvider = ({ children }) => {
         return;
       }
 
-
       console.log("userInfo:", userInfo);
-      
+
       const expTime = userInfo.exp * 1000; // Convert exp from seconds to milliseconds
       let currentTime = Date.now(); // Get current time in milliseconds
 
