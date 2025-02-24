@@ -173,63 +173,69 @@ const FavouritePage = () => {
               </tr>
             </thead>
             <tbody className=" bg-main divide-y divide-gray-800">
-              {paginatedMovies.map((movie, i) => (
-                <tr key={i}>
-                  <td className={`${Text}`}>
-                    <div className="w-12 bg-dry borer border-border rounded h-12 overflow-hidden ">
-                      <img
-                        src={`${movie.movie?.image}`}
-                        alt={movie.name}
-                        className="w-full h-full object-cover rounded-md"
-                      />
-                    </div>
-                  </td>
-                  <td className={`${Text}`}>
-                    <p>{movie.movie?.name}</p>
-                  </td>
-                  <td className={`${Text}`}>
-                    <p>{movie.movie?.category.tittle}</p>
-                  </td>
-                  <td className={`${Text}`}>
-                    <p>{movie.movie?.year}</p>
-                  </td>
-                  <td className={`${Text} `}>
-                    <p>{movie.movie?.time}</p>
-                  </td>
-                  <td className={`${Text}  gap-3 flex items-center `}>
-                    <button className="bg-dry border border-border flexRow gap-2 text-border px-2 py-1 rounded">
-                      Download <FaCloudDownloadAlt />
-                    </button>
-                    <Link
-                      onClick={(e) => {
-                        if (User.subscription !== "SUBSCRIBED") {
-                          setShareOpen((prev) => !prev);
-                        } else {
-                          navigate(`/stream/watch/${movie.movie?.name}`);
-                          // console.log("User already Subscribed!");
-                        }
-                      }}
-                      to={`${
-                        User && User.subscription === "SUBSCRIBED"
-                          ? `/watch/${movie?.movie.name}`
-                          : ``
-                      }`}
-                      className="bg-subMain text-white  hover:bg-main transi border border-subMain rounded flexCol w-6 h-6 "
-                    >
-                      <GoEye />
-                    </Link>
+              {paginatedMovies && paginatedMovies.length > 0 ? (
+                <>
+                  {paginatedMovies.map((movie, i) => (
+                    <tr key={i}>
+                      <td className={`${Text}`}>
+                        <div className="w-12 bg-dry borer border-border rounded h-12 overflow-hidden ">
+                          <img
+                            src={`${movie.movie?.image}`}
+                            alt={movie.name}
+                            className="w-full h-full object-cover rounded-md"
+                          />
+                        </div>
+                      </td>
+                      <td className={`${Text}`}>
+                        <p>{movie.movie?.name}</p>
+                      </td>
+                      <td className={`${Text}`}>
+                        <p>{movie.movie?.category.tittle}</p>
+                      </td>
+                      <td className={`${Text}`}>
+                        <p>{movie.movie?.year}</p>
+                      </td>
+                      <td className={`${Text} `}>
+                        <p>{movie.movie?.time}</p>
+                      </td>
+                      <td className={`${Text}  gap-3 flex items-center `}>
+                        <button className="bg-dry border border-border flexRow gap-2 text-border px-2 py-1 rounded">
+                          Download <FaCloudDownloadAlt />
+                        </button>
+                        <Link
+                          onClick={(e) => {
+                            if (User.subscription !== "SUBSCRIBED") {
+                              setShareOpen((prev) => !prev);
+                            } else {
+                              navigate(`/stream/watch/${movie.movie?.name}`);
+                              // console.log("User already Subscribed!");
+                            }
+                          }}
+                          to={`${
+                            User && User.subscription === "SUBSCRIBED"
+                              ? `/watch/${movie?.movie.name}`
+                              : ``
+                          }`}
+                          className="bg-subMain text-white  hover:bg-main transi border border-subMain rounded flexCol w-6 h-6 "
+                        >
+                          <GoEye />
+                        </Link>
 
-                    <button
-                      onClick={(e) => {
-                        HandleDeleteMovie(e, movie?.id);
-                      }}
-                      className="bg-subMain text-white rounded flexCol w-6 h-6  hover:bg-main transi border border-subMain delete  "
-                    >
-                      <MdDelete className="deletechild transi" />
-                    </button>
-                  </td>
-                </tr>
-              ))}
+                        <button
+                          onClick={(e) => {
+                            HandleDeleteMovie(e, movie?.id);
+                          }}
+                          className="bg-subMain text-white rounded flexCol w-6 h-6  hover:bg-main transi border border-subMain delete  "
+                        >
+                          <MdDelete className="deletechild transi" />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </>
+              ) : (
+                ""
+              )}
             </tbody>
           </table>
         </div>

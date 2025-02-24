@@ -134,7 +134,11 @@ const SingleMovie = () => {
             </div>
           </div>
         ) : (
-          ""
+          <div className=" flex flex-col w-full grid-cols-12 gap-5  bg-dry p-4 border border-x-gray-800  rounded-lg">
+            <p className="font-semibold text-white">
+              You have not added any favourite movie yet.
+            </p>
+          </div>
         )}
 
         <div

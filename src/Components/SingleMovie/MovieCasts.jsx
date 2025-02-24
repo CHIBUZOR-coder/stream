@@ -33,7 +33,7 @@ const MovieCasts = ({ movieId, movie }) => {
     <div className="px-3 w-full">
       <div className="flex items-center gap-8 md:gap-4">
         <FaUserFriends className="w-6 h-6 md:w-4 md:h-4 text-subMain" />
-        <h2 className="sm:text-xl font-bold text-lg">Castt</h2>
+        <h2 className="sm:text-xl font-bold text-lg">Cast</h2>
       </div>
 
       <div className="mt-10">
