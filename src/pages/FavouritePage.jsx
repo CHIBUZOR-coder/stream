@@ -52,27 +52,27 @@ const FavouritePage = () => {
     e.preventDefault();
     console.log("id:", id);
     
-    // try {
-    //   const res = await fetch(
-    //     "https://streambackend-nbbc.onrender.com/api/deletSingleMovie",
-    //     {
-    //       method: "DELETE",
-    //       headers: {
-    //         "content-type": "application/json",
-    //       },
-    //       body: JSON.stringify({ id }),
-    //     }
-    //   );
+    try {
+      const res = await fetch(
+        "https://streambackend-nbbc.onrender.com/api/deletSingleMovie",
+        {
+          method: "DELETE",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({ id }),
+        }
+      );
 
-    //   const data = await res.json();
-    //   if (!res.ok) {
-    //     setResult(Alert(false, data.message));
-    //   } else {
-    //     setResult(Alert(true, data.message));
-    //   }
-    // } catch (error) {
-    //   console.log(error.message);
-    // }
+      const data = await res.json();
+      if (!res.ok) {
+        setResult(Alert(false, data.message));
+      } else {
+        setResult(Alert(true, data.message));
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   useEffect(() => {
@@ -110,12 +110,22 @@ const FavouritePage = () => {
 
   return (
     <Layout>
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 relative">
         {/* Page Header */}
         <div className="flex justify-between items-center p-0 md:p-4">
           <h2 className="md:text-xl text-lg text-white font-bold">
             Favourite Movies
           </h2>
+        </div>
+
+        <div
+          className={` ${
+            Result ? "Animate" : "hidden"
+          } fixed Alert  left-0 w-full z-40 flex justify-center items-center `}
+        >
+          <div className=" bg-text text-dry w-1/2 rounded-md border-[3px] border-subMain flex justify-center items-center p-4">
+            {Result && <p>{Result}</p>}
+          </div>
         </div>
 
         <div className="overflow-x-scroll overflow-hidden relative w-full">
