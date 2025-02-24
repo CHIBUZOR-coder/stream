@@ -635,7 +635,7 @@ const MovieProvider = ({ children }) => {
 
       console.log("userInfo:", userInfo);
 
-      console.log();
+
 
       const expTime = userInfo.exp * 1000; // Convert exp from seconds to milliseconds
       let currentTime = Date.now(); // Get current time in milliseconds
