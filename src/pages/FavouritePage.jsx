@@ -4,7 +4,7 @@ import Layout from "../Layout/Layout";
 import { Link, useParams } from "react-router-dom";
 import { GoEye } from "react-icons/go";
 import { FaCloudDownloadAlt } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
+import { MdCancel, MdDelete } from "react-icons/md";
 
 const FavouritePage = () => {
   const { name } = useParams();
