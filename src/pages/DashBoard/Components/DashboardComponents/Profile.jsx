@@ -35,7 +35,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
 
   // const selected = AllMovies.slice(0, 10);
   const [singleUser, SetSingleUser] = useState(null);
-  const [shareOpen, setShareOpen] = useState(false);
+  const [RecieptOpen, setReceiptOpen] = useState(false);
   const navigate = useNavigate();
   const [MovieList, setMovieList] = useState(null);
   const [page, setPage] = useState(1);
@@ -259,11 +259,11 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
       </div>
       <div
         className={` ${
-          shareOpen ? "" : "hidden"
+          RecieptOpen ? "" : "hidden"
         }  absolute  top-0 left-0 z-50   w-full h-full bg-main2 flex justify-center items-center  px-4`}
       >
         <span
-          onClick={() => setShareOpen((prev) => !prev)}
+          onClick={() => setReceiptOpen((prev) => !prev)}
           className="rounded-full fixed top-[30%]  md:right-[25%] lg:right-[20%] right-[8%] border-2 h-14 w-14 border-subMain hover:text-subMain text-white transi hover:border-white hover:rotate-180 flex justify-center items-center"
         >
           <MdCancel className="h-12 w-12" />
@@ -400,7 +400,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
                   <div
                     onClick={(e) => {
                       if (item.tittle === "Subscription Details") {
-                        setShareOpen((prev) => !prev);
+                        setReceiptOpen((prev) => !prev);
                       }
                     }}
                     className={` ${
