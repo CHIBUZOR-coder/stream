@@ -241,7 +241,7 @@ const MovieProvider = ({ children }) => {
     // Autentification();
     VeryfySubscriptoin();
     //  AutentificationToken();
-    checkTokenExpiry();
+    // checkTokenExpiry();
     if (isLogin === true) {
       setGetUser(true);
     }
