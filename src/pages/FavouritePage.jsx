@@ -135,7 +135,7 @@ const totalPages = Math.ceil((FavouriteCartMovies?.length || 0) / itemsPerPage);
                       Download <FaCloudDownloadAlt />
                     </button>
                     <Link
-                      to={`/watch/${movie.id}`}
+                      to={`/watch/${movie.movie?.id}`}
                       className="bg-subMain text-white  hover:bg-main transi border border-subMain rounded flexCol w-6 h-6 "
                     >
                       <GoEye />
