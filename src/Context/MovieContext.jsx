@@ -622,10 +622,11 @@ const MovieProvider = ({ children }) => {
   };
 
   const checkTokenExpiryOnPageload = async () => {
-    console.log("starting Logout...");
+    const userInfo = JSON.parse(localStorage.getItem("Token"));
+    console.log(" starting OnpageLoad Logout...");
 
     try {
-      const userInfo = JSON.parse(localStorage.getItem("Token")); // Get userInfo from localStorage
+      // Get userInfo from localStorage
       if (!userInfo) {
         console.log("userInfo not found");
 
@@ -633,6 +634,8 @@ const MovieProvider = ({ children }) => {
       }
 
       console.log("userInfo:", userInfo);
+
+      console.log();
 
       const expTime = userInfo.exp * 1000; // Convert exp from seconds to milliseconds
       let currentTime = Date.now(); // Get current time in milliseconds
