@@ -240,8 +240,8 @@ const MovieProvider = ({ children }) => {
     HandleGetCategories();
     // Autentification();
     VeryfySubscriptoin();
-    //  AutentificationToken();
-    checkTokenExpiry();
+     AutentificationToken();
+  
     if (isLogin === true) {
       setGetUser(true);
     }
