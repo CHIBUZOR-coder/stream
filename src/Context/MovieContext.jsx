@@ -241,7 +241,7 @@ const MovieProvider = ({ children }) => {
     // Autentification();
     VeryfySubscriptoin();
     //  AutentificationToken();
-    // checkTokenExpiry();
+    checkTokenExpiry();
     if (isLogin === true) {
       setGetUser(true);
     }
@@ -568,7 +568,7 @@ const MovieProvider = ({ children }) => {
       }
 
       const expTime = userInfo.exp * 1000; // Convert exp from seconds to milliseconds
-      let currentTime = Date.now(); // Get current time in milliseconds
+      let currentTime = Date.now(); // Get current time in millisecondsh
       console.log("expTime:", expTime);
       console.log("currentTime:", currentTime);
 
