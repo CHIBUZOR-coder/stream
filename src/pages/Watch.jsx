@@ -29,7 +29,7 @@ const Watch = () => {
 
   const HandeleAddWtchCount = async (e, movieId) => {
     e.preventDefault();
-    Id = User.id;
+    const Id = User.id;
     if (isLogin) {
       try {
         const res = await fetch(
