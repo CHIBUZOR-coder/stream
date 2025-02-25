@@ -213,13 +213,15 @@ const FavouritePage = () => {
             </thead>
             <tbody className=" bg-main divide-y divide-gray-800 w-full bg-green-400 ">
               {issLoading ? (
-                <div className=" h-24 w-full bg-subMain rounded-md border-border   text-white  flex flex-col justify-center items-center ">
-                  <RiLoader2Fill className="h-10 w-10 animate-spin" />
-                  <p className="w-full text-center font-semibold">
-                    {loadDisplay}
-                  </p>
-                  {/* <p className="font-semibold">this will take about two minutes</p> */}
-                </div>
+                <tr className="w-full">
+                  <div className=" h-24 w-full bg-subMain loaderrr rounded-md border-border   text-white  flex flex-col justify-center items-center ">
+                    <RiLoader2Fill className="h-10 w-10 animate-spin" />
+                    <p className="w-full text-center font-semibold">
+                      {loadDisplay}
+                    </p>
+                    {/* <p className="font-semibold">this will take about two minutes</p> */}
+                  </div>
+                </tr>
               ) : paginatedMovies && paginatedMovies.length > 0 ? (
                 <>
                   {paginatedMovies.map((movie, i) => (
