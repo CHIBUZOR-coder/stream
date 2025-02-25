@@ -97,7 +97,7 @@ const Watch = () => {
             <div className="h-[200px]  md:h-[400px] rounded overflow-hidden text-white relative w-full bg-center bg-cover">
               <div className=" bg-main2 w-full h-full flexCol absolute top-0 left-0">
                 <button
-                  onClick={() => {
+                  onClick={(e) => {
                     setPlay(true);
                     if (User && User.subscription === "SUBSCRIBED") {
                       HandeleAddWtchCount(e, movie?.id);
