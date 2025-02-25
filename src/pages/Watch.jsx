@@ -30,6 +30,8 @@ const Watch = () => {
   const HandeleAddWtchCount = async (e, movieId) => {
     e.preventDefault();
     const Id = User.id;
+    console.log("movieId:", movieId);
+
     if (isLogin) {
       try {
         const res = await fetch(
@@ -41,7 +43,7 @@ const Watch = () => {
               "Content-Type": "application/json", // Correct header
             },
 
-            body: JSON.stringify({ movieId, Id }),
+            body: JSON.stringify({ Id, movieId }),
           }
         );
         const data = await res.json();
