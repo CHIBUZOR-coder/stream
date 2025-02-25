@@ -80,7 +80,7 @@ const Watch = () => {
         </div>
 
         <div className="flexBtn w-full justify-center flex-wrap mb-6 gap-2 bg-main text-white p-6 rounded border border-gray-800">
-          <div className="w-full flex justify-between p-2 bg-yellow-300" >
+          <div className="w-full flex justify-between p-2 gap-5" >
             <p>
               <BiArrowBack />
             </p>
@@ -95,7 +95,7 @@ const Watch = () => {
             <button className="btn bg-primary2 rounded px-4 py-3 text-sm hover:text-subMain transi font-bold">
               <FaHeart />
             </button>
-            <button className="btn bg-subMain  flexRow gap-2  rounded px-8 font-medium py-3 text-sm hover:text-main transi">
+            <button className="btn   flexRow gap-2  rounded px-8 font-medium py-3 text-sm hover:text-main transi">
               <FaCloudDownloadAlt />
             </button>
           </div>
