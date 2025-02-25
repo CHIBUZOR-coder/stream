@@ -40,12 +40,14 @@ const Login = () => {
           "You have been logged out due to inactivity. Please login again"
         )
       );
-      setTimeout(() => {
-        setResult(null);
-        localStorage.removeItem("InactiveLogout");
-      }, 6000);
     }
   }, []);
+
+  useEffect(() => {
+    if (Email || Password) {
+      setResult(null);
+    }
+  }, [Email, Password]);
 
   console.log("Result:", Result);
   useEffect(() => {
