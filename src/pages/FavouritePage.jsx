@@ -96,12 +96,12 @@ const FavouritePage = () => {
         setResult(Alert(false, data.message));
         setTimeout(() => {
           setResult(null);
-        }, timeout);
+        }, 4000);
       } else {
         setResult(Alert(true, data.message));
         setTimeout(() => {
           setResult(null);
-        }, timeout);
+        }, 4000);
       }
     } catch (error) {
       console.log(error.message);
