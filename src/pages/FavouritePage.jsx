@@ -5,14 +5,19 @@ import { Link, useParams } from "react-router-dom";
 import { GoEye } from "react-icons/go";
 import { FaCloudDownloadAlt } from "react-icons/fa";
 import { MdCancel, MdDelete } from "react-icons/md";
+import { RiLoader2Fill } from "react-icons/ri";
 
 const FavouritePage = () => {
   const { name } = useParams();
   const [Result, setResult] = useState(null);
+  const [display, setDisplay] = useState("");
+  const [loadDisplay, setLoadDiaplay] = useState("");
+
   const {
     setFavouriteCartMovies,
     FavouriteCartMovies,
-
+    issLoading,
+    setIsLoading,
     Alert,
     favCartAlert,
     setFavCartAlert,
@@ -21,7 +26,9 @@ const FavouritePage = () => {
   const { HandleSubscribe } = useContext(MovieContext);
   const User = JSON.parse(localStorage.getItem("userInfo"));
 
-  const GetFavouriteCart = async () => {
+  const GetFavouriteCart = async (e) => {
+    setIsLoading(true);
+    setLoadDiaplay("Getting Favourite Movie...");
     try {
       const res = await fetch(
         `https://streambackend-nbbc.onrender.com/getfacouriteCart/${name}`,
@@ -34,14 +41,34 @@ const FavouritePage = () => {
 
       if (!res.ok) {
         console.log("Error fetching cart:", data);
+        setIsLoading(false);
+        setDisplay(
+          <div className=" flex flex-col justify-center items-center gap-5  bg-dry p-4 border border-x-gray-800  rounded-lg">
+            <p className="  font-semibold text-white">
+              Error fetching favourite movies. Please try again later.
+            </p>
+          </div>
+        );
         return;
       }
-
+      setIsLoading(false);
       console.log("cartData:", data.data.favouriteCartMovies);
+      if (data.data.favouriteCartMovies.length === 0) {
+        setDisplay(
+          <div className=" flex flex-col justify-center items-center gap-5  bg-dry p-4 border border-x-gray-800  rounded-lg">
+            <p className="  font-semibold text-white">
+              You have not added any favourite movie yet.
+            </p>
+          </div>
+        );
+      } else {
+        setDisplay(null);
+      }
       localStorage.setItem(
         "Favourite",
         JSON.stringify(data.data.favouriteCartMovies)
       );
+
       setFavouriteCartMovies(data.data.favouriteCartMovies); // Correct way to set state
     } catch (error) {
       console.log("Fetch error:", error.message);
@@ -51,7 +78,7 @@ const FavouritePage = () => {
   const HandleDeleteMovie = async (e, id) => {
     e.preventDefault();
     console.log("id:", id);
-    
+
     try {
       const res = await fetch(
         "https://streambackend-nbbc.onrender.com/deletefacouriteCart/:name",
@@ -246,10 +273,14 @@ const FavouritePage = () => {
                   ))}
                 </>
               ) : (
-                <div className=" flex flex-col justify-center items-center gap-5  bg-dry p-4 border border-x-gray-800  rounded-lg">
-                  <p className="  font-semibold text-white">
-                    You have not added any favourite movie yet.
-                  </p>
+                <>{display}</>
+              )}
+
+              {issLoading && (
+                <div className=" h-24 w-1/2 rounded-md border-border text-white  flex flex-col justify-center items-center ">
+                  <RiLoader2Fill className="h-10 w-10 animate-spin" />
+                  <p className="font-semibold">{loadDisplay}</p>
+                  {/* <p className="font-semibold">this will take about two minutes</p> */}
                 </div>
               )}
             </tbody>
