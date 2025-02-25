@@ -40,10 +40,10 @@ const MovieRates = ({ movie }) => {
     if (!res.ok) {
       console.log(data);
     }
-
+    HandleGetMovies();
     console.log(data);
     setReview("");
-    HandleGetMovies();
+
   };
 
   useEffect(() => {
