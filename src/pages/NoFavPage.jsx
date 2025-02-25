@@ -15,9 +15,9 @@ const NoFavPage = () => {
       unAuthorizedUser
     ) : (
       <p className=" px-44 text-center text-lg text-text italic">
-        You have to be a user to gain acces to have and gain acces to your own favourite movies at this
-        address or page. Navigate to the Signup page below and signup to gain
-        acces to your Dashboard
+        You have to be a user to gain acces to have and gain acces to your own
+        favourite movies at this address or page. Navigate to the Signup page
+        below and signup to gain acces to your Dashboard
       </p>
     );
 
@@ -40,9 +40,15 @@ const NoFavPage = () => {
         <div className="absolute inset-0 flex flex-col gap-8 bg-transb items-center justify-center md:py-20 py-10">
           <div className="w-full flexCol gap-3">
             <h1 className="text-4xl font-bold">🤖Opps!</h1>
-            <h1 className="text-4xl font-bold">Not a User</h1>
+            <h1 className="text-4xl font-bold">You are Not a User</h1>
           </div>
-
+          <div>
+            <p className=" px-44 text-center text-lg text-text italic">
+              You have to be a user to gain acces to your own favourite movie at
+              this address or page. Navigate to the Signup page below and signup
+              to gain acces to your Dashboard
+            </p>
+          </div>
           <div>{defaultt}</div>
 
           <Link
