@@ -54,7 +54,7 @@ const FavouritePage = () => {
     
     try {
       const res = await fetch(
-        "https://streambackend-nbbc.onrender.com/api/deletSingleMovie",
+        "https://streambackend-nbbc.onrender.com/deletefacouriteCart/:name",
         {
           method: "DELETE",
           headers: {
