@@ -91,7 +91,7 @@ const Watch = () => {
               {movie && movie?.name}
             </Link>
           </div>
-          <div className="flexBtn sm:w-auto w-full  md:w-1/3 gap-5 md:gap-8  justify-between md:justify-center p-2">
+          <div className="flexBtn sm:w-auto w-full  md:w-1/3 gap-5 md:gap-8  justify-between md:justify-end p-2">
             <button className="btn bg-primary2 rounded px-4 py-3 text-sm hover:text-subMain transi font-bold">
               <FaHeart />
             </button>
