@@ -99,6 +99,7 @@ const Table = ({
                       </button>
                       <Link
                         onClick={(e) => {
+                          e.preventDefault();
                           if (User.subscription !== "SUBSCRIBED") {
                             setShareOpen((prev) => !prev);
                           } else {
