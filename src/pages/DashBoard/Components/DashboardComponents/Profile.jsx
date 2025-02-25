@@ -48,6 +48,9 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
   const [page, setPage] = useState(1);
   const [Reciept, setReciept] = useState([]);
   const [shareOpen, setShareOpen] = useState(false);
+  const [display, setDisplay] = useState("");
+  const [loadDisplay, setLoadDiaplay] = useState("");
+
   const itemsPerPage = 10;
   const totalPages = AllMovies && Math.ceil(AllMovies.length / itemsPerPage);
   let UserLink;
@@ -129,6 +132,18 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
   };
 
   const HandleGeTSubscription = async () => {
+    if (User.subscription === "UNSUBSCRIBED") {
+      console.log("User is not subscribed");
+      return;
+
+      //  setDisplay(
+      //    <div className=" flex flex-col justify-center items-center gap-5  bg-dry p-4 border border-x-gray-800  rounded-lg">
+      //      <p className="  font-semibold text-white">
+      //        ⚠️You have no reciept because you are not a subscribed user!.
+      //      </p>
+      //    </div>
+      //  );
+    }
     try {
       const res = await fetch(
         `https://streambackend-nbbc.onrender.com/subscriptionDetails/${name}`,
@@ -145,6 +160,11 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
 
       if (!res.ok) {
         console.log(data);
+        setDisplay(
+          <div className=" flex flex-col justify-center items-center gap-5  bg-dry p-4 border border-x-gray-800  rounded-lg">
+            <p className="  font-semibold text-white">Error fetching Recipt.</p>
+          </div>
+        );
       }
 
       setReciept(data.data);
@@ -194,6 +214,17 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
   useEffect(() => {
     HandleGetUser();
     HandleGeTSubscription();
+    if (User.subscription === "UNSUBSCRIBED") {
+      setDisplay(
+        <div className=" flex flex-col justify-center items-center gap-5  bg-dry p-4 border border-x-gray-800  rounded-lg">
+          <p className="  font-semibold text-white">
+            ⚠️You have no reciept because you are not a subscribed user!.
+          </p>
+        </div>
+      );
+    } else {
+      setDisplay(null);
+    }
   }, []);
 
   useEffect(() => {
@@ -335,23 +366,27 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
               </tr>
             </thead>
             <tbody className=" bg-main divide-y divide-gray-800">
-              <tr>
-                <td className={`${Text}`}>{Reciept && Reciept?.name}</td>
-                <td className={`${Text}`}>
-                  {Reciept && Reciept.transactionId}
-                </td>
-                <td className={`${Text}`}>{Reciept && Reciept?.status}</td>
-                <td className={`${Text}`}>{Reciept && Reciept?.amount}$</td>
-                <td className={`${Text}`}>{days && days} Days</td>
-                <td className={`${Text}`}>
-                  <button
-                    onClick={(e) => HandeleUnsubscribe(e)}
-                    className="bg-dry border border-border flexRow gap-2 text-border px-2 py-1 rounded"
-                  >
-                    Unsubscribe
-                  </button>
-                </td>
-              </tr>
+              {Reciept ? (
+                <tr>
+                  <td className={`${Text}`}>{Reciept && Reciept?.name}</td>
+                  <td className={`${Text}`}>
+                    {Reciept && Reciept.transactionId}
+                  </td>
+                  <td className={`${Text}`}>{Reciept && Reciept?.status}</td>
+                  <td className={`${Text}`}>{Reciept && Reciept?.amount}$</td>
+                  <td className={`${Text}`}>{days && days} Days</td>
+                  <td className={`${Text}`}>
+                    <button
+                      onClick={(e) => HandeleUnsubscribe(e)}
+                      className="bg-dry border border-border flexRow gap-2 text-border px-2 py-1 rounded"
+                    >
+                      Unsubscribe
+                    </button>
+                  </td>
+                </tr>
+              ) : (
+                <>{display}</>
+              )}
             </tbody>
           </table>
           {/* <p className="text-white text-xs w-full text-center">← Scroll to see more details →</p> */}
