@@ -75,7 +75,7 @@ const FavouritePage = () => {
     }
   };
 
-  const HandleDeleteMovie = async (e, id) => {
+  const HandleRemoveFavouriteMovie = async (e, id) => {
     e.preventDefault();
 
     console.log("id:", id);
@@ -282,7 +282,7 @@ const FavouritePage = () => {
 
                         <button
                           onClick={(e) => {
-                            HandleDeleteMovie(e, movie?.movie.id);
+                            HandleRemoveFavouriteMovie(e, movie?.movie.id);
                           }}
                           className="bg-subMain text-white rounded flexCol w-6 h-6  hover:bg-main transi border border-subMain delete  "
                         >

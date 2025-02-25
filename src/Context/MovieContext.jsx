@@ -907,6 +907,7 @@ const MovieProvider = ({ children }) => {
         Ratingss,
         setRatings,
         AutentificationToken,
+        isLogin,
       }}
     >
       {children}
