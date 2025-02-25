@@ -331,12 +331,12 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
             </thead>
             <tbody className=" bg-main divide-y divide-gray-800">
               <tr>
-                <td className={`${Text}`}>{Reciept && Reciept.name}</td>
+                <td className={`${Text}`}>{Reciept && Reciept?.name}</td>
                 <td className={`${Text}`}>
                   {Reciept && Reciept.transactionId}
                 </td>
-                <td className={`${Text}`}>{Reciept && Reciept.status}</td>
-                <td className={`${Text}`}>{Reciept && Reciept.amount}$</td>
+                <td className={`${Text}`}>{Reciept && Reciept?.status}</td>
+                <td className={`${Text}`}>{Reciept && Reciept?.amount}$</td>
                 <td className={`${Text}`}>{days && days} Days</td>
                 <td className={`${Text}`}>
                   <button
@@ -367,7 +367,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
               >
                 {singleUser?.image ? (
                   <img
-                    src={singleUser.image}
+                    src={singleUser?.image}
                     alt="User"
                     className="w-full h-full object-cover"
                   />
@@ -384,7 +384,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
             </div>
 
             <div className="text-center">
-              {/* <p className="font-semibold">{singleUser && singleUser?.name}</p> */}
+              <p className="font-semibold">{singleUser && singleUser?.name}</p>
               <p className="text-sm text-dryGray">
                 {singleUser && singleUser?.email}
               </p>
