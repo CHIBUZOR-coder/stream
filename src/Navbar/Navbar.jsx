@@ -20,7 +20,7 @@ const Navbar = ({ HandleInputChange, Text }) => {
   // useEffect(() => {
   //   console.log("logDetails after", logDetail);
   // }, [logDetail]);
-  const NotUser = "/nofavorite";
+  const NotUser = "nofavorite";
   let dash;
   let fav;
   if (!userData) {
