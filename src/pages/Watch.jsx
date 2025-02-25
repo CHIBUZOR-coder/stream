@@ -8,7 +8,7 @@ import { FaCloud, FaCloudDownloadAlt, FaHeart, FaPlay } from "react-icons/fa";
 const Watch = () => {
   const { name } = useParams();
   const User = JSON.parse(localStorage.getItem("userInfo"));
-  const { FetchedMovies, isLogin, watched, setWatched } =
+  const { FetchedMovies, isLogin, watched, setWatched, Alert } =
     useContext(MovieContext);
 
   // const movie = AllMovies.find((movie) => movie.name === name);
