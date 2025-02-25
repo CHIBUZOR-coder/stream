@@ -72,23 +72,23 @@ const Table = ({
                   <div className="w-12 bg-dry borer border-border rounded h-12 overflow-hidden ">
                     <img
                       src={`${movie.image}`}
-                      alt={movie.name}
+                      alt={movie?.name}
                       className="w-full h-full object-cover rounded-md"
                     />
                   </div>
                 </td>
                 <td className={`${Text}`}>
-                  <p>{movie.name}</p>
+                  <p>{movie?.name}</p>
                 </td>
                 <td className={`${Text}`}>
-                  <p>{movie.category.tittle}</p>
+                  <p>{movie?.category?.tittle}</p>
                 </td>
 
                 <td className={`${Text}`}>
                   <p>{movie.year}</p>
                 </td>
                 <td className={`${Text}`}>
-                  <p>{movie.time}</p>
+                  <p>{movie?.time}</p>
                 </td>
                 <td className={`${Text} float-right flexRow gap-2`}>
                   {For === "dash" ? (
@@ -102,13 +102,13 @@ const Table = ({
                           if (User.subscription !== "SUBSCRIBED") {
                             setShareOpen((prev) => !prev);
                           } else {
-                            navigate(`/stream/watch/${movie.movie?.name}`);
+                            navigate(`/stream/watch/${movie?.name}`);
                             // console.log("User already Subscribed!");
                           }
                         }}
                         to={`${
                           User && User.subscription === "SUBSCRIBED"
-                            ? `/watch/${movie?.movie.name}`
+                            ? `/watch/${movie?.name}`
                             : ``
                         }`}
                         className="bg-subMain text-white  hover:bg-main transi border border-subMain rounded flexCol w-6 h-6 "
