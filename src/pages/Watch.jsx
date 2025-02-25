@@ -91,11 +91,11 @@ const Watch = () => {
               {movie && movie?.name}
             </Link>
           </div>
-          <div className="flexBtn sm:w-auto w-full gap-5 justify-between p-2">
+          <div className="flexBtn sm:w-auto w-full gap-5  justify-between p-2">
             <button className="btn bg-primary2 rounded px-4 py-3 text-sm hover:text-subMain transi font-bold">
               <FaHeart />
             </button>
-            <button className="btn   flexRow gap-2  rounded px-8 font-medium py-3 text-sm hover:text-main transi">
+            <button className="btn   flexRow gap-2 bg-subMain text-white  rounded px-8 font-medium py-3 text-sm hover:text-main transi">
               <FaCloudDownloadAlt />
             </button>
           </div>
