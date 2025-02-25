@@ -94,8 +94,14 @@ const FavouritePage = () => {
       const data = await res.json();
       if (!res.ok) {
         setResult(Alert(false, data.message));
+        setTimeout(() => {
+          setResult(null);
+        }, timeout);
       } else {
         setResult(Alert(true, data.message));
+        setTimeout(() => {
+          setResult(null);
+        }, timeout);
       }
     } catch (error) {
       console.log(error.message);
