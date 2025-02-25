@@ -277,9 +277,9 @@ const FavouritePage = () => {
               )}
 
               {issLoading && (
-                <div className=" h-24 w-1/2 rounded-md border-border text-white  flex flex-col justify-center items-center ">
+                <div className=" h-24 w-full rounded-md border-border  text-white  flex flex-col justify-center items-center ">
                   <RiLoader2Fill className="h-10 w-10 animate-spin" />
-                  <p className="font-semibold">{loadDisplay}</p>
+                  <p className=" text-center font-semibold">{loadDisplay}</p>
                   {/* <p className="font-semibold">this will take about two minutes</p> */}
                 </div>
               )}
