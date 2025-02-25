@@ -211,7 +211,7 @@ const FavouritePage = () => {
                 </th>
               </tr>
             </thead>
-            <tbody className=" bg-main divide-y divide-gray-800 w-full ">
+            <tbody className=" bg-main divide-y divide-gray-800 w-full bg-green-400 ">
               {issLoading ? (
                 <div className=" h-24 w-full bg-subMain rounded-md border-border   text-white  flex flex-col justify-center items-center ">
                   <RiLoader2Fill className="h-10 w-10 animate-spin" />
