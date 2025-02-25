@@ -165,9 +165,9 @@ const MovieInfo = ({ movie, setShareOpen, setSubOpen, url }) => {
                       onClick={(e) => {
                         HandleUserCheck(e);
 
-                        if (User && User.subscription === "SUBSCRIBED") {
-                          HandeleAddWtchCount(e, movie?.id);
-                        }
+                        // if (User && User.subscription === "SUBSCRIBED") {
+                        //   HandeleAddWtchCount(e, movie?.id);
+                        // }
                       }}
                       className="bg-dry hover:text-main transi hover:bg-subMain   transi border-2 border-subMain text-white px-8 py-3  font-medium names rounded-full flexRow gap-4 w-full sm:py-3 "
                     >
