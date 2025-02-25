@@ -12,6 +12,7 @@ const MovieRates = ({ movie }) => {
   const [rating, setRating] = useState(null);
   const [review, setReview] = useState("");
   const [starUsers, setStarUser] = useState([]);
+  const [Bounce, setBounce] = useState(false);
   const User = JSON.parse(localStorage.getItem("userInfo"));
 
   const HandleReview = async (e) => {
@@ -39,6 +40,7 @@ const MovieRates = ({ movie }) => {
     if (!res.ok) {
       console.log(data);
     }
+    setReview("");
     console.log(data);
     HandleGetMovies();
   };
@@ -142,8 +144,16 @@ const MovieRates = ({ movie }) => {
               ></textarea>
 
               <button
-                onClick={(e) => HandleReview(e)}
-                className="bg-subMain text-white hover:bg-red-800 transi py-3 px-4 w-full flexCol rounded"
+                onClick={(e) => {
+                  HandleReview(e);
+                  setBounce(true);
+                  setTimeout(() => {
+                    setBounce(false);
+                  }, 300);
+                }}
+                className={`bg-subMain ${
+                  Bounce ? "scale-105" : ""
+                } text-white hover:bg-red-800 transi py-3 px-4 w-full flexCol rounded`}
               >
                 Submit
               </button>
@@ -154,7 +164,9 @@ const MovieRates = ({ movie }) => {
         {/* Review */}
         <div className="col-span-3 flex flex-col gap-6 w-full md:w-auto p-4 md:p-0">
           <p className="text-xl text-text font-semibold">Reviews (56)</p>
-          <div className={`w-full flex flex-col bg-main gap-6 rounded-lg md:p-12 p-0   h-[300px] md:h-[550px] overflow-y-scroll `}>
+          <div
+            className={`w-full flex flex-col bg-main gap-6 rounded-lg md:p-12 p-0   h-[300px] md:h-[550px] overflow-y-scroll `}
+          >
             {starUsers && starUsers.length > 0 ? (
               <>
                 {starUsers &&

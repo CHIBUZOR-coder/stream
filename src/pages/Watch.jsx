@@ -7,7 +7,9 @@ import { FaCloud, FaCloudDownloadAlt, FaHeart, FaPlay } from "react-icons/fa";
 
 const Watch = () => {
   const { name } = useParams();
-  const { FetchedMovies } = useContext(MovieContext);
+  const User = JSON.parse(localStorage.getItem("userInfo"));
+  const { FetchedMovies, isLogin, watched, setWatched } =
+    useContext(MovieContext);
 
   // const movie = AllMovies.find((movie) => movie.name === name);
   const [play, setPlay] = useState(false);
@@ -24,6 +26,37 @@ const Watch = () => {
   useEffect(() => {
     console.log("moviee:", movie);
   }, [movie]);
+
+  const HandeleAddWtchCount = async (e, movieId) => {
+    e.preventDefault();
+    Id = User.id;
+    if (isLogin) {
+      try {
+        const res = await fetch(
+          "https://streambackend-nbbc.onrender.com/addwatchCount",
+          {
+            method: "POST",
+
+            headers: {
+              "Content-Type": "application/json", // Correct header
+            },
+
+            body: JSON.stringify({ movieId, Id }),
+          }
+        );
+        const data = await res.json();
+        if (!res.ok) {
+          console.log(data);
+        } else {
+          setWatched(data.data);
+          console.log(data);
+        }
+      } catch (error) {
+        console.log(error.message);
+        setResult(Alert(false, error.message));
+      }
+    }
+  };
 
   return (
     <Layout>
@@ -64,7 +97,12 @@ const Watch = () => {
             <div className="h-[200px]  md:h-[400px] rounded overflow-hidden text-white relative w-full bg-center bg-cover">
               <div className=" bg-main2 w-full h-full flexCol absolute top-0 left-0">
                 <button
-                  onClick={() => setPlay(true)}
+                  onClick={() => {
+                    setPlay(true);
+                    if (User && User.subscription === "SUBSCRIBED") {
+                      HandeleAddWtchCount(e, movie?.id);
+                    }
+                  }}
                   className="bg-white text-subMain flexCol border border-subMain rounded-full w-16 h-16 transi"
                 >
                   <FaPlay />

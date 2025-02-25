@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import MovieContext from "../../Context/MovieContext";
 const MovieInfo = ({ movie, setShareOpen, setSubOpen, url }) => {
   // console.log("movie",movie);
-  const { FetchedMovies, isLogin, watched, setWatched } =
+  const { FetchedMovies  } =
     useContext(MovieContext);
   const User = JSON.parse(localStorage.getItem("userInfo"));
 
@@ -30,37 +30,7 @@ const MovieInfo = ({ movie, setShareOpen, setSubOpen, url }) => {
     }
   };
 
-  const HandeleAddWtchCount = async (e, movieId) => {
-    e.preventDefault();
-    Id = User.id;
-    if (isLogin) {
-      try {
-        const res = await fetch(
-          "https://streambackend-nbbc.onrender.com/addwatchCount",
-          {
-            method: "POST",
-
-            headers: {
-              "Content-Type": "application/json", // Correct header
-            },
-
-            body: JSON.stringify({ movieId, Id }),
-          }
-        );
-        const data = await res.json();
-        if (!res.ok) {
-          console.log(data);
-        } else {
-          setWatched(data.data);
-          console.log(data);
-        }
-      } catch (error) {
-        console.log(error.message);
-        setResult(Alert(false, error.message));
-      }
-    }
-  };
-
+ 
   // const gap = "gap-2";
   return (
     <>
@@ -165,9 +135,7 @@ const MovieInfo = ({ movie, setShareOpen, setSubOpen, url }) => {
                       onClick={(e) => {
                         HandleUserCheck(e);
 
-                        // if (User && User.subscription === "SUBSCRIBED") {
-                        //   HandeleAddWtchCount(e, movie?.id);
-                        // }
+                       
                       }}
                       className="bg-dry hover:text-main transi hover:bg-subMain   transi border-2 border-subMain text-white px-8 py-3  font-medium names rounded-full flexRow gap-4 w-full sm:py-3 "
                     >
