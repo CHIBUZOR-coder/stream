@@ -366,7 +366,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
               </tr>
             </thead>
             <tbody className=" bg-main divide-y divide-gray-800">
-              {Reciept ? (
+              {Reciept && User.subscription === "SUBSCRIBED" ? (
                 <tr>
                   <td className={`${Text}`}>{Reciept && Reciept?.name}</td>
                   <td className={`${Text}`}>
