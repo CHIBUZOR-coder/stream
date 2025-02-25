@@ -79,7 +79,7 @@ const Watch = () => {
           </div>
         </div>
 
-        <div className="flexBtn w-full justify-center flex-wrap mb-6 gap-2 bg-main text-white p-6 rounded border border-gray-800">
+        <div className="flex flex-col md:flex-row w-full justify-center flex-wrap mb-6 gap-2 bg-main text-white p-6 rounded border border-gray-800">
           <div className="w-full flex justify-between p-2 gap-5" >
             <p>
               <BiArrowBack />
