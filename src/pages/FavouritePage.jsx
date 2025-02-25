@@ -81,7 +81,7 @@ const FavouritePage = () => {
 
     try {
       const res = await fetch(
-        "https://streambackend-nbbc.onrender.com/deletefacouriteCart/${name}",
+        `https://streambackend-nbbc.onrender.com/deletefacouriteCart/${name}`,
         {
           method: "DELETE",
           headers: {
