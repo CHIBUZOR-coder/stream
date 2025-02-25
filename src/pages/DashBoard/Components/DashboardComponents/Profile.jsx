@@ -385,7 +385,11 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
                   </td>
                 </tr>
               ) : (
-                <>{display}</>
+                <tr className="w-full">
+                  <td colSpan={6} className="w-full">
+                    <>{display}</>
+                  </td>
+                </tr>
               )}
             </tbody>
           </table>
