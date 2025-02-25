@@ -77,6 +77,7 @@ const FavouritePage = () => {
 
   const HandleDeleteMovie = async (e, id) => {
     e.preventDefault();
+
     console.log("id:", id);
 
     try {
@@ -87,7 +88,7 @@ const FavouritePage = () => {
           headers: {
             "content-type": "application/json",
           },
-          body: JSON.stringify({ id }),
+          body: JSON.stringify({ movieId: id }),
         }
       );
 
