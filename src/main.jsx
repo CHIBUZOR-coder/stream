@@ -10,6 +10,7 @@ import Dramma from "./pages/FilteredMovies/Dramm.jsx";
 import Tech from "./pages/FilteredMovies/Tech.jsx";
 import Action from "./pages/FilteredMovies/Action.jsx";
 import VerifyEmail from "./pages/VerifyEmail.jsx";
+import NoFavPage from "./pages/NoFavPage.jsx";
 // import FilteredDrammaMovies from "./pages/FilteredDrammaMovies.jsx";
 // import FilteredActionMovies from "./pages/FilteredActionMovies.jsx";
 // import FilteredMovies from "./pages/FilteredMovies.jsx";
@@ -164,6 +165,10 @@ const router = createBrowserRouter([
       {
         path: "verifyEmail",
         element: <VerifyEmail />,
+      },
+      {
+        path: "nofavorite",
+        element: <NoFavPage />,
       },
       {
         path: "*",
