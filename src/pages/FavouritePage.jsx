@@ -100,6 +100,7 @@ const FavouritePage = () => {
         }, 4000);
       } else {
         setResult(Alert(true, data.message));
+        GetFavouriteCart();
         setTimeout(() => {
           setResult(null);
         }, 4000);
