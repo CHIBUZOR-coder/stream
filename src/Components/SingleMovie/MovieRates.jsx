@@ -40,8 +40,9 @@ const MovieRates = ({ movie }) => {
     if (!res.ok) {
       console.log(data);
     }
-    setReview("");
+
     console.log(data);
+    setReview("");
     HandleGetMovies();
   };
 
