@@ -216,7 +216,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
     HandleGeTSubscription();
     if (User.subscription === "UNSUBSCRIBED") {
       setDisplay(
-        <div className=" flex flex-col justify-center items-center gap-5  bg-dry p-4 border border-x-gray-800  rounded-lg">
+        <div className=" w-full flex flex-col justify-center items-center gap-5  bg-dry p-4 border border-x-gray-800  rounded-lg">
           <p className="  font-semibold text-white">
             ⚠️You have no reciept because you are not a subscribed user!.
           </p>
