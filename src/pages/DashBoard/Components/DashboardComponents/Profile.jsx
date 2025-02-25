@@ -9,6 +9,11 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
+  const { name } = useParams() || {};
+  if (!name) {
+    return <p>Loading...</p>;
+  }
+
   const {
     Movies,
     AllMovies,
@@ -24,7 +29,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
 
   const Head = "text-xs text-left text-main font-semibold px-4 py-2 uppercase ";
   const Text = "text-sm  leading-6 whitespace-nowrap px-5 py-3";
-  const { name } = useParams();
+
   const userData = JSON.parse(localStorage.getItem("UserInfo")) || null;
   const User = JSON.parse(localStorage.getItem("userInfo"));
   const favouriteCart = JSON.parse(localStorage.getItem("favouriteCart"));
