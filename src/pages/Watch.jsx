@@ -58,6 +58,10 @@ const Watch = () => {
       } catch (error) {
         console.log(error.message);
         setResult(Alert(false, error.message));
+      } finally {
+        setTimeout(() => {
+          setResult(null);
+        }, 4000);
       }
     }
   };
