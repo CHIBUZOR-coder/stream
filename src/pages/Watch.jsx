@@ -80,16 +80,17 @@ const Watch = () => {
         </div>
 
         <div className="flexBtn w-full justify-between flex-wrap mb-6 gap-2 bg-main text-white p-6 rounded border border-gray-800">
-          <p>
-          
-            <BiArrowBack />
-          </p>
-          <Link
-            to={`/movie/${movie?.id}`}
-            className="btn md:text-xl w-[20%] text-sm flex gap-3 items-center font-bold text-dryGray"
-          >
-            {movie && movie?.name}
-          </Link>
+          <div className="w-full flex justify-between p-2" >
+            <p>
+              <BiArrowBack />
+            </p>
+            <Link
+              to={`/movie/${movie?.id}`}
+              className="btn md:text-xl w-[20%] text-sm flex gap-3 items-center font-bold text-dryGray"
+            >
+              {movie && movie?.name}
+            </Link>
+          </div>
           <div className="flexBtn sm:w-auto w-[70%] gap-5">
             <button className="btn bg-primary2 rounded px-4 py-3 text-sm hover:text-subMain transi font-bold">
               <FaHeart />
