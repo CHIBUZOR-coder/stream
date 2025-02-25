@@ -165,7 +165,7 @@ const MovieInfo = ({ movie, setShareOpen, setSubOpen, url }) => {
                       onClick={(e) => {
                         HandleUserCheck(e);
 
-                        if (User && User.subscription !== "SUBSCRIBED") {
+                        if (User && User.subscription === "SUBSCRIBED") {
                           HandeleAddWtchCount(e, movie?.id);
                         }
                       }}
