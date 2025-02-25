@@ -31,6 +31,7 @@ const Watch = () => {
     e.preventDefault();
     const Id = User.id;
     console.log("movieId:", movieId);
+    console.log("userid:", Id);
 
     if (isLogin) {
       try {
