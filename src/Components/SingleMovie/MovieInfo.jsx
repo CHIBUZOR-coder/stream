@@ -12,9 +12,10 @@ import { useNavigate } from "react-router-dom";
 import MovieContext from "../../Context/MovieContext";
 const MovieInfo = ({ movie, setShareOpen, setSubOpen, url }) => {
   // console.log("movie",movie);
-  const { FetchedMovies, isLogin } = useContext(MovieContext);
+  const { FetchedMovies, isLogin, watched, setWatched } =
+    useContext(MovieContext);
   const User = JSON.parse(localStorage.getItem("userInfo"));
-  const [watched, setWatched] = useState(false);
+
   // console.log("Duser:", User);
   const navigate = useNavigate();
   const HandleUserCheck = (e) => {
@@ -50,7 +51,7 @@ const MovieInfo = ({ movie, setShareOpen, setSubOpen, url }) => {
         if (!res.ok) {
           console.log(data);
         } else {
-          setResult(Alert(true, data.messag));
+          setWatched(data.data);
           console.log(data);
         }
       } catch (error) {

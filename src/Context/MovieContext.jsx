@@ -43,6 +43,7 @@ const MovieProvider = ({ children }) => {
   const [FavouriteCartMovies, setFavouriteCartMovies] = useState([]);
   const [roleCheck, setRoleCheck] = useState(false);
   const [getUser, setGetUser] = useState(false);
+   const [watched, setWatched] = useState(false);
 
   const [index, setIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -908,6 +909,8 @@ const MovieProvider = ({ children }) => {
         setRatings,
         AutentificationToken,
         isLogin,
+        watched,
+        setWatched,
       }}
     >
       {children}
