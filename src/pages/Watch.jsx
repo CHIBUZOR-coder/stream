@@ -86,12 +86,12 @@ const Watch = () => {
             </p>
             <Link
               to={`/movie/${movie?.id}`}
-              className="btn md:text-xl w-[20%] text-sm flex gap-3 items-center font-bold text-dryGray"
+              className="btn md:text-xl w-full text-sm flex gap-3 items-center font-bold text-dryGray"
             >
               {movie && movie?.name}
             </Link>
           </div>
-          <div className="flexBtn sm:w-auto w-[70%] gap-5 bg-subMain">
+          <div className="flexBtn sm:w-auto w-full gap-5 bg-subMain">
             <button className="btn bg-primary2 rounded px-4 py-3 text-sm hover:text-subMain transi font-bold">
               <FaHeart />
             </button>
