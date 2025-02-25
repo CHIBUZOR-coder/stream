@@ -75,38 +75,38 @@ const FavouritePage = () => {
     }
   };
 
-  const HandleDeleteFavouriteMovie = async (e, id) => {
+  const HandleDeleteMovie = async (e, id) => {
     e.preventDefault();
 
     console.log("id:", id);
 
-    // try {
-    //   const res = await fetch(
-    //     `https://streambackend-nbbc.onrender.com/deletefacouriteCart/${name}`,
-    //     {
-    //       method: "DELETE",
-    //       headers: {
-    //         "content-type": "application/json",
-    //       },
-    //       body: JSON.stringify({ movieId: id }),
-    //     }
-    //   );
+    try {
+      const res = await fetch(
+        `https://streambackend-nbbc.onrender.com/deletefacouriteCart/${name}`,
+        {
+          method: "DELETE",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({ movieId: id }),
+        }
+      );
 
-    //   const data = await res.json();
-    //   if (!res.ok) {
-    //     setResult(Alert(false, data.message));
-    //     setTimeout(() => {
-    //       setResult(null);
-    //     }, 4000);
-    //   } else {
-    //     setResult(Alert(true, data.message));
-    //     setTimeout(() => {
-    //       setResult(null);
-    //     }, 4000);
-    //   }
-    // } catch (error) {
-    //   console.log(error.message);
-    // }
+      const data = await res.json();
+      if (!res.ok) {
+        setResult(Alert(false, data.message));
+        setTimeout(() => {
+          setResult(null);
+        }, 4000);
+      } else {
+        setResult(Alert(true, data.message));
+        setTimeout(() => {
+          setResult(null);
+        }, 4000);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   useEffect(() => {
