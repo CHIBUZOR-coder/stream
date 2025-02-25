@@ -384,7 +384,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
             </div>
 
             <div className="text-center">
-              <p className="font-semibold">{singleUser && singleUser?.name}</p>
+              {/* <p className="font-semibold">{singleUser && singleUser?.name}</p> */}
               <p className="text-sm text-dryGray">
                 {singleUser && singleUser?.email}
               </p>
@@ -427,7 +427,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
                       ? "flex flex-col justify-center items-center "
                       : " grid grid-cols-4 "
                   }${
-                    item.tittle === "Subscription Details"
+                    item?.tittle === "Subscription Details"
                       ? `cursor-default`
                       : ``
                   }  gap-2 rounded bg-main border border-border p-4 `}
@@ -446,7 +446,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
                         : ``
                     }   col-span-1 rounded-full flexCol cursor-default  `}
                   >
-                    {item.icon}
+                    {item?.icon}
                   </div>
 
                   <div className="col-span-3  ">
@@ -464,10 +464,10 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
                     {item.tittle === "Subscription Details" && (
                       <p
                         className={`${
-                          item.style ? "text-small text-dryGray" : "font-bold"
+                          item?.style ? "text-small text-dryGray" : "font-bold"
                         } mt-2`}
                       >
-                        {item.status}
+                        {item?.status}
                       </p>
                     )}
                   </div>
