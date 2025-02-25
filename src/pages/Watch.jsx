@@ -14,6 +14,7 @@ const Watch = () => {
   // const movie = AllMovies.find((movie) => movie.name === name);
   const [play, setPlay] = useState(false);
   const [movie, setMovie] = useState(null);
+  const [Result, setResult] = useState(null);
 
   useEffect(() => {
     // console.log("watch", AllMovies);
@@ -63,7 +64,17 @@ const Watch = () => {
 
   return (
     <Layout>
-      <div className="container  bg-dry md:min-h-screen p-6 mb-12">
+      <div className="container relative  bg-dry md:min-h-screen p-6 mb-12">
+        <div
+          className={` ${
+            Result ? "Animate" : "hidden"
+          } fixed Alert  left-0 w-full z-40 flex justify-center items-center `}
+        >
+          <div className=" bg-text text-dry w-1/2 rounded-md border-[3px] border-subMain flex justify-center items-center p-4">
+            {Result && <p>{Result}</p>}
+          </div>
+        </div>
+
         <div className="flexBtn w-full justify-between flex-wrap mb-6 gap-2 bg-main text-white p-6 rounded border border-gray-800">
           <Link
             to={`/movie/${movie?.id}`}
