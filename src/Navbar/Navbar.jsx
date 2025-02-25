@@ -151,7 +151,7 @@ const Navbar = ({ HandleInputChange, Text }) => {
             >
               <FaHeartCircleCheck className="w-6 h-6" />
               <p className="w-4 h-4 flexCol_mdRow rounded-full hova text-xs bg-white text-main absolute -top-[-1px] -right-[-3px]">
-                {FavouriteCount || NotUser}
+                {FavouriteCount}
               </p>
             </NavLink>
           </div>
