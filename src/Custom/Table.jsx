@@ -71,7 +71,9 @@ const Table = ({
                 <td className={`${Text}`}>
                   <div className="w-12 bg-dry borer border-border rounded h-12 overflow-hidden ">
                     <img
-                      src={`${movie.image}`}
+                      src={`${
+                        For === "movie" ? movie?.image : movie?.movie?.image
+                      }`}
                       alt={For === "movie" ? movie.image : movie.movie?.image}
                       className="w-full h-full object-cover rounded-md"
                     />

@@ -523,7 +523,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
       ) : (
         <div className="w-full h-72  lg:h-72 xl:h-96 bg-dry shimmer"></div>
       )}
-      <h3 className="font-medium my-4 text-border">Latest Movies</h3>
+      <h3 className="font-medium my-4 text-border">Watch History</h3>
 
       <Table
         data={paginatedMovies}
