@@ -952,6 +952,7 @@ const MovieProvider = ({ children }) => {
         isLogin,
         Watched,
         setWatched,
+        watchState,
         HandleGetWatchCount,
       }}
     >
