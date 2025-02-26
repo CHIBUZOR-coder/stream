@@ -59,8 +59,8 @@ const Watch = () => {
           console.log(data);
         } else {
           // setWatched(data.data);
-          setResult(Alert(false, error.message));
-          HandleGetWatchCount();
+          setResult(Alert(true, data.message));
+          HandleGetWatchCount(User.name);
           console.log(data);
         }
       } catch (error) {

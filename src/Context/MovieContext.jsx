@@ -234,24 +234,23 @@ const MovieProvider = ({ children }) => {
     }
   };
 
-  const HandleGetWatchCount = async () => {
-    try {
-      const res = await fetch(
-        "https://streambackend-nbbc.onrender.com/getWatchCount",
-        {
-          method: "GET",
-        }
-      );
-      const data = await res.json();
-      if (!res.ok) {
-        console.log(data);
-      }
+  const HandleGetWatchCount = async (name) => {
+  try {
+    const res = await fetch(`https://streambackend-nbbc.onrender.com/getWatchCount?name=${name}`, {
+      method: "GET",
+    });
+
+    const data = await res.json();
+    if (!res.ok) {
       console.log(data);
-      setWatched(data.data);
-    } catch (error) {
-      console.log(error.message);
     }
-  };
+    console.log(data);
+    setWatched(data.data);
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
 
   // Ensures it runs only once on mount
 
@@ -260,7 +259,7 @@ const MovieProvider = ({ children }) => {
     HandleGetCategories();
     // Autentification();
     VeryfySubscriptoin();
-     HandleGetWatchCount();
+     HandleGetWatchCount(name);
     //  AutentificationToken();
     checkTokenExpiry();
     if (isLogin === true) {
