@@ -8,8 +8,14 @@ import { FaCloud, FaCloudDownloadAlt, FaHeart, FaPlay } from "react-icons/fa";
 const Watch = () => {
   const { name } = useParams();
   const User = JSON.parse(localStorage.getItem("userInfo"));
-  const { FetchedMovies, isLogin, watched, setWatched, Alert } =
-    useContext(MovieContext);
+  const {
+    FetchedMovies,
+    isLogin,
+    watched,
+    setWatched,
+    Alert,
+    HandleGetWatchCount,
+  } = useContext(MovieContext);
 
   // const movie = AllMovies.find((movie) => movie.name === name);
   const [play, setPlay] = useState(false);
@@ -54,6 +60,7 @@ const Watch = () => {
         } else {
           // setWatched(data.data);
           setResult(Alert(false, error.message));
+          HandleGetWatchCount();
           console.log(data);
         }
       } catch (error) {
