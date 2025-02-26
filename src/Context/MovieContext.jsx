@@ -43,7 +43,7 @@ const MovieProvider = ({ children }) => {
   const [FavouriteCartMovies, setFavouriteCartMovies] = useState([]);
   const [roleCheck, setRoleCheck] = useState(false);
   const [getUser, setGetUser] = useState(false);
-  const [watched, setWatched] = useState(false);
+  const [Watched, setWatched] = useState(false);
 
   const [index, setIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -256,7 +256,10 @@ const MovieProvider = ({ children }) => {
     }
   };
 
- 
+  useEffect(() => {
+    console.log("watched:", Watched);
+    console.log("watchedLength:", Watched.length);
+  }, [Watched]);
   // Ensures it runs only once on mount
 
   useEffect(() => {
@@ -933,7 +936,7 @@ const MovieProvider = ({ children }) => {
         setRatings,
         AutentificationToken,
         isLogin,
-        watched,
+        Watched,
         setWatched,
         HandleGetWatchCount,
       }}
