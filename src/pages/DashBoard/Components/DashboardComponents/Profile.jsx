@@ -28,8 +28,6 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
     watched,
   } = useContext(MovieContext);
 
-
-
   const Head = "text-xs text-left text-main font-semibold px-4 py-2 uppercase ";
   const Text = "text-sm  leading-6 whitespace-nowrap px-5 py-3";
 
@@ -278,7 +276,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
       bg: "bg-blue-700",
       icon: <MdWatchLater />,
       tittle: "Watch Count",
-      text: watched && watched.length || 0,
+      text: (watched && watched.length) || 0,
       style: false,
     },
   ];
