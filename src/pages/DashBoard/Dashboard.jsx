@@ -489,7 +489,7 @@ const Dashboard = () => {
           </div>
         </div>
       ) : (
-        navigate("/login")
+        navigate("*")
       )}
     </Layout>
   );
