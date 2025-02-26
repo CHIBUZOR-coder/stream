@@ -293,7 +293,9 @@ const FavouritePage = () => {
                   ))}
                 </>
               ) : (
-                <>{display}</>
+                <tr className="w-full">
+                  <td className="w-full" colSpan={6}>{display}</td>
+                </tr>
               )}
             </tbody>
           </table>
