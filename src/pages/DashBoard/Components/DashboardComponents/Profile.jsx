@@ -479,21 +479,21 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
                   className={`rounded bg-main border border-border grid grid-cols-4 gap-2 p-4 `}
                 >
                   <div
-                    className={`col-span-1 rounded-full h-12 w-12 flexCol ${item.bg} `}
-                  >
-                    {item.icon}
-                  </div>
-
-                  <div
                     onClick={() => {
                       if (item.tittle === "Total Users") {
                         HandleActiveChange(item.linkk);
                       }
                     }}
-                    className={`col-span-3 ${
+                    className={`col-span-1 rounded-full h-12 w-12 flexCol ${
+                      item.bg
+                    } ${
                       item.tittle === "Total Users" ? "cursor-pointer" : ""
-                    }`}
+                    } `}
                   >
+                    {item.icon}
+                  </div>
+
+                  <div className={`col-span-3 `}>
                     <h2>{item.tittle}</h2>
                     <p className=" mt-2 font-bold">{item.text}</p>
                   </div>
