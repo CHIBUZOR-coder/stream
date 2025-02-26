@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const SideBar = () => {
   const { HandleActiveChange, isActive, slideLinks } = useContext(MovieContext);
   const userData = JSON.parse(localStorage.getItem("UserInfo")) || null;
-  const nabvigate = useNavigate();
+  const navigate = useNavigate();
   const UserLinks = slideLinks.filter((item) => item.user === "All");
 
   // console.log(userData.role);
@@ -31,8 +31,10 @@ const SideBar = () => {
       const data = await res.json();
 
       if (res.ok) {
-        window.location.href = "/";
+     
         localStorage.clear();
+          //  window.location.href = "/";
+        navigate("/");
         // Make sure to wait for the response
 
         console.log(data);
