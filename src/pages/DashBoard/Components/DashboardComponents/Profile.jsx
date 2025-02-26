@@ -25,7 +25,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
     Alert,
     setIsLoading,
     HandleSubscribe,
-    Watched,
+    watched,
   } = useContext(MovieContext);
 
   const Head = "text-xs text-left text-main font-semibold px-4 py-2 uppercase ";
@@ -68,18 +68,23 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
   }
   // console.log("UserLink", UserLink);
 
-  useEffect(() => {
-    console.log("watched:", Watched);
-    console.log("watchedLength:", Watched.length);
-  }, [Watched]);
+
+  //  useEffect(() => {
+  //    console.log("watched:", watched);
+  //    console.log("watchedLength:", watched.length);
+  //  }, [watched]);
 
   // Paginated movies for the current page
   const paginatedMovies = useMemo(() => {
-    return (Watched || []).slice(
-      (page - 1) * itemsPerPage,
-      page * itemsPerPage
-    );
-  }, [Watched, page]);
+    return (AllMovies || [])
+      .slice((page - 1) * itemsPerPage, page * itemsPerPage)
+      .filter(
+        (movie) =>
+          movie.year === "2022" ||
+          movie.year === "2023" ||
+          movie.year === "2024"
+      );
+  }, [AllMovies, page]);
 
   const HandleGetUser = async () => {
     if (UserLink.includes("getAdmin")) {
@@ -277,7 +282,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
       bg: "bg-blue-700",
       icon: <MdWatchLater />,
       tittle: "Watch Count",
-      text: (Watched && Watched.length) || 0,
+      text: (watched && watched.length) || 0,
       style: false,
     },
   ];
