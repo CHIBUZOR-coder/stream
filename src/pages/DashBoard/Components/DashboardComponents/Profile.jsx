@@ -486,12 +486,12 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
 
                   <div
                     onClick={() => {
-                      if (item.linkk) {
+                      if (item.tittle === "Total Users") {
                         HandleActiveChange(item.linkk);
                       }
                     }}
                     className={`col-span-3 ${
-                      item.linkk ? "cursor-pointer" : ""
+                      item.tittle === "Total Users" ? "cursor-pointer" : ""
                     }`}
                   >
                     <h2>{item.tittle}</h2>
