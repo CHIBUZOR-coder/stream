@@ -236,22 +236,25 @@ const MovieProvider = ({ children }) => {
 
   const HandleGetWatchCount = async () => {
     const name = User.name;
-  try {
-    const res = await fetch(`https://streambackend-nbbc.onrender.com/getWatchCount?name=${name}`, {
-      method: "GET",
-    });
+    try {
+      const res = await fetch(
+        `https://streambackend-nbbc.onrender.com/getWatchCount?name=${name}`,
+        {
+          method: "GET",
+        }
+      );
 
-    const data = await res.json();
-    if (!res.ok) {
-      console.log(data);
+      const data = await res.json();
+      if (!res.ok) {
+        console.log(data);
+      } else if (res.ok) {
+        console.log(data);
+        setWatched(data.data.watchCartMovies);
+      }
+    } catch (error) {
+      console.log(error.message);
     }
-    console.log(data);
-    setWatched(data.data.watchCartMovies);
-  } catch (error) {
-    console.log(error.message);
-  }
-};
-
+  };
 
   // Ensures it runs only once on mount
 
@@ -260,7 +263,7 @@ const MovieProvider = ({ children }) => {
     HandleGetCategories();
     // Autentification();
     VeryfySubscriptoin();
-     HandleGetWatchCount(name);
+    HandleGetWatchCount(name);
     //  AutentificationToken();
     checkTokenExpiry();
     if (isLogin === true) {
