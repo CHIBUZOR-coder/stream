@@ -68,6 +68,12 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
   }
   // console.log("UserLink", UserLink);
 
+
+   useEffect(() => {
+     console.log("watched:", watched);
+     console.log("watchedLength:", watched.length);
+   }, [watched]);
+
   // Paginated movies for the current page
   const paginatedMovies = useMemo(() => {
     return (AllMovies || [])
