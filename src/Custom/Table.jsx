@@ -16,6 +16,7 @@ const Table = ({
   setShareOpen,
   watchState,
   Watched,
+  DisplayII,
 }) => {
   // console.log("user", User);
 
@@ -215,7 +216,11 @@ const Table = ({
                     ))}
                 </>
               ) : (
-                <>{watchState && watchState}</>
+                <tr className="w-full">
+                  <td className="w-full" colSpan={6}>
+                    {DisplayII}
+                  </td>
+                </tr>
               )}
             </>
           )}

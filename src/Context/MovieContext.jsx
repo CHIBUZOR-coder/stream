@@ -248,13 +248,7 @@ const MovieProvider = ({ children }) => {
       const data = await res.json();
       if (!res.ok) {
         console.log("notOk",data);
-        setWatchState(
-          <div className=" flex flex-col justify-center items-center gap-5  bg-dry p-4 border border-x-gray-800  rounded-lg">
-            <p className="  font-semibold text-white">
-              You have not watched any movie yet.
-            </p>
-          </div>
-        );
+        setWatchState("watched");
       } else if (res.ok) {
         console.log(data);
         setWatched(data.data.watchCartMovies);

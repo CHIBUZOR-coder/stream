@@ -52,6 +52,8 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
   const [Reciept, setReciept] = useState([]);
   const [shareOpen, setShareOpen] = useState(false);
   const [display, setDisplay] = useState("");
+  const [DisplayII, setDisplayII] = useState("");
+
   const [loadDisplay, setLoadDiaplay] = useState("");
 
   const itemsPerPage = 10;
@@ -75,10 +77,18 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
   //   //  console.log("watchedLength:", watched.length);
   // }, [Watched]);
 
-  useEffect(() => {
-    console.log("watchedState:", watchState);
-
-  }, [watchState]);
+    useEffect(() => {
+      console.log("watchedState:", watchState);
+      if (watchState === "watched") {
+        setDisplayII(
+          <div className=" flex flex-col justify-center items-center gap-5  bg-dry p-4 border border-x-gray-800  rounded-lg">
+            <p className="  font-semibold text-white">
+              You have not watched any movie yet.
+            </p>
+          </div>
+        );
+      }
+    }, [watchState]);
 
   useEffect(() => {
     HandleGetWatchCount();
@@ -545,6 +555,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
         setShareOpen={setShareOpen}
         watchState={watchState}
         Watched={Watched}
+        DisplayII={DisplayII}
       />
 
       {/* Pagination Controls */}
