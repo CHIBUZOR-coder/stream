@@ -14,7 +14,7 @@ const Table = ({
   setdeletedMovieId,
   HandleDeleteMovie,
   setShareOpen,
-  watchState,
+
   Watched,
   DisplayII,
 }) => {
