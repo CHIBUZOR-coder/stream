@@ -17,6 +17,7 @@ const Users = () => {
     categoryDataa,
     HandleGetCategories,
     AllUsers,
+    HandleGetAllUsers,
     setAllUsers,
   } = useContext(MovieContext);
 
