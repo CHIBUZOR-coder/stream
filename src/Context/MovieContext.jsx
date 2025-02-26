@@ -245,7 +245,7 @@ const MovieProvider = ({ children }) => {
       console.log(data);
     }
     console.log(data);
-    setWatched(data.data);
+    setWatched(data.data.watchCartMovies);
   } catch (error) {
     console.log(error.message);
   }
