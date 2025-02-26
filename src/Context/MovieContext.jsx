@@ -720,7 +720,7 @@ const MovieProvider = ({ children }) => {
   let inactivityTimer;
 
   const resetInactivityTimer = () => {
-    // console.log("User activity detected. Resetting inactivity timer...");
+    console.log("User activity detected. Resetting inactivity timer...");
     clearTimeout(inactivityTimer);
 
     console.log("setting active to true");
