@@ -14,6 +14,8 @@ const Users = () => {
     setModalDisplay,
     currentModal,
     setCurrentModal,
+    isLogin,
+    User,
     categoryDataa,
     HandleGetCategories,
     HandleGetAllUsers,
@@ -35,12 +37,13 @@ const Users = () => {
   }, [AllUsers]);
 
   useEffect(() => {
-    HandleGetAllUsers();
+    if (User.role === "ADMIN") {
+      HandleGetAllUsers();
+    }
   }, []);
- useEffect(() => {
-console.log("AllUsers M:", AllUsers);
-
- }, [AllUsers]);
+  useEffect(() => {
+    console.log("AllUsers U:", AllUsers);
+  }, [AllUsers]);
   // const HandleGetAllUsers = async () => {
   //   try {
   //     const res = await fetch(
