@@ -53,12 +53,11 @@ const Watch = () => {
           console.log(data);
         } else {
           setWatched(data.data);
-                  setResult(Alert(false, error.message));
+          setResult(Alert(false, error.message));
           console.log(data);
         }
       } catch (error) {
         console.log(error.message);
-
       } finally {
         setTimeout(() => {
           setResult(null);
