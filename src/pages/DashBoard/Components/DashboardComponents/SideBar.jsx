@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const SideBar = () => {
   const { HandleActiveChange, isActive, slideLinks } = useContext(MovieContext);
   const userData = JSON.parse(localStorage.getItem("UserInfo")) || null;
-  const navigate = useNavigate();
+  const nabvigate = useNavigate();
   const UserLinks = slideLinks.filter((item) => item.user === "All");
 
   // console.log(userData.role);
@@ -15,6 +15,7 @@ const SideBar = () => {
     e.preventDefault();
 
     try {
+      // localStorage.clear();
       // Send a request to the backend to clear the HTTP-only cookie
       const res = await fetch(
         "https://streambackend-nbbc.onrender.com/clear-cookies",
@@ -30,10 +31,10 @@ const SideBar = () => {
       const data = await res.json();
 
       if (res.ok) {
-        localStorage.clear();
         window.location.href = "/";
+        localStorage.clear();
         // Make sure to wait for the response
-        // navigate("/login");
+
         console.log(data);
       } else {
         console.log("Failed to clear cookies. Server returned an error.");
