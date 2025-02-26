@@ -34,7 +34,7 @@ const SideBar = () => {
      
         localStorage.clear();
           //  window.location.href = "/";
-        navigate("/");
+        navigate("/login");
         // Make sure to wait for the response
 
         console.log(data);
