@@ -33,7 +33,7 @@ const SideBar = () => {
         // window.location.href = "/";
         localStorage.clear();
         // Make sure to wait for the response
-        navigate("/");
+        navigate("/login");
         console.log(data);
       } else {
         console.log("Failed to clear cookies. Server returned an error.");
