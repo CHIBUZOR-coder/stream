@@ -72,23 +72,27 @@ const Table = ({
                   <div className="w-12 bg-dry borer border-border rounded h-12 overflow-hidden ">
                     <img
                       src={`${movie.image}`}
-                      alt={movie?.name}
+                      alt={For === "movie" ? movie.image : movie.movie?.image}
                       className="w-full h-full object-cover rounded-md"
                     />
                   </div>
                 </td>
                 <td className={`${Text}`}>
-                  <p>{movie?.name}</p>
+                  <p>{For === "movie" ? movie.name : movie.movie?.name}</p>
                 </td>
                 <td className={`${Text}`}>
-                  <p>{movie?.category?.tittle}</p>
+                  <p>
+                    {For === "movie"
+                      ? movie?.category?.tittle
+                      : movie?.movie?.category?.tittle}
+                  </p>
                 </td>
 
                 <td className={`${Text}`}>
-                  <p>{movie.year}</p>
+                  <p>{For === "movie" ? movie?.year : movie?.movie?.year}</p>
                 </td>
                 <td className={`${Text}`}>
-                  <p>{movie?.time}</p>
+                  <p> {For === "movie" ? movie?.time : movie?.movie?.time}</p>
                 </td>
                 <td className={`${Text} float-right flexRow gap-2`}>
                   {For === "dash" ? (
