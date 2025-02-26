@@ -617,8 +617,11 @@ const MovieProvider = ({ children }) => {
 
       const expTime = userInfo.exp * 1000; // Convert exp from seconds to milliseconds
       let currentTime = Date.now(); // Get current time in millisecondsh
-      console.log("expTime:", expTime);
-      console.log("currentTime:", currentTime);
+      // console.log("expTime:", expTime);
+      // console.log("currentTime:", currentTime);
+      console.log("expTime:", new Date(expTime).toISOString());
+      console.log("currentTime:", new Date(Date.now()).toISOString());
+
 
       // Check if the token is expired
       if (expTime < currentTime) {
