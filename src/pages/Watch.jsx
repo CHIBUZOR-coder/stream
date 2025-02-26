@@ -60,7 +60,7 @@ const Watch = () => {
         } else {
           // setWatched(data.data);
           setResult(Alert(true, data.message));
-          HandleGetWatchCount(User.name);
+          HandleGetWatchCount();
           console.log(data);
         }
       } catch (error) {
