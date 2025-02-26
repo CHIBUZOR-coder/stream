@@ -240,9 +240,7 @@ const MovieProvider = ({ children }) => {
   };
 
   const HandleGetAllUsers = async () => {
-    if (!isLogin) {
-      return;
-    } else if (User.userInfo.role !== "ADMIN") {
+    if (User && User.userInfo.role !== "ADMIN") {
       return;
     }
     try {
@@ -324,7 +322,7 @@ const MovieProvider = ({ children }) => {
   useEffect(() => {
     HandleGetMovies();
     HandleGetCategories();
-    HandleGetAllUsers();
+
     // Autentification();
     VeryfySubscriptoin();
     HandleGetWatchCount();
@@ -637,6 +635,7 @@ const MovieProvider = ({ children }) => {
       console.log("calling Authentification");
       Autentification();
       AutentificationToken();
+      HandleGetAllUsers();
     }
   }, [isLogin]);
 
