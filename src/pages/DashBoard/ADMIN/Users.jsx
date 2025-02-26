@@ -37,7 +37,10 @@ const Users = () => {
   useEffect(() => {
     HandleGetAllUsers();
   }, []);
+ useEffect(() => {
+console.log("AllUsers M:", AllUsers);
 
+ }, [AllUsers]);
   // const HandleGetAllUsers = async () => {
   //   try {
   //     const res = await fetch(
