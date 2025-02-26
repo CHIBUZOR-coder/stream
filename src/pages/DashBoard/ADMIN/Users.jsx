@@ -6,21 +6,16 @@ import Table2 from "../../../Custom/Table2";
 
 const Users = () => {
   const {
-    staticUsers,
     Alert,
     Result,
     setResult,
-    ModalDisplay,
-    setModalDisplay,
-    currentModal,
+
     setCurrentModal,
-    isLogin,
+
     User,
-    categoryDataa,
-    HandleGetCategories,
+
     HandleGetAllUsers,
     AllUsers,
-    setAllUsers,
   } = useContext(MovieContext);
 
   let selected;

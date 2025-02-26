@@ -28,6 +28,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
     HandleGetWatchCount,
     Watched,
     watchState,
+    AllUsers,
   } = useContext(MovieContext);
 
   const Head = "text-xs text-left text-main font-semibold px-4 py-2 uppercase ";
@@ -273,7 +274,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
       bg: "bg-green-600",
       icon: <FaUser />,
       tittle: "Total Users",
-      text: 135,
+      text: AllUsers && AllUsers.length || 0,
       style: false,
     },
   ];
