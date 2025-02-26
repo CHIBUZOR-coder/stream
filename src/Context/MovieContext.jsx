@@ -249,7 +249,7 @@ const MovieProvider = ({ children }) => {
         console.log(data);
       } else if (res.ok) {
         console.log(data);
-        setWatched(data.data.watchCartMovies.movie);
+        setWatched(data.data.watchCartMovies);
       }
     } catch (error) {
       console.log(error.message);
