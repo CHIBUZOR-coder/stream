@@ -235,7 +235,7 @@ const MovieProvider = ({ children }) => {
   };
 
   const HandleGetWatchCount = async () => {
-    const name = User.name;
+    const name = User.userInfo.name;
     try {
       const res = await fetch(
         `https://streambackend-nbbc.onrender.com/getWatchCount?name=${name}`,
