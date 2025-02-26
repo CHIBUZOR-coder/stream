@@ -30,8 +30,8 @@ const SideBar = () => {
       const data = await res.json();
 
       if (res.ok) {
-        // window.location.href = "/";
         localStorage.clear();
+        window.location.href = "/";
         // Make sure to wait for the response
         // navigate("/login");
         console.log(data);
