@@ -75,7 +75,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
 
   // Paginated movies for the current page
   const paginatedMovies = useMemo(() => {
-    return ((Watched && Watched.movie) || []).slice(
+    return (Watched || []).slice(
       (page - 1) * itemsPerPage,
       page * itemsPerPage
     );

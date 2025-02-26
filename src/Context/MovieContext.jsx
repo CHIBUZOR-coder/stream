@@ -249,18 +249,18 @@ const MovieProvider = ({ children }) => {
         console.log(data);
       } else if (res.ok) {
         console.log(data);
-        setWatched(data.data.watchCartMovies);
+        setWatched(data.data.watchCartMovies.movie);
       }
     } catch (error) {
       console.log(error.message);
     }
   };
 
-  // useEffect(() => {
-  //   console.log("MC watched:", Watched);
-  //   console.log("mC watchedLength:", Watched.length);
-  // }, [Watched]);
-  // // Ensures it runs only once on mount
+  useEffect(() => {
+    console.log("MC watched:", Watched);
+    console.log("mC watchedLength:", Watched.length);
+  }, [Watched]);
+  // Ensures it runs only once on mount
 
   useEffect(() => {
     HandleGetMovies();
