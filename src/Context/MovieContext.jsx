@@ -196,9 +196,9 @@ const MovieProvider = ({ children }) => {
 
   //Veryfy SAubscription
   const VeryfySubscriptoin = async () => {
-     if (!isLogin) {
-       return;
-     }
+    if (!isLogin) {
+      return;
+    }
     try {
       const res = await fetch(
         "https://streambackend-nbbc.onrender.com/subscriptionCheck",
@@ -239,11 +239,11 @@ const MovieProvider = ({ children }) => {
   };
 
   const HandleGetWatchCount = async () => {
-    if (isLogin) {
-      const name = User.userInfo.name;
-    } else {
+    if (!isLogin) {
       return;
     }
+
+    const name = User.userInfo.name;
     try {
       const res = await fetch(
         `https://streambackend-nbbc.onrender.com/getWatchCount?name=${name}`,
@@ -322,7 +322,6 @@ const MovieProvider = ({ children }) => {
   const HandleSubscribe = async (e, email) => {
     e.preventDefault();
 
-   
     // console.log("User:", User);
     if (!User) {
       console.log("Not a user!");
