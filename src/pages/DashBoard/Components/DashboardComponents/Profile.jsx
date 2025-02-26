@@ -76,6 +76,11 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
   // }, [Watched]);
 
   useEffect(() => {
+    console.log("watchedState:", watchState);
+     console.log("watchedLength:", watchState);
+  }, [watchState]);
+
+  useEffect(() => {
     HandleGetWatchCount();
   }, []);
 
