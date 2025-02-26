@@ -52,6 +52,7 @@ const Layout = ({ children }) => {
     return cleanup;
   }, [charIndex, index, textArray, typingSpeed, HandleTypewrite]);
 
+  
   const HandleFetchStart = async (value) => {
     if (!value.trim()) {
       setSearchResult([]); // Clear results if input is empty
@@ -142,17 +143,6 @@ const Layout = ({ children }) => {
       icon: <FaTiktok className="h-7 w-7" />,
     },
   ];
-
-  const MemoizedNavbar = useMemo(
-    () => (
-      <Navbar
-        HandleInputChange={HandleInputChange}
-        searchResult={searchResult}
-        Text={Text}
-      />
-    ),
-    [HandleInputChange, searchResult, Text] // Dependencies
-  );
 
   return (
     <>
@@ -270,13 +260,11 @@ const Layout = ({ children }) => {
           </div>
         </div>
 
-        {/* <Navbar
+        <Navbar
           HandleInputChange={HandleInputChange}
           searchResult={searchResult}
           Text={Text}
-        /> */}
-
-        {MemoizedNavbar}
+        />
 
         <div
           className={` ${
