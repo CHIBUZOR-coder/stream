@@ -487,7 +487,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
                   <div
                     onClick={() => {
                       if (item.linkk) {
-                        navigate(item.linkk);
+                        HandleActiveChange(item.linkk);
                       }
                     }}
                     className={`col-span-3 ${
