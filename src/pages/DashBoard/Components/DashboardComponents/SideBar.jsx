@@ -15,7 +15,7 @@ const SideBar = () => {
     e.preventDefault();
 
     try {
-      localStorage.clear();
+
       // Send a request to the backend to clear the HTTP-only cookie
       const res = await fetch(
         "https://streambackend-nbbc.onrender.com/clear-cookies",
