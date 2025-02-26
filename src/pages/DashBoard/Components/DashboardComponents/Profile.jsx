@@ -276,7 +276,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
     {
       bg: "bg-blue-700",
       icon: <MdWatchLater />,
-      tittle: "Watch Count",
+      tittle: "Watch History",
       text: (Watched && Watched.length) || 0,
       style: false,
     },
