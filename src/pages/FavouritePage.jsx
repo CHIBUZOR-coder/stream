@@ -43,7 +43,7 @@ const FavouritePage = () => {
         console.log("Error fetching cart:", data);
         setIsLoading(false);
         setDisplay(
-          <div className=" flex flex-col justify-center items-center gap-5  bg-dry p-4 border border-x-gray-800  rounded-lg">
+          <div className="w-full flex flex-col justify-center items-center gap-5  bg-dry p-4 border border-x-gray-800  rounded-lg">
             <p className="  font-semibold text-white">
               You have not added any favourite movie yet.
             </p>
@@ -55,7 +55,7 @@ const FavouritePage = () => {
       console.log("cartData:", data.data.favouriteCartMovies);
       if (data.data.favouriteCartMovies.length === 0) {
         setDisplay(
-          <div className=" flex flex-col justify-center items-center gap-5  bg-dry p-4 border border-x-gray-800  rounded-lg">
+          <div className="w-full flex flex-col justify-center items-center gap-5  bg-dry p-4 border border-x-gray-800  rounded-lg">
             <p className="  font-semibold text-white">
               You have not added any favourite movie yet.
             </p>
