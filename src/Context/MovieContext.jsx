@@ -720,7 +720,7 @@ const MovieProvider = ({ children }) => {
   let inactivityTimer;
 
   const resetInactivityTimer = () => {
-    console.log("User activity detected. Resetting inactivity timer...");
+    // console.log("User activity detected. Resetting inactivity timer...");
     clearTimeout(inactivityTimer);
 
     console.log("setting active to true");
@@ -728,7 +728,7 @@ const MovieProvider = ({ children }) => {
     setActivityStatus(true);
 
     // Automatically set `activeStatus` to false after inactivity threshold
-    console.log("Setting active to false");
+    // console.log("Setting active to false");
 
     inactivityTimer = setTimeout(() => {
       console.log("No activity detected. Setting activeStatus to false...");
