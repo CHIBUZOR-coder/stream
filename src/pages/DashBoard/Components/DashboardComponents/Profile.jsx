@@ -77,7 +77,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
 
   useEffect(() => {
     console.log("watchedState:", watchState);
-     console.log("watchedLength:", watchState);
+
   }, [watchState]);
 
   useEffect(() => {
