@@ -240,7 +240,7 @@ const MovieProvider = ({ children }) => {
   };
 
   const HandleGetAllUsers = async () => {
-    if (User.userInfo.role !== "ADMIN") {
+    if (User.role !== "ADMIN") {
       return;
     }
     try {
