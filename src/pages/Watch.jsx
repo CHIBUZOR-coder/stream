@@ -90,7 +90,7 @@ const Watch = () => {
           <div className="w-full md:w-1/3 flex justify-between p-2 gap-5 ">
             <Link
               to={`/movie/${movie?.id}`}
-              className="btn md:text-xl  text-sm flex gap-3 items-center font-bold text-dryGray"
+              className="btn md:text-xl  text-xl flex gap-3 items-center font-bold text-dryGray"
             >
               <BiArrowBack />
             </Link>
