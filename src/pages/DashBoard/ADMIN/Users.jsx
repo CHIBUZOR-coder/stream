@@ -27,7 +27,7 @@ const Users = () => {
 
   useEffect(() => {
     if (AllUsers) {
-      console.log("AllUsers", AllUsers);
+      console.log("AllUsers U", AllUsers);
 
       selected = AllUsers;
     }
