@@ -52,59 +52,6 @@ const Layout = ({ children }) => {
     return cleanup;
   }, [charIndex, index, textArray, typingSpeed, HandleTypewrite]);
 
-  // console.log(!!"hello"); // true (non-empty string)
-  // console.log(!!"");
-
-  // const HandleFetchStart = async (value) => {
-  //   if (!value.trim()) {
-  //     setSearchResult([]); // Clear results if input is empty
-  //     return;
-  //   }
-  //   try {
-  //     const res = await fetch(
-  //       "https://streambackend-ngow.onrender.com/api/getMovies",
-  //       {
-  //         method: "GET",
-  //       }
-  //     );
-  //     const data = await res.json();
-
-  //     if (!res.ok) {
-  //       console.log(data);
-  //       throw new Error("Failed to fetch search results");
-  //     }
-
-  //     // setSearchResult(
-  //     //   data.filter((movie) => {
-  //     //     return (
-  //     //       value &&
-  //     //       movie &&
-  //     //       movie.name &&
-  //     //       movie.name.toLowerCase().includes(value)
-  //     //     );
-  //     //   })
-  //     // );
-  //     console.log("Fetched data:", data);
-
-  //     setSearchResult(
-  //       data.data.filter((movie) =>
-  //         movie?.name?.toLowerCase().includes(value.toLowerCase())
-  //       ) ||
-  //         data.data.filter((movie) =>
-  //           movie?.cast
-  //             ?.filter((item) => item?.cast?.name)
-  //             .toLowerCase()
-  //             .includes(value.toLowerCase())
-  //         )
-  //     );
-  //     // toLowerCase().includes(value.toLowerCase());
-  //     // console.log(result);
-  //   } catch (error) {
-  //     console.error("Error fetching search results:", error.message);
-  //     setError("Failed to fetch search results. Please try again.");
-  //   }
-  // };
-
   const HandleFetchStart = async (value) => {
     if (!value.trim()) {
       setSearchResult([]); // Clear results if input is empty
@@ -195,6 +142,17 @@ const Layout = ({ children }) => {
       icon: <FaTiktok className="h-7 w-7" />,
     },
   ];
+
+  const MemoizedNavbar = useMemo(
+    () => (
+      <Navbar
+        HandleInputChange={HandleInputChange}
+        searchResult={searchResult}
+        Text={Text}
+      />
+    ),
+    [HandleInputChange, searchResult, Text] // Dependencies
+  );
 
   return (
     <>
@@ -312,11 +270,13 @@ const Layout = ({ children }) => {
           </div>
         </div>
 
-        <Navbar
+        {/* <Navbar
           HandleInputChange={HandleInputChange}
           searchResult={searchResult}
           Text={Text}
-        />
+        /> */}
+
+        {MemoizedNavbar}
 
         <div
           className={` ${
