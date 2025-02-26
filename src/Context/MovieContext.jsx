@@ -719,7 +719,8 @@ const MovieProvider = ({ children }) => {
         localStorage.setItem("InactiveLogout", true);
         console.log(data);
         setTimeout(() => {
-          window.location.href = "/login";
+          // window.location.href = "/login";
+          navigate("/login");
         }, 500);
       } else {
         console.log("Failed to clear cookies. Server returned an error.", data);
