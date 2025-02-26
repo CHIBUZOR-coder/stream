@@ -90,11 +90,13 @@ const Watch = () => {
           <div className="w-full md:w-1/3 flex justify-between p-2 gap-5 ">
             <Link
               to={`/movie/${movie?.id}`}
-              className="btn md:text-xl w-full text-sm flex gap-3 items-center font-bold text-dryGray"
+              className="btn md:text-xl w-1/2 text-sm flex gap-3 items-center font-bold text-dryGray"
             >
               <BiArrowBack />
             </Link>
-            <p>{movie && movie?.name}</p>
+            <p className="btn md:text-xl w-1/2 text-sm flex gap-3 items-center font-bold text-dryGray">
+              {movie && movie?.name}
+            </p>
           </div>
           <div className="flexBtn sm:w-auto w-full  md:w-1/3 gap-5 md:gap-8  justify-between md:justify-end p-2">
             <button className="btn bg-primary2 rounded px-4 py-3 text-sm hover:text-subMain transi font-bold">
