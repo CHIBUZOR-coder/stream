@@ -29,6 +29,8 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
     Watched,
     watchState,
     AllUsers,
+    isActive,
+    HandleActiveChange,
   } = useContext(MovieContext);
 
   const Head = "text-xs text-left text-main font-semibold px-4 py-2 uppercase ";
@@ -78,18 +80,18 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
   //   //  console.log("watchedLength:", watched.length);
   // }, [Watched]);
 
-    useEffect(() => {
-      console.log("watchedState:", watchState);
-      if (watchState === "watched") {
-        setDisplayII(
-          <div className=" flex flex-col justify-center items-center gap-5  bg-dry p-4 border border-x-gray-800  rounded-lg">
-            <p className="  font-semibold text-white">
-              You have not watched any movie yet.
-            </p>
-          </div>
-        );
-      }
-    }, [watchState]);
+  useEffect(() => {
+    console.log("watchedState:", watchState);
+    if (watchState === "watched") {
+      setDisplayII(
+        <div className=" flex flex-col justify-center items-center gap-5  bg-dry p-4 border border-x-gray-800  rounded-lg">
+          <p className="  font-semibold text-white">
+            You have not watched any movie yet.
+          </p>
+        </div>
+      );
+    }
+  }, [watchState]);
 
   useEffect(() => {
     HandleGetWatchCount();
@@ -274,8 +276,9 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
       bg: "bg-green-600",
       icon: <FaUser />,
       tittle: "Total Users",
-      text: AllUsers && AllUsers.length || 0,
+      text: (AllUsers && AllUsers.length) || 0,
       style: false,
+      linkk: "Users",
     },
   ];
 
@@ -481,7 +484,16 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
                     {item.icon}
                   </div>
 
-                  <div className="col-span-3">
+                  <div
+                    onClick={() => {
+                      if (item.linkk) {
+                        navigate(item.linkk);
+                      }
+                    }}
+                    className={`col-span-3 ${
+                      item.linkk ? "cursor-pointer" : ""
+                    }`}
+                  >
                     <h2>{item.tittle}</h2>
                     <p className=" mt-2 font-bold">{item.text}</p>
                   </div>
