@@ -36,6 +36,10 @@ const Table = ({
   //   console.log("user:", User.role);
   // }, [User]);
 
+   useEffect(() => {
+     console.log("dis:", DisplayII);
+   }, [DisplayII]);
+
   const Head = "text-xs text-left text-main font-semibold px-6 py-2 uppercase ";
   const Text = "text-sm text-left leading-6 whitespace-nowrap px-5 py-3";
   return (
