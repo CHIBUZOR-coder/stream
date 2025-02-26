@@ -92,7 +92,7 @@ const Watch = () => {
               to={`/movie/${movie?.id}`}
               className="btn md:text-xl  flex gap-3 items-center  text-dryGray"
             >
-              <BiArrowBack className="text-xl font-bold " />
+              <BiArrowBack className="text-3xl font-bold " />
             </Link>
             <p className="btn md:text-xl text-sm flex gap-3 items-center font-bold text-dryGray">
               {movie && movie?.name}
