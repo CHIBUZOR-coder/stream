@@ -45,6 +45,7 @@ const MovieProvider = ({ children }) => {
   const [getUser, setGetUser] = useState(false);
   const [Watched, setWatched] = useState(false);
   const [watchState, setWatchState] = useState(null);
+  const [AllUsers, setAllUsers] = useState([]);
 
   const [index, setIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -238,6 +239,44 @@ const MovieProvider = ({ children }) => {
     }
   };
 
+  const HandleGetAllUsers = async () => {
+    if (!isLogin) {
+      return;
+    } else if (User.userInfo.role !== "ADMIN") {
+      return;
+    }
+    try {
+      const res = await fetch(
+        "https://streambackend-nbbc.onrender.com/getAllUser",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        console.log(data);
+        setResult(Alert(false, "Unable to get users! Something went wrong"));
+        setTimeout(() => {
+          setResult(null);
+        }, 3000);
+      }
+
+      console.log(data);
+      // setResult(Alert(true, data.message));
+      setAllUsers(data.data);
+      setTimeout(() => {
+        setResult(null);
+      }, 3000);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   const HandleGetWatchCount = async () => {
     if (!isLogin) {
       return;
@@ -288,6 +327,7 @@ const MovieProvider = ({ children }) => {
     // Autentification();
     VeryfySubscriptoin();
     HandleGetWatchCount();
+    HandleGetAllUsers();
     //  AutentificationToken();
     checkTokenExpiry();
     if (isLogin === true) {
@@ -621,7 +661,6 @@ const MovieProvider = ({ children }) => {
       // console.log("currentTime:", currentTime);
       console.log("expTime:", new Date(expTime).toISOString());
       console.log("currentTime:", new Date(Date.now()).toISOString());
-
 
       // Check if the token is expired
       if (expTime < currentTime) {
@@ -964,6 +1003,8 @@ const MovieProvider = ({ children }) => {
         setWatched,
         watchState,
         HandleGetWatchCount,
+        AllUsers,
+        setAllUsers,
       }}
     >
       {children}
