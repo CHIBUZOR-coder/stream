@@ -259,6 +259,7 @@ const MovieProvider = ({ children }) => {
   useEffect(() => {
     console.log("MC watched:", Watched);
     console.log("mC watchedLength:", Watched.length);
+    console.log("mC watchedLength:", Watched.movie);
   }, [Watched]);
   // Ensures it runs only once on mount
 
