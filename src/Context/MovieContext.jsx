@@ -268,7 +268,7 @@ const MovieProvider = ({ children }) => {
     HandleGetCategories();
     // Autentification();
     VeryfySubscriptoin();
-    HandleGetWatchCount(name);
+    HandleGetWatchCount();
     //  AutentificationToken();
     checkTokenExpiry();
     if (isLogin === true) {
