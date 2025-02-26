@@ -16,56 +16,60 @@ const Users = () => {
     setCurrentModal,
     categoryDataa,
     HandleGetCategories,
+    HandleGetAllUsers,
+    AllUsers,
+    setAllUsers,
   } = useContext(MovieContext);
-  const [AllUsers, setAllUsers] = useState([]);
+
   let selected;
   const [page, setPage] = useState(1);
   const itemsPerPage = 10;
   const totalPages = AllUsers && Math.ceil(AllUsers.length / itemsPerPage);
 
-
   useEffect(() => {
     if (AllUsers) {
-      console.log("AllUsers", AllUsers);
+      console.log("AllUsers U", AllUsers);
 
       selected = AllUsers;
     }
   }, [AllUsers]);
 
-  
+  useEffect(() => {
+    HandleGetAllUsers();
+  }, []);
 
-  const HandleGetAllUsers = async () => {
-    try {
-      const res = await fetch(
-        "https://streambackend-nbbc.onrender.com/getAllUser",
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+  // const HandleGetAllUsers = async () => {
+  //   try {
+  //     const res = await fetch(
+  //       "https://streambackend-nbbc.onrender.com/getAllUser",
+  //       {
+  //         method: "GET",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //       }
+  //     );
 
-      const data = await res.json();
+  //     const data = await res.json();
 
-      if (!res.ok) {
-        console.log(data);
-        setResult(Alert(false, "Unable to get users! Something went wrong"));
-        setTimeout(() => {
-          setResult(null);
-        }, 3000);
-      }
+  //     if (!res.ok) {
+  //       console.log(data);
+  //       setResult(Alert(false, "Unable to get users! Something went wrong"));
+  //       setTimeout(() => {
+  //         setResult(null);
+  //       }, 3000);
+  //     }
 
-      console.log(data);
-      // setResult(Alert(true, data.message));
-      setAllUsers(data.data);
-      setTimeout(() => {
-        setResult(null);
-      }, 3000);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
+  //     console.log(data);
+  //     // setResult(Alert(true, data.message));
+  //     setAllUsers(data.data);
+  //     setTimeout(() => {
+  //       setResult(null);
+  //     }, 3000);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
 
   const HandeleDeleteUser = async (userId) => {
     try {
