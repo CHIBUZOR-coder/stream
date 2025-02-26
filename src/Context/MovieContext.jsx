@@ -236,7 +236,11 @@ const MovieProvider = ({ children }) => {
   };
 
   const HandleGetWatchCount = async () => {
-    const name = User.userInfo.name;
+    if (isLogin) {
+      const name = User.userInfo.name;
+    } else {
+      return;
+    }
     try {
       const res = await fetch(
         `https://streambackend-nbbc.onrender.com/getWatchCount?name=${name}`,
@@ -247,7 +251,7 @@ const MovieProvider = ({ children }) => {
 
       const data = await res.json();
       if (!res.ok) {
-        console.log("notOk",data);
+        console.log("notOk", data);
         setWatchState("watched");
       } else if (res.ok) {
         console.log(data);
@@ -271,8 +275,7 @@ const MovieProvider = ({ children }) => {
     console.log("MC watched:", Watched);
     console.log("mC watchedLength:", Watched.length);
     console.log("mC watchedLength:", Watched.movie);
-    console.log("Wstate",watchState);
-    
+    console.log("Wstate", watchState);
   }, [Watched, watchState]);
   // Ensures it runs only once on mount
 
