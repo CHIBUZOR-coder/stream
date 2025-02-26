@@ -14,6 +14,8 @@ const Table = ({
   setdeletedMovieId,
   HandleDeleteMovie,
   setShareOpen,
+  watchState,
+  Watched,
 }) => {
   // console.log("user", User);
 
@@ -148,66 +150,73 @@ const Table = ({
             </>
           ) : (
             <>
-              {" "}
-              {data &&
-                data.map((movie, i) => (
-                  <tr key={i}>
-                    {/* {console.log(movie)} */}
-                    <td className={`${Text}`}>
-                      <div className="w-12 bg-dry borer border-border rounded h-12 overflow-hidden ">
-                        <img
-                          src={`${movie?.movie?.image}`}
-                          alt={movie.movie?.image}
-                          className="w-full h-full object-cover rounded-md"
-                        />
-                      </div>
-                    </td>
-                    <td className={`${Text}`}>
-                      <p>{movie.movie?.name}</p>
-                    </td>
-                    <td className={`${Text}`}>
-                      <p>{movie?.movie?.category?.tittle}</p>
-                    </td>
+              {Watched && Watched.length > 0 ? (
+                <>
+                  {data &&
+                    data.map((movie, i) => (
+                      <tr key={i}>
+                        {/* {console.log(movie)} */}
+                        <td className={`${Text}`}>
+                          <div className="w-12 bg-dry borer border-border rounded h-12 overflow-hidden ">
+                            <img
+                              src={`${movie?.movie?.image}`}
+                              alt={movie.movie?.image}
+                              className="w-full h-full object-cover rounded-md"
+                            />
+                          </div>
+                        </td>
+                        <td className={`${Text}`}>
+                          <p>{movie.movie?.name}</p>
+                        </td>
+                        <td className={`${Text}`}>
+                          <p>{movie?.movie?.category?.tittle}</p>
+                        </td>
 
-                    <td className={`${Text}`}>
-                      <p>{movie?.movie?.year}</p>
-                    </td>
-                    <td className={`${Text}`}>
-                      <p> {movie?.movie?.time}</p>
-                    </td>
-                    <td className={`${Text} float-right flexRow gap-2`}>
-                      {For === "dash" ? (
-                        <>
-                          {" "}
-                          <button className="bg-dry border border-border flexRow gap-2 text-border px-2 py-1 rounded">
-                            Download <FaCloudDownloadAlt />
-                          </button>
-                          <Link
-                            onClick={(e) => {
-                              e.preventDefault();
-                              if (User.subscription !== "SUBSCRIBED") {
-                                setShareOpen((prev) => !prev);
-                              } else {
-                                navigate(`/stream/watch/${movie?.movie?.name}`);
-                                // console.log("User already Subscribed!");
-                              }
-                            }}
-                            to={`${
-                              User && User.subscription === "SUBSCRIBED"
-                                ? `/watch/${movie?.movie?.name}`
-                                : ``
-                            }`}
-                            className="bg-subMain text-white  hover:bg-main transi border border-subMain rounded flexCol w-6 h-6 "
-                          >
-                            <GoEye />
-                          </Link>
-                        </>
-                      ) : (
-                        ""
-                      )}
-                    </td>
-                  </tr>
-                ))}
+                        <td className={`${Text}`}>
+                          <p>{movie?.movie?.year}</p>
+                        </td>
+                        <td className={`${Text}`}>
+                          <p> {movie?.movie?.time}</p>
+                        </td>
+                        <td className={`${Text} float-right flexRow gap-2`}>
+                          {For === "dash" ? (
+                            <>
+                              {" "}
+                              <button className="bg-dry border border-border flexRow gap-2 text-border px-2 py-1 rounded">
+                                Download <FaCloudDownloadAlt />
+                              </button>
+                              <Link
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  if (User.subscription !== "SUBSCRIBED") {
+                                    setShareOpen((prev) => !prev);
+                                  } else {
+                                    navigate(
+                                      `/stream/watch/${movie?.movie?.name}`
+                                    );
+                                    // console.log("User already Subscribed!");
+                                  }
+                                }}
+                                to={`${
+                                  User && User.subscription === "SUBSCRIBED"
+                                    ? `/watch/${movie?.movie?.name}`
+                                    : ``
+                                }`}
+                                className="bg-subMain text-white  hover:bg-main transi border border-subMain rounded flexCol w-6 h-6 "
+                              >
+                                <GoEye />
+                              </Link>
+                            </>
+                          ) : (
+                            ""
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                </>
+              ) : (
+                <>{watchState && watchState}</>
+              )}
             </>
           )}
         </tbody>

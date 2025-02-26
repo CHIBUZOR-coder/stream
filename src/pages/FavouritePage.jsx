@@ -49,27 +49,27 @@ const FavouritePage = () => {
             </p>
           </div>
         );
-        return;
-      }
-      setIsLoading(false);
-      console.log("cartData:", data.data.favouriteCartMovies);
-      if (data.data.favouriteCartMovies.length === 0) {
-        setDisplay(
-          <div className=" flex flex-col justify-center items-center gap-5  bg-dry p-4 border border-x-gray-800  rounded-lg">
-            <p className="  font-semibold text-white">
-              You have not added any favourite movie yet.
-            </p>
-          </div>
+      } else if (res.ok) {
+        setIsLoading(false);
+        console.log("cartData:", data.data.favouriteCartMovies);
+        if (data.data.favouriteCartMovies.length === 0) {
+          setDisplay(
+            <div className=" flex flex-col justify-center items-center gap-5  bg-dry p-4 border border-x-gray-800  rounded-lg">
+              <p className="  font-semibold text-white">
+                You have not added any favourite movie yet.
+              </p>
+            </div>
+          );
+        } else {
+          setDisplay(null);
+        }
+        localStorage.setItem(
+          "Favourite",
+          JSON.stringify(data.data.favouriteCartMovies)
         );
-      } else {
-        setDisplay(null);
-      }
-      localStorage.setItem(
-        "Favourite",
-        JSON.stringify(data.data.favouriteCartMovies)
-      );
 
-      setFavouriteCartMovies(data.data.favouriteCartMovies); // Correct way to set state
+        setFavouriteCartMovies(data.data.favouriteCartMovies); // Correct way to set state
+      }
     } catch (error) {
       console.log("Fetch error:", error.message);
     }

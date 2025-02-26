@@ -27,6 +27,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
     HandleSubscribe,
     HandleGetWatchCount,
     Watched,
+    watchState,
   } = useContext(MovieContext);
 
   const Head = "text-xs text-left text-main font-semibold px-4 py-2 uppercase ";
@@ -537,6 +538,8 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
         Handlegeneral={Handlegeneral}
         HandleDeleteMovie={HandleDeleteMovie}
         setShareOpen={setShareOpen}
+        watchState={watchState}
+        Watched={Watched}
       />
 
       {/* Pagination Controls */}

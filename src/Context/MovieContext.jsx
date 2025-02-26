@@ -36,6 +36,7 @@ const MovieProvider = ({ children }) => {
   const [Reviewed, setReviwed] = useState([]);
   const [Ratingss, setRatings] = useState([]);
 
+
   const [autoRender, setAutornder] = useState(false);
 
   const [activityStatus, setActivityStatus] = useState(false);
@@ -44,6 +45,7 @@ const MovieProvider = ({ children }) => {
   const [roleCheck, setRoleCheck] = useState(false);
   const [getUser, setGetUser] = useState(false);
   const [Watched, setWatched] = useState(false);
+    const [watchState, setWatchState] = useState(null);
 
   const [index, setIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -250,6 +252,15 @@ const MovieProvider = ({ children }) => {
       } else if (res.ok) {
         console.log(data);
         setWatched(data.data.watchCartMovies);
+        if (data.data.watchCartMovies.length <= 0) {
+          setWatchState(
+            <div className=" flex flex-col justify-center items-center gap-5  bg-dry p-4 border border-x-gray-800  rounded-lg">
+              <p className="  font-semibold text-white">
+                You have not watched any movie yet.
+              </p>
+            </div>
+          );
+        }
       }
     } catch (error) {
       console.log(error.message);
