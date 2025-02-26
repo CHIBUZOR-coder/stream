@@ -15,7 +15,7 @@ export const Input = ({
   const [visible, setVisible] = useState(false);
 
   return (
-    <div className="text-sm w-full">
+    <div className="text-sm w-full flex justify-end items-center">
       <label htmlFor={lablFor}>{label}</label>
       <input
         type={type}
@@ -31,7 +31,7 @@ export const Input = ({
       />
 
       {type === "password" ? (
-        <div>{visible === true ? <FaEye /> : <FaEyeSlash />}</div>
+        <div className="absolute ">{visible === true ? <FaEye /> : <FaEyeSlash />}</div>
       ) : (
         ""
       )}
