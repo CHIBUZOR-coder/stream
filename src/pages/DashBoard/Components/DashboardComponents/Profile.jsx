@@ -25,7 +25,10 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
     Alert,
     setIsLoading,
     HandleSubscribe,
+    watched,
   } = useContext(MovieContext);
+
+
 
   const Head = "text-xs text-left text-main font-semibold px-4 py-2 uppercase ";
   const Text = "text-sm  leading-6 whitespace-nowrap px-5 py-3";
@@ -275,7 +278,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
       bg: "bg-blue-700",
       icon: <MdWatchLater />,
       tittle: "Watch Count",
-      text: 6,
+      text: watched && watched.length || 0,
       style: false,
     },
   ];

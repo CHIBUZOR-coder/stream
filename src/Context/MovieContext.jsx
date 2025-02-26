@@ -43,7 +43,7 @@ const MovieProvider = ({ children }) => {
   const [FavouriteCartMovies, setFavouriteCartMovies] = useState([]);
   const [roleCheck, setRoleCheck] = useState(false);
   const [getUser, setGetUser] = useState(false);
-   const [watched, setWatched] = useState(false);
+  const [watched, setWatched] = useState(false);
 
   const [index, setIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -231,6 +231,25 @@ const MovieProvider = ({ children }) => {
       // Assuming setUserDetails is defined
     } catch (error) {
       console.error("Error in Authentification:", error.message);
+    }
+  };
+
+  const HandleGetWatchCount = async () => {
+    try {
+      const res = await fetch(
+        "https://streambackend-nbbc.onrender.com/getWatchCount",
+        {
+          method: "GET",
+        }
+      );
+      const data = await res.json();
+      if (!res.ok) {
+        console.log(data);
+      }
+      console.log(data);
+      setWatched(data.data);
+    } catch (error) {
+      console.log(error.message);
     }
   };
 

@@ -52,7 +52,7 @@ const Watch = () => {
         if (!res.ok) {
           console.log(data);
         } else {
-          setWatched(data.data);
+          // setWatched(data.data);
           setResult(Alert(false, error.message));
           console.log(data);
         }
