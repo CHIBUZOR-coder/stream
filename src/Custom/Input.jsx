@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export const Input = ({
   label,
@@ -11,6 +12,8 @@ export const Input = ({
   indicator,
   lablFor,
 }) => {
+  const [visible, setVisible] = useState(false);
+
   return (
     <div className="text-sm w-full">
       <label htmlFor={lablFor}>{label}</label>
@@ -26,6 +29,12 @@ export const Input = ({
         }`}
         required={false}
       />
+
+      {type === "password" ? (
+        <div>{visible === true ? <FaEye /> : <FaEyeSlash />}</div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
