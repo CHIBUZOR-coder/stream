@@ -220,7 +220,7 @@ const Dashboard = () => {
         setResult(Alert(false, data.message));
       } else {
         setIsLoading(false);
-         setResult(Alert(true, "Category added successfully"));
+        setResult(Alert(true, "Category added successfully"));
         HandleGetCategories();
         console.log(data);
       }
@@ -489,7 +489,7 @@ const Dashboard = () => {
           </div>
         </div>
       ) : (
-        <Login />
+        navigate("/login")
       )}
     </Layout>
   );
