@@ -240,9 +240,9 @@ const MovieProvider = ({ children }) => {
   };
 
   const HandleGetAllUsers = async () => {
-    // if (User && User.userInfo.role !== "ADMIN") {
-    //   return;
-    // }
+    if (User.userInfo.role !== "ADMIN") {
+      return;
+    }
     try {
       const res = await fetch(
         "https://streambackend-nbbc.onrender.com/getAllUser",
