@@ -256,11 +256,11 @@ const MovieProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    console.log("MC watched:", Watched);
-    console.log("mC watchedLength:", Watched.length);
-  }, [Watched]);
-  // Ensures it runs only once on mount
+  // useEffect(() => {
+  //   console.log("MC watched:", Watched);
+  //   console.log("mC watchedLength:", Watched.length);
+  // }, [Watched]);
+  // // Ensures it runs only once on mount
 
   useEffect(() => {
     HandleGetMovies();
