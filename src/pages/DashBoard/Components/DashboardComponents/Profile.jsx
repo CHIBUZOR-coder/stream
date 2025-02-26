@@ -75,7 +75,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
 
   // Paginated movies for the current page
   const paginatedMovies = useMemo(() => {
-    return (AllMovies || [])
+    return (Watched || [])
       .slice((page - 1) * itemsPerPage, page * itemsPerPage)
       .filter(
         (movie) =>
@@ -83,7 +83,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
           movie.year === "2023" ||
           movie.year === "2024"
       );
-  }, [AllMovies, page]);
+  }, [Watched, page]);
 
   const HandleGetUser = async () => {
     if (UserLink.includes("getAdmin")) {
