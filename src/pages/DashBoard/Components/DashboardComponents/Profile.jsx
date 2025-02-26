@@ -25,6 +25,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
     Alert,
     setIsLoading,
     HandleSubscribe,
+    HandleGetWatchCount,
     Watched,
   } = useContext(MovieContext);
 
@@ -68,10 +69,14 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
   }
   // console.log("UserLink", UserLink);
 
+  // useEffect(() => {
+  //   console.log("watched:", Watched);
+  //   //  console.log("watchedLength:", watched.length);
+  // }, [Watched]);
+
   useEffect(() => {
-    console.log("watched:", Watched);
-    //  console.log("watchedLength:", watched.length);
-  }, [Watched]);
+    HandleGetWatchCount();
+  }, []);
 
   // Paginated movies for the current page
   const paginatedMovies = useMemo(() => {
