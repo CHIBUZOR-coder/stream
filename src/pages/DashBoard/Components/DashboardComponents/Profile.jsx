@@ -264,6 +264,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
       tittle: "Total Movies",
       text: Movies.length,
       style: false,
+      linkkTo: "Movies List",
     },
     {
       bg: "bg-blue-700",
@@ -495,7 +496,9 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
                     onClick={() => {
                       if (item.tittle === "Total Users") {
                         HandleActiveChange(item.linkk);
-                      }
+                    }else if (item.tittle === "Total Movies"){
+                       HandleActiveChange(item.linkkTo);
+                    }
                     }}
                     className={`col-span-1 rounded-full h-12 w-12 flexCol ${
                       item.bg
