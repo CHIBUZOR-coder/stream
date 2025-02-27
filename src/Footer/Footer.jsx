@@ -62,11 +62,11 @@ const Footer = () => {
   ];
   return (
     <div className="bg-dry py-24 md:py-32 px-4 border-2 border-black w-full">
-      <div className="md:flex grid grid-cols-2 justify-between bg-subMain items-start w-full  gap-10 text-[10px] litlle md:text-[16px] ">
+      <div className="md:flex grid grid-cols-2 justify-between  items-start w-full  gap-10 text-[10px] litlle md:text-[16px] ">
         {Links.map((link, index) => (
           <div
             key={index}
-            className="flex flex-col justify-start bg-green-300  items-start my-2 md:my-0 footText gap-5 md:gap-6 "
+            className="flex flex-col justify-start   items-start my-2 md:my-0 footText gap-5 md:gap-6 "
           >
             <p className=" font-semibold">{link.title}</p>
 
