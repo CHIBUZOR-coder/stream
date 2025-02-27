@@ -15,7 +15,7 @@ export const Input = ({
   const [visible, setVisible] = useState(false);
 
   return (
-    <div className="text-sm w-full relative flex items-center justify-end">
+    <div className="text-sm w-full relative">
       <label htmlFor={lablFor}>{label}</label>
       <input
         type={type}
