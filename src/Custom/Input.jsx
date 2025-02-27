@@ -29,14 +29,13 @@ export const Input = ({
         }`}
         required={false}
       />
-      {type === "password" && (
-        <button
-          type="button"
-          className="absolute right-4 text-gray-400 flex items-center"
-          onClick={() => setVisible(!visible)}
-        >
-          {visible ? <FaEyeSlash /> : <FaEye />}
-        </button>
+
+      {type === "password" ? (
+        <div className="absolute right-4 top-[60%]">
+          {visible === true ? <FaEyeSlash /> : <FaEye />}
+        </div>
+      ) : (
+        ""
       )}
     </div>
   );
