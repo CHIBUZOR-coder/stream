@@ -59,6 +59,9 @@ const PopularMovies = () => {
                 key={`${movie.id}`}
               >
                 <Link
+                  onClick={() => {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
                   to={`/movie/${movie.id}`}
                   className=" h-64  bg-center bg-cover "
                 >

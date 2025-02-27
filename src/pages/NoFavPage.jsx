@@ -49,7 +49,7 @@ const NoFavPage = () => {
               to gain acces to your Dashboard
             </p>
           </div>
-          <div>{defaultt}</div>
+      
 
           <Link
             to={"/register"}
