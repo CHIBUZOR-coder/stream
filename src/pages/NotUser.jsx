@@ -17,7 +17,7 @@ const NotUser = () => {
       <p className=" px-44 text-center text-lg text-text italic">
         You have to be a user to gain acces to your own dashboard at this
         address or page. Navigate to the Signup page below and signup to gain
-        acces to your Dashboard
+        acces to your favouritpage and  Dashboard!
       </p>
     );
 
