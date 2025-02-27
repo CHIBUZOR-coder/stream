@@ -36,7 +36,7 @@ const MobileFooter = ({ setMenuOpen }) => {
         ? `/dash/us/${userData.userInfo.name}`
         : "NOT";
 
-    fav = `/favouritpage/${userData.userInfo.name}` || NotUser;
+    fav = `/favouritpage/${userData.userInfo.name}`;
   }
   return (
     <>
