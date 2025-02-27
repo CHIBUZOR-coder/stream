@@ -31,7 +31,7 @@ export const Input = ({
         required={false}
       />
 
-      {label === "Password" || label === "Confirm Password" ? (
+      {label === "Password" ? (
         <div
           onClick={() => setVisible((prev) => !prev)}
           className="absolute right-4 top-[60%] cursor-pointer"
