@@ -24,12 +24,23 @@ const Table2 = ({
 
   // console.log("Userss",data);
 
-  const [bgColor, setBgColor] = useState("");
-  useEffect(() => {
-    // Generate a random background color on mount
-    const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-    setBgColor(randomColor);
-  }, []);
+  // const [bgColor, setBgColor] = useState("");
+  // useEffect(() => {
+  //   // Generate a random background color on mount
+  //   const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+  //   setBgColor(randomColor);
+  // }, []);
+
+
+const getRandomColor = (name) => {
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) {
+    hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  const color = `#${(hash & 0xffffff).toString(16).padStart(6, "0")}`; // Ensure 6-digit hex
+  return color;
+};
+
 
   return (
     <div className="overflow-x-scroll overflow-hidden relative w-full">
@@ -93,9 +104,28 @@ const Table2 = ({
                 data.map((user, i) => (
                   <tr key={i}>
                     <td className={`${Text}`}>
-                      <div
+                      {/* <div
                         style={{ backgroundColor: bgColor }}
                         className="w-12 bg-dry borer border-border flex justify-center items-center text-2xl font-semibold rounded h-12 overflow-hidden "
+                      >
+                        {user.image ? (
+                          <img
+                            src={`${user.image}`}
+                            alt={user.image}
+                            className="w-full h-full object-cover rounded-md"
+                          />
+                        ) : (
+                          user.name?.charAt(0).toUpperCase()
+                        )}
+                      </div> */}
+
+                      <div
+                        style={{
+                          backgroundColor: user.image
+                            ? "transparent"
+                            : getRandomColor(user.name || user.id),
+                        }}
+                        className="w-12 borer border-border flex justify-center items-center text-2xl font-semibold rounded h-12 overflow-hidden"
                       >
                         {user.image ? (
                           <img

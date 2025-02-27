@@ -307,11 +307,20 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
     },
   ];
 
-  useEffect(() => {
-    // Generate a random background color on mountt
-    const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-    setBgColor(randomColor);
-  }, []);
+  // useEffect(() => {
+  //   // Generate a random background color on mountt
+  //   const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+  //   setBgColor(randomColor);
+  // }, []);
+
+  const getRandomColor = (seed) => {
+    let hash = 0;
+    for (let i = 0; i < seed.length; i++) {
+      hash = seed.charCodeAt(i) + hash * 31; // Replacing (hash << 5) - hash with hash * 31
+    }
+    const color = `#${(hash & 0xffffff).toString(16).padStart(6, "0")}`; // Ensure 6-digit hex
+    return color;
+  };
   return (
     <div className="flex flex-col gap-4 ">
       <div
@@ -321,7 +330,6 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
       >
         <div className=" bg-text text-dry w-1/2 rounded-md border-[3px] border-subMain flex justify-center items-center p-4">
           {Result && <p>{Result}</p>}
-          
         </div>
       </div>
 
@@ -435,7 +443,11 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
             <div className="flex justify-center items-center">
               <div
                 className="relative w-20 h-20 rounded-full overflow-hidden flex items-center justify-center bg-gray-300 text-white text-3xl font-semibold"
-                style={{ backgroundColor: bgColor }}
+                style={{
+                  backgroundColor: singleUser?.image
+                    ? "transparent"
+                    : getRandomColor(singleUser?.name || singleUser?.id),
+                }}
               >
                 {singleUser?.image ? (
                   <img
