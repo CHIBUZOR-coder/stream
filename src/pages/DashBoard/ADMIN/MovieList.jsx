@@ -85,7 +85,7 @@ const MovieList = ({
           onClick={() => {
             HandelDeleteAll();
           }}
-          disabled
+          
           className="bg-dry font-medium transi hover:bg-subMain  gap-4 text-white border border-subMain py-3 px-6 rounded "
         >
           Delete All
