@@ -14,7 +14,7 @@ const NoFavPage = () => {
     ) : unAuthorizedUser ? (
       unAuthorizedUser
     ) : (
-      <p className=" px-44 text-center text-lg text-text italic">
+      <p className="px-4 md:px-44 text-center text-lg text-text italic">
         You have to be a user to gain acces to have and gain acces to your own
         favourite movies at this address or page. Navigate to the Signup page
         below and signup to gain acces to your Dashboard
@@ -43,7 +43,7 @@ const NoFavPage = () => {
             <h1 className="text-4xl font-bold">You are Not a User</h1>
           </div>
           <div>
-            <p className=" px-44 text-center text-lg text-text italic">
+            <p className=" px-4 md:px-44 text-center text-lg text-text italic">
               You have to be a user to gain acces to your own favourite movie at
               this address or page. Navigate to the Signup page below and signup
               to gain acces to your Dashboard
