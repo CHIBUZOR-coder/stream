@@ -83,7 +83,11 @@ const Footer = () => {
             </div>
           </div>
         ))}
-        <Link to={"/"} className=" flex justify-center items-center ">
+        <Link
+          to="/"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className=" flex justify-center items-center "
+        >
           <div className=" w-28 h-28 md:w-48 md:h-48   bg-[url('https://res.cloudinary.com/dtjgj2odu/image/upload/v1739151976/logoround_awixqx.png')] bg-center bg-cover"></div>
         </Link>
         <div className=" flex flex-col justify-start items-center gap-5 md:gap-6    ">
