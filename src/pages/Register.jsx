@@ -21,7 +21,15 @@ const Register = () => {
   const [loadDisplay, setLoadDiaplay] = useState("");
   const navigate = useNavigate();
 
-  const { issLoading, setIsLoading, Alert } = useContext(MovieContext);
+  const {
+    issLoading,
+    setIsLoading,
+    Alert,
+    visibleII,
+    setVisibleII,
+    visible,
+    setVisible,
+  } = useContext(MovieContext);
   const HandleRegister = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -58,7 +66,7 @@ const Register = () => {
       // Parse JSON only if the response is valid
       setResult(Alert(true, data.message));
       setIsLoading(false);
-     
+
       setName("");
       setEmail("");
       setPhone("");
@@ -76,8 +84,6 @@ const Register = () => {
       setTimeout(() => {
         setResult(null);
       }, 7000);
-
-     
     }
   };
 
@@ -91,7 +97,8 @@ const Register = () => {
         >
           <div className=" bg-text text-dry w-1/2 rounded-md border-[3px] border-subMain flex justify-center items-center p-4">
             {Result && <p>{Result}</p>}
-          </div>1
+          </div>
+          1
         </div>
 
         <div
@@ -159,7 +166,7 @@ const Register = () => {
             <Input
               label={"Password"}
               placeholder={"********"}
-              type={"password"}
+              type={visible === true ? "text" : "password"}
               setter={setPassword}
               setInputVal={setInputVal}
               mainVal={Password}
@@ -171,7 +178,7 @@ const Register = () => {
             <Input
               label={"Confirm Password"}
               placeholder={"********"}
-              type={"password"}
+              type={visibleII === true ? "text" : "password"}
               setter={setConfirmPassword}
               setInputVal={setInputVal}
               mainVal={ConfirmPassword}

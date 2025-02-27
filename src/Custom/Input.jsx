@@ -13,7 +13,8 @@ export const Input = ({
   indicator,
   lablFor,
 }) => {
-  const { visible, setVisible } = useContext(MovieContext);
+  const { visible, setVisible, visibleII, setVisibleII } =
+    useContext(MovieContext);
 
   return (
     <div className="text-sm w-full relative">
@@ -37,6 +38,17 @@ export const Input = ({
           className="absolute right-4 top-[60%] cursor-pointer"
         >
           {visible === true ? <FaEyeSlash /> : <FaEye />}
+        </div>
+      ) : (
+        ""
+      )}
+
+      {label === "Confirm Password" ? (
+        <div
+          onClick={() => setVisibleII((prev) => !prev)}
+          className="absolute right-4 top-[60%] cursor-pointer"
+        >
+          {visibleII === true ? <FaEyeSlash /> : <FaEye />}
         </div>
       ) : (
         ""

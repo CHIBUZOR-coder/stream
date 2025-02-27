@@ -13,7 +13,15 @@ const ResetPassword = () => {
   const [Result, setResult] = useState();
   const [loadDisplay, setLoadDiaplay] = useState("");
   const navigate = useNavigate();
-  const { issLoading, setIsLoading, Alert, GetUser } = useContext(MovieContext);
+  const {
+    issLoading,
+    setIsLoading,
+    Alert,
+    GetUser,
+    visibleII,
+    
+    visible,
+  } = useContext(MovieContext);
   const { token } = useParams();
   const HandleResetPassword = async (e) => {
     e.preventDefault();
@@ -119,7 +127,7 @@ const ResetPassword = () => {
             <Input
               label={"Password"}
               placeholder={"********"}
-              type={"password"}
+              type={visible === true ? "text" : "password"}
               setter={setPassword}
               setInputVal={setInputVal}
               mainVal={Password}
@@ -130,7 +138,7 @@ const ResetPassword = () => {
             <Input
               label={"confirmPassword"}
               placeholder={"Streamview@gmail.com"}
-              type={"password"}
+              type={visibleII === true ? "text" : "password"}
               setter={setConfirmPassword}
               setInputVal={setInputVal}
               mainVal={ConfirmPassword}
