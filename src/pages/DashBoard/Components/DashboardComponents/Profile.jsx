@@ -40,7 +40,6 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
   const User = JSON.parse(localStorage.getItem("userInfo"));
   const favouriteCart = JSON.parse(localStorage.getItem("favouriteCart"));
   // console.log("favouriteCart:", favouriteCart.favouriteCartMovies.length);
-  const [bgColor, setBgColor] = useState("");
 
   const days = localStorage.getItem("subscription");
 
@@ -58,6 +57,17 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
   const [DisplayII, setDisplayII] = useState("");
 
   const [loadDisplay, setLoadDiaplay] = useState("");
+
+  const [bgColor, setBgColor] = useState(getRandomColor());
+  const getRandomColor = () => {
+    return `#${Math.floor(Math.random() * 16777215)
+      .toString(16)
+      .padStart(6, "0")}`;
+  };
+
+  useEffect(() => {
+    setBgColor(getRandomColor()); // Update color on every render
+  }, []); // Empty dependency ensures it runs only once per mount
 
   const itemsPerPage = 10;
   const totalPages = AllMovies && Math.ceil(AllMovies.length / itemsPerPage);
@@ -313,14 +323,14 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
   //   setBgColor(randomColor);
   // }, []);
 
-  const getRandomColor = (seed) => {
-    let hash = 0;
-    for (let i = 0; i < seed.length; i++) {
-      hash = seed.charCodeAt(i) + hash * 31; // Replacing (hash << 5) - hash with hash * 31
-    }
-    const color = `#${(hash & 0xffffff).toString(16).padStart(6, "0")}`; // Ensure 6-digit hex
-    return color;
-  };
+  // const getRandomColor = (seed) => {
+  //   let hash = 0;
+  //   for (let i = 0; i < seed.length; i++) {
+  //     hash = seed.charCodeAt(i) + hash * 31; // Replacing (hash << 5) - hash with hash * 31
+  //   }
+  //   const color = `#${(hash & 0xffffff).toString(16).padStart(6, "0")}`; // Ensure 6-digit hex
+  //   return color;
+  // };
   return (
     <div className="flex flex-col gap-4 ">
       <div
@@ -441,7 +451,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
         <div className="w-full flex justify-center">
           <div className=" md:w-1/2 w-[80%] flex flex-col justify-center items-center gap-3 p-5 rounded bg-main border border-border cursor-default">
             <div className="flex justify-center items-center">
-              <div
+              {/* <div
                 className="relative w-20 h-20 rounded-full overflow-hidden flex items-center justify-center bg-gray-300 text-white text-3xl font-semibold"
                 style={{
                   backgroundColor: singleUser?.image
@@ -458,13 +468,24 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
                 ) : (
                   singleUser?.name?.charAt(0).toUpperCase()
                 )}
-              </div>
+              </div> */}
 
-              {/* <img
-                src={`${singleUser && singleUser?.image}`}
-                alt="user"
-                className="w-20 h-20 rounded-full object-cover"
-              ></img> */}
+              <div
+                className="relative w-20 h-20 rounded-full overflow-hidden flex items-center justify-center bg-gray-300 text-white text-3xl font-semibold"
+                style={{
+                  backgroundColor: singleUser?.image ? "transparent" : bgColor,
+                }}
+              >
+                {singleUser?.image ? (
+                  <img
+                    src={singleUser?.image}
+                    alt="User"
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  singleUser?.name?.charAt(0).toUpperCase()
+                )}
+              </div>
             </div>
 
             <div className="text-center">
