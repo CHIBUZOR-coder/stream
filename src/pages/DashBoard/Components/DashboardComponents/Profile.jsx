@@ -57,13 +57,12 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
   const [DisplayII, setDisplayII] = useState("");
 
   const [loadDisplay, setLoadDiaplay] = useState("");
-
-  const [bgColor, setBgColor] = useState(getRandomColor());
   const getRandomColor = () => {
     return `#${Math.floor(Math.random() * 16777215)
       .toString(16)
       .padStart(6, "0")}`;
   };
+  const [bgColor, setBgColor] = useState(getRandomColor());
 
   useEffect(() => {
     setBgColor(getRandomColor()); // Update color on every render
