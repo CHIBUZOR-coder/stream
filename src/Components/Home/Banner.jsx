@@ -67,10 +67,9 @@ const Banner = React.memo(({ setShareOpen }) => {
                           if (User.subscription !== "SUBSCRIBED") {
                             setShareOpen((prev) => !prev);
                           } else {
-                            navigate(`/stream/watch/${movie?.name}`);
-                            // console.log("User already Subscribed!");
+                            // navigate(`/stream/watch/${movie?.name}`);
+                            console.log("User already Subscribed!");
                           }
-                           window.scrollTo({ top: 0, behavior: "smooth" })
                         }}
                         className="bg-subMain hover:text-main transi hover:bg-white text-white px-8 py-3 rounded font-medium names"
                         to={`${
