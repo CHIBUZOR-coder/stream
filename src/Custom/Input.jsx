@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import MovieContext from "../Context/MovieContext";
 
 export const Input = ({
   label,
@@ -12,7 +13,7 @@ export const Input = ({
   indicator,
   lablFor,
 }) => {
-  const [visible, setVisible] = useState(false);
+  const { visible, setVisible } = useContext(MovieContext);
 
   return (
     <div className="text-sm w-full relative">
@@ -25,7 +26,7 @@ export const Input = ({
           setInputVal(e.target.value, setter, mainVal, indicator);
         }}
         className={`w-full mt-2 px-6 p-4 text-white border border-border rounded ${
-          bg ? "bg-main" : "bg-dry"
+          bg ? "bg-main" : "bg-dry "
         }`}
         required={false}
       />
@@ -33,7 +34,7 @@ export const Input = ({
       {label === "Password" ? (
         <div
           onClick={() => setVisible((prev) => !prev)}
-          className="absolute right-4 top-[60%] cursor-pointer bg-subMain"
+          className="absolute right-4 top-[60%] cursor-pointer"
         >
           {visible === true ? <FaEyeSlash /> : <FaEye />}
         </div>

@@ -35,6 +35,7 @@ const MovieProvider = ({ children }) => {
   const [orderId, setOrderId] = useState(null);
   const [Reviewed, setReviwed] = useState([]);
   const [Ratingss, setRatings] = useState([]);
+    const [visible, setVisible] = useState(false);
 
   const [autoRender, setAutornder] = useState(false);
 
@@ -1005,6 +1006,8 @@ const MovieProvider = ({ children }) => {
         AllUsers,
         setAllUsers,
         HandleGetAllUsers,
+        visible,
+        setVisible,
       }}
     >
       {children}
