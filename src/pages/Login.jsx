@@ -19,7 +19,6 @@ const Login = () => {
     Alert,
     Autentification,
     AutentificationToken,
-    visible,
   } = useContext(MovieContext);
 
   const logAgain = JSON.parse(localStorage.getItem("relogin")) || false;
@@ -211,7 +210,7 @@ const Login = () => {
             <Input
               label={"Password"}
               placeholder={"********"}
-              type={visible ? "text" : "password"}
+              type={"password"}
               setter={setPassword}
               setInputVal={setInputVal}
               mainVal={Password}

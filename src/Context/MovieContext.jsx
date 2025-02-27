@@ -35,7 +35,6 @@ const MovieProvider = ({ children }) => {
   const [orderId, setOrderId] = useState(null);
   const [Reviewed, setReviwed] = useState([]);
   const [Ratingss, setRatings] = useState([]);
-    const [visible, setVisible] = useState(false);
 
   const [autoRender, setAutornder] = useState(false);
 
@@ -241,7 +240,9 @@ const MovieProvider = ({ children }) => {
   };
 
   const HandleGetAllUsers = async () => {
-    if (User.role !== "ADMIN") {
+    if (!isLogin) {
+      return;
+    } else if (User.userInfo.role !== "ADMIN") {
       return;
     }
     try {
@@ -323,7 +324,7 @@ const MovieProvider = ({ children }) => {
   useEffect(() => {
     HandleGetMovies();
     HandleGetCategories();
-
+    HandleGetAllUsers();
     // Autentification();
     VeryfySubscriptoin();
     HandleGetWatchCount();
@@ -636,7 +637,6 @@ const MovieProvider = ({ children }) => {
       console.log("calling Authentification");
       Autentification();
       AutentificationToken();
-      HandleGetAllUsers();
     }
   }, [isLogin]);
 
@@ -729,7 +729,7 @@ const MovieProvider = ({ children }) => {
     setActivityStatus(true);
 
     // Automatically set `activeStatus` to false after inactivity threshold
-    // console.log("Setting active to false");
+    console.log("Setting active to false");
 
     inactivityTimer = setTimeout(() => {
       console.log("No activity detected. Setting activeStatus to false...");
@@ -1006,8 +1006,6 @@ const MovieProvider = ({ children }) => {
         AllUsers,
         setAllUsers,
         HandleGetAllUsers,
-        visible,
-        setVisible,
       }}
     >
       {children}
