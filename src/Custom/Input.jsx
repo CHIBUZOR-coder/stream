@@ -31,7 +31,9 @@ export const Input = ({
       />
 
       {type === "password" ? (
-        <div className="absolute right-4 top-1/2">{visible === true ? <FaEye /> : <FaEyeSlash />}</div>
+        <div className="absolute right-4 top-1/2 transform -translate-y-1/2 ">
+          {visible === true ? <FaEye /> : <FaEyeSlash />}
+        </div>
       ) : (
         ""
       )}
