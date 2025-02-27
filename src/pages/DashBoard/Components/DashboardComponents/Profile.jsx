@@ -321,6 +321,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
       >
         <div className=" bg-text text-dry w-1/2 rounded-md border-[3px] border-subMain flex justify-center items-center p-4">
           {Result && <p>{Result}</p>}
+          
         </div>
       </div>
 
