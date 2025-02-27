@@ -308,7 +308,7 @@ const Profile = ({ Handlegeneral, HandleDeleteMovie, setModalDisplay }) => {
   ];
 
   useEffect(() => {
-    // Generate a random background color on mount
+    // Generate a random background color on mountt
     const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
     setBgColor(randomColor);
   }, []);
