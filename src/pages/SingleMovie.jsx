@@ -191,7 +191,7 @@ const SingleMovie = () => {
                     onClick={() => {
                       setReload((prev) => !prev);
                       navigate(`/movie/${movie?.id}`);
-                      window.location.reload();
+                      window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
                     // to={`/movie/${movie?.id}`}
                     key={`${movie.id}`}
