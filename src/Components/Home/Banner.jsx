@@ -64,7 +64,9 @@ const Banner = React.memo(({ setShareOpen }) => {
                     <div className=" flex items-center gap-4 mt-4">
                       <Link
                         onClick={(e) => {
-                          if (User.subscription !== "SUBSCRIBED") {
+                          if (!User || User.subscription !== "SUBSCRIBED") {
+                            setShareOpen((prev) => !prev);
+                          } else if (User.subscription !== "SUBSCRIBED") {
                             setShareOpen((prev) => !prev);
                           } else {
                             // navigate(`/stream/watch/${movie?.name}`);
