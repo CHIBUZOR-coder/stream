@@ -65,7 +65,7 @@ const MobileFooter = ({ setMenuOpen }) => {
                       : "hover:text-main hover:bg-white  transi text-white relative"
                   } hov   px-4 py-3 flex justify-center items-center rounded-md`
                 }
-                to={`${fav || NotUser}`}
+                to={`/${fav || NotUser}`}
               >
                 <FaHeartCircleCheck className="w-6 h-6" />
                 <p className="w-4 h-4 flexCol_mdRow rounded-full hova text-xs bg-white text-main absolute top-[0.6px] -right-[-9px]">

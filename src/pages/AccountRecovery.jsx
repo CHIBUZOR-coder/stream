@@ -6,6 +6,7 @@ import { useContext, useEffect, useState } from "react";
 import MovieContext from "../Context/MovieContext";
 import { RiLoader2Fill } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
+import { IoShieldCheckmark } from "react-icons/io5";
 const AccountRecovery = () => {
   const { setInputVal } = useContext(MovieContext);
   const [Email, setEmail] = useState("");
@@ -118,7 +119,7 @@ const AccountRecovery = () => {
             />
 
             <button className="bg-subMain transi hover:bg-main flexRow gap-4 text-white p-4 rounded-lg w-full ">
-              <FiLogIn /> Login
+              <IoShieldCheckmark /> Recover
             </button>
           </form>
         </div>
