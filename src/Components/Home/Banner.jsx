@@ -64,14 +64,18 @@ const Banner = React.memo(({ setShareOpen }) => {
                     <div className=" flex items-center gap-4 mt-4">
                       <Link
                         onClick={(e) => {
-                          if (!User || User.subscription !== "SUBSCRIBED") {
+                          if (!User) {
                             setShareOpen((prev) => !prev);
-                          } else if (User.subscription !== "SUBSCRIBED") {
+                          } else if (
+                            User &&
+                            User.subscription !== "SUBSCRIBED"
+                          ) {
                             setShareOpen((prev) => !prev);
                           } else {
                             // navigate(`/stream/watch/${movie?.name}`);
                             console.log("User already Subscribed!");
                           }
+                          window.scrollTo({ top: 0, behavior: "smooth" });
                         }}
                         className="bg-subMain hover:text-main transi hover:bg-white text-white px-8 py-3 rounded font-medium names"
                         to={`${
