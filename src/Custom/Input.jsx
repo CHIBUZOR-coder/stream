@@ -33,7 +33,7 @@ export const Input = ({
       {type === "password" ? (
         <div
           onClick={() => setVisible((prev) => !prev)}
-          className="absolute right-4 top-[60%]"
+          className="absolute right-4 top-[60%] bg-subMain"
         >
           {visible === true ? <FaEyeSlash /> : <FaEye />}
         </div>
