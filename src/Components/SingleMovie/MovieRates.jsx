@@ -20,9 +20,12 @@ const MovieRates = ({ movie }) => {
 
   const HandleGetReviews = async () => {
     try {
-      const res = await fetch("", {
-        method: "GET",
-      });
+      const res = await fetch(
+        "https://streambackend-nbbc.onrender.com/getReviews",
+        {
+          method: "GET",
+        }
+      );
 
       const data = await res.json();
       if (!res.ok) {
