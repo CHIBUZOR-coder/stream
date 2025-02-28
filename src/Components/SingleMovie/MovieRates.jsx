@@ -20,7 +20,10 @@ const MovieRates = ({ movie }) => {
   const HandleReview = async (e) => {
     if (!User) {
       setCanReview(false);
-      setToggleReview((prev) => !prev);
+      setToggleReview(true);
+      setTimeout(() => {
+        setToggleReview(false);
+      }, 4000);
     }
     e.preventDefault();
     const movieId = movie && movie.id;
@@ -113,7 +116,11 @@ const MovieRates = ({ movie }) => {
           </p>
 
           <form className="text-sm w-full relative">
-            <div className={`${toggleRevie ? "":"hidden"} absolute top-2  py-10  px-4 bg-main rounded-md  justify-center  border border-border `}>
+            <div
+              className={`${
+                toggleRevie ? "" : "hidden"
+              } absolute top-2 w-full  py-10 z-40  px-4 bg-main rounded-md  justify-center  border border-border `}
+            >
               {canReview && (
                 <p className="text-sm leading-7 font-medium text-border">
                   You need to be logged in to write a review.
