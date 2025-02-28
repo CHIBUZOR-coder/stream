@@ -34,7 +34,7 @@ const MovieRates = ({ movie }) => {
     } catch (error) {}
   };
   useEffect(() => {
-    console.log(reviews);
+    console.log("reviews:", reviews);
   }, [reviews]);
 
   useEffect(() => {
