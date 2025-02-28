@@ -157,8 +157,8 @@ const MovieRates = ({ movie }) => {
                 {canReview ? (
                   ""
                 ) : (
-                  <p className="text-sm leading-7 z-50 font-medium text-border">
-                    You need to be logged in to write a review.
+                  <p className="text-sm leading-7 z-50 font-medium text-text">
+                    ⚠️You need to be logged in to review a movie.
                   </p>
                 )}
               </div>
