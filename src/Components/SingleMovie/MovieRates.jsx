@@ -124,7 +124,9 @@ const MovieRates = ({ movie }) => {
                   toggleRevie ? "" : "hidden"
                 } absolute top-3 w-full rev  py-10 z-50  px-4 bg-main rounded-md  justify-center  border border-border `}
               >
-                {canReview && (
+                {canReview ? (
+                  ""
+                ) : (
                   <p className="text-sm leading-7 z-50 font-medium text-border">
                     You need to be logged in to write a review.
                   </p>
