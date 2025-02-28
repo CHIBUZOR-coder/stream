@@ -175,10 +175,10 @@ const MovieRates = ({ movie }) => {
                   setBounce(true);
                   setTimeout(() => {
                     setBounce(false);
-                  }, 100);
+                  }, 200);
                 }}
                 className={`bg-subMain ${
-                  Bounce ? "scale-105" : ""
+                  Bounce ? "scale-110" : ""
                 } text-white hover:bg-red-800 transi py-3 px-4 w-full flexCol rounded`}
               >
                 Submit
