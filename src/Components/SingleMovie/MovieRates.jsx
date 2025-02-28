@@ -175,7 +175,7 @@ const MovieRates = ({ movie }) => {
                   setBounce(true);
                   setTimeout(() => {
                     setBounce(false);
-                  }, 300);
+                  }, 100);
                 }}
                 className={`bg-subMain ${
                   Bounce ? "scale-105" : ""
