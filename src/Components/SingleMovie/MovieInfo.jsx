@@ -12,8 +12,7 @@ import { useNavigate } from "react-router-dom";
 import MovieContext from "../../Context/MovieContext";
 const MovieInfo = ({ movie, setShareOpen, setSubOpen, url }) => {
   // console.log("movie",movie);
-  const { FetchedMovies  } =
-    useContext(MovieContext);
+  const { FetchedMovies } = useContext(MovieContext);
   const User = JSON.parse(localStorage.getItem("userInfo"));
 
   // console.log("Duser:", User);
@@ -30,7 +29,6 @@ const MovieInfo = ({ movie, setShareOpen, setSubOpen, url }) => {
     }
   };
 
- 
   // const gap = "gap-2";
   return (
     <>
@@ -108,6 +106,8 @@ const MovieInfo = ({ movie, setShareOpen, setSubOpen, url }) => {
                 {/* **********share********** */}
 
                 <div className="grid sm:grid-cols-5 grid-col-2 gap-4 p-5 bg-main border border-gray-800 rounded-lg relative">
+                 
+
                   <button className="flexCol p-1 border-r border-border gap-2 ">
                     <span
                       onClick={() => setShareOpen((prev) => !prev)}
@@ -134,8 +134,6 @@ const MovieInfo = ({ movie, setShareOpen, setSubOpen, url }) => {
                       }`}
                       onClick={(e) => {
                         HandleUserCheck(e);
-
-                       
                       }}
                       className="bg-dry hover:text-main transi hover:bg-subMain   transi border-2 border-subMain text-white px-8 py-3  font-medium names rounded-full flexRow gap-4 w-full sm:py-3 "
                     >

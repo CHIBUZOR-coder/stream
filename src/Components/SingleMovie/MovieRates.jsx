@@ -13,9 +13,15 @@ const MovieRates = ({ movie }) => {
   const [review, setReview] = useState("");
   const [starUsers, setStarUser] = useState([]);
   const [Bounce, setBounce] = useState(false);
+  const [canReview, setCanReview] = useState(true);
+  const [toggleRevie, setToggleReview] = useState(false);
   const User = JSON.parse(localStorage.getItem("userInfo"));
 
   const HandleReview = async (e) => {
+    if (!User) {
+      setCanReview(false);
+      setToggleReview((prev) => !prev);
+    }
     e.preventDefault();
     const movieId = movie && movie.id;
     console.log("movieId", movieId);
@@ -41,9 +47,9 @@ const MovieRates = ({ movie }) => {
       console.log(data);
     }
     HandleGetMovies();
+
     console.log(data);
     setReview("");
-
   };
 
   useEffect(() => {
@@ -106,7 +112,14 @@ const MovieRates = ({ movie }) => {
             minima natus sapiente.
           </p>
 
-          <form className="text-sm w-full">
+          <form className="text-sm w-full relative">
+            <div className={`${toggleRevie ? "":"hidden"} absolute top-2  py-10  px-4 bg-main rounded-md  justify-center  border border-border `}>
+              {canReview && (
+                <p className="text-sm leading-7 font-medium text-border">
+                  You need to be logged in to write a review.
+                </p>
+              )}
+            </div>
             <div className="">
               <label className="text-border font-semibold">Select Rating</label>
               <div className="relative ">
@@ -147,6 +160,7 @@ const MovieRates = ({ movie }) => {
               <button
                 onClick={(e) => {
                   HandleReview(e);
+
                   setBounce(true);
                   setTimeout(() => {
                     setBounce(false);
