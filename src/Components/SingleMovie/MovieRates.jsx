@@ -15,7 +15,31 @@ const MovieRates = ({ movie }) => {
   const [Bounce, setBounce] = useState(false);
   const [canReview, setCanReview] = useState(true);
   const [toggleRevie, setToggleReview] = useState(false);
+  const [reviews, setReviews] = useState();
   const User = JSON.parse(localStorage.getItem("userInfo"));
+
+  const HandleGetReviews = async () => {
+    try {
+      const res = await fetch("", {
+        method: "GET",
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        console.log(data);
+      } else {
+        setReviews(data.data);
+        console.log(data);
+      }
+    } catch (error) {}
+  };
+  useEffect(() => {
+    console.log(reviews);
+  }, [reviews]);
+
+  useEffect(() => {
+    HandleGetReviews();
+  }, []);
 
   const HandleReview = async (e) => {
     e.preventDefault();
