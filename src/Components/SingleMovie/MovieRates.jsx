@@ -107,17 +107,6 @@ const MovieRates = ({ movie }) => {
       <div className="mt-10 flexCol xl:grid  grid-cols-5 gap-12 bg-dry xs:p-10 py-10 px-4 sm:p-20 rounded">
         {/* Write review */}
         <div className="xl:col-span-2 w-full flex flex-col gap-8 write relative">
-          <div
-            className={`${
-              toggleRevie ? "" : "hidden"
-            } absolute top-5 w-full  py-10 z-50  px-4 bg-main rounded-md  justify-center  border border-border `}
-          >
-            {canReview && (
-              <p className="text-sm leading-7 font-medium text-border">
-                You need to be logged in to write a review.
-              </p>
-            )}
-          </div>
           <p className="text-xl text-text font-semibold">
             Review {movie?.name}
           </p>
@@ -129,7 +118,18 @@ const MovieRates = ({ movie }) => {
           </p>
 
           <form className="text-sm w-full">
-            <div className="">
+            <div className="relative">
+              <div
+                className={`${
+                  toggleRevie ? "" : "hidden"
+                } absolute top-2 w-full  py-10 z-50  px-4 bg-main rounded-md  justify-center  border border-border `}
+              >
+                {canReview && (
+                  <p className="text-sm leading-7 z-50 font-medium text-border">
+                    You need to be logged in to write a review.
+                  </p>
+                )}
+              </div>
               <label className="text-border font-semibold">Select Rating</label>
               <div className="relative ">
                 {/* <select
