@@ -121,14 +121,11 @@ const MovieRates = ({ movie }) => {
     },
   ];
 
-   const getRandomColor = (seed) => {
-     let hash = 0;
-     for (let i = 0; i < seed.length; i++) {
-       hash = seed.charCodeAt(i) + hash * 31; // Replacing (hash << 5) - hash with hash * 31
-     }
-     const color = `#${(hash & 0xffffff).toString(16).padStart(6, "0")}`; // Ensure 6-digit hex
-     return color;
-   };
+  useEffect(() => {
+    // Generate a random background color on mountt
+    const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+    setBgColor(randomColor);
+  }, []);
   return (
     <div className="my-12">
       <div className="flex items-center gap-8 md:gap-4">
@@ -235,22 +232,16 @@ const MovieRates = ({ movie }) => {
                       key={i}
                       className="md:grid   flex flex-col w-full grid-cols-12 gap-5  bg-dry p-4 border border-x-gray-800  rounded-lg"
                     >
-                      <div
-                        style={{
-                          backgroundColor: starUsers?.image
-                            ? "transparent"
-                            : getRandomColor(
-                                (starUsers && starUsers?.name) ||
-                                  (starUsers && starUsers?.id)
-                              ),
-                        }}
-                        className="col-span-2 "
-                      >
-                        <img
-                          className="w-full  object-cover"
-                          src={`${user?.user?.image}`}
-                          alt=""
-                        />
+                      <div className="col-span-2 ">
+                        {user?.user?.image ? (
+                          <img
+                            className="w-full  object-cover"
+                            src={`${user?.user?.image}`}
+                            alt=""
+                          />
+                        ) : (
+                          user?.user?.name.charAt(0).toUpperCase()
+                        )}
                       </div>
                       <div className="col-span-7 flex flex-col gap-2">
                         <p>{user?.user?.name}</p>
