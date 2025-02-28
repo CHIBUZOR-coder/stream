@@ -28,7 +28,7 @@ const SingleMovie = () => {
   const [SubOpen, setSubOpen] = useState(false);
   const [movie, setMovie] = useState([]);
   const [Relatedmovie, setRelatedMovie] = useState([]);
-  // const [reload, setReload] = useState(false);
+  const [reload, setReload] = useState(false);
 
   const navigate = useNavigate();
 
