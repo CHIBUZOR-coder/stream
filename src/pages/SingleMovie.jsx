@@ -190,7 +190,8 @@ const SingleMovie = () => {
                 Relatedmovie.map((movie, index) => (
                   <Link
                     to={`/movie/${movie?.id}`}
-                    onClick={() => {
+                    onClick={(e) => {
+                      e.preventDefault();
                       setReload((prev) => !prev);
                       // navigate(`/movie/${movie?.id}`);
                       window.scrollTo({ top: 0, behavior: "smooth" });
