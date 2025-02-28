@@ -18,15 +18,16 @@ const MovieRates = ({ movie }) => {
   const User = JSON.parse(localStorage.getItem("userInfo"));
 
   const HandleReview = async (e) => {
+    e.preventDefault();
     if (!User) {
       setCanReview(false);
       setToggleReview(true);
       setTimeout(() => {
         setToggleReview(false);
       }, 4000);
-      return
+      return;
     }
-    e.preventDefault();
+
     const movieId = movie && movie.id;
     console.log("movieId", movieId);
     const userRating = rating && Number(rating);
