@@ -16,6 +16,7 @@ const MovieRates = ({ movie }) => {
   const [canReview, setCanReview] = useState(true);
   const [toggleRevie, setToggleReview] = useState(false);
   const [reviews, setReviews] = useState();
+  const [bgColor, setBgColor] = useState();
   const User = JSON.parse(localStorage.getItem("userInfo"));
 
   // const HandleGetReviews = async () => {
@@ -232,7 +233,12 @@ const MovieRates = ({ movie }) => {
                       key={i}
                       className="md:grid   flex flex-col w-full grid-cols-12 gap-5  bg-dry p-4 border border-x-gray-800  rounded-lg"
                     >
-                      <div className="col-span-2 ">
+                      <div
+                        style={{
+                          backgroundColor: user?.user?.image ? bgColor : "transparent",
+                        }}
+                        className="col-span-2 "
+                      >
                         {user?.user?.image ? (
                           <img
                             className="w-full  object-cover"
