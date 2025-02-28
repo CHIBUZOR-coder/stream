@@ -236,8 +236,8 @@ const MovieRates = ({ movie }) => {
                       <div
                         style={{
                           backgroundColor: user?.user?.image
-                            ? bgColor
-                            : "transparent",
+                            ? "transparent"
+                            : bgColor,
                         }}
                         className="col-span-2 flex justify-center items-center font-semibold text-white"
                       >
