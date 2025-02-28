@@ -40,8 +40,6 @@ const MovieRates = ({ movie }) => {
   //   console.log("reviews:", reviews);
   // }, [reviews]);
 
-
-
   const HandleReview = async (e) => {
     e.preventDefault();
     if (!User) {
@@ -214,7 +212,9 @@ const MovieRates = ({ movie }) => {
 
         {/* Review */}
         <div className="col-span-3 flex flex-col gap-6 w-full md:w-auto p-4 md:p-0">
-          <p className="text-xl text-text font-semibold">Reviews (56)</p>
+          <p className="text-xl text-text font-semibold">
+            Reviews {starUsers && starUsers.length}
+          </p>
           <div
             className={`w-full flex flex-col bg-main gap-6 rounded-lg md:p-12 p-0   max-h-[460px] md:max-h-[550px] overflow-y-scroll `}
           >
