@@ -239,7 +239,7 @@ const MovieRates = ({ movie }) => {
                             ? "transparent"
                             : bgColor,
                         }}
-                        className="col-span-2 flex justify-center items-center font-semibold rounded-lg  text-white"
+                        className="col-span-2 flex justify-center items-center text-2xl font-semibold rounded-lg  text-white"
                       >
                         {user?.user?.image ? (
                           <img
