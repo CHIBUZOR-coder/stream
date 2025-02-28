@@ -235,13 +235,15 @@ const MovieRates = ({ movie }) => {
                     >
                       <div
                         style={{
-                          backgroundColor: user?.user?.image ? bgColor : "transparent",
+                          backgroundColor: user?.user?.image
+                            ? bgColor
+                            : "transparent",
                         }}
-                        className="col-span-2 "
+                        className="col-span-2 flex justify-center items-center"
                       >
                         {user?.user?.image ? (
                           <img
-                            className="w-full  object-cover"
+                            className="w-full h-full  object-cover"
                             src={`${user?.user?.image}`}
                             alt=""
                           />
