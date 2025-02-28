@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import Layout from "../Layout/Layout";
-import { Link, useParams } from "react-router-dom";
+import { Link, Links, useParams } from "react-router-dom";
 import MovieContext from "../Context/MovieContext";
 import MovieInfo from "../Components/SingleMovie/MovieInfo";
 import MovieCasts from "../Components/SingleMovie/MovieCasts";
@@ -188,10 +188,11 @@ const SingleMovie = () => {
             <div className="grid sm:mt-10 mt-6 xl:grid-cols-4 2xl:grid-cols-5 lg:grid-cols-3 sm:grid-cols-1 gap-6">
               {Relatedmovie &&
                 Relatedmovie.map((movie, index) => (
-                  <button
+                  <Link
+                    to={`/movie/${movie?.id}`}
                     onClick={() => {
                       setReload((prev) => !prev);
-                      navigate(`/movie/${movie?.id}`);
+                      // navigate(`/movie/${movie?.id}`);
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
                     // to={`/movie/${movie?.id}`}
@@ -207,7 +208,7 @@ const SingleMovie = () => {
                         <FaHeart />
                       </button>
                     </div>
-                  </button>
+                  </Link>
                 ))}
             </div>
           </div>
