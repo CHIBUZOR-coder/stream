@@ -85,6 +85,9 @@ const Navbar = ({ HandleInputChange, Text }) => {
           {/*Menu*/}
           <div className="col-span-3  font-medium text-sm hidden xl:gap-8 2xl:gap-16 lg:flex justify-between xl:justify-end items-center">
             <NavLink
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
               className={({ isActive }) =>
                 `${
                   isActive
