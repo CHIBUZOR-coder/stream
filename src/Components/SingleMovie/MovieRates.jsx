@@ -14,7 +14,7 @@ const MovieRates = ({ movie }) => {
   const [starUsers, setStarUser] = useState([]);
   const [Bounce, setBounce] = useState(false);
   const [canReview, setCanReview] = useState(true);
-  const [toggleRevie, setToggleReview] = useState(true);
+  const [toggleRevie, setToggleReview] = useState(false);
   const User = JSON.parse(localStorage.getItem("userInfo"));
 
   const HandleReview = async (e) => {
@@ -122,7 +122,7 @@ const MovieRates = ({ movie }) => {
               <div
                 className={`${
                   toggleRevie ? "" : "hidden"
-                } absolute top-2 w-full rev  py-10 z-50  px-4 bg-main rounded-md  justify-center  border border-border `}
+                } absolute top-3 w-full rev  py-10 z-50  px-4 bg-main rounded-md  justify-center  border border-border `}
               >
                 {canReview && (
                   <p className="text-sm leading-7 z-50 font-medium text-border">
