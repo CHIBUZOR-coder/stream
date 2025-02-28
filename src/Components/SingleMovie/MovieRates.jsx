@@ -122,6 +122,15 @@ const MovieRates = ({ movie }) => {
       value: 5,
     },
   ];
+
+  const getRandomColor = (seed) => {
+    let hash = 0;
+    for (let i = 0; i < seed.length; i++) {
+      hash = seed.charCodeAt(i) + hash * 31; // Replacing (hash << 5) - hash with hash * 31
+    }
+    const color = `#${(hash & 0xffffff).toString(16).padStart(6, "0")}`; // Ensure 6-digit hex
+    return color;
+  };
   return (
     <div className="my-12">
       <div className="flex items-center gap-8 md:gap-4">
@@ -228,7 +237,16 @@ const MovieRates = ({ movie }) => {
                       key={i}
                       className="md:grid   flex flex-col w-full grid-cols-12 gap-5  bg-dry p-4 border border-x-gray-800  rounded-lg"
                     >
-                      <div className="col-span-2 ">
+                      <div
+                        style={{
+                          backgroundColor: starUsers?.image
+                            ? "transparent"
+                            : getRandomColor(
+                                starUsers?.name || starUsers?.id
+                              ),
+                        }}
+                        className="col-span-2 "
+                      >
                         <img
                           className="w-full  object-cover"
                           src={`${user?.user?.image}`}
