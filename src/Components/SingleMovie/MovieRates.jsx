@@ -214,7 +214,9 @@ const MovieRates = ({ movie }) => {
 
         {/* Review */}
         <div className="col-span-3 flex flex-col gap-6 w-full md:w-auto p-4 md:p-0">
-          <p className="text-xl text-text font-semibold">{starUsers && starUsers.length || 0}</p>
+          <p className="text-xl text-text font-semibold">
+            Reviews {(starUsers && starUsers.length) || 0}
+          </p>
           <div
             className={`w-full flex flex-col bg-main gap-6 rounded-lg md:p-12 p-0   max-h-[460px] md:max-h-[550px] overflow-y-scroll `}
           >
