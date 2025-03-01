@@ -189,14 +189,14 @@ const SingleMovie = () => {
               {Relatedmovie &&
                 Relatedmovie.map((movie, index) => (
                   <Link
-                    to={`/movie/${movie?.id}`}
+                    // to={`/movie/${movie?.id}`}
                     onClick={(e) => {
                       e.preventDefault();
                       setReload((prev) => !prev);
                       // navigate(`/movie/${movie?.id}`);
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
-                    // to={`/movie/${movie?.id}`}
+                     to={`/movie/${movie?.id}`}
                     key={`${movie.id}`}
                     className="border h-64 border-border rounded bg-center bg-cover transi hover:scale-95 w-full relative"
                     style={{
