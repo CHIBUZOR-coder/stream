@@ -52,12 +52,12 @@ const About = () => {
                   </div>
                 </div>
               </div>
-              <div className="">
+              <div className="flex flex-col gap-3">
                 <div
                   style={{ backgroundImage: "url('./images/marvel.jpg')" }}
                   className=" xl:block mt-10 lg:mt-0 bg-cover bg-center  h-[32rem] "
                 ></div>
-                <p>
+                <p className="">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Ducimus, molestiae repudiandae deserunt deleniti provident
                   earum veritatis a beatae possimus dolores.
