@@ -55,7 +55,7 @@ const About = () => {
 
               <div
                 style={{ backgroundImage: "url('./images/marvel.jpg')" }}
-                className=" xl:block mt-10 lg:mt-0 bg-cover bg-center hidden h-[32rem] "
+                className=" xl:block mt-10 lg:mt-0 bg-cover bg-center  h-[32rem] "
               ></div>
             </div>
           </div>
