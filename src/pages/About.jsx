@@ -52,11 +52,17 @@ const About = () => {
                   </div>
                 </div>
               </div>
-
-              <div
-                style={{ backgroundImage: "url('./images/marvel.jpg')" }}
-                className=" xl:block mt-10 lg:mt-0 bg-cover bg-center  h-[32rem] "
-              ></div>
+              <div className="">
+                <div
+                  style={{ backgroundImage: "url('./images/marvel.jpg')" }}
+                  className=" xl:block mt-10 lg:mt-0 bg-cover bg-center  h-[32rem] "
+                ></div>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Ducimus, molestiae repudiandae deserunt deleniti provident
+                  earum veritatis a beatae possimus dolores.
+                </p>
+              </div>
             </div>
           </div>
         </div>
