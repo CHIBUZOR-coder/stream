@@ -194,7 +194,7 @@ const SingleMovie = () => {
                       e.preventDefault();
                       setReload((prev) => !prev);
                       // navigate(`/movie/${movie?.id}`);
-                      window.scrollTo({ top: 0, behavior: "smooth" });
+                      // window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
                      to={`/movie/${movie?.id}`}
                     key={`${movie.id}`}
