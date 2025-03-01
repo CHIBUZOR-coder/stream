@@ -60,7 +60,7 @@ const Navbar = ({ HandleInputChange, Text }) => {
           {/**Logo Done**/}
 
           {/* Search Form */}
-          <div className=" col-span-4 md:col-span-3">
+          <div className=" col-span-7 md:col-span-3">
             <form
               className="w-full text-sm bg-dryGray rounded flex justify-start items-center gap-3 "
               action=""
