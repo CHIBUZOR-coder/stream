@@ -120,6 +120,9 @@ const Login = () => {
               console.log("Added to backend:", favCartdata);
             })
           );
+
+
+          
         } catch (error) {
           console.error("Error in Promise.all:", error.message);
         }

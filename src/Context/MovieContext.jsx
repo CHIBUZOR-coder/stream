@@ -35,8 +35,8 @@ const MovieProvider = ({ children }) => {
   const [orderId, setOrderId] = useState(null);
   const [Reviewed, setReviwed] = useState([]);
   const [Ratingss, setRatings] = useState([]);
-    const [visible, setVisible] = useState(false);
-    const [visibleII, setVisibleII] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const [visibleII, setVisibleII] = useState(false);
 
   const [autoRender, setAutornder] = useState(false);
 
@@ -144,12 +144,13 @@ const MovieProvider = ({ children }) => {
 
       if (!res.ok) {
         const errorData = data;
+        localStorage.removeItem("UserInfo");
+        console.warn("Session expired. Redirecting to login.");
+        window.location.href = "/login"; 
         throw new Error(errorData.message || "Authorization failed");
       }
 
-      if (isLogin) {
-        localStorage.setItem("userInfo", JSON.stringify(data.userInfo));
-      }
+      localStorage.setItem("userInfo", JSON.stringify(data.userInfo));
 
       console.log(data);
 
