@@ -35,7 +35,7 @@ const Navbar = ({ HandleInputChange, Text }) => {
         ? `/dash/us/${userData.userInfo.name}`
         : "NOT";
 
-    UserName = userData.userInfo.email;
+    UserName = userData.userInfo.userName;
 
     fav = `/favouritpage/${userData.userInfo.name}`;
   }
