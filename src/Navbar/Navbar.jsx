@@ -23,6 +23,7 @@ const Navbar = ({ HandleInputChange, Text }) => {
   const NotUser = "/nofavorite";
   let dash;
   let fav;
+  let UserName;
   if (!userData) {
     // console.log("No user info yet");
     dash = "/login";
@@ -33,6 +34,8 @@ const Navbar = ({ HandleInputChange, Text }) => {
         : userData.role === "USER"
         ? `/dash/us/${userData.userInfo.name}`
         : "NOT";
+
+    UserName = userData.userInfo.email;
 
     fav = `/favouritpage/${userData.userInfo.name}`;
   }
@@ -79,6 +82,8 @@ const Navbar = ({ HandleInputChange, Text }) => {
                 placeholder={`${Text ? Text : "Search movie name"}`}
               />
             </form>
+
+            <p>{UserName}</p>
           </div>
           {/**Search Form Done**/}
 
