@@ -17,7 +17,7 @@ const NoFavPage = () => {
       <p className="px-4 md:px-44 text-center text-lg text-text italic">
         You have to be a user to gain acces to have and gain acces to your own
         favourite movies at this address or page. Navigate to the Signup page
-        below and signup to gain acces to your Dashboard
+        below and signup to gain access to your favourite page and  Dashboard
       </p>
     );
 
