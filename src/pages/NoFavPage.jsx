@@ -19,6 +19,8 @@ const NoFavPage = () => {
         favourite movies at this address or page. Navigate to the Signup page
         below and signup to gain access to your favourite page and  Dashboard
       </p>
+
+      
     );
 
     console.log("defaultt", defaultt);
