@@ -84,7 +84,7 @@ const Navbar = ({ HandleInputChange, Text }) => {
             </form>
 
             {UserName && (
-              <div className="flex gap-2 text-sm">
+              <div className="flex gap-2 text-sm justify-center items-center">
               
                 <p className="text-text text-sm"> Welcome to your profile {UserName}🎉</p>
               </div>
