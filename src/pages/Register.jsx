@@ -141,7 +141,7 @@ const Register = () => {
               label={"User Name"}
               placeholder={"Zoe"}
               type={"text"}
-              setter={setName}
+              setter={setUserName}
               mainVal={UserName}
               labelFor={"User Name"}
               setInputVal={setInputVal}
