@@ -63,7 +63,7 @@ const Navbar = ({ HandleInputChange, Text }) => {
           {/**Logo Done**/}
 
           {/* Search Form */}
-          <div className=" col-span-7 md:col-span-3">
+          <div className=" col-span-7 md:col-span-3 flex flex-col gap-2">
             <form
               className="w-full text-sm bg-dryGray rounded flex justify-start items-center gap-3 "
               action=""
@@ -84,8 +84,8 @@ const Navbar = ({ HandleInputChange, Text }) => {
             </form>
 
             {UserName && (
-              <div className="flex gap-2">
-                <FaUserCircle />
+              <div className="flex gap-2 text-sm">
+                <FaUserCircle className="text-text" />
                 <p className="text-text text-sm">{UserName}</p>
               </div>
             )}
