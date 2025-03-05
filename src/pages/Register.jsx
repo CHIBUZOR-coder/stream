@@ -16,6 +16,7 @@ const Register = () => {
   const [userImage, setUserImage] = useState([]);
   const [preview, setPreview] = useState(null);
   const [Name, setName] = useState("");
+  const [UserName, setUserName] = useState("");
   const [phone, setPhone] = useState("");
   const [Result, setResult] = useState();
   const [loadDisplay, setLoadDiaplay] = useState("");
@@ -37,6 +38,7 @@ const Register = () => {
 
     const formData = new FormData();
     formData.append("name", Name);
+    formData.append("userName", UserName);
     formData.append("email", Email);
     formData.append("phone", phone);
     formData.append("password", Password);
@@ -48,7 +50,6 @@ const Register = () => {
         "https://streambackend-nbbc.onrender.com/api/register",
         {
           method: "POST",
-
           body: formData,
         }
       );
@@ -134,6 +135,17 @@ const Register = () => {
               labelFor={"name"}
               setInputVal={setInputVal}
               indicator={"Full Name"}
+              bg={true}
+            />
+            <Input
+              label={"User Name"}
+              placeholder={"Zoe"}
+              type={"text"}
+              setter={setName}
+              mainVal={UserName}
+              labelFor={"User Name"}
+              setInputVal={setInputVal}
+              indicator={"User Name"}
               bg={true}
             />
 
