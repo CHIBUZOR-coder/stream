@@ -82,94 +82,91 @@ const Navbar = ({ HandleInputChange, Text }) => {
                 placeholder={`${Text ? Text : "Search movie name"}`}
               />
             </form>
+
+            {UserName && (
+              <div className="flex gap-2 text-sm justify-center items-center">
+              
+                <p className="text-text text-sm"> Welcome to your profile {UserName}!🎉</p>
+              </div>
+            )}
           </div>
           {/**Search Form Done**/}
 
           {/*Menu*/}
-          <div className="col-span-3 flex flex-col justify-center items-center gap-2">
-            <div className=" font-medium text-sm hidden xl:gap-8 2xl:gap-16 lg:flex justify-between xl:justify-end items-center">
-              <NavLink
-                onClick={() => {
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
-                className={({ isActive }) =>
-                  `${
-                    isActive
-                      ? "text-main bg-white"
-                      : "hover:text-main hover:bg-white transi text-white relative"
-                  } hov p-2 flex justify-center gap-2 items-center rounded-md`
-                }
-                to={`/movies`}
-              >
-                Movies
-                <BsCollectionPlayFill />
-              </NavLink>
+          <div className="col-span-3  font-medium text-sm hidden xl:gap-8 2xl:gap-16 lg:flex justify-between xl:justify-end items-center">
+            <NavLink
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "text-main bg-white"
+                    : "hover:text-main hover:bg-white transi text-white relative"
+                } hov p-2 flex justify-center gap-2 items-center rounded-md`
+              }
+              to={`/movies`}
+            >
+              Movies
+              <BsCollectionPlayFill />
+            </NavLink>
 
-              <NavLink
-                className={({ isActive }) =>
-                  `${
-                    isActive
-                      ? "text-main bg-white"
-                      : "hover:text-main hover:bg-white transi text-white relative"
-                  } hov p-2 flex justify-center gap-2 items-center rounded-md`
-                }
-                to={`/about`}
-              >
-                About
-                <FaInfoCircle />
-              </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "text-main bg-white"
+                    : "hover:text-main hover:bg-white transi text-white relative"
+                } hov p-2 flex justify-center gap-2 items-center rounded-md`
+              }
+              to={`/about`}
+            >
+              About
+              <FaInfoCircle />
+            </NavLink>
 
-              <NavLink
-                className={({ isActive }) =>
-                  `${
-                    isActive
-                      ? "text-main bg-white"
-                      : "hover:text-main hover:bg-white transi text-white relative"
-                  } hov p-2 flex justify-center gap-2 items-center rounded-md`
-                }
-                to={`/contact`}
-              >
-                Contact
-                <TiContacts />
-              </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "text-main bg-white"
+                    : "hover:text-main hover:bg-white transi text-white relative"
+                } hov p-2 flex justify-center gap-2 items-center rounded-md`
+              }
+              to={`/contact`}
+            >
+              Contact
+              <TiContacts />
+            </NavLink>
 
-              <NavLink
-                className={({ isActive }) =>
-                  `${
-                    isActive
-                      ? "text-main bg-white"
-                      : "hover:text-main hover:bg-white transi text-white relative"
-                  } hov  p-2 flex justify-center items-center rounded-md`
-                }
-                to={`${dash}`}
-              >
-                {/* <FaUserCircle /> */}
-                {userData ? <TbTableDashed /> : <FaUserCircle />}
-              </NavLink>
-              <NavLink
-                className={({ isActive }) =>
-                  `${
-                    isActive
-                      ? "text-main bg-white"
-                      : "hover:text-main hover:bg-white  transi text-white relative"
-                  } hov   p-3 flex justify-center items-center rounded-md`
-                }
-                to={`${fav || NotUser}`}
-              >
-                <FaHeartCircleCheck className="w-6 h-6" />
-                <p className="w-4 h-4 flexCol_mdRow rounded-full hova text-xs bg-white text-main absolute -top-[-1px] -right-[-3px]">
-                  {FavouriteCount}
-                </p>
-              </NavLink>
-            </div>
-            {UserName && (
-              <div className="flex gap-2 text-sm justify-center items-center">
-                <p className="text-text text-sm">
-                  {" "}
-                  Welcome to your profile {UserName} !🎉
-                </p>
-              </div>
-            )}
+            <NavLink
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "text-main bg-white"
+                    : "hover:text-main hover:bg-white transi text-white relative"
+                } hov  p-2 flex justify-center items-center rounded-md`
+              }
+              to={`${dash}`}
+            >
+              {/* <FaUserCircle /> */}
+              {userData ? <TbTableDashed /> : <FaUserCircle />}
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "text-main bg-white"
+                    : "hover:text-main hover:bg-white  transi text-white relative"
+                } hov   p-3 flex justify-center items-center rounded-md`
+              }
+              to={`${fav || NotUser}`}
+            >
+              <FaHeartCircleCheck className="w-6 h-6" />
+              <p className="w-4 h-4 flexCol_mdRow rounded-full hova text-xs bg-white text-main absolute -top-[-1px] -right-[-3px]">
+                {FavouriteCount}
+              </p>
+            </NavLink>
           </div>
           {/*Menu Done*/}
         </div>
