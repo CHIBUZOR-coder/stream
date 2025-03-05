@@ -20,7 +20,7 @@ const Navbar = ({ HandleInputChange, Text }) => {
   // useEffect(() => {
   //   console.log("logDetails after", logDetail);
   // }, [logDetail]);
-  const NotUser = "nofavorite";
+  const NotUser = "/nofavorite";
   let dash;
   let fav;
   if (!userData) {
@@ -150,7 +150,7 @@ const Navbar = ({ HandleInputChange, Text }) => {
                     : "hover:text-main hover:bg-white  transi text-white relative"
                 } hov   p-3 flex justify-center items-center rounded-md`
               }
-              to={`/${fav || NotUser}`}
+              to={`${fav || NotUser}`}
             >
               <FaHeartCircleCheck className="w-6 h-6" />
               <p className="w-4 h-4 flexCol_mdRow rounded-full hova text-xs bg-white text-main absolute -top-[-1px] -right-[-3px]">
