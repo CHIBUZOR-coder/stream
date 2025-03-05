@@ -61,20 +61,19 @@ const Register = () => {
         console.error("Server error:", data.message);
         setResult(Alert(false, data.message));
         setIsLoading(false);
-        return;
+      } else {
+        // Parse JSON only if the response is valid
+        setResult(Alert(true, data.message));
+        setIsLoading(false);
+
+        setName("");
+        setEmail("");
+        setPhone("");
+        setPassword("");
+        setConfirmPassword("");
+        setPreview(null);
+        setUserImage([]);
       }
-
-      // Parse JSON only if the response is valid
-      setResult(Alert(true, data.message));
-      setIsLoading(false);
-
-      setName("");
-      setEmail("");
-      setPhone("");
-      setPassword("");
-      setConfirmPassword("");
-      setPreview(null);
-      setUserImage([]);
     } catch (error) {
       console.error("Error during registration:", error);
       setResult(
