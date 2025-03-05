@@ -83,7 +83,10 @@ const Navbar = ({ HandleInputChange, Text }) => {
               />
             </form>
 
-            <p>{UserName}</p>
+            <div className="flex gap-2">
+              <FaUserCircle />
+              <p className="text-text text-sm">{UserName}</p>
+            </div>
           </div>
           {/**Search Form Done**/}
 
