@@ -85,8 +85,8 @@ const Navbar = ({ HandleInputChange, Text }) => {
 
             {UserName && (
               <div className="flex gap-2 text-sm">
-                <FaUserCircle className="text-text" />
-                <p className="text-text text-sm">{UserName}</p>
+              
+                <p className="text-text text-sm"> Welcome to your profile {UserName}🎉</p>
               </div>
             )}
           </div>
