@@ -209,7 +209,7 @@ const FavouritePage = () => {
                 </th>
 
                 <th scope="col" className={`${Head}`}>
-                  Year
+                  Year 
                 </th>
                 <th scope="col" className={`${Head}`}>
                   Hours
