@@ -6,7 +6,7 @@ const Promos = () => {
       <div className="md:grid md:grid-cols-2 md:gap-10  items-center">
         <div className="flex lg:gap-10 gap-6 flex-col    ">
           <h1 className="xl-text-3xl text-xl capitalize font-sans font-medium xl:leading-loose">
-            Download Movies & Watch Offline On Mobile
+            Download Movies and Watch Offline On Mobile
           </h1>
           <p className="text-text text-sm  xl:text-base leading-6 xl:leading-8">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi in
