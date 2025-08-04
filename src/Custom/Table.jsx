@@ -44,7 +44,7 @@ const Table = ({
   const Text = "text-sm text-left leading-6 whitespace-nowrap px-5 py-3";
   return (
     <div className="overflow-x-scroll overflow-hidden relative w-full">
-      <table className="table-auto w-full text-white border  border-border divide-y divide-border">
+      <table className="table-auto  w-full text-white border  border-border divide-y divide-border">
         <thead>
           <tr className="bg-dryGray">
             <th scope="col" className={`${Head}`}>

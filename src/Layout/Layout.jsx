@@ -52,7 +52,6 @@ const Layout = ({ children }) => {
     return cleanup;
   }, [charIndex, index, textArray, typingSpeed, HandleTypewrite]);
 
-  
   const HandleFetchStart = async (value) => {
     if (!value.trim()) {
       setSearchResult([]); // Clear results if input is empty
@@ -76,7 +75,6 @@ const Layout = ({ children }) => {
       // Filter movies where the movie name or any cast member's name includes the search term
       const filteredResults = data.data.filter((movie) => {
         const nameMatch = movie?.name?.toLowerCase().includes(lowerValue);
-
         const castMatch =
           movie?.casts &&
           movie.casts.some((item) => {

@@ -12,7 +12,7 @@ const About = () => {
             <div className="grid grid-flow-row xl:grid-cols-2 gap-16 items-center  ">
               <div>
                 <h3 className="text-xl my-4 lg:text-3xl  font-semibold">
-                  Welcome to Straem
+                  Welcome to Straemm
                 </h3>
                 <div className="text-sm leading-8 text-text">
                   <p>
